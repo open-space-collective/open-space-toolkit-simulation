@@ -1,0 +1,29 @@
+################################################################################################################################################################
+
+# @project        Open Space Toolkit ▸ Simulation
+# @file           tools/cmake/OpenSpaceToolkitSimulationConfig.cmake.in
+# @author         Lucas Brémond <lucas@loftorbital.com>
+# @license        Apache License 2.0
+
+################################################################################################################################################################
+
+SET (OpenSpaceToolkitSimulation_ROOT_DIR ${OpenSpaceToolkitSimulation_ROOT_DIR} @CMAKE_INSTALL_PREFIX@)
+
+FIND_PATH (OpenSpaceToolkitSimulation_INCLUDE_DIR "OpenSpaceToolkit/Simulation/Spacecraft.hpp" PATHS ${OpenSpaceToolkitSimulation_ROOT_DIR} PATH_SUFFIXES "include" NO_DEFAULT_PATH)
+FIND_LIBRARY (OpenSpaceToolkitSimulation_LIBRARY NAMES "libopen-space-toolkit-simulation.so" PATHS ${OpenSpaceToolkitSimulation_ROOT_DIR} PATH_SUFFIXES "lib" NO_DEFAULT_PATH)
+
+# MESSAGE (STATUS "OpenSpaceToolkitSimulation_ROOT_DIR = ${OpenSpaceToolkitSimulation_ROOT_DIR}")
+# MESSAGE (STATUS "OpenSpaceToolkitSimulation_INCLUDE_DIR = ${OpenSpaceToolkitSimulation_INCLUDE_DIR}")
+# MESSAGE (STATUS "OpenSpaceToolkitSimulation_LIBRARY = ${OpenSpaceToolkitSimulation_LIBRARY}")
+# MESSAGE (STATUS "OpenSpaceToolkitSimulation_FIND_VERSION = ${OpenSpaceToolkitSimulation_FIND_VERSION}")
+
+IF (OpenSpaceToolkitSimulation_INCLUDE_DIR)
+
+    SET (OpenSpaceToolkitSimulation_INCLUDE_DIRS ${OpenSpaceToolkitSimulation_INCLUDE_DIR} ${OpenSpaceToolkitSimulation_INCLUDE_DIR}/OpenSpaceToolkit/Simulation)
+    SET (OpenSpaceToolkitSimulation_LIBRARIES ${OpenSpaceToolkitSimulation_LIBRARY})
+
+    SET (OpenSpaceToolkitSimulation_FOUND TRUE)
+
+ENDIF ()
+
+################################################################################################################################################################
