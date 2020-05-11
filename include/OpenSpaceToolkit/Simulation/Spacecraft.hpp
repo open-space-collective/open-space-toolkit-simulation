@@ -10,6 +10,13 @@
 #ifndef __OpenSpaceToolkit_Simulation_Spacecraft__
 #define __OpenSpaceToolkit_Simulation_Spacecraft__
 
+#include <OpenSpaceToolkit/Simulation/Component.hpp>
+#include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
+
+#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
+#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Types/String.hpp>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace ostk
@@ -19,14 +26,39 @@ namespace simulation
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using ostk::core::types::String ;
+using ostk::core::types::Shared ;
+using ostk::core::ctnr::Map ;
+
+using ostk::simulation::utilities::ComponentHolder ;
+using ostk::simulation::Component ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /// @brief                      Spacecraft
 
-class Spacecraft
+class Spacecraft : public ComponentHolder
 {
 
     public:
 
-                                Spacecraft                                  ( ) ;
+                                Spacecraft                                  (   const   String&                     aName                                       ) ;
+
+                                Spacecraft                                  (   const   Spacecraft&                 aSpacecraft                                 ) = default ;
+
+                                ~Spacecraft                                 ( ) ;
+
+        Spacecraft&             operator =                                  (   const   Spacecraft&                 aSpacecraft                                 ) = default ;
+
+        bool                    isDefined                                   ( ) const ;
+
+        String                  getName                                     ( ) const ;
+
+        static Spacecraft       Undefined                                   ( ) ;
+
+    private:
+
+        String                  name_ ;
 
 } ;
 

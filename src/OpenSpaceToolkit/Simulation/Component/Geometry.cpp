@@ -1,13 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Simulation
-/// @file           OpenSpaceToolkit/Simulation/Spacecraft.cpp
+/// @file           OpenSpaceToolkit/Simulation/Component/Geometry.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <OpenSpaceToolkit/Simulation/Spacecraft.hpp>
+#include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
@@ -18,45 +18,56 @@ namespace ostk
 {
 namespace simulation
 {
+namespace component
+{
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Spacecraft::Spacecraft                      (   const   String&                     aName                                       )
-                                :   ComponentHolder(),
-                                    name_(aName)
+                                Geometry::Geometry                          ( )
 {
 
 }
 
-                                Spacecraft::~Spacecraft                     ( )
+                                Geometry::Geometry                          (   const   Geometry&                   aGeometry                                   )
 {
 
 }
 
-bool                            Spacecraft::isDefined                       ( ) const
+                                Geometry::~Geometry                         ( )
 {
-    return !name_.isEmpty() ;
+
 }
 
-String                          Spacecraft::getName                         ( ) const
+Geometry*                       Geometry::clone                             ( ) const
+{
+    return new Geometry(*this) ;
+}
+
+Geometry&                       Geometry::operator =                        (   const   Geometry&                   aGeometry                                   )
 {
 
-    if (!this->isDefined())
+    if (this != &aGeometry)
     {
-        throw ostk::core::error::runtime::Undefined("Spacecraft") ;
+
     }
 
-    return name_ ;
+    return *this ;
 
 }
 
-Spacecraft                      Spacecraft::Undefined                       ( )
+bool                            Geometry::isDefined                         ( ) const
 {
-    return { "" } ;
+    return false ;
+}
+
+Geometry                        Geometry::Undefined                         ( )
+{
+    return {} ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+}
 }
 }
 

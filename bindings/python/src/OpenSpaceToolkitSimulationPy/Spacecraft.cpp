@@ -16,9 +16,11 @@ inline void                     OpenSpaceToolkitSimulationPy_Spacecraft     ( )
 
     using namespace boost::python ;
 
+    using ostk::core::types::String ;
+
     using ostk::simulation::Spacecraft ;
 
-    class_<Spacecraft>("Spacecraft", init<>())
+    class_<Spacecraft>("Spacecraft", init<const String&>())
 
     ;
 
