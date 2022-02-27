@@ -2,7 +2,7 @@
 
 # @project        Open Space Toolkit ▸ Simulation
 # @file           bindings/python/CMakeLists.txt
-# @author         Lucas Brémond <lucas@loftorbital.com>
+# @author         Lucas Brémond <lucas@loftorbital.com>, Remy Derollez <remy@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
@@ -20,11 +20,6 @@ SET (PROJECT_VENDOR_ID "com.bremond.lucas")
 SET (PROJECT_VENDOR_NAME "Lucas Brémond")
 SET (PROJECT_VENDOR_CONTACT "lucas.bremond@gmail.com")
 SET (PROJECT_VENDOR_URL "lucas.bremond.info")
-
-## Project Options (TBR)
-
-#SET (BOOST_VERSION "1.69" CACHE STRING "Boost version.")
-#SET (PYTHON_VERSION "python37" CACHE STRING "Python version.")
 
 ################################################################################################################################################################
 
@@ -55,8 +50,6 @@ PROJECT (${PROJECT_NAME} VERSION ${PROJECT_VERSION_STRING} LANGUAGES "C" "CXX")
 ################################################################################################################################################################
 
 ## Helper Functions
-
-# Largely inspired by https://github.com/ROCmSoftwarePlatform/AMDMIGraphX/pull/655/files
 
 ### Improved FIND_PYTHON macro
 
@@ -100,9 +93,9 @@ FUNCTION (PY_ADD_MODULE NAME)
     PY_EXTENSION (${NAME} ${PYTHON_VERSION})
 
     # External Libraries
-    #TARGET_INCLUDE_DIRECTORIES (${LIBRARY_TARGET} PUBLIC ${PYTHON_INCLUDE_DIR})
-    #TARGET_INCLUDE_DIRECTORIES (${LIBRARY_TARGET} PUBLIC ${NUMPY_INCLUDE_DIR})
-    #TARGET_INCLUDE_DIRECTORIES (${LIBRARY_TARGET} PUBLIC ${EIGEN_NUMPY_INCLUDE_DIR})
+    # TARGET_INCLUDE_DIRECTORIES (${LIBRARY_TARGET} PUBLIC ${PYTHON_INCLUDE_DIR})
+    # TARGET_INCLUDE_DIRECTORIES (${LIBRARY_TARGET} PUBLIC ${NUMPY_INCLUDE_DIR})
+    # TARGET_INCLUDE_DIRECTORIES (${LIBRARY_TARGET} PUBLIC ${EIGEN_NUMPY_INCLUDE_DIR})
 
     # Source Code
     TARGET_INCLUDE_DIRECTORIES (${NAME} PUBLIC "${CMAKE_SOURCE_DIR}/include")
@@ -110,12 +103,12 @@ FUNCTION (PY_ADD_MODULE NAME)
     TARGET_INCLUDE_DIRECTORIES (${NAME} PUBLIC "${PROJECT_SOURCE_DIR}/include")
     TARGET_INCLUDE_DIRECTORIES (${NAME} PUBLIC "${PROJECT_SOURCE_DIR}/src")
 
-    # Pybind11 and Python Headers
-    TARGET_LINK_LIBRARIES (${NAME} PRIVATE pybind11::module pybind11::lto python${PYTHON_VERSION}::headers)
+    # Previous Link with Boost Numpy and Python
+    # TARGET_LINK_LIBRARIES (${LIBRARY_TARGET} "Python3::Python")
+    # TARGET_LINK_LIBRARIES (${LIBRARY_TARGET} "Boost::${PYTHON_VERSION}" "Boost::numpy37")
 
-    # Deprecated Link with Boost and Numpy for reference (TBR)
-    #TARGET_LINK_LIBRARIES (${LIBRARY_TARGET} "Python3::Python")
-    #TARGET_LINK_LIBRARIES (${LIBRARY_TARGET} "Boost::${PYTHON_VERSION}" "Boost::numpy37")
+    # Pybind11/Python Headers
+    TARGET_LINK_LIBRARIES (${NAME} PRIVATE pybind11::module pybind11::lto python${PYTHON_VERSION}::headers)
 
     TARGET_LINK_LIBRARIES (${NAME} PRIVATE ${SHARED_LIBRARY_TARGET})
 
@@ -156,26 +149,18 @@ FUNCTION (PY_ADD_PACKAGE_DIRECTORY NAME)
     SET (SETUP_PY "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/setup.py")
     CONFIGURE_FILE (${SETUP_PY_IN} ${SETUP_PY})
 
-    # Configure setup.cfg file
-    # SET (SETUP_CFG_IN "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/setup.cfg.in")
-    # SET (SETUP_CFG "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/setup.cfg")
-    # CONFIGURE_FILE (${SETUP_CFG_IN} ${SETUP_CFG})
-
     IF (BUILD_WHEELS_IN_CMAKE)
 
         # Build wheels with cmake
         ADD_CUSTOM_COMMAND (OUTPUT ${OUTPUT}
-                            COMMAND mkdir -p "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}"
-                            COMMAND cp -r "${CMAKE_CURRENT_SOURCE_DIR}/test" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/test"
-                            COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_GROUP}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_GROUP}/__init__.py"
-                            COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/__init__.py"
-                            COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${SHARED_LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/libopen-space-toolkit-simulation.so.0"
-                            COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${LIBRARY_TARGET}.*${EXTENSION}*.so" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_PATH}/"
-                            COMMAND python${PYTHON_VERSION} ${SETUP_PY} bdist_wheel --python-tag=py${EXTENSION}
-                            COMMAND rm -r "${CMAKE_CURRENT_BINARY_DIR}/build/lib"
-                            COMMAND ${CMAKE_COMMAND} -E touch ${OUTPUT}
+                            COMMAND mkdir -p "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}"
+                            COMMAND cp -r "${CMAKE_CURRENT_SOURCE_DIR}/test" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/test"
+                            COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_GROUP}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_GROUP}/__init__.py"
+                            COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/__init__.py"
+                            COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${SHARED_LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/libopen-space-toolkit-simulation.so.0"
+                            COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${LIBRARY_TARGET}.*${EXTENSION}*.so" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/"
+                            COMMAND python${PYTHON_VERSION} ${SETUP_PY} build --build-base=./lib${EXTENSION} bdist_wheel --python-tag=py${EXTENSION} --bdist-dir=./dist${EXTENSION}
                             DEPENDS ${DEPS})
-
         # Install package on the machine
         # INSTALL (CODE "execute_process(COMMAND python${PYTHON_VERSION} ${SETUP_PY} install)")
     ELSE ()
@@ -206,7 +191,7 @@ FIND_PACKAGE (pybind11 2.6.0 REQUIRED)
 ### Python
 
 # Decide on the versions to build for and support
-SET (PYTHON_SEARCH_VERSIONS 2.7 3.5 3.6 3.7 3.8 3.9)
+SET (PYTHON_SEARCH_VERSIONS 2.7 3.5 3.6 3.7 3.8 3.9 3.10)
 
 MESSAGE (STATUS "Looking for available python versions...")
 FOREACH (PYTHON_VERSION ${PYTHON_SEARCH_VERSIONS})
@@ -219,33 +204,6 @@ FOREACH (PYTHON_VERSION ${PYTHON_SEARCH_VERSIONS})
     ENDIF ()
 ENDFOREACH ()
 
-### Boost
-
-#UNSET (Boost_USE_STATIC_LIBS CACHE)
-#UNSET (Boost_USE_MULTITHREADED CACHE)
-
-#SET (BUILD_SHARED_LIBS ON)
-#SET (Boost_USE_STATIC_LIBS OFF)
-#SET (Boost_USE_MULTITHREADED ON)
-
-#FIND_PACKAGE ("Boost" ${BOOST_VERSION} REQUIRED COMPONENTS ${PYTHON_VERSION} "numpy37")
-
-#IF (NOT Boost_FOUND)
-#    MESSAGE (SEND_ERROR "[Boost ${BOOST_VERSION}] not found.")
-#ENDIF ()
-
-### Eigen
-
-#ADD_COMPILE_DEFINITIONS (EIGEN_MAX_STATIC_ALIGN_BYTES)
-
-### NumPy
-
-#SET (NUMPY_INCLUDE_DIR "/usr/lib64/python3.7/site-packages/numpy/core/include")
-
-### Boost.NumPy Eigen
-
-#SET (EIGEN_NUMPY_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/thirdparty/boost_numpy_eigen")
-
 ################################################################################################################################################################
 
 ## Target
@@ -254,7 +212,6 @@ SET (LIBRARY_NAME ${PROJECT_PACKAGE_NAME})
 SET (LIBRARY_TARGET "${LIBRARY_NAME}")
 
 FILE (GLOB_RECURSE PROJECT_SRCS "${PROJECT_SOURCE_DIR}/src/*.cxx")
-# LIST (APPEND PROJECT_SRCS "${PROJECT_SOURCE_DIR}/thirdparty/boost_numpy_eigen/eigen_numpy.cpp")
 
 # Global library target
 ADD_CUSTOM_TARGET (${LIBRARY_TARGET})
