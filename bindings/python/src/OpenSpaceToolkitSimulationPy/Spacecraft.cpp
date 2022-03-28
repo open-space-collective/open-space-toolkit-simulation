@@ -11,14 +11,16 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitSimulationPy_Spacecraft     ( )
+inline void                     OpenSpaceToolkitSimulationPy_Spacecraft                     (              pybind11::module&        aModule                    )
 {
 
-    using namespace boost::python ;
+    using namespace pybind11 ;
 
     using ostk::simulation::Spacecraft ;
 
-    class_<Spacecraft>("Spacecraft", init<>())
+    class_<Spacecraft>(aModule, "Spacecraft")
+
+    .def(init<>())
 
     ;
 

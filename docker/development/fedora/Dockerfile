@@ -37,9 +37,9 @@ RUN git clone --branch v0.6.0 --depth 1 https://github.com/Tessil/ordered-map.gi
 
 RUN mkdir /tmp/eigen \
  && cd /tmp/eigen \
- && wget --quiet http://bitbucket.org/eigen/eigen/get/3.3.7.tar.gz \
- && tar -xvf 3.3.7.tar.gz \
- && cd eigen-eigen-323c052e1731 \
+ && wget --quiet https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.gz \
+ && tar -xvf eigen-3.3.7.tar.gz \
+ && cd eigen-3.3.7 \
  && mkdir build \
  && cd build \
  && cmake .. \
@@ -48,7 +48,7 @@ RUN mkdir /tmp/eigen \
 
 ## Open Space Toolkit ▸ Core
 
-ARG OSTK_CORE_VERSION=0.3.3
+ARG OSTK_CORE_VERSION=0.4.3
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \
@@ -59,7 +59,7 @@ RUN mkdir -p /tmp/open-space-toolkit-core \
 
 ## Open Space Toolkit ▸ IO
 
-ARG OSTK_IO_VERSION=0.3.3
+ARG OSTK_IO_VERSION=0.4.3
 
 RUN mkdir -p /tmp/open-space-toolkit-io \
  && cd /tmp/open-space-toolkit-io \
@@ -70,7 +70,7 @@ RUN mkdir -p /tmp/open-space-toolkit-io \
 
 ## Open Space Toolkit ▸ Mathematics
 
-ARG OSTK_MATHEMATICS_VERSION=0.3.4
+ARG OSTK_MATHEMATICS_VERSION=0.4.4
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
@@ -81,7 +81,7 @@ RUN mkdir -p /tmp/open-space-toolkit-mathematics \
 
 ## Open Space Toolkit ▸ Physics
 
-ARG OSTK_PHYSICS_VERSION=0.4.6
+ARG OSTK_PHYSICS_VERSION=0.5.13
 
 RUN mkdir -p /tmp/open-space-toolkit-physics \
  && cd /tmp/open-space-toolkit-physics \
@@ -92,7 +92,7 @@ RUN mkdir -p /tmp/open-space-toolkit-physics \
 
 ## Open Space Toolkit ▸ Astrodynamics
 
-ARG OSTK_ASTRODYNAMICS_VERSION=0.3.6
+ARG OSTK_ASTRODYNAMICS_VERSION=0.4.15
 
 RUN mkdir -p /tmp/open-space-toolkit-astrodynamics \
  && cd /tmp/open-space-toolkit-astrodynamics \
