@@ -70,7 +70,7 @@ RUN mkdir -p /tmp/open-space-toolkit-io \
 
 ## Open Space Toolkit ▸ Mathematics
 
-ARG OSTK_MATHEMATICS_VERSION=0.4.2
+ARG OSTK_MATHEMATICS_VERSION=0.4.4
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
@@ -81,7 +81,7 @@ RUN mkdir -p /tmp/open-space-toolkit-mathematics \
 
 ## Open Space Toolkit ▸ Physics
 
-ARG OSTK_PHYSICS_VERSION=0.5.12
+ARG OSTK_PHYSICS_VERSION=0.5.13
 
 RUN mkdir -p /tmp/open-space-toolkit-physics \
  && cd /tmp/open-space-toolkit-physics \
@@ -92,7 +92,7 @@ RUN mkdir -p /tmp/open-space-toolkit-physics \
 
 ## Open Space Toolkit ▸ Astrodynamics
 
-ARG OSTK_ASTRODYNAMICS_VERSION=0.4.14
+ARG OSTK_ASTRODYNAMICS_VERSION=0.4.15
 
 RUN mkdir -p /tmp/open-space-toolkit-astrodynamics \
  && cd /tmp/open-space-toolkit-astrodynamics \
