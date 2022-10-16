@@ -1,6 +1,6 @@
 ################################################################################################################################################################
 
-# @project        Open Space Toolkit ▸ Simulation
+# @project        Open Space Toolkit ▸ Astrodynamics
 # @file           docker/release/debian/Dockerfile
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
@@ -9,7 +9,7 @@
 
 ARG VERSION
 
-FROM openspacecollective/open-space-toolkit-simulation-development:${VERSION}-debian as cpp-builder
+FROM openspacecollective/open-space-toolkit-astrodynamics-development:${VERSION}-debian as cpp-builder
 
 RUN mkdir -p /app/bin /app/build /app/lib
 
@@ -44,11 +44,11 @@ ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/
 ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
 
 COPY --from=cpp-builder /usr/local/include/OpenSpaceToolkit /usr/local/include/OpenSpaceToolkit
-COPY --from=cpp-builder /usr/local/lib/libopen-space-toolkit-simulation.* /usr/local/lib/
+COPY --from=cpp-builder /usr/local/lib/libopen-space-toolkit-astrodynamics.* /usr/local/lib/
 COPY --from=cpp-builder /usr/local/share/OpenSpaceToolkit /usr/local/share/OpenSpaceToolkit
 COPY --from=cpp-builder /usr/local/test/OpenSpaceToolkit /usr/local/test/OpenSpaceToolkit
 
-ENTRYPOINT ["/usr/local/test/OpenSpaceToolkit/Simulation/open-space-toolkit-simulation.test"]
+ENTRYPOINT ["/usr/local/test/OpenSpaceToolkit/Astrodynamics/open-space-toolkit-astrodynamics.test"]
 
 ################################################################################################################################################################
 
@@ -69,6 +69,8 @@ RUN apt-get update -y \
  && rm -rf /var/lib/apt/lists/*
 
 RUN pip install ipython numpy
+
+COPY --from=us.gcr.io/loft-orbital-public/software/open-space-toolkit/data:0.3.0 /open-space-toolkit/physics /usr/local/share/OpenSpaceToolkit/Physics
 
 ENV OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
 ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"

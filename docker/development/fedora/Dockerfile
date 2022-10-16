@@ -48,7 +48,7 @@ RUN mkdir /tmp/eigen \
 
 ## Open Space Toolkit ▸ Core
 
-ARG OSTK_CORE_VERSION=0.4.3
+ARG OSTK_CORE_VERSION=0.4.5
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \
@@ -59,7 +59,7 @@ RUN mkdir -p /tmp/open-space-toolkit-core \
 
 ## Open Space Toolkit ▸ IO
 
-ARG OSTK_IO_VERSION=0.4.3
+ARG OSTK_IO_VERSION=0.4.5
 
 RUN mkdir -p /tmp/open-space-toolkit-io \
  && cd /tmp/open-space-toolkit-io \
@@ -70,7 +70,7 @@ RUN mkdir -p /tmp/open-space-toolkit-io \
 
 ## Open Space Toolkit ▸ Mathematics
 
-ARG OSTK_MATHEMATICS_VERSION=0.4.4
+ARG OSTK_MATHEMATICS_VERSION=0.4.6
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
@@ -81,7 +81,7 @@ RUN mkdir -p /tmp/open-space-toolkit-mathematics \
 
 ## Open Space Toolkit ▸ Physics
 
-ARG OSTK_PHYSICS_VERSION=0.5.13
+ARG OSTK_PHYSICS_VERSION=0.5.17
 
 RUN mkdir -p /tmp/open-space-toolkit-physics \
  && cd /tmp/open-space-toolkit-physics \
@@ -90,9 +90,16 @@ RUN mkdir -p /tmp/open-space-toolkit-physics \
  && dnf install -y ./*.rpm \
  && rm -rf /tmp/open-space-toolkit-physics
 
+ENV OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
+ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"
+ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
+ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
+
+COPY --from=us.gcr.io/loft-orbital-public/software/open-space-toolkit/data:0.3.0 /open-space-toolkit/physics /usr/local/share/OpenSpaceToolkit/Physics
+
 ## Open Space Toolkit ▸ Astrodynamics
 
-ARG OSTK_ASTRODYNAMICS_VERSION=0.4.15
+ARG OSTK_ASTRODYNAMICS_VERSION=0.4.21
 
 RUN mkdir -p /tmp/open-space-toolkit-astrodynamics \
  && cd /tmp/open-space-toolkit-astrodynamics \
