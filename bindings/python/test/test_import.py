@@ -15,6 +15,6 @@ class TestImport:
 
     def test_import (self):
 
-        from ostk.simulation import Spacecraft
+        from ostk.simulation import Satellite
 
 ################################################################################################################################################################
