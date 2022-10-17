@@ -9,6 +9,8 @@
 
 Spacecraft simulation.
 
+*This library is still in draft state. Do not use!*
+
 ## Getting Started
 
 Want to get started? This is the simplest and quickest way:
@@ -98,7 +100,7 @@ Documentation is available here:
 <summary>Structure</summary>
 <p>
 
-The library exhibits the following structure:
+The library exhibits the following detailed and descriptive structure:
 
 ```txt
 └── Spacecraft
@@ -165,17 +167,14 @@ Or to run them manually:
 
 ## Dependencies
 
-| Name          | Version | License                | Link                                                                                                                                           |
-| ------------- | ------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pybind11            | 2.6.2   | BSD-3-Clause       | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)                                                                                                         |
-| Eigen         | 3.3.7   | MPL2                   | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                                                    |
-| SGP4          | master  | Apache License 2.0     | [github.com/dnwrnr/sgp4](https://github.com/dnwrnr/sgp4)                                                                                       |
-| NLopt         | master  | LGPL                   | [github.com/stevengj/nlopt](https://github.com/stevengj/nlopt)                                                                                 |
-| Core          | master  | Apache License 2.0     | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)                   |
-| I/O           | master  | Apache License 2.0     | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                       |
-| Mathematics   | master  | Apache License 2.0     | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics)     |
-| Physics       | master  | Apache License 2.0     | [github.com/open-space-collective/open-space-toolkit-physics](https://github.com/open-space-collective/open-space-toolkit-physics)             |
-| Astrodynamics | master  | Apache License 2.0     | [github.com/open-space-collective/open-space-toolkit-astrodynamics](https://github.com/open-space-collective/open-space-toolkit-astrodynamics) |
+| Name          | Version | License            | Link                                                                                                                                           |
+| ------------- | ------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pybind11      | 2.6.1   | BSD-3-Clause       | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)                                                                               |
+| Core          | master  | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)                   |
+| I/O           | master  | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                       |
+| Mathematics   | master  | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics)     |
+| Physics       | master  | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-physics](https://github.com/open-space-collective/open-space-toolkit-physics)             |
+| Astrodynamics | master  | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-astrodynamics](https://github.com/open-space-collective/open-space-toolkit-astrodynamics) |
 
 ## Contribution
 
@@ -185,7 +184,7 @@ Please read our [contributing guide](CONTRIBUTING.md) to learn about our develop
 
 ## Special Thanks
 
-*To be completed...*
+[![Loft Orbital](https://github.com/open-space-collective/open-space-toolkit/blob/master/assets/thanks/loft_orbital.png)](https://www.loftorbital.com/)
 
 ## License
 
