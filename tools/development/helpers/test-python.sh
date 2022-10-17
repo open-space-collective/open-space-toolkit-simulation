@@ -2,24 +2,19 @@
 
 ################################################################################################################################################################
 
-# @project        Open Space Toolkit ▸ Astrodynamics
-# @file           tools/development/helpers/test.sh
+# @project        Open Space Toolkit ▸ Simulation
+# @file           tools/development/helpers/test-python.sh
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
 
 project_directory="$(git rev-parse --show-toplevel)"
+test_directory="${project_directory}/bindings/python/test"
 
-pushd "${project_directory}" > /dev/null
+pushd "${test_directory}" > /dev/null
 
-# make test
-
-if [[ -z ${1} ]]; then
-    ./bin/*.test
-else
-    ./bin/*.test --gtest_filter=${1}
-fi
+python3.8 -m pytest -svx ${@}
 
 popd > /dev/null
 
