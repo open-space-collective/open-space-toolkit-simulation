@@ -12,6 +12,8 @@
 #include <OpenSpaceToolkit/Simulation/Component/State.hpp>
 #include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
 
+#include <OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp>
+
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Point.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Pyramid.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Polygon.hpp>
@@ -31,6 +33,8 @@ TEST (OpenSpaceToolkit_Simulation_Satellite, Constructor)
     using ostk::math::geom::d3::trf::rot::RotationMatrix ;
     using ostk::math::geom::d3::objects::Polygon ;
     using ostk::math::geom::d3::objects::Pyramid ;
+
+    using ostk::astro::flight::Profile ;
 
     using ostk::simulation::Component ;
     using ostk::simulation::Satellite ;
@@ -64,19 +68,19 @@ TEST (OpenSpaceToolkit_Simulation_Satellite, Constructor)
 
     {
 
-        EXPECT_NO_THROW(const Satellite satellite = Satellite(satelliteId, satelliteName, components) ;) ;
+        EXPECT_NO_THROW(const Satellite satellite = Satellite(satelliteId, satelliteName, Profile::Undefined(), components) ;) ;
 
     }
 
     {
 
-        EXPECT_NO_THROW(const Satellite satellite = Satellite(satelliteId, satelliteName) ;) ;
+        EXPECT_NO_THROW(const Satellite satellite = Satellite(satelliteId, satelliteName, Profile::Undefined()) ;) ;
 
     }
 
     {
 
-        EXPECT_NO_THROW(const Satellite satellite = Satellite(satelliteName) ;) ;
+        EXPECT_NO_THROW(const Satellite satellite = Satellite(satelliteName, Profile::Undefined()) ;) ;
 
     }
 
@@ -87,6 +91,8 @@ TEST (OpenSpaceToolkit_Simulation_Satellite, IsDefined)
 
     using ostk::core::types::String ;
 
+    using ostk::astro::flight::Profile ;
+
     using ostk::simulation::Satellite ;
 
     {
@@ -94,7 +100,7 @@ TEST (OpenSpaceToolkit_Simulation_Satellite, IsDefined)
         const String satelliteId = "87da0b5f-9f65-4c5c-a660-bd254742960b" ;
         const String satelliteName = "LoftSat-1" ;
 
-        EXPECT_TRUE(Satellite(satelliteId, satelliteName).isDefined()) ;
+        EXPECT_TRUE(Satellite(satelliteId, satelliteName, Profile::Undefined()).isDefined()) ;
 
     }
 
@@ -111,6 +117,8 @@ TEST (OpenSpaceToolkit_Simulation_Satellite, getId)
 
     using ostk::core::types::String ;
 
+    using ostk::astro::flight::Profile ;
+
     using ostk::simulation::Satellite ;
 
     {
@@ -118,7 +126,7 @@ TEST (OpenSpaceToolkit_Simulation_Satellite, getId)
         const String satelliteId = "87da0b5f-9f65-4c5c-a660-bd254742960b" ;
         const String satelliteName = "LoftSat-1" ;
 
-        const Satellite satellite = Satellite(satelliteId, satelliteName) ;
+        const Satellite satellite = Satellite(satelliteId, satelliteName, Profile::Undefined()) ;
 
         EXPECT_EQ(satellite.getId(), satelliteId) ;
 
@@ -137,6 +145,8 @@ TEST (OpenSpaceToolkit_Simulation_Satellite, getName)
 
     using ostk::core::types::String ;
 
+    using ostk::astro::flight::Profile ;
+
     using ostk::simulation::Satellite ;
 
     {
@@ -144,7 +154,7 @@ TEST (OpenSpaceToolkit_Simulation_Satellite, getName)
         const String satelliteId = "87da0b5f-9f65-4c5c-a660-bd254742960b" ;
         const String satelliteName = "LoftSat-1" ;
 
-        const Satellite satellite = Satellite(satelliteId, satelliteName) ;
+        const Satellite satellite = Satellite(satelliteId, satelliteName, Profile::Undefined()) ;
 
         EXPECT_EQ(satellite.getName(), satelliteName) ;
 
