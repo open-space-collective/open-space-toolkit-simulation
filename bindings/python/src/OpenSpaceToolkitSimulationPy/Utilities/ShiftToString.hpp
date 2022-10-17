@@ -1,28 +1,28 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Simulation
-/// @file           bindings/python/src/OpenSpaceToolkitSimulationPy/Spacecraft.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
+/// @file           bindings/python/src/OpenSpaceToolkitSimulationPy/Utilities/ShiftToString.cpp
+/// @author         Remy Derollez <remy@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <OpenSpaceToolkit/Simulation/Spacecraft.hpp>
+#include <sstream>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitSimulationPy_Spacecraft                     (              pybind11::module&        aModule                    )
+/// @brief                      Shift to String Template Function
+///
+///                             Template function used for __str__ and __repr__
+///                             methods on classes exposed in python.
+
+                                template <class T>
+std::string                     shiftToString                               (   const   T&                          aClass                                      )
 {
 
-    using namespace pybind11 ;
-
-    using ostk::simulation::Spacecraft ;
-
-    class_<Spacecraft>(aModule, "Spacecraft")
-
-    .def(init<>())
-
-    ;
+    std::ostringstream out;
+    out << aClass;
+    return out.str();
 
 }
 

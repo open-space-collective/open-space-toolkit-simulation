@@ -188,10 +188,7 @@ ENDFUNCTION ()
 SET (PYBIND11_NOPYTHON ON)
 FIND_PACKAGE (pybind11 2.6.0 REQUIRED)
 
-### Boost
-
-#UNSET (Boost_USE_STATIC_LIBS CACHE)
-#UNSET (Boost_USE_MULTITHREADED CACHE)
+### Python
 
 # Decide on the versions to build for and support
 SET (PYTHON_SEARCH_VERSIONS 2.7 3.5 3.6 3.7 3.8 3.9 3.10)

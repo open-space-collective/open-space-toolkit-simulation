@@ -2,7 +2,7 @@
 
 /// @project        Open Space Toolkit ▸ Simulation
 /// @file           bindings/python/src/OpenSpaceToolkitSimulationPy.cxx
-/// @author         Lucas Brémond <lucas@loftorbital.com>
+/// @author         Lucas Brémond <lucas@loftorbital.com>, Remy Derollez <remy@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -10,7 +10,11 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/operators.h>
 
-#include <OpenSpaceToolkitSimulationPy/Spacecraft.cpp>
+#include <OpenSpaceToolkitSimulationPy/Utilities/ShiftToString.hpp>
+
+#include <OpenSpaceToolkitSimulationPy/Satellite.cpp>
+#include <OpenSpaceToolkitSimulationPy/Component.cpp>
+#include <OpenSpaceToolkitSimulationPy/Payload.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -23,7 +27,7 @@ PYBIND11_MODULE (OpenSpaceToolkitSimulationPy, m)
     // Add __path__ attribute to python package
     m.attr("__path__") = "ostk.simulation" ;
 
-    // Change attribute __name__ to make OpenSpaceToolkitCorePy invisible in import path
+    // Change attribute __name__ to make OpenSpaceToolkitSimulationPy invisible in import path
     m.attr("__name__") = "ostk.simulation" ;
 
     // Package version information
@@ -34,7 +38,9 @@ PYBIND11_MODULE (OpenSpaceToolkitSimulationPy, m)
     #endif
 
     // Add python submodules to OpenSpaceToolkitSimulationPy
-	OpenSpaceToolkitSimulationPy_Spacecraft(m) ;
+    OpenSpaceToolkitSimulationPy_Satellite(m) ;
+    OpenSpaceToolkitSimulationPy_Component(m) ;
+    OpenSpaceToolkitSimulationPy_Payload(m) ;
 
 }
 
