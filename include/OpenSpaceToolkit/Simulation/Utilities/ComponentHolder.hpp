@@ -53,6 +53,8 @@ class ComponentHolder
 
                                 ComponentHolder                             ( ) ;
 
+                                ComponentHolder                             (   const   Array<Component>&           aComponentArray                             ) ;
+
                                 ComponentHolder                             (   const   Array<Unique<Component>>&   aComponentArray                             ) ;
 
                                 ComponentHolder                             (   const   ComponentHolder&            aComponentHolder                            ) ;
@@ -61,9 +63,13 @@ class ComponentHolder
 
         ComponentHolder&        operator =                                  (   const   ComponentHolder&            aComponentHolder                            ) ;
 
+        bool                    hasComponentWithId                          (   const   String&                     aComponentId                                ) const ;
+
         bool                    hasComponentWithName                        (   const   String&                     aComponentName                              ) const ;
 
         bool                    hasComponentAt                              (   const   String&                     aComponentPath                              ) const ;
+
+        Component&              accessComponentWithId                       (   const   String&                     aComponentId                                ) const ;
 
         Component&              accessComponentWithName                     (   const   String&                     aComponentName                              ) const ;
 

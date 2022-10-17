@@ -13,6 +13,7 @@
 #include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
 #include <OpenSpaceToolkit/Simulation/Component/State.hpp>
 #include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
+#include <OpenSpaceToolkit/Simulation/Entity.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
 
@@ -32,6 +33,7 @@ namespace simulation
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using ostk::core::types::String ;
+using ostk::core::types::Unique ;
 using ostk::core::types::Shared ;
 using ostk::core::types::Weak ;
 using ostk::core::ctnr::Array ;
@@ -47,9 +49,19 @@ class Satellite;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#define                         DEFAULT_TYPE                                    Component::Type::Undefined
+#define                         DEFAULT_TAG_ARRAY                               Array<String>::Empty()
+#define                         DEFAULT_STATE                                   State::Undefined()
+#define                         DEFAULT_GEOMETRY_ARRAY                          Array<Geometry>::Empty()
+#define                         DEFAULT_ROTATION_MATRIX                         RotationMatrix::Unit()
+#define                         DEFAULT_COMPONENT_ARRAY                         Array<Component>::Empty()
+#define                         DEFAULT_PARENT_COMPONENT                        nullptr
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /// @brief                      Component
 
-class Component : public ComponentHolder
+class Component : public Entity, public ComponentHolder
 {
 
     public:
@@ -58,6 +70,7 @@ class Component : public ComponentHolder
         {
 
             Undefined,
+            Assembly,
             Controller,
             Sensor,
             Actuator,
@@ -65,28 +78,24 @@ class Component : public ComponentHolder
 
         } ;
 
-                                Component                                   (   const   String&                     aName,
-                                                                                const   Component::Type&            aType                                       ) ;
+                                Component                                   (   const   String&                     anId,
+                                                                                const   String&                     aName,
+                                                                                const   Component::Type&            aType                                       =   DEFAULT_TYPE,
+                                                                                const   State&                      aState                                      =   DEFAULT_STATE,
+                                                                                const   Array<String>&              aTagArray                                   =   DEFAULT_TAG_ARRAY,
+                                                                                const   Array<Geometry>&            aGeometryArray                              =   DEFAULT_GEOMETRY_ARRAY,
+                                                                                const   RotationMatrix&             aRotationMatrix                             =   DEFAULT_ROTATION_MATRIX,
+                                                                                const   Array<Component>&           aComponentArray                             =   DEFAULT_COMPONENT_ARRAY,
+                                                                                const   Shared<Component>&          aParentComponent                            =   DEFAULT_PARENT_COMPONENT ) ;
 
                                 Component                                   (   const   String&                     aName,
-                                                                                const   Component::Type&            aType,
-                                                                                const   State&                      aState                                      ) ;
-
-                                Component                                   (   const   String&                     aName,
-                                                                                const   Component::Type&            aType,
-                                                                                const   Array<String>&              anArrayOfTags                               ) ;
-
-                                Component                                   (   const   String&                     aName,
-                                                                                const   Component::Type&            aType,
-                                                                                const   State&                      aState,
-                                                                                const   Array<String>&              anArrayofTags                               ) ;
-
-                                Component                                   (   const   String&                     aName,
-                                                                                const   Component::Type&            aType,
-                                                                                const   State&                      aState,
-                                                                                const   Array<String>&              anArrayofTags,
-                                                                                const   Array<Geometry>&            anArrayOfGeometries,
-                                                                                const   RotationMatrix&             aRotationMatrix                             ) ;
+                                                                                const   Component::Type&            aType                                       =   DEFAULT_TYPE,
+                                                                                const   State&                      aState                                      =   DEFAULT_STATE,
+                                                                                const   Array<String>&              aTagArray                                   =   DEFAULT_TAG_ARRAY,
+                                                                                const   Array<Geometry>&            aGeometryArray                              =   DEFAULT_GEOMETRY_ARRAY,
+                                                                                const   RotationMatrix&             aRotationMatrix                             =   DEFAULT_ROTATION_MATRIX,
+                                                                                const   Array<Component>&           aComponentArray                             =   DEFAULT_COMPONENT_ARRAY,
+                                                                                const   Shared<Component>&          aParentComponent                            =   DEFAULT_PARENT_COMPONENT ) ;
 
                                 Component                                   (   const   Component&                  aComponent                                  ) ;
 
@@ -101,13 +110,11 @@ class Component : public ComponentHolder
 
         bool                    isDefined                                   ( ) const ;
 
-        String                  getName                                     ( ) const ;
-
         Component::Type         getType                                     ( ) const ;
 
-        Array<String>           getTags                                     ( ) const ;
-
         State                   getState                                    ( ) const ;
+
+        Array<String>           getTags                                     ( ) const ;
 
         Array<Geometry>         getGeometries                               ( ) const ;
 
@@ -116,6 +123,8 @@ class Component : public ComponentHolder
         const State&            accessState                                 ( ) const ;
 
         const Geometry&         accessGeometryWithName                      ( ) const ;
+
+        void                    setParent                                   (   const   Shared<Component>&          aParentComponent                            ) ;
 
         static Component        Undefined                                   ( ) ;
 
@@ -133,13 +142,13 @@ class Component : public ComponentHolder
 
     private:
 
-        String                  name_ ;
         Component::Type         type_ ;
-        Array<String>           tags_ ;
         State                   state_ ;
+        Array<String>           tags_ ;
         Array<Geometry>         geometries_ ; // Array of Geometries defined in Component Frame
         RotationMatrix          rotationMatrix_ ; // Rotation from Body Frame to Component Frame
-        Weak<const Satellite>   satelliteWPtr_ ;
+
+        Weak<const Component>   parentWPtr_ ;
 
 } ;
 

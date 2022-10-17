@@ -7,8 +7,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <OpenSpaceToolkit/Simulation/Component.hpp>
 #include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
+#include <OpenSpaceToolkit/Simulation/Component/State.hpp>
+#include <OpenSpaceToolkit/Simulation/Component.hpp>
 
 #include <Global.test.hpp>
 
@@ -209,14 +210,15 @@ TEST (OpenSpaceToolkit_Simulation_Utilities_ComponentHolder, AccessComponentsWit
     using ostk::core::ctnr::Array ;
 
     using ostk::simulation::Component ;
+    using ostk::simulation::component::State ;
     using ostk::simulation::utilities::ComponentHolder ;
 
     {
 
         Array<Unique<Component>> components = Array<Unique<Component>>::Empty() ;
 
-        components.emplace_back(Unique<Component>(Component("Component A", Component::Type::Sensor, {"ADCS"}).clone())) ;
-        components.emplace_back(Unique<Component>(Component("Component B", Component::Type::Actuator, {"ADCS"}).clone())) ;
+        components.emplace_back(Unique<Component>(Component("Component A", Component::Type::Sensor, State::Undefined(), {"ADCS"}).clone())) ;
+        components.emplace_back(Unique<Component>(Component("Component B", Component::Type::Actuator, State::Undefined(), {"ADCS"}).clone())) ;
 
         const ComponentHolder componentHolder = { components } ;
 

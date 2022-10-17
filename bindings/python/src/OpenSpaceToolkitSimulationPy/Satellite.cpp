@@ -20,11 +20,9 @@ inline void                     OpenSpaceToolkitSimulationPy_Satellite      (   
     using ostk::core::ctnr::Array ;
 
     using ostk::simulation::Satellite ;
-    using ostk::simulation::Payload ;
 
     class_<Satellite>(aModule, "Satellite")
 
-        .def(init<const String&, const String&, const Array<Payload>&>())
         .def(init<const String&, const String&>())
 
         // Issue to be investigated between the following and simulation/Simulation
@@ -35,8 +33,6 @@ inline void                     OpenSpaceToolkitSimulationPy_Satellite      (   
 
         .def("get_id", &Satellite::getId)
         .def("get_name", &Satellite::getName)
-        .def("get_payloads", &Satellite::getPayloads)
-        .def("get_payload_with_id", &Satellite::getPayloadWithId)
 
         .def_static("undefined", &Satellite::Undefined)
 

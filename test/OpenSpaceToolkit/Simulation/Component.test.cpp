@@ -7,14 +7,14 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include <OpenSpaceToolkit/Simulation/Component/State.hpp>
+#include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
+#include <OpenSpaceToolkit/Simulation/Component.hpp>
+
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Point.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Pyramid.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Polygon.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
-
-#include <OpenSpaceToolkit/Simulation/Component/State.hpp>
-#include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
-#include <OpenSpaceToolkit/Simulation/Component.hpp>
 
 #include <Global.test.hpp>
 
@@ -23,15 +23,16 @@
 TEST (OpenSpaceToolkit_Simulation_Component, Constructor)
 {
 
-    using ostk::core::ctnr::Array ;
     using ostk::core::types::String ;
+    using ostk::core::ctnr::Array ;
 
     using ostk::simulation::component::State ;
     using ostk::simulation::Component ;
 
+    // Construct using name and type
+
     {
 
-        // Construct using aName and aType
         const String name = "OBC" ;
         const Component::Type type = Component::Type::Other ;
 
@@ -39,31 +40,22 @@ TEST (OpenSpaceToolkit_Simulation_Component, Constructor)
 
     }
 
+    // Construct using name, type and State
+
     {
 
-        // Construct using aName and aType and aState
         const String name = "Camera" ;
         const Component::Type type = Component::Type::Sensor ;
-        const State state = State(State::Status::Undefined) ;
+        const State state = State::Undefined() ;
 
         EXPECT_NO_THROW(const Component component = Component(name, type, state) ;) ;
 
     }
 
-    {
-
-        // Construct using aName and aType and anArrayOfTags
-        const String name = "Camera" ;
-        const Component::Type type = Component::Type::Sensor ;
-        const Array<String> tags = { "Bus", "ADCS" } ;
-
-        EXPECT_NO_THROW(const Component component = Component(name, type, tags) ;) ;
-
-    }
+    // Construct using name, type, State and tags
 
     {
 
-        // Construct using aName and aType and aState and anArrayOfTags
         const String name = "Reaction Wheel" ;
         const Component::Type type = Component::Type::Controller ;
         const State state = State(State::Status::Busy) ;
@@ -73,6 +65,8 @@ TEST (OpenSpaceToolkit_Simulation_Component, Constructor)
 
     }
 
+    // Construct using name, type, State, tags, geometries and rotation matrix
+
     {
 
         using ostk::math::geom::d3::objects::Point ;
@@ -81,11 +75,10 @@ TEST (OpenSpaceToolkit_Simulation_Component, Constructor)
         using ostk::math::geom::d3::objects::Pyramid ;
         using ostk::simulation::component::Geometry ;
 
-        // Construct using aName and aType and aState and anArrayOfTags and anArrayOfGeometries and aRotationMatrix
         const String name = "Camera" ;
         const Component::Type type = Component::Type::Sensor ;
+        const Array<String> tags = { "Hub", "Customer" } ;
         const State state = State(State::Status::Busy) ;
-        const Array<String> tags = { "PLHUB", "Customer" } ;
         const Array<Geometry> geometries =
         {
             Geometry
@@ -142,19 +135,38 @@ TEST (OpenSpaceToolkit_Simulation_Component, CopyConstructor)
 TEST (OpenSpaceToolkit_Simulation_Component, IsDefined)
 {
 
-    using ostk::core::ctnr::Array ;
-    using ostk::core::types::String ;
-
-    using ostk::simulation::component::State ;
     using ostk::simulation::Component ;
 
     {
 
-        const String name = "OBC" ;
-        const Component::Type type = Component::Type::Other ;
-        const Component component = Component(name, type) ;
+        EXPECT_TRUE(Component("OBC", Component::Type::Other).isDefined()) ;
 
-        EXPECT_TRUE(component.isDefined()) ;
+    }
+
+    {
+
+        EXPECT_FALSE(Component::Undefined().isDefined()) ;
+
+    }
+
+}
+
+TEST (OpenSpaceToolkit_Simulation_Component, getId)
+{
+
+    using ostk::simulation::Component ;
+
+    {
+
+        const Component component = Component("87da0b5f-9f65-4c5c-a660-bd254742960b", "STT") ;
+
+        EXPECT_EQ(component.getId(), "87da0b5f-9f65-4c5c-a660-bd254742960b") ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Component::Undefined().getId()) ;
 
     }
 
@@ -163,42 +175,19 @@ TEST (OpenSpaceToolkit_Simulation_Component, IsDefined)
 TEST (OpenSpaceToolkit_Simulation_Component, getName)
 {
 
-    using ostk::core::ctnr::Array ;
-    using ostk::core::types::String ;
-
-    using ostk::math::geom::d3::objects::Point ;
-    using ostk::math::geom::d3::objects::Polygon ;
-    using ostk::math::geom::d3::objects::Pyramid ;
-    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
-
     using ostk::simulation::Component ;
-    using ostk::simulation::component::State ;
-    using ostk::simulation::component::Geometry ;
 
     {
 
-        const String name = "Camera" ;
-        const Component::Type type = Component::Type::Sensor ;
-        const State state = State(State::Status::Busy) ;
-        const Array<String> tags = { "PLHUB", "Customer" } ;
-        const Array<Geometry> geometries =
-        {
-            Geometry
-            {
-                "FOV",
-                Geometry::Type::Sensing,
-                Pyramid
-                {
-                    Polygon { { { { -0.1, -1.0 }, { +0.1, -1.0 }, { +0.1, +1.0 }, { -0.1, +1.0 } } }, Point { 0.0, 0.0, 1.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } },
-                    Point { 0.0, 0.0, 0.0 }
-                }
-            }
-        } ;
-        const RotationMatrix rotationMatrix = RotationMatrix::Unit() ;
-
-        const Component component = Component(name, type, state, tags, geometries, rotationMatrix) ;
+        const Component component = Component("Camera") ;
 
         EXPECT_EQ(component.getName(), "Camera") ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Component::Undefined().getName()) ;
 
     }
 
@@ -207,42 +196,19 @@ TEST (OpenSpaceToolkit_Simulation_Component, getName)
 TEST (OpenSpaceToolkit_Simulation_Component, getType)
 {
 
-    using ostk::core::ctnr::Array ;
-    using ostk::core::types::String ;
-
-    using ostk::math::geom::d3::objects::Point ;
-    using ostk::math::geom::d3::objects::Polygon ;
-    using ostk::math::geom::d3::objects::Pyramid ;
-    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
-
     using ostk::simulation::Component ;
-    using ostk::simulation::component::State ;
-    using ostk::simulation::component::Geometry ;
 
     {
 
-        const String name = "Camera" ;
-        const Component::Type type = Component::Type::Sensor ;
-        const State state = State(State::Status::Busy) ;
-        const Array<String> tags = { "PLHUB", "Customer" } ;
-        const Array<Geometry> geometries =
-        {
-            Geometry
-            {
-                "FOV",
-                Geometry::Type::Sensing,
-                Pyramid
-                {
-                    Polygon { { { { -0.1, -1.0 }, { +0.1, -1.0 }, { +0.1, +1.0 }, { -0.1, +1.0 } } }, Point { 0.0, 0.0, 1.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } },
-                    Point { 0.0, 0.0, 0.0 }
-                }
-            }
-        } ;
-        const RotationMatrix rotationMatrix = RotationMatrix::Unit() ;
-
-        const Component component = Component(name, type, state, tags, geometries, rotationMatrix) ;
+        const Component component = Component("Camera", Component::Type::Sensor) ;
 
         EXPECT_EQ(component.getType(), Component::Type::Sensor) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Component::Undefined().getType()) ;
 
     }
 
@@ -251,13 +217,72 @@ TEST (OpenSpaceToolkit_Simulation_Component, getType)
 TEST (OpenSpaceToolkit_Simulation_Component, getTags)
 {
 
-    using ostk::core::ctnr::Array ;
     using ostk::core::types::String ;
+    using ostk::core::ctnr::Array ;
+
+    using ostk::simulation::Component ;
+    using ostk::simulation::component::State ;
+
+    {
+
+        const String name = "Camera" ;
+        const Component::Type type = Component::Type::Sensor ;
+        const State state = State(State::Status::Busy) ;
+        const Array<String> tags = { "Hub", "Customer" } ;
+
+        const Component component = Component(name, type, state, tags) ;
+
+        EXPECT_EQ(component.getTags(), tags) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Component::Undefined().getTags()) ;
+
+    }
+
+}
+
+TEST (OpenSpaceToolkit_Simulation_Component, getState)
+{
+
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Array ;
+
+    using ostk::simulation::Component ;
+    using ostk::simulation::component::State ;
+
+    {
+
+        const String name = "Camera" ;
+        const Component::Type type = Component::Type::Sensor ;
+        const State state = State(State::Status::Busy) ;
+        const Array<String> tags = { "Hub", "Customer" } ;
+
+        const Component component = Component(name, type, state, tags) ;
+
+        EXPECT_EQ(component.getState(), state) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Component::Undefined().getState()) ;
+
+    }
+
+}
+
+TEST (OpenSpaceToolkit_Simulation_Component, getGeometries)
+{
+
+    using ostk::core::types::String ;
+    using ostk::core::ctnr::Array ;
 
     using ostk::math::geom::d3::objects::Point ;
     using ostk::math::geom::d3::objects::Polygon ;
     using ostk::math::geom::d3::objects::Pyramid ;
-    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
     using ostk::simulation::Component ;
     using ostk::simulation::component::State ;
@@ -268,7 +293,7 @@ TEST (OpenSpaceToolkit_Simulation_Component, getTags)
         const String name = "Camera" ;
         const Component::Type type = Component::Type::Sensor ;
         const State state = State(State::Status::Busy) ;
-        const Array<String> tags = { "PLHUB", "Customer" } ;
+        const Array<String> tags = { "Hub", "Customer" } ;
         const Array<Geometry> geometries =
         {
             Geometry
@@ -282,109 +307,26 @@ TEST (OpenSpaceToolkit_Simulation_Component, getTags)
                 }
             }
         } ;
-        const RotationMatrix rotationMatrix = RotationMatrix::Unit() ;
 
-        const Component component = Component(name, type, state, tags, geometries, rotationMatrix) ;
+        const Component component = Component(name, type, state, tags, geometries) ;
 
-        EXPECT_EQ(component.getTags(), tags) ;
+        EXPECT_EQ(component.getGeometries(), geometries) ;
+
+    }
+
+    {
+
+        EXPECT_ANY_THROW(Component::Undefined().getGeometries()) ;
 
     }
 
 }
 
-// TEST (OpenSpaceToolkit_Simulation_Component, getState)
-// {
-
-//     using ostk::core::ctnr::Array ;
-//     using ostk::core::types::String ;
-
-//     using ostk::math::geom::d3::objects::Point ;
-//     using ostk::math::geom::d3::objects::Polygon ;
-//     using ostk::math::geom::d3::objects::Pyramid ;
-//     using ostk::math::geom::d3::trf::rot::RotationMatrix ;
-
-//     using ostk::simulation::Component ;
-//     using ostk::simulation::component::State ;
-//     using ostk::simulation::component::Geometry ;
-
-//     {
-
-//         const String name = "Camera" ;
-//         const Component::Type type = Component::Type::Sensor ;
-//         const State state = State(State::Status::Busy) ;
-//         const Array<String> tags = { "PLHUB", "Customer" } ;
-//         const Array<Geometry> geometries =
-//         {
-//             Geometry
-//             {
-//                 "FOV",
-//                 Geometry::Type::Sensing,
-//                 Pyramid
-//                 {
-//                     Polygon { { { { -0.1, -1.0 }, { +0.1, -1.0 }, { +0.1, +1.0 }, { -0.1, +1.0 } } }, Point { 0.0, 0.0, 1.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } },
-//                     Point { 0.0, 0.0, 0.0 }
-//                 }
-//             }
-//         } ;
-//         const RotationMatrix rotationMatrix = RotationMatrix::Unit() ;
-
-//         const Component component = Component(name, type, state, tags, geometries, rotationMatrix) ;
-
-//         EXPECT_EQ(component.getState(), state) ;
-
-//     }
-
-// }
-
-// TEST (OpenSpaceToolkit_Simulation_Component, getGeometries)
-// {
-
-//     using ostk::core::ctnr::Array ;
-//     using ostk::core::types::String ;
-
-//     using ostk::math::geom::d3::objects::Point ;
-//     using ostk::math::geom::d3::objects::Polygon ;
-//     using ostk::math::geom::d3::objects::Pyramid ;
-//     using ostk::math::geom::d3::trf::rot::RotationMatrix ;
-
-//     using ostk::simulation::Component ;
-//     using ostk::simulation::component::State ;
-//     using ostk::simulation::component::Geometry ;
-
-//     {
-
-//         const String name = "Camera" ;
-//         const Component::Type type = Component::Type::Sensor ;
-//         const State state = State(State::Status::Busy) ;
-//         const Array<String> tags = { "PLHUB", "Customer" } ;
-//         const Array<Geometry> geometries =
-//         {
-//             Geometry
-//             {
-//                 "FOV",
-//                 Geometry::Type::Sensing,
-//                 Pyramid
-//                 {
-//                     Polygon { { { { -0.1, -1.0 }, { +0.1, -1.0 }, { +0.1, +1.0 }, { -0.1, +1.0 } } }, Point { 0.0, 0.0, 1.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } },
-//                     Point { 0.0, 0.0, 0.0 }
-//                 }
-//             }
-//         } ;
-//         const RotationMatrix rotationMatrix = RotationMatrix::Unit() ;
-
-//         const Component component = Component(name, type, state, tags, geometries, rotationMatrix) ;
-
-//         EXPECT_EQ(component.getGeometries(), geometries) ;
-
-//     }
-
-// }
-
 TEST (OpenSpaceToolkit_Simulation_Component, getRotationMatrix)
 {
 
-    using ostk::core::ctnr::Array ;
     using ostk::core::types::String ;
+    using ostk::core::ctnr::Array ;
 
     using ostk::math::geom::d3::objects::Point ;
     using ostk::math::geom::d3::objects::Polygon ;
@@ -400,7 +342,7 @@ TEST (OpenSpaceToolkit_Simulation_Component, getRotationMatrix)
         const String name = "Camera" ;
         const Component::Type type = Component::Type::Sensor ;
         const State state = State(State::Status::Busy) ;
-        const Array<String> tags = { "PLHUB", "Customer" } ;
+        const Array<String> tags = { "Hub", "Customer" } ;
         const Array<Geometry> geometries =
         {
             Geometry
@@ -422,21 +364,22 @@ TEST (OpenSpaceToolkit_Simulation_Component, getRotationMatrix)
 
     }
 
+    {
+
+        EXPECT_ANY_THROW(Component::Undefined().getRotationMatrix()) ;
+
+    }
+
 }
 
 TEST (OpenSpaceToolkit_Simulation_Component, Undefined)
 {
-    using ostk::core::types::String ;
+
     using ostk::simulation::Component ;
 
     {
 
-        const Component component = Component::Undefined() ;
-
-        EXPECT_EQ(component.isDefined(), false) ;
-
-        EXPECT_ANY_THROW(component.getName()) ;
-        EXPECT_ANY_THROW(component.getType()) ;
+        EXPECT_FALSE(Component::Undefined().isDefined()) ;
 
     }
 

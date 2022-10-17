@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Simulation
-/// @file           bindings/python/src/OpenSpaceToolkitSimulationPy/Payload.cpp
+/// @file           bindings/python/src/OpenSpaceToolkitSimulationPy/Component.cpp
 /// @author         Lucas Brémond <lucas@loftorbital.com>, Remy Derollez <remy@loftorbital.com>
 /// @license        Apache License 2.0
 

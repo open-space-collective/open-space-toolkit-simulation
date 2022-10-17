@@ -23,16 +23,10 @@ namespace component
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                State::State                                ( )
-                                :   status_(State::Status::Disabled),
-                                    verbose_(false)
-{
-
-}
-
-                                State::State                                (   const   State::Status&              aStatus                                     )
+                                State::State                                (   const   State::Status&              aStatus,
+                                                                                const   bool&                       isVerbose                                   )
                                 :   status_(aStatus),
-                                    verbose_(false)
+                                    verbose_(isVerbose)
 {
 
 }
@@ -67,6 +61,18 @@ State&                          State::operator =                           (   
 
 }
 
+bool                            State::operator ==                          (   const   State&                      aState                                      ) const
+{
+
+    if ((!this->isDefined()) || (!aState.isDefined()))
+    {
+        return false ;
+    }
+
+    return (status_ == aState.status_) && (verbose_ == aState.verbose_) ;
+
+}
+
 bool                            State::isDefined                            ( ) const
 {
     return status_ != State::Status::Undefined ;
@@ -77,7 +83,7 @@ State::Status                   State::getStatus                            ( ) 
 
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Status") ;
+        throw ostk::core::error::runtime::Undefined("State") ;
     }
 
     return status_ ;

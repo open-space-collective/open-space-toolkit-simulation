@@ -14,7 +14,6 @@
 
 #include <OpenSpaceToolkitSimulationPy/Satellite.cpp>
 #include <OpenSpaceToolkitSimulationPy/Component.cpp>
-#include <OpenSpaceToolkitSimulationPy/Payload.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -40,7 +39,6 @@ PYBIND11_MODULE (OpenSpaceToolkitSimulationPy, m)
     // Add python submodules to OpenSpaceToolkitSimulationPy
     OpenSpaceToolkitSimulationPy_Satellite(m) ;
     OpenSpaceToolkitSimulationPy_Component(m) ;
-    OpenSpaceToolkitSimulationPy_Payload(m) ;
 
 }
 

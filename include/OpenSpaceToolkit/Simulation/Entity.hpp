@@ -1,18 +1,15 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Simulation
-/// @file           OpenSpaceToolkit/Simulation/Payload.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>, Remy Derollez <remy@loftorbital.com>
+/// @file           OpenSpaceToolkit/Simulation/Entity.hpp
+/// @author         Remy Derollez <remy@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __OpenSpaceToolkit_Simulation_Payload__
-#define __OpenSpaceToolkit_Simulation_Payload__
+#ifndef __OpenSpaceToolkit_Simulation_Entity__
+#define __OpenSpaceToolkit_Simulation_Entity__
 
-#include <OpenSpaceToolkit/Simulation/Component.hpp>
-
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,38 +22,28 @@ namespace simulation
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using ostk::core::types::String ;
-using ostk::core::ctnr::Array ;
-
-using ostk::simulation::Component ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// @brief                      Payload
+/// @brief                      Entity
 
-class Payload: public Component
+class Entity
 {
 
     public:
 
-                                Payload                                     (   const   String&                     anId,
-                                                                                const   String&                     aName,
-                                                                                const   String&                     aModel,
-                                                                                const   Array<Geometry>&            aGeometryArray                              ) ;
+                                Entity                                      (   const   String&                     aName                                       ) ;
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Payload&                    aPayload                                    ) ;
+                                Entity                                      (   const   String&                     anId,
+                                                                                const   String&                     aName                                       ) ;
 
         bool                    isDefined                                   ( ) const ;
 
-        /// @brief              Get identifier
-
         String                  getId                                       ( ) const ;
 
-        ///  @brief             Get model
+        String                  getName                                     ( ) const ;
 
-        String                  getModel                                    ( ) const ;
-
-        /// @brief              Print payload
+        /// @brief              Print entity
         ///
         /// @param              [in] anOutputStream An output stream
         /// @param              [in] (optional) displayDecorators If true, display decorators
@@ -64,12 +51,12 @@ class Payload: public Component
         void                    print                                       (           std::ostream&               anOutputStream,
                                                                                         bool                        displayDecorators                           =   true ) const ;
 
-        static Payload          Undefined                                   ( ) ;
+        static Entity           Undefined                                   ( ) ;
 
     private:
 
         String                  id_ ;
-        String                  model_ ;
+        String                  name_ ;
 
 } ;
 

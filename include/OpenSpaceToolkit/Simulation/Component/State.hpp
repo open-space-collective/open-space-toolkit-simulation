@@ -21,6 +21,11 @@ namespace component
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#define                         DEFAULT_STATUS                                  State::Status::Disabled
+#define                         DEFAULT_VERBOSE                                 false
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /// @brief                      Component state
 
 class State
@@ -39,9 +44,8 @@ class State
 
         } ;
 
-                                State                                       ( ) ;
-
-                                State                                       (   const   State::Status&              aStatus                                     ) ;
+                                State                                       (   const   State::Status&              aStatus                                     =   DEFAULT_STATUS,
+                                                                                const   bool&                       isVerbose                                   =   DEFAULT_VERBOSE ) ;
 
                                 State                                       (   const   State&                      aState                                      ) ;
 
@@ -50,6 +54,19 @@ class State
         virtual State*          clone                                       ( ) const ;
 
         State&                  operator =                                  (   const   State&                      aState                                      ) ;
+
+        /// @brief              Equal to operator
+        ///
+        /// @code
+        ///                     State firstState = ... ;
+        ///                     State secondState = ... ;
+        ///                     firstState == secondState ; // True
+        /// @endcode
+        ///
+        /// @param              [in] aState A state
+        /// @return             True if states are equal
+
+        bool                    operator ==                                 (   const   State&                      aState                                      ) const ;
 
         bool                    isDefined                                   ( ) const ;
 
@@ -60,7 +77,6 @@ class State
     private:
 
         State::Status           status_ ;
-
         bool                    verbose_ ;
 
 } ;

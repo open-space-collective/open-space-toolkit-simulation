@@ -59,6 +59,19 @@ class Geometry
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Geometry&                   aGeometry                                   ) ;
 
+        /// @brief              Equal to operator
+        ///
+        /// @code
+        ///                     Geometry firstGeometry = ... ;
+        ///                     Geometry secondGeometry = ... ;
+        ///                     firstGeometry == secondGeometry ; // True
+        /// @endcode
+        ///
+        /// @param              [in] aGeometry A geometry
+        /// @return             True if geometries are equal
+
+        bool                    operator ==                                 (   const   Geometry&                   aGeometry                                   ) const ;
+
         bool                    isDefined                                   ( ) const ;
 
         /// @brief              Get name

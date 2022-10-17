@@ -31,6 +31,17 @@ namespace utilities
 
 }
 
+                                ComponentHolder::ComponentHolder            (   const   Array<Component>&           aComponentArray                             )
+                                :   componentMap_()
+{
+
+    for (const auto& component : aComponentArray)
+    {
+        componentMap_.insert({ component.getName(), Shared<Component>(component.clone()) }) ;
+    }
+
+}
+
                                 ComponentHolder::ComponentHolder            (   const   Array<Unique<Component>>&   aComponentArray                             )
                                 :   componentMap_()
 {
@@ -84,6 +95,26 @@ ComponentHolder&                ComponentHolder::operator =                 (   
 
 }
 
+bool                            ComponentHolder::hasComponentWithId         (   const   String&                     aComponentId                                ) const
+{
+
+    if (aComponentId.isEmpty())
+    {
+        throw ostk::core::error::runtime::Undefined("Component ID") ;
+    }
+
+    for (const auto& componentMapIt : this->componentMap_)
+    {
+        if (componentMapIt.second->getId() == aComponentId)
+        {
+            return true ;
+        }
+    }
+
+    return false ;
+
+}
+
 bool                            ComponentHolder::hasComponentWithName       (   const   String&                     aComponentName                              ) const
 {
 
@@ -124,6 +155,26 @@ void                            ComponentHolder::addComponent               (   
     }
 
     componentMap_.insert({ aComponent.getName(), Shared<Component>(aComponent.clone()) }) ;
+
+}
+
+Component&                      ComponentHolder::accessComponentWithId      (   const   String&                     aComponentId                                ) const
+{
+
+    if (aComponentId.isEmpty())
+    {
+        throw ostk::core::error::runtime::Undefined("Component ID") ;
+    }
+
+    for (const auto& componentMapIt : this->componentMap_)
+    {
+        if (componentMapIt.second->getId() == aComponentId)
+        {
+            return *componentMapIt.second ;
+        }
+    }
+
+    throw ostk::core::error::RuntimeError("No Component found with ID [{}].", aComponentId) ;
 
 }
 

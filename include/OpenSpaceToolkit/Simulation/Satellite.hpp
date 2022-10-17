@@ -10,8 +10,8 @@
 #ifndef __OpenSpaceToolkit_Simulation_Satellite__
 #define __OpenSpaceToolkit_Simulation_Satellite__
 
-#include <OpenSpaceToolkit/Simulation/Payload.hpp>
 #include <OpenSpaceToolkit/Simulation/Component.hpp>
+#include <OpenSpaceToolkit/Simulation/Entity.hpp>
 #include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
 
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
@@ -35,23 +35,22 @@ using ostk::core::ctnr::Array ;
 
 using ostk::simulation::utilities::ComponentHolder ;
 using ostk::simulation::Component ;
-using ostk::simulation::Payload ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @brief                      Satellite
 
-class Satellite : public ComponentHolder
+class Satellite : public Entity, public ComponentHolder
 {
 
     public:
 
-                                Satellite                                   (   const   String&                     anId,
-                                                                                const   String&                     aName,
-                                                                                const   Array<Payload>&             aPayloadArray                               ) ;
+                                Satellite                                   (   const   String&                     aName,
+                                                                                const   Array<Component>&           aComponentArray                             =   Array<Component>::Empty() ) ;
 
                                 Satellite                                   (   const   String&                     anId,
-                                                                                const   String&                     aName                                       ) ;
+                                                                                const   String&                     aName,
+                                                                                const   Array<Component>&           aComponentArray                             =   Array<Component>::Empty() ) ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Satellite&                  aSatellite                                 ) ;
@@ -64,14 +63,6 @@ class Satellite : public ComponentHolder
 
         bool                    isDefined                                   ( ) const ;
 
-        String                  getId                                       ( ) const ;
-
-        String                  getName                                     ( ) const ;
-
-        Array<Payload>          getPayloads                                 ( ) const ;
-
-        Payload                 getPayloadWithId                            (   const   String&                     aPayloadId                                  ) const ;
-
         /// @brief              Print satellite
         ///
         /// @param              [in] anOutputStream An output stream
@@ -81,12 +72,6 @@ class Satellite : public ComponentHolder
                                                                                         bool                        displayDecorators                           =   true ) const ;
 
         static Satellite        Undefined                                   ( ) ;
-
-    private:
-
-        String                  id_ ;
-        String                  name_ ;
-        Array<Payload>          payloads_ ;
 
 } ;
 

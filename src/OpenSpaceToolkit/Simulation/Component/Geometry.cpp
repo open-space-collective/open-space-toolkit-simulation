@@ -55,6 +55,19 @@ std::ostream&                   operator <<                                 (   
 
 }
 
+bool                            Geometry::operator ==                       (   const   Geometry&                   aGeometry                                   ) const
+{
+
+    if ((!this->isDefined()) || (!aGeometry.isDefined()))
+    {
+        return false ;
+    }
+
+    return (this->name_ == aGeometry.name_) && (this->type_ == aGeometry.type_) && (this->composite_ == aGeometry.composite_) ;
+
+
+}
+
 bool                            Geometry::isDefined                         ( ) const
 {
     return !name_.isEmpty() ;
@@ -62,99 +75,93 @@ bool                            Geometry::isDefined                         ( ) 
 
 String                          Geometry::getName                           ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
+    }
+
     return name_ ;
+
 }
 
 Geometry::Type                  Geometry::getType                           ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
+    }
+
     return type_ ;
+
 }
 
 Composite                       Geometry::getComposite                      ( ) const
 {
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
+    }
+
     return composite_ ;
+
 }
 
 String                          Geometry::getExclusionObject                ( ) const
 {
 
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
+    }
+
     if (this->getType() != Geometry::Type::Exclusion)
     {
-        throw ostk::core::error::RuntimeError("Not a Geometry with Type Exclusion") ;
+        throw ostk::core::error::RuntimeError("Not a Geometry with Type Exclusion.") ;
     }
 
-    String geometryName = this->getName() ;
-    String celestialObjectName = "" ;
-
-    // std::cout << geometryName << std::endl ;
-    // std::cout << geometryName.find("Sun") << std::endl ;
-    // std::cout << geometryName.getLength() ;
-
-    if (geometryName.find("Earth") <= geometryName.getLength())
+    if (this->getName().find("Earth") <= this->getName().getLength())
     {
-
-        celestialObjectName = "Earth" ;
-
+        return "Earth" ;
     }
-
-    else if (geometryName.find("Sun") <= geometryName.getLength())
+    else if (this->getName().find("Sun") <= this->getName().getLength())
     {
-
-        celestialObjectName = "Sun" ;
-
+        return "Sun" ;
     }
-
-    else if (geometryName.find("Moon") <= geometryName.getLength())
+    else if (this->getName().find("Moon") <= this->getName().getLength())
     {
-
-        celestialObjectName = "Moon" ;
-
+        return "Moon" ;
     }
 
-    else
-    {
-
-        throw ostk::core::error::runtime::Undefined("Celestial Object for Exclusion") ;
-
-    }
-
-    return celestialObjectName ;
+    throw ostk::core::error::runtime::Undefined("Celestial Object for Exclusion") ;
 
 }
 
 String                          Geometry::getExclusionCondition             ( ) const
 {
 
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
+    }
+
     if (this->getType() != Geometry::Type::Exclusion)
     {
         throw ostk::core::error::RuntimeError("Not a Geometry with Type Exclusion") ;
     }
 
-    String geometryName = this->getName() ;
-    String illuminationCondition = "" ;
-
-    if (geometryName.find("Illuminated") <= geometryName.getLength())
+    if (this->getName().find("Illuminated") <= this->getName().getLength())
     {
-
-        illuminationCondition = "Illuminated" ;
-
+        return "Illuminated" ;
+    }
+    else if (this->getName().find("Dark") <= this->getName().getLength())
+    {
+        return "Dark" ;
     }
 
-    else if (geometryName.find("Dark") <= geometryName.getLength())
-    {
-
-        illuminationCondition = "Dark" ;
-
-    }
-
-    else
-    {
-
-        throw ostk::core::error::runtime::Undefined("Celestial Object for Exclusion") ;
-
-    }
-
-    return illuminationCondition ;
+    throw ostk::core::error::runtime::Undefined("Celestial Object for Exclusion") ;
 
 }
 
