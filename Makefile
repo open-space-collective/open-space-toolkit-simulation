@@ -42,15 +42,6 @@ export OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY := /a
 export OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY := /app/share/environment/gravitational/earth
 export OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY := /app/share/environment/magnetic/earth
 
-export ci_build_number := $(TRAVIS_BUILD_NUMBER)
-export ci_commit := $(TRAVIS_COMMIT)
-export ci_doc_repo_name := $(project_name)
-export ci_doc_repo_token := $(GITHUB_API_KEY)
-export ci_doc_repo_ref := github.com/open-space-collective/$(ci_doc_repo_name).git
-export ci_doc_repo_user_name := "Travis CI"
-export ci_doc_repo_user_email := "travis@travis-ci.org"
-export ci_codecov_token := $(CODECOV_TOKEN)
-
 ################################################################################################################################################################
 
 pull: ## Pull all images

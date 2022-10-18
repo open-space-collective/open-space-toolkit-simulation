@@ -62,16 +62,16 @@ class Satellite : public Entity, public ComponentHolder
                                                                                 const   Profile&                    aProfile,
                                                                                 const   Array<Component>&           aComponentArray                             =   Array<Component>::Empty() ) ;
 
-                                Satellite                                   (   const   Satellite&                  aSatellite                                 ) = default ;
+                                Satellite                                   (   const   Satellite&                  aSatellite                                  ) ;
 
                                 ~Satellite                                  ( ) ;
 
         Satellite*              clone                                       ( ) const ;
 
-        Satellite&              operator =                                  (   const   Satellite&                  aSatellite                                 ) = default ;
+        Satellite&              operator =                                  (   const   Satellite&                  aSatellite                                  ) = delete ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Satellite&                  aSatellite                                 ) ;
+                                                                                const   Satellite&                  aSatellite                                  ) ;
 
         bool                    isDefined                                   ( ) const ;
 
@@ -88,11 +88,16 @@ class Satellite : public Entity, public ComponentHolder
         static Satellite        Undefined                                   ( ) ;
 
         static Shared<const Frame> GenerateFrame                            (   const   String&                     aName,
-                                                                                const   Profile&                    aProfile                                    ) ;
+                                                                                const   Shared<const Profile>&      aProfile                                    ) ;
 
     private:
 
+        Shared<const Profile>   profileSPtr_ ;
         Shared<const Frame>     frameSPtr_ ;
+
+        void                    setupFrame                                  ( ) ;
+
+        void                    tearDownFrame                               ( ) ;
 
 } ;
 

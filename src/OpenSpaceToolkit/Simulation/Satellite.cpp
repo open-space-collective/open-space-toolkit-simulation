@@ -38,14 +38,11 @@ using namespace ostk::simulation::utilities ;
                                                                                 const   Array<Component>&           aComponentArray                             )
                                 :   Entity(aName),
                                     ComponentHolder(aComponentArray),
+                                    profileSPtr_(std::make_shared<Profile>(aProfile)),
                                     frameSPtr_(nullptr)
 {
 
-    if (aProfile.isDefined())
-    {
-        frameSPtr_ = Satellite::GenerateFrame(this->getId(), aProfile) ;
-    }
-
+    this->setupFrame() ;
 
 }
 
@@ -55,18 +52,29 @@ using namespace ostk::simulation::utilities ;
                                                                                 const   Array<Component>&           aComponentArray                             )
                                 :   Entity(anId, aName),
                                     ComponentHolder(aComponentArray),
+                                    profileSPtr_(std::make_shared<Profile>(aProfile)),
                                     frameSPtr_(nullptr)
 {
 
-    if (aProfile.isDefined())
-    {
-        frameSPtr_ = Satellite::GenerateFrame(this->getId(), aProfile) ;
-    }
+    this->setupFrame() ;
+
+}
+
+                                Satellite::Satellite                        (   const   Satellite&                  aSatellite                                  )
+                                :   Entity(aSatellite),
+                                    ComponentHolder(aSatellite),
+                                    profileSPtr_(aSatellite.profileSPtr_),
+                                    frameSPtr_(nullptr)
+{
+
+    this->setupFrame() ;
 
 }
 
                                 Satellite::~Satellite                       ( )
 {
+
+    this->tearDownFrame() ;
 
 }
 
@@ -120,7 +128,7 @@ Satellite                       Satellite::Undefined                        ( )
 }
 
 Shared<const Frame>             Satellite::GenerateFrame                    (   const   String&                     aName,
-                                                                                const   Profile&                    aProfile                                    )
+                                                                                const   Shared<const Profile>&      aProfileSPtr                                )
 {
 
     using ostk::physics::time::Instant ;
@@ -130,27 +138,58 @@ Shared<const Frame>             Satellite::GenerateFrame                    (   
         Frame::Destruct(aName) ;
     }
 
+    const Weak<const Profile> profileWPtr = aProfileSPtr ;
+
     const Shared<const DynamicProvider> transformProviderSPtr = std::make_shared<const DynamicProvider>
     (
-        // TBI: Use `shared_from_this` instead?
-        [aProfile] (const Instant& anInstant) -> Transform
+        [profileWPtr] (const Instant& anInstant) -> Transform
         {
 
-            const auto& state = aProfile.getStateAt(anInstant).inFrame(Frame::GCRF()) ;
+            if (Shared<const Profile> profileSPtr = profileWPtr.lock()) {
 
-            return Transform::Passive
-            (
-                anInstant,
-                -state.getPosition(),
-                -state.getVelocity(), // TBM: Random expression, didn't test at all
-                state.getAttitude(),
-                -state.getAngularVelocity() // TBM: Random expression, didn't test at all
-            ) ;
+                const auto& state = profileSPtr->getStateAt(anInstant).inFrame(Frame::GCRF()) ;
+
+                return Transform::Passive
+                (
+                    anInstant,
+                    -state.getPosition(),
+                    -state.getVelocity(), // TBM: Random expression, didn't test at all
+                    state.getAttitude(),
+                    -state.getAngularVelocity() // TBM: Random expression, didn't test at all
+                ) ;
+
+            }
+            else
+            {
+                throw ostk::core::error::RuntimeError("Cannot get pointer to Profile.") ;
+            }
 
         }
     ) ;
 
     return Frame::Construct(aName, false, Frame::GCRF(), transformProviderSPtr) ;
+
+}
+
+void                            Satellite::setupFrame                       ( )
+{
+
+    if (profileSPtr_->isDefined())
+    {
+        frameSPtr_ = Satellite::GenerateFrame(this->getId(), profileSPtr_) ;
+    }
+
+}
+
+void                            Satellite::tearDownFrame                    ( )
+{
+
+    frameSPtr_ = nullptr ;
+
+    if (Frame::Exists(this->getId()))
+    {
+        Frame::Destruct(this->getId()) ;
+    }
 
 }
 
