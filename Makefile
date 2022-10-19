@@ -29,7 +29,7 @@ export open_space_toolkit_core_version := 0.4.3
 export open_space_toolkit_io_version := 0.4.3
 export open_space_toolkit_mathematics_version := 0.4.4
 export open_space_toolkit_physics_version := 0.5.13
-export open_space_toolkit_astrodynamics_version := 0.4.15
+export open_space_toolkit_astrodynamics_version := 0.4.22
 
 export open_space_toolkit_core_directory := $(project_directory)/../open-space-toolkit-core
 export open_space_toolkit_io_directory := $(project_directory)/../open-space-toolkit-io
@@ -673,13 +673,13 @@ clean: ## Clean
 
 	@ echo "Cleaning up..."
 
-	rm -r "$(project_directory)/build" || true
-	rm -r "$(project_directory)/bin/"*.test* || true
-	rm -r "$(project_directory)/docs/html" || true
-	rm -r "$(project_directory)/docs/latex" || true
-	rm -r "$(project_directory)/lib/"*.so* || true
-	rm -r "$(project_directory)/coverage" || true
-	rm -r "$(project_directory)/packages" || true
+	rm -rf "$(project_directory)/build" || true
+	rm -rf "$(project_directory)/bin/"*.test* || true
+	rm -rf "$(project_directory)/docs/html" || true
+	rm -rf "$(project_directory)/docs/latex" || true
+	rm -rf "$(project_directory)/lib/"*.so* || true
+	rm -rf "$(project_directory)/coverage" || true
+	rm -rf "$(project_directory)/packages" || true
 
 ################################################################################################################################################################
 

@@ -25,37 +25,13 @@ namespace utilities
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                ComponentHolder::ComponentHolder            ( )
+                                ComponentHolder::ComponentHolder            (   const   Array<Shared<Component>>&   aComponentArray                             )
                                 :   componentMap_()
 {
 
-}
-
-                                ComponentHolder::ComponentHolder            (   const   Array<Component>&           aComponentArray                             )
-                                :   componentMap_()
-{
-
-    for (const auto& component : aComponentArray)
+    for (const auto& componentSPtr : aComponentArray)
     {
-        componentMap_.insert({ component.getName(), Shared<Component>(component.clone()) }) ;
-    }
-
-}
-
-                                ComponentHolder::ComponentHolder            (   const   Array<Unique<Component>>&   aComponentArray                             )
-                                :   componentMap_()
-{
-
-    for (const auto& componentUPtr : aComponentArray)
-    {
-
-        if (componentUPtr == nullptr)
-        {
-            throw ostk::core::error::runtime::Undefined("Component is undefined.") ;
-        }
-
-        componentMap_.insert({ componentUPtr->getName(), Shared<Component>(componentUPtr->clone()) }) ;
-
+        componentMap_.insert({ componentSPtr->getName(), componentSPtr }) ;
     }
 
 }
@@ -73,25 +49,6 @@ namespace utilities
 
                                 ComponentHolder::~ComponentHolder           ( )
 {
-
-}
-
-ComponentHolder&                ComponentHolder::operator =                 (   const   ComponentHolder&            aComponentHolder                            )
-{
-
-    if (this != &aComponentHolder)
-    {
-
-        componentMap_.clear() ;
-
-        for (const auto& componentMapIt : aComponentHolder.componentMap_)
-        {
-            componentMap_.insert({ componentMapIt.first, Shared<Component>(componentMapIt.second->clone()) }) ;
-        }
-
-    }
-
-    return *this ;
 
 }
 
@@ -146,19 +103,35 @@ bool                            ComponentHolder::hasComponentAt             (   
 
 }
 
-void                            ComponentHolder::addComponent               (   const   Component&                  aComponent                                  )
+void                            ComponentHolder::addComponent               (   const   Shared<Component>&          aComponentSPtr                              )
 {
 
-    if (!aComponent.isDefined())
+    if ((!aComponentSPtr) || (!aComponentSPtr->isDefined()))
     {
         throw ostk::core::error::runtime::Undefined("Component") ;
     }
 
-    componentMap_.insert({ aComponent.getName(), Shared<Component>(aComponent.clone()) }) ;
+    componentMap_.insert({ aComponentSPtr->getName(), aComponentSPtr }) ;
 
 }
 
-Component&                      ComponentHolder::accessComponentWithId      (   const   String&                     aComponentId                                ) const
+Array<Shared<Component>>        ComponentHolder::accessComponents           ( ) const
+{
+
+    // TBM: Return iterator instead, to avoid computing the Array.
+
+    Array<Shared<Component>> components = Array<Shared<Component>>::Empty() ;
+
+    for (const auto& componentMapIt : this->componentMap_)
+    {
+        components.add(componentMapIt.second) ;
+    }
+
+    return components ;
+
+}
+
+const Component&                ComponentHolder::accessComponentWithId      (   const   String&                     aComponentId                                ) const
 {
 
     if (aComponentId.isEmpty())
@@ -170,7 +143,7 @@ Component&                      ComponentHolder::accessComponentWithId      (   
     {
         if (componentMapIt.second->getId() == aComponentId)
         {
-            return *componentMapIt.second ;
+            return *(componentMapIt.second) ;
         }
     }
 
@@ -178,7 +151,7 @@ Component&                      ComponentHolder::accessComponentWithId      (   
 
 }
 
-Component&                      ComponentHolder::accessComponentWithName    (   const   String&                     aComponentName                              ) const
+const Component&                ComponentHolder::accessComponentWithName    (   const   String&                     aComponentName                              ) const
 {
 
     if (aComponentName.isEmpty())
@@ -197,7 +170,7 @@ Component&                      ComponentHolder::accessComponentWithName    (   
 
 }
 
-Array<Component>                ComponentHolder::accessComponentsWithTag    (   const   String&                     aComponentTag                               ) const
+Array<Shared<const Component>>  ComponentHolder::accessComponentsWithTag    (   const   String&                     aComponentTag                               ) const
 {
 
     if (aComponentTag.isEmpty())
@@ -205,7 +178,7 @@ Array<Component>                ComponentHolder::accessComponentsWithTag    (   
         throw ostk::core::error::runtime::Undefined("Component tag") ;
     }
 
-    Array<Component> arrayComponents = Array<Component>::Empty() ;
+    Array<Shared<const Component>> components = Array<Shared<const Component>>::Empty() ;
 
     for (const auto& componentMapIt : this->componentMap_)
     {
@@ -216,16 +189,16 @@ Array<Component>                ComponentHolder::accessComponentsWithTag    (   
 
         if (tagPresent == true)
         {
-            arrayComponents.add(*(componentMapIt.second)) ;
+            components.add(componentMapIt.second) ;
         }
 
     }
 
-    return arrayComponents ;
+    return components ;
 
 }
 
-Component&                      ComponentHolder::accessComponentAt          (   const   String&                     aComponentPath                              ) const
+const Component&                ComponentHolder::accessComponentAt          (   const   String&                     aComponentPath                              ) const
 {
 
     if (aComponentPath.isEmpty())
@@ -240,9 +213,9 @@ Component&                      ComponentHolder::accessComponentAt          (   
 
     const auto [ componentName, subComponentPath ] = splitComponentPath(aComponentPath) ;
 
-    Component& Comp = accessComponentWithName(componentName) ;
+    const Component& component = accessComponentWithName(componentName) ;
 
-    return subComponentPath.isEmpty() ? Comp : Comp.accessComponentAt(subComponentPath) ;
+    return subComponentPath.isEmpty() ? component : component.accessComponentAt(subComponentPath) ;
 
 }
 

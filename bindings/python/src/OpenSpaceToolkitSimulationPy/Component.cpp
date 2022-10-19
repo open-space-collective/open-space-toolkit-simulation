@@ -7,8 +7,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <OpenSpaceToolkitSimulationPy/Component/Geometry.cpp>
 #include <OpenSpaceToolkitSimulationPy/Component/State.cpp>
+#include <OpenSpaceToolkitSimulationPy/Component/Geometry.cpp>
 
 #include <OpenSpaceToolkit/Simulation/Component.hpp>
 
@@ -19,44 +19,78 @@ inline void                     OpenSpaceToolkitSimulationPy_Component      (   
 
     using namespace pybind11 ;
 
+    using ostk::core::types::Shared ;
     using ostk::core::types::String ;
     using ostk::core::ctnr::Array ;
 
     using ostk::math::geom::d3::trf::rot::RotationMatrix ;
 
-    using ostk::simulation::Component ;
+    using ostk::physics::coord::Frame ;
 
+    using ostk::simulation::Simulator ;
+    using ostk::simulation::Component ;
     using ostk::simulation::component::Geometry ;
     using ostk::simulation::component::State ;
+    using ostk::simulation::utilities::ComponentHolder ;
 
     {
 
-        class_<Component> component_class(aModule, "Component") ;
+        class_<Component, Shared<Component>> component_class(aModule, "Component") ;
 
-        component_class.def(init<const String&, const Component::Type&>())
-
-            .def(init<const String&, const Component::Type&, const State&>())
-            .def(init<const String&, const Component::Type&, const Array<String>&>())
-            .def(init<const String&, const Component::Type&, const State&, const Array<String>&>())
-            .def(init<const String&, const Component::Type&, const State&, const Array<String>&, const Array<Geometry>, const RotationMatrix>())
+        component_class.def
+        (
+            init
+            <
+                const String&,
+                const String&,
+                const Component::Type&,
+                const Array<String>&,
+                const Array<Shared<Geometry>>&,
+                const Array<Shared<Component>>&,
+                const Shared<ComponentHolder>&,
+                const Shared<const Frame>&,
+                const Shared<const Simulator>&
+            >(),
+            arg("id"),
+            arg("name"),
+            arg("type"),
+            arg("tags"),
+            arg("geometries"),
+            arg("components"),
+            arg("parent"),
+            arg("frame"),
+            arg("simulator")
+        )
 
             .def("__str__", &(shiftToString<Component>))
             .def("__repr__", &(shiftToString<Component>))
 
             .def("is_defined", &Component::isDefined)
-            .def("get_name", &Component::getName)
+
+            .def("access_state", &Component::accessState)
+            .def("access_frame", &Component::accessFrame)
+            .def("access_geometry_with_name", &Component::accessGeometryWithName, arg("name"))
+            .def("access_simulator", &Component::accessSimulator)
+
             .def("get_type", &Component::getType)
-            .def("get_tags", &Component::getTags)
             .def("get_state", &Component::getState)
+            .def("get_tags", &Component::getTags)
             .def("get_geometries", &Component::getGeometries)
-            .def("get_rotation_matrix", &Component::getRotationMatrix)
+
+            .def("set_parent", &Component::setParent, arg("component"))
+            .def("add_geometry", &Component::addGeometry, arg("geometry"))
+            .def("add_component", &Component::addComponent, arg("component"))
 
             .def_static("undefined", &Component::Undefined)
+            // .def_static("configure", &Component::Configure)
+            .def_static("string_from_type", &Component::StringFromType, arg("type"))
+
         ;
 
         enum_<Component::Type>(component_class, "Type")
 
             .value("Undefined", Component::Type::Undefined)
+            .value("Assembly", Component::Type::Assembly)
             .value("Controller", Component::Type::Controller)
             .value("Sensor", Component::Type::Sensor)
             .value("Actuator", Component::Type::Actuator)

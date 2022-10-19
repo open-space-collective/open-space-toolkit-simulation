@@ -12,7 +12,6 @@
 
 #include <OpenSpaceToolkit/Simulation/Component.hpp>
 #include <OpenSpaceToolkit/Simulation/Entity.hpp>
-#include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
 
 #include <OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp>
 
@@ -41,26 +40,31 @@ using ostk::physics::coord::Frame ;
 
 using ostk::astro::flight::Profile ;
 
-using ostk::simulation::utilities::ComponentHolder ;
 using ostk::simulation::Component ;
+using ostk::simulation::ComponentConfiguration ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class Simulator ;
+struct SatelliteConfiguration ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @brief                      Satellite
 
-class Satellite : public Entity, public ComponentHolder
+class Satellite : public Component
 {
 
     public:
 
-                                Satellite                                   (   const   String&                     aName,
-                                                                                const   Profile&                    aProfile,
-                                                                                const   Array<Component>&           aComponentArray                             =   Array<Component>::Empty() ) ;
-
                                 Satellite                                   (   const   String&                     anId,
                                                                                 const   String&                     aName,
-                                                                                const   Profile&                    aProfile,
-                                                                                const   Array<Component>&           aComponentArray                             =   Array<Component>::Empty() ) ;
+                                                                                const   Array<String>&              aTagArray,
+                                                                                const   Array<Shared<Geometry>>&    aGeometryArray,
+                                                                                const   Array<Shared<Component>>&   aComponentArray,
+                                                                                const   Shared<const Frame>&        aFrameSPtr,
+                                                                                const   Shared<Profile>&            aProfileSPtr,
+                                                                                const   Shared<const Simulator>&    aSimulatorSPtr                              ) ;
 
                                 Satellite                                   (   const   Satellite&                  aSatellite                                  ) ;
 
@@ -75,8 +79,6 @@ class Satellite : public Entity, public ComponentHolder
 
         bool                    isDefined                                   ( ) const ;
 
-        const Shared<const Frame>& accessFrame                              ( ) const ;
-
         /// @brief              Print satellite
         ///
         /// @param              [in] anOutputStream An output stream
@@ -87,17 +89,29 @@ class Satellite : public Entity, public ComponentHolder
 
         static Satellite        Undefined                                   ( ) ;
 
+        static Shared<Satellite> Configure                                  (   const   SatelliteConfiguration&     aSatelliteConfiguration,
+                                                                                const   Shared<const Simulator>&    aSimulatorSPtr                              ) ;
+
         static Shared<const Frame> GenerateFrame                            (   const   String&                     aName,
                                                                                 const   Shared<const Profile>&      aProfile                                    ) ;
 
     private:
 
         Shared<const Profile>   profileSPtr_ ;
-        Shared<const Frame>     frameSPtr_ ;
 
-        void                    setupFrame                                  ( ) ;
+} ;
 
-        void                    tearDownFrame                               ( ) ;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+struct SatelliteConfiguration
+{
+
+    const String                id ;
+    const String                name ;
+    const Profile               profile ;
+    const Array<ComponentConfiguration> components                              =   Array<ComponentConfiguration>::Empty() ;
+    const Array<String>         tags                                            =   Array<String>::Empty() ;
+    const Array<GeometryConfiguration> geometries                               =   Array<GeometryConfiguration>::Empty() ;
 
 } ;
 

@@ -22,14 +22,14 @@ namespace simulation
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                                 Simulator::Simulator                        (   const   Environment&                anEnvironment,
-                                                                                const   Array<Satellite>&           aSatelliteArray                             )
+                                                                                const   Array<Shared<Satellite>>&   aSatelliteArray                             )
                                 :   environment_(anEnvironment),
                                     satelliteMap_()
 {
 
-    for (const auto& satellite : aSatelliteArray)
+    for (const auto& satelliteSPtr : aSatelliteArray)
     {
-        satelliteMap_.insert({ satellite.getName(), Shared<Satellite>(satellite.clone()) }) ;
+        this->satelliteMap_.insert({ satelliteSPtr->getName(), satelliteSPtr }) ;
     }
 
 }
@@ -46,7 +46,7 @@ std::ostream&                   operator <<                                 (   
 
 bool                            Simulator::isDefined                        ( ) const
 {
-    return environment_.isDefined() ;
+    return this->environment_.isDefined() ;
 }
 
 bool                            Simulator::hasSatelliteWithName             (   const   String&                     aSatelliteName                              ) const
@@ -62,7 +62,7 @@ bool                            Simulator::hasSatelliteWithName             (   
         throw ostk::core::error::runtime::Undefined("Simulator") ;
     }
 
-    return satelliteMap_.find(aSatelliteName) != satelliteMap_.end() ;
+    return this->satelliteMap_.find(aSatelliteName) != this->satelliteMap_.end() ;
 
 }
 
@@ -74,12 +74,12 @@ const Environment&              Simulator::accessEnvironment                ( ) 
         throw ostk::core::error::runtime::Undefined("Simulator") ;
     }
 
-    return environment_ ;
+    return this->environment_ ;
 
 
 }
 
-Satellite&                      Simulator::accessSatelliteWithName          (   const   String&                     aSatelliteName                              ) const
+const Satellite&                Simulator::accessSatelliteWithName          (   const   String&                     aSatelliteName                              ) const
 {
 
     if (aSatelliteName.isEmpty())
@@ -92,14 +92,26 @@ Satellite&                      Simulator::accessSatelliteWithName          (   
         throw ostk::core::error::runtime::Undefined("Simulator") ;
     }
 
-    const auto satelliteIt = satelliteMap_.find(aSatelliteName) ;
+    const auto satelliteIt = this->satelliteMap_.find(aSatelliteName) ;
 
-    if (satelliteIt == satelliteMap_.end())
+    if (satelliteIt == this->satelliteMap_.end())
     {
         throw ostk::core::error::RuntimeError("No Satellite found with name [{}].", aSatelliteName) ;
     }
 
     return *(satelliteIt->second) ;
+
+}
+
+Instant                         Simulator::getInstant                       ( ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Simulator") ;
+    }
+
+    return this->environment_.getInstant() ;
 
 }
 
@@ -123,11 +135,11 @@ void                            Simulator::setInstant                       (   
         throw ostk::core::error::runtime::Undefined("Simulator") ;
     }
 
-    environment_.setInstant(anInstant) ;
+    this->environment_.setInstant(anInstant) ;
 
 }
 
-void                            Simulator::step                             (   const   Duration&                   aDuration                                   )
+void                            Simulator::stepForward                      (   const   Duration&                   aDuration                                   )
 {
 
     if (!this->isDefined())
@@ -135,13 +147,48 @@ void                            Simulator::step                             (   
         throw ostk::core::error::runtime::Undefined("Simulator") ;
     }
 
-    this->setInstant(environment_.getInstant() + aDuration) ;
+    this->setInstant(this->environment_.getInstant() + aDuration) ;
+
+}
+
+void                            Simulator::addSatellite                     (   const   Shared<Satellite>&          aSatelliteSPtr                              )
+{
+
+    if ((!aSatelliteSPtr) || (!aSatelliteSPtr->isDefined()))
+    {
+        throw ostk::core::error::runtime::Undefined("Satellite") ;
+    }
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Simulator") ;
+    }
+
+    this->satelliteMap_.insert({ aSatelliteSPtr->getName(), aSatelliteSPtr }) ;
 
 }
 
 Simulator                       Simulator::Undefined                        ( )
 {
     return { Environment::Undefined(), {} } ;
+}
+
+Shared<Simulator>               Simulator::Configure                        (   const   SimulatorConfiguration&     aSimulatorConfiguration                     )
+{
+
+    const Shared<Simulator> simulatorSPtr = std::make_shared<Simulator>
+    (
+        aSimulatorConfiguration.environment,
+        Array<Shared<Satellite>>::Empty()
+    ) ;
+
+    for (const auto& satelliteConfiguration : aSimulatorConfiguration.satellites)
+    {
+        simulatorSPtr->addSatellite(Satellite::Configure(satelliteConfiguration, simulatorSPtr)) ;
+    }
+
+    return simulatorSPtr ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -16,9 +16,6 @@ inline void                     OpenSpaceToolkitSimulationPy_Component_State    
 
     using namespace pybind11 ;
 
-    using ostk::core::types::String ;
-    using ostk::core::ctnr::Array ;
-
     using ostk::simulation::component::State ;
 
     class_<State> state(aModule, "State") ;
@@ -29,6 +26,7 @@ inline void                     OpenSpaceToolkitSimulationPy_Component_State    
         // .def("__repr__", &(shiftToString<State>))
 
         .def("is_defined", &State::isDefined)
+
         .def("get_status", &State::getStatus)
 
         .def_static("undefined", &State::Undefined)

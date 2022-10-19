@@ -27,6 +27,7 @@ namespace simulation
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class Component ;
+class ComponentConfiguration ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,17 +52,13 @@ class ComponentHolder
 
     public:
 
-                                ComponentHolder                             ( ) ;
-
-                                ComponentHolder                             (   const   Array<Component>&           aComponentArray                             ) ;
-
-                                ComponentHolder                             (   const   Array<Unique<Component>>&   aComponentArray                             ) ;
+                                ComponentHolder                             (   const   Array<Shared<Component>>&   aComponentArray                             =   Array<Shared<Component>>::Empty() ) ;
 
                                 ComponentHolder                             (   const   ComponentHolder&            aComponentHolder                            ) ;
 
                                 ~ComponentHolder                            ( ) ;
 
-        ComponentHolder&        operator =                                  (   const   ComponentHolder&            aComponentHolder                            ) ;
+        ComponentHolder&        operator =                                  (   const   ComponentHolder&            aComponentHolder                            ) = delete ;
 
         bool                    hasComponentWithId                          (   const   String&                     aComponentId                                ) const ;
 
@@ -69,15 +66,17 @@ class ComponentHolder
 
         bool                    hasComponentAt                              (   const   String&                     aComponentPath                              ) const ;
 
-        Component&              accessComponentWithId                       (   const   String&                     aComponentId                                ) const ;
+        Array<Shared<Component>> accessComponents                           ( ) const ;
 
-        Component&              accessComponentWithName                     (   const   String&                     aComponentName                              ) const ;
+        const Component&        accessComponentWithId                       (   const   String&                     aComponentId                                ) const ;
 
-        Array<Component>        accessComponentsWithTag                     (   const   String&                     aComponentTag                               ) const ;
+        const Component&        accessComponentWithName                     (   const   String&                     aComponentName                              ) const ;
 
-        Component&              accessComponentAt                           (   const   String&                     aComponentPath                              ) const ;
+        Array<Shared<const Component>> accessComponentsWithTag              (   const   String&                     aComponentTag                               ) const ;
 
-        void                    addComponent                                (   const   Component&                  aComponent                                  ) ;
+        const Component&        accessComponentAt                           (   const   String&                     aComponentPath                              ) const ;
+
+        void                    addComponent                                (   const   Shared<Component>&          aComponentSPtr                              ) ;
 
     private:
 

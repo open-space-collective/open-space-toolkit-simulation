@@ -8,67 +8,111 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
+#include <OpenSpaceToolkit/Simulation/Component.hpp>
+
+
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Polygon.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Pyramid.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Point.hpp>
 
 #include <Global.test.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-TEST (OpenSpaceToolkit_Simulation_Component_Geometry, getExclusionObject)
+TEST (OpenSpaceToolkit_Simulation_Component_Geometry, Constructor)
 {
 
-    using ostk::core::types::String ;
-    using ostk::math::geom::d3::objects::Composite ;
+    using ostk::core::types::Shared ;
+
+    using ostk::math::geom::d3::objects::Point ;
+    using ostk::math::geom::d3::objects::Polygon ;
+    using ostk::math::geom::d3::objects::Pyramid ;
+
+    using ostk::physics::coord::Frame ;
+
+    using ostk::simulation::Component ;
     using ostk::simulation::component::Geometry ;
 
     {
-        const String name = "Exclusion Earth Other" ;
-        const Geometry::Type type = Geometry::Type::Exclusion ;
 
-        const Geometry geometry = Geometry(name, type, Composite::Undefined()) ;
+        const Shared<const Frame> frameSPtr = nullptr ;
+        const Shared<const Component> componentSPtr = nullptr ;
 
-        EXPECT_EQ("Earth", geometry.getExclusionObject()) ;
-
-    }
-
-    {
-        const String name = "Moon Exclusion" ;
-        const Geometry::Type type = Geometry::Type::Exclusion ;
-
-        const Geometry geometry = Geometry(name, type, Composite::Undefined()) ;
-
-        EXPECT_EQ("Moon", geometry.getExclusionObject()) ;
-
-    }
-
-    {
-        const String name = "Exclusion Sun Full" ;
-        const Geometry::Type type = Geometry::Type::Exclusion ;
-
-        const Geometry geometry = Geometry(name, type, Composite::Undefined()) ;
-
-        EXPECT_EQ("Sun", geometry.getExclusionObject()) ;
+        const Geometry geometry =
+        {
+            "FOV",
+            Pyramid
+            {
+                Polygon
+                {
+                    { { { -0.1, -1.0 }, { +0.1, -1.0 }, { +0.1, +1.0 }, { -0.1, +1.0 } } },
+                    Point { 0.0, 0.0, 1.0 },
+                    { 1.0, 0.0, 0.0 },
+                    { 0.0, 1.0, 0.0 }
+                },
+                Point { 0.0, 0.0, 0.0 }
+            },
+            frameSPtr,
+            componentSPtr
+        } ;
 
     }
 
-    {
-        const String name = "FOV Earth" ;
-        const Geometry::Type type = Geometry::Type::Sensing ;
+}
 
-        const Geometry geometry = Geometry(name, type, Composite::Undefined()) ;
+TEST (OpenSpaceToolkit_Simulation_Component_Geometry, IsDefined)
+{
 
-        EXPECT_ANY_THROW(geometry.getExclusionObject()) ;
+    GTEST_SKIP() ;
 
-    }
+}
 
-    {
-        const String name = "Exclusion Pluto" ;
-        const Geometry::Type type = Geometry::Type::Exclusion ;
+TEST (OpenSpaceToolkit_Simulation_Component_Geometry, AccessComponent)
+{
 
-        const Geometry geometry = Geometry(name, type, Composite::Undefined()) ;
+    GTEST_SKIP() ;
 
-        EXPECT_ANY_THROW(geometry.getExclusionObject()) ;
+}
 
-    }
+TEST (OpenSpaceToolkit_Simulation_Component_Geometry, GetName)
+{
+
+    GTEST_SKIP() ;
+
+}
+
+TEST (OpenSpaceToolkit_Simulation_Component_Geometry, Intersects)
+{
+
+    GTEST_SKIP() ;
+
+}
+
+TEST (OpenSpaceToolkit_Simulation_Component_Geometry, Contains)
+{
+
+    GTEST_SKIP() ;
+
+}
+
+TEST (OpenSpaceToolkit_Simulation_Component_Geometry, IntersectionWith)
+{
+
+    GTEST_SKIP() ;
+
+}
+
+TEST (OpenSpaceToolkit_Simulation_Component_Geometry, Undefined)
+{
+
+    GTEST_SKIP() ;
+
+}
+
+TEST (OpenSpaceToolkit_Simulation_Component_Geometry, Configure)
+{
+
+    GTEST_SKIP() ;
 
 }
 

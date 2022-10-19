@@ -8,6 +8,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
+#include <OpenSpaceToolkit/Simulation/Component.hpp>
+#include <OpenSpaceToolkit/Simulation/Simulator.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
@@ -24,22 +26,37 @@ namespace component
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                                 Geometry::Geometry                          (   const   String&                     aName,
-                                                                                const   Geometry::Type&             aType,
-                                                                                const   Object&                     aGeometry                                   )
-                                :   name_(aName),
-                                    type_(aType),
-                                    composite_(aGeometry)
+                                                                                const   Object&                     anObject,
+                                                                                const   Shared<const Frame>&        aFrameSPtr,
+                                                                                const   Shared<const Component>&    aComponentSPtr                              )
+                                :   ObjectGeometry(anObject, aFrameSPtr),
+                                    name_(aName),
+                                    componentPtr_(aComponentSPtr)
 {
 
 }
 
                                 Geometry::Geometry                          (   const   String&                     aName,
-                                                                                const   Geometry::Type&             aType,
-                                                                                const   Composite&                  aComposite                                  )
-                                :   name_(aName),
-                                    type_(aType),
-                                    composite_(aComposite)
+                                                                                const   Composite&                  aComposite,
+                                                                                const   Shared<const Frame>&        aFrameSPtr,
+                                                                                const   Shared<const Component>&    aComponentSPtr                              )
+                                :   ObjectGeometry(aComposite, aFrameSPtr),
+                                    name_(aName),
+                                    componentPtr_(aComponentSPtr)
 {
+
+}
+
+bool                            Geometry::operator ==                       (   const   Geometry&                   aGeometry                                   ) const
+{
+
+    if ((!this->isDefined()) || (!aGeometry.isDefined()))
+    {
+        return false ;
+    }
+
+    return ObjectGeometry::operator == (aGeometry) && (this->name_ == aGeometry.name_) ;
+
 
 }
 
@@ -55,22 +72,23 @@ std::ostream&                   operator <<                                 (   
 
 }
 
-bool                            Geometry::operator ==                       (   const   Geometry&                   aGeometry                                   ) const
+bool                            Geometry::isDefined                         ( ) const
 {
 
-    if ((!this->isDefined()) || (!aGeometry.isDefined()))
-    {
-        return false ;
-    }
-
-    return (this->name_ == aGeometry.name_) && (this->type_ == aGeometry.type_) && (this->composite_ == aGeometry.composite_) ;
-
+    return ObjectGeometry::isDefined() && !name_.isEmpty() && (componentPtr_ != nullptr) ;
 
 }
 
-bool                            Geometry::isDefined                         ( ) const
+const Component&                Geometry::accessComponent                   ( ) const
 {
-    return !name_.isEmpty() ;
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
+    }
+
+    return *(this->componentPtr_) ;
+
 }
 
 String                          Geometry::getName                           ( ) const
@@ -85,90 +103,87 @@ String                          Geometry::getName                           ( ) 
 
 }
 
-Geometry::Type                  Geometry::getType                           ( ) const
+bool                            Geometry::intersects                        (   const   ObjectGeometry&             aGeometry                                   ) const
 {
 
-    if (!this->isDefined())
+    using ostk::physics::time::Instant ;
+
+    if ((!this->isDefined()) || (!aGeometry.isDefined()))
     {
         throw ostk::core::error::runtime::Undefined("Geometry") ;
     }
 
-    return type_ ;
+    const Instant instant = this->accessComponent().accessSimulator().getInstant() ;
+
+    // TBM: Why GCRF?
+    return this->in(Frame::GCRF(), instant).intersects(aGeometry.in(Frame::GCRF(), instant)) ;
 
 }
 
-Composite                       Geometry::getComposite                      ( ) const
+bool                            Geometry::contains                          (   const   ObjectGeometry&             aGeometry                                   ) const
 {
 
-    if (!this->isDefined())
+    using ostk::physics::time::Instant ;
+
+    if ((!this->isDefined()) || (!aGeometry.isDefined()))
     {
         throw ostk::core::error::runtime::Undefined("Geometry") ;
     }
 
-    return composite_ ;
+    const Instant instant = this->accessComponent().accessSimulator().getInstant() ;
+
+    // TBM: Why GCRF?
+    return this->in(Frame::GCRF(), instant).contains(aGeometry.in(Frame::GCRF(), instant)) ;
 
 }
 
-String                          Geometry::getExclusionObject                ( ) const
+ObjectGeometry                  Geometry::intersectionWith                  (   const   ObjectGeometry&             aGeometry                                   ) const
 {
 
-    if (!this->isDefined())
+    using ostk::physics::time::Instant ;
+
+    if ((!this->isDefined()) || (!aGeometry.isDefined()))
     {
         throw ostk::core::error::runtime::Undefined("Geometry") ;
     }
 
-    if (this->getType() != Geometry::Type::Exclusion)
-    {
-        throw ostk::core::error::RuntimeError("Not a Geometry with Type Exclusion.") ;
-    }
+    const Instant instant = this->accessComponent().accessSimulator().getInstant() ;
 
-    if (this->getName().find("Earth") <= this->getName().getLength())
-    {
-        return "Earth" ;
-    }
-    else if (this->getName().find("Sun") <= this->getName().getLength())
-    {
-        return "Sun" ;
-    }
-    else if (this->getName().find("Moon") <= this->getName().getLength())
-    {
-        return "Moon" ;
-    }
-
-    throw ostk::core::error::runtime::Undefined("Celestial Object for Exclusion") ;
+    // TBM: Why GCRF?
+    return this->in(Frame::GCRF(), instant).intersectionWith(aGeometry.in(Frame::GCRF(), instant)) ;
 
 }
-
-String                          Geometry::getExclusionCondition             ( ) const
-{
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Geometry") ;
-    }
-
-    if (this->getType() != Geometry::Type::Exclusion)
-    {
-        throw ostk::core::error::RuntimeError("Not a Geometry with Type Exclusion") ;
-    }
-
-    if (this->getName().find("Illuminated") <= this->getName().getLength())
-    {
-        return "Illuminated" ;
-    }
-    else if (this->getName().find("Dark") <= this->getName().getLength())
-    {
-        return "Dark" ;
-    }
-
-    throw ostk::core::error::runtime::Undefined("Celestial Object for Exclusion") ;
-
-}
-
 
 Geometry                        Geometry::Undefined                         ( )
 {
-    return { String::Empty(), Geometry::Type::Undefined, Composite::Empty() } ;
+
+    return
+    {
+        String::Empty(),
+        Composite::Undefined(),
+        Frame::Undefined(),
+        nullptr
+    } ;
+
+}
+
+Shared<Geometry>                Geometry::Configure                         (   const   GeometryConfiguration&      aGeometryConfiguration,
+                                                                                const   Shared<const Component>&    aComponentSPtr                              )
+{
+
+    if (aComponentSPtr == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Component") ;
+    }
+
+    return std::make_shared<Geometry>
+    (
+        aGeometryConfiguration.name,
+        aGeometryConfiguration.object,
+        aComponentSPtr->accessFrame(),
+        aComponentSPtr
+    ) ;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

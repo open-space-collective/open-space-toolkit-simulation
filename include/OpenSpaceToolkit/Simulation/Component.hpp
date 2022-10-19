@@ -15,7 +15,7 @@
 #include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
 #include <OpenSpaceToolkit/Simulation/Entity.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/RotationMatrix.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>
 
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Map.hpp>
@@ -39,29 +39,25 @@ using ostk::core::types::Weak ;
 using ostk::core::ctnr::Array ;
 using ostk::core::ctnr::Map ;
 
-using ostk::math::geom::d3::trf::rot::RotationMatrix ;
+using ostk::math::geom::d3::trf::rot::Quaternion ;
+
+using ostk::physics::coord::Frame ;
 
 using ostk::simulation::utilities::ComponentHolder ;
 using ostk::simulation::component::State ;
 using ostk::simulation::component::Geometry ;
-
-class Satellite;
+using ostk::simulation::component::GeometryConfiguration ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define                         DEFAULT_TYPE                                    Component::Type::Undefined
-#define                         DEFAULT_TAG_ARRAY                               Array<String>::Empty()
-#define                         DEFAULT_STATE                                   State::Undefined()
-#define                         DEFAULT_GEOMETRY_ARRAY                          Array<Geometry>::Empty()
-#define                         DEFAULT_ROTATION_MATRIX                         RotationMatrix::Unit()
-#define                         DEFAULT_COMPONENT_ARRAY                         Array<Component>::Empty()
-#define                         DEFAULT_PARENT_COMPONENT                        nullptr
+class Simulator ;
+struct ComponentConfiguration ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @brief                      Component
 
-class Component : public Entity, public ComponentHolder
+class Component : public Entity, public ComponentHolder, public std::enable_shared_from_this<Component>
 {
 
     public:
@@ -80,22 +76,13 @@ class Component : public Entity, public ComponentHolder
 
                                 Component                                   (   const   String&                     anId,
                                                                                 const   String&                     aName,
-                                                                                const   Component::Type&            aType                                       =   DEFAULT_TYPE,
-                                                                                const   State&                      aState                                      =   DEFAULT_STATE,
-                                                                                const   Array<String>&              aTagArray                                   =   DEFAULT_TAG_ARRAY,
-                                                                                const   Array<Geometry>&            aGeometryArray                              =   DEFAULT_GEOMETRY_ARRAY,
-                                                                                const   RotationMatrix&             aRotationMatrix                             =   DEFAULT_ROTATION_MATRIX,
-                                                                                const   Array<Component>&           aComponentArray                             =   DEFAULT_COMPONENT_ARRAY,
-                                                                                const   Shared<Component>&          aParentComponent                            =   DEFAULT_PARENT_COMPONENT ) ;
-
-                                Component                                   (   const   String&                     aName,
-                                                                                const   Component::Type&            aType                                       =   DEFAULT_TYPE,
-                                                                                const   State&                      aState                                      =   DEFAULT_STATE,
-                                                                                const   Array<String>&              aTagArray                                   =   DEFAULT_TAG_ARRAY,
-                                                                                const   Array<Geometry>&            aGeometryArray                              =   DEFAULT_GEOMETRY_ARRAY,
-                                                                                const   RotationMatrix&             aRotationMatrix                             =   DEFAULT_ROTATION_MATRIX,
-                                                                                const   Array<Component>&           aComponentArray                             =   DEFAULT_COMPONENT_ARRAY,
-                                                                                const   Shared<Component>&          aParentComponent                            =   DEFAULT_PARENT_COMPONENT ) ;
+                                                                                const   Component::Type&            aType,
+                                                                                const   Array<String>&              aTagArray,
+                                                                                const   Array<Shared<Geometry>>&    aGeometryArray,
+                                                                                const   Array<Shared<Component>>&   aComponentArray,
+                                                                                const   Shared<ComponentHolder>&    aParentComponentSPtr,
+                                                                                const   Shared<const Frame>&        aFrameSPtr,
+                                                                                const   Shared<const Simulator>&    aSimulatorSPtr                              ) ;
 
                                 Component                                   (   const   Component&                  aComponent                                  ) ;
 
@@ -103,12 +90,20 @@ class Component : public Entity, public ComponentHolder
 
         virtual Component*      clone                                       ( ) const ;
 
-        Component&              operator =                                  (   const   Component&                  aComponent                                  ) ;
+        Component&              operator =                                  (   const   Component&                  aComponent                                  ) = delete ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Component&                  aComponent                                  ) ;
 
         bool                    isDefined                                   ( ) const ;
+
+        const State&            accessState                                 ( ) const ;
+
+        const Shared<const Frame>& accessFrame                              ( ) const ;
+
+        const Geometry&         accessGeometryWithName                      (   const   String&                     aName                                       ) const ;
+
+        const Simulator&        accessSimulator                             ( ) const ;
 
         Component::Type         getType                                     ( ) const ;
 
@@ -116,19 +111,24 @@ class Component : public Entity, public ComponentHolder
 
         Array<String>           getTags                                     ( ) const ;
 
-        Array<Geometry>         getGeometries                               ( ) const ;
+        Array<Shared<Geometry>> getGeometries                               ( ) const ;
 
-        RotationMatrix          getRotationMatrix                           ( ) const ;
+        void                    setParent                                   (   const   Shared<Component>&          aComponentSPtr                              ) ;
 
-        const State&            accessState                                 ( ) const ;
+        void                    addGeometry                                 (   const   Shared<Geometry>&           aGeometrySPtr                               ) ;
 
-        const Geometry&         accessGeometryWithName                      ( ) const ;
-
-        void                    setParent                                   (   const   Shared<Component>&          aParentComponent                            ) ;
+        void                    addComponent                                (   const   Shared<Component>&          aComponentSPtr                              ) ;
 
         static Component        Undefined                                   ( ) ;
 
+        static Shared<Component> Configure                                  (   const   ComponentConfiguration&     aComponentConfiguration,
+                                                                                const   Shared<Component>&          aParentComponentSPtr                        ) ;
+
         static String           StringFromType                              (   const   Component::Type&            aType                                       ) ;
+
+        static Shared<const Frame> GenerateFrame                            (   const   String&                     aName,
+                                                                                const   Quaternion&                 aQuaternion,
+                                                                                const   Shared<const Frame>&        aParentFrameSPtr                            ) ;
 
     protected:
 
@@ -143,12 +143,27 @@ class Component : public Entity, public ComponentHolder
     private:
 
         Component::Type         type_ ;
-        State                   state_ ;
         Array<String>           tags_ ;
-        Array<Geometry>         geometries_ ; // Array of Geometries defined in Component Frame
-        RotationMatrix          rotationMatrix_ ; // Rotation from Body Frame to Component Frame
+        Array<Shared<Geometry>> geometries_ ; // Array of Geometries defined in Component Frame
 
-        Weak<const Component>   parentWPtr_ ;
+        Weak<const ComponentHolder> parentWPtr_ ;
+        Shared<const Frame>     frameSPtr_ ;
+        Shared<const Simulator> simulatorSPtr_ ;
+
+} ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+struct ComponentConfiguration
+{
+
+    const String                id ;
+    const String                name ;
+    const Component::Type       type                                            =   Component::Type::Undefined ;
+    const Array<String>         tags                                            =   Array<String>::Empty() ;
+    const Quaternion            orientation                                     =   Quaternion::Unit() ;
+    const Array<GeometryConfiguration> geometries                               =   Array<GeometryConfiguration>::Empty() ;
+    const Array<ComponentConfiguration> components                              =   Array<ComponentConfiguration>::Empty() ;
 
 } ;
 

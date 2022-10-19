@@ -43,6 +43,10 @@ using ostk::simulation::Satellite ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+struct SimulatorConfiguration ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /// @brief                      Simulator
 
 class Simulator
@@ -51,7 +55,7 @@ class Simulator
     public:
 
                                 Simulator                                   (   const   Environment&                anEnvironment,
-                                                                                const   Array<Satellite>&           aSatelliteArray                             ) ;
+                                                                                const   Array<Shared<Satellite>>&   aSatelliteArray                             ) ;
 
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Simulator&                  aSimulator                                  ) ;
@@ -62,7 +66,9 @@ class Simulator
 
         const Environment&      accessEnvironment                           ( ) const ;
 
-        Satellite&              accessSatelliteWithName                     (   const   String&                     aSatelliteName                              ) const ;
+        const Satellite&        accessSatelliteWithName                     (   const   String&                     aSatelliteName                              ) const ;
+
+        Instant                 getInstant                                  ( ) const ;
 
         /// @brief              Print simulator
         ///
@@ -74,14 +80,28 @@ class Simulator
 
         void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
 
-        void                    step                                        (   const   Duration&                   aDuration                                   ) ;
+        void                    stepForward                                 (   const   Duration&                   aDuration                                   ) ;
+
+        void                    addSatellite                                (   const   Shared<Satellite>&          aSatelliteSPtr                              ) ;
 
         static Simulator        Undefined                                   ( ) ;
+
+        static Shared<Simulator> Configure                                  (   const   SimulatorConfiguration&     aSimulatorConfiguration                     ) ;
 
     private:
 
         Environment             environment_ ;
         Map<String, Shared<Satellite>> satelliteMap_ ;
+
+} ;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+struct SimulatorConfiguration
+{
+
+    const Environment           environment ;
+    const Array<SatelliteConfiguration> satellites ;
 
 } ;
 

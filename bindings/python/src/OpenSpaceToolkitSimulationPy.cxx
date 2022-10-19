@@ -12,8 +12,9 @@
 
 #include <OpenSpaceToolkitSimulationPy/Utilities/ShiftToString.hpp>
 
-#include <OpenSpaceToolkitSimulationPy/Satellite.cpp>
 #include <OpenSpaceToolkitSimulationPy/Component.cpp>
+#include <OpenSpaceToolkitSimulationPy/Satellite.cpp>
+#include <OpenSpaceToolkitSimulationPy/Simulator.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -21,7 +22,7 @@ PYBIND11_MODULE (OpenSpaceToolkitSimulationPy, m)
 {
 
     // Add optional docstring for package OpenSpaceToolkitSimulationPy
-    m.doc() = "Elementary space systems blocks for Simulation in OpenSpaceToolkit." ;
+    m.doc() = "Elementary space systems blocks for Simulation in Open Space Toolkit." ;
 
     // Add __path__ attribute to python package
     m.attr("__path__") = "ostk.simulation" ;
@@ -36,7 +37,7 @@ PYBIND11_MODULE (OpenSpaceToolkitSimulationPy, m)
         m.attr("__version__") = "dev" ;
     #endif
 
-    // Add python submodules to OpenSpaceToolkitSimulationPy
+    OpenSpaceToolkitSimulationPy_Simulator(m) ;
     OpenSpaceToolkitSimulationPy_Satellite(m) ;
     OpenSpaceToolkitSimulationPy_Component(m) ;
 

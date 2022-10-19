@@ -1,69 +1,22 @@
 ################################################################################################################################################################
 
 # @project        Open Space Toolkit ▸ Simulation
-# @file           .gitignore
+# @file           bindings/python/test/test_simulator.py
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
 
-# Operating Systems
+from ostk.simulation import Simulator
+from ostk.simulation import Satellite
+from ostk.simulation import Component
 
-## Mac OS
+################################################################################################################################################################
 
-**/.DS_Store
+class TestSimulator:
 
-# Editors
+    def test_end_to_end (self):
 
-## Visual Studio Code
-
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
-
-### Local History for Visual Studio Code
-.history/
-
-### Built Visual Studio Code Extensions
-*.vsix
-
-## Sublime Text
-
-*.sublime-workspace
-*.sublime-project
-
-# Project
-
-## Common
-
-!.gitignore
-!.gitkeep
-
-## Binaries
-
-bin/*
-lib/*
-build/
-*.so*
-*.a
-*.exe*
-*.rpm*
-packages/
-coverage/
-
-## Documentation
-
-docs/html/
-docs/latex/
-
-## Misc.
-
-tmp/
-__pycache__
-.ipynb_checkpoints
-.open-space-toolkit
+        ...
 
 ################################################################################################################################################################

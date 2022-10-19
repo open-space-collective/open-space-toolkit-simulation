@@ -55,7 +55,6 @@ TEST (OpenSpaceToolkit_Simulation_Satellite, Constructor)
                 Geometry
                 {
                     "FOV",
-                    Geometry::Type::Sensing,
                     Pyramid
                     {
                         Polygon { { { { -0.1, -1.0 }, { +0.1, -1.0 }, { +0.1, +1.0 }, { -0.1, +1.0 } } }, Point { 0.0, 0.0, 1.0 }, { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } },

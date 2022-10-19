@@ -1,12 +1,14 @@
 {
     "name": "Open Space Toolkit Simulation",
+    "build": {
+        "dockerfile": "../docker/development/debian/Dockerfile"
+    },
     "extensions": [
         "ms-vscode.cpptools",
         "ms-python.python",
         "mhutchie.git-graph"
     ],
-    "image": "openspacecollective/open-space-toolkit-simulation-development:latest-debian",
-	"settings": {
+    "settings": {
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
     "shutdownAction": "stopContainer"

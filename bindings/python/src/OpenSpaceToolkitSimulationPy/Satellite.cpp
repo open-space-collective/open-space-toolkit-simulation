@@ -16,23 +16,50 @@ inline void                     OpenSpaceToolkitSimulationPy_Satellite      (   
 
     using namespace pybind11 ;
 
+    using ostk::core::types::Shared ;
     using ostk::core::types::String ;
     using ostk::core::ctnr::Array ;
 
+    using ostk::physics::coord::Frame ;
+
+    using ostk::astro::flight::Profile ;
+
+    using ostk::simulation::Component ;
+
+    using ostk::simulation::Simulator ;
     using ostk::simulation::Satellite ;
+    using ostk::simulation::Component ;
+    using ostk::simulation::component::Geometry ;
 
-    class_<Satellite>(aModule, "Satellite")
+    class_<Satellite, Component, Shared<Satellite>>(aModule, "Satellite")
 
-        .def(init<const String&, const String&>())
+        .def
+        (
+            init
+            <
+                const String&,
+                const String&,
+                const Array<String>&,
+                const Array<Shared<Geometry>>&,
+                const Array<Shared<Component>>&,
+                const Shared<const Frame>&,
+                const Shared<Profile>&,
+                const Shared<const Simulator>&
+            >(),
+            arg("id"),
+            arg("name"),
+            arg("tags"),
+            arg("geometries"),
+            arg("components"),
+            arg("frame"),
+            arg("profile"),
+            arg("simulator")
+        )
 
-        // Issue to be investigated between the following and simulation/Simulation
-        // .def("__str__", &(shiftToString<Satellite>))
-        // .def("__repr__", &(shiftToString<Satellite>))
+        // .def("is_defined", &Satellite::isDefined)
 
-        .def("is_defined", &Satellite::isDefined)
-
-        .def("get_id", &Satellite::getId)
-        .def("get_name", &Satellite::getName)
+        // .def("get_id", &Satellite::getId)
+        // .def("get_name", &Satellite::getName)
 
         .def_static("undefined", &Satellite::Undefined)
 

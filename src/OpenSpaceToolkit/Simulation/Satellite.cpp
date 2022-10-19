@@ -33,48 +33,40 @@ using namespace ostk::simulation::utilities ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                Satellite::Satellite                        (   const   String&                     aName,
-                                                                                const   Profile&                    aProfile,
-                                                                                const   Array<Component>&           aComponentArray                             )
-                                :   Entity(aName),
-                                    ComponentHolder(aComponentArray),
-                                    profileSPtr_(std::make_shared<Profile>(aProfile)),
-                                    frameSPtr_(nullptr)
-{
-
-    this->setupFrame() ;
-
-}
-
                                 Satellite::Satellite                        (   const   String&                     anId,
                                                                                 const   String&                     aName,
-                                                                                const   Profile&                    aProfile,
-                                                                                const   Array<Component>&           aComponentArray                             )
-                                :   Entity(anId, aName),
-                                    ComponentHolder(aComponentArray),
-                                    profileSPtr_(std::make_shared<Profile>(aProfile)),
-                                    frameSPtr_(nullptr)
+                                                                                const   Array<String>&              aTagArray,
+                                                                                const   Array<Shared<Geometry>>&    aGeometryArray,
+                                                                                const   Array<Shared<Component>>&   aComponentArray,
+                                                                                const   Shared<const Frame>&        aFrameSPtr,
+                                                                                const   Shared<Profile>&            aProfileSPtr,
+                                                                                const   Shared<const Simulator>&    aSimulatorSPtr                              )
+                                :   Component
+                                    (
+                                        anId,
+                                        aName,
+                                        Component::Type::Assembly,
+                                        aTagArray,
+                                        aGeometryArray,
+                                        aComponentArray,
+                                        nullptr,
+                                        aFrameSPtr,
+                                        aSimulatorSPtr
+                                    ),
+                                    profileSPtr_(aProfileSPtr)
 {
-
-    this->setupFrame() ;
 
 }
 
                                 Satellite::Satellite                        (   const   Satellite&                  aSatellite                                  )
-                                :   Entity(aSatellite),
-                                    ComponentHolder(aSatellite),
-                                    profileSPtr_(aSatellite.profileSPtr_),
-                                    frameSPtr_(nullptr)
+                                :   Component(aSatellite),
+                                    profileSPtr_(aSatellite.profileSPtr_)
 {
-
-    this->setupFrame() ;
 
 }
 
                                 Satellite::~Satellite                       ( )
 {
-
-    this->tearDownFrame() ;
 
 }
 
@@ -98,18 +90,6 @@ bool                            Satellite::isDefined                        ( ) 
     return Entity::isDefined() ;
 }
 
-const Shared<const Frame>&      Satellite::accessFrame                      ( ) const
-{
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Satellite") ;
-    }
-
-    return this->frameSPtr_ ;
-
-}
-
 void                            Satellite::print                            (           std::ostream&               anOutputStream,
                                                                                         bool                        displayDecorators                           ) const
 {
@@ -124,7 +104,55 @@ void                            Satellite::print                            (   
 
 Satellite                       Satellite::Undefined                        ( )
 {
-    return { String::Empty(), Profile::Undefined() } ;
+
+    return
+    {
+        String::Empty(),
+        String::Empty(),
+        Array<String>::Empty(),
+        Array<Shared<Geometry>>::Empty(),
+        Array<Shared<Component>>::Empty(),
+        nullptr,
+        nullptr,
+        nullptr
+    } ;
+
+}
+
+Shared<Satellite>               Satellite::Configure                        (   const   SatelliteConfiguration&     aSatelliteConfiguration,
+                                                                                const   Shared<const Simulator>&    aSimulatorSPtr                              )
+{
+
+    const Shared<Profile> profileSPtr = std::make_shared<Profile>(aSatelliteConfiguration.profile) ;
+
+    const Shared<Satellite> satelliteSPtr = std::make_shared<Satellite>
+    (
+        aSatelliteConfiguration.id,
+        aSatelliteConfiguration.name,
+        aSatelliteConfiguration.tags,
+        Array<Shared<Geometry>>::Empty(),
+        Array<Shared<Component>>::Empty(),
+        Satellite::GenerateFrame
+        (
+            aSatelliteConfiguration.id,
+            profileSPtr
+        ),
+        profileSPtr,
+        aSimulatorSPtr
+    ) ;
+
+    for (const auto& geometryConfiguration : aSatelliteConfiguration.geometries)
+    {
+        satelliteSPtr->addGeometry(Geometry::Configure(geometryConfiguration, satelliteSPtr)) ;
+    }
+
+    for (const auto& componentConfiguration : aSatelliteConfiguration.components)
+    {
+        satelliteSPtr->addComponent(Component::Configure(componentConfiguration, satelliteSPtr)) ;
+    }
+
+    return satelliteSPtr ;
+
 }
 
 Shared<const Frame>             Satellite::GenerateFrame                    (   const   String&                     aName,
@@ -145,7 +173,8 @@ Shared<const Frame>             Satellite::GenerateFrame                    (   
         [profileWPtr] (const Instant& anInstant) -> Transform
         {
 
-            if (Shared<const Profile> profileSPtr = profileWPtr.lock()) {
+            if (Shared<const Profile> profileSPtr = profileWPtr.lock())
+            {
 
                 const auto& state = profileSPtr->getStateAt(anInstant).inFrame(Frame::GCRF()) ;
 
@@ -167,29 +196,7 @@ Shared<const Frame>             Satellite::GenerateFrame                    (   
         }
     ) ;
 
-    return Frame::Construct(aName, false, Frame::GCRF(), transformProviderSPtr) ;
-
-}
-
-void                            Satellite::setupFrame                       ( )
-{
-
-    if (profileSPtr_->isDefined())
-    {
-        frameSPtr_ = Satellite::GenerateFrame(this->getId(), profileSPtr_) ;
-    }
-
-}
-
-void                            Satellite::tearDownFrame                    ( )
-{
-
-    frameSPtr_ = nullptr ;
-
-    if (Frame::Exists(this->getId()))
-    {
-        Frame::Destruct(this->getId()) ;
-    }
+    return Frame::Construct(String::Format("Satellite [{}]", aName), false, Frame::GCRF(), transformProviderSPtr) ;
 
 }
 
