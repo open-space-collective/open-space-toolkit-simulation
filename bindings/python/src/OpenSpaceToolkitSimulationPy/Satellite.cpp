@@ -28,8 +28,11 @@ inline void                     OpenSpaceToolkitSimulationPy_Satellite      (   
 
     using ostk::simulation::Simulator ;
     using ostk::simulation::Satellite ;
+    using ostk::simulation::SatelliteConfiguration ;
     using ostk::simulation::Component ;
+    using ostk::simulation::ComponentConfiguration ;
     using ostk::simulation::component::Geometry ;
+    using ostk::simulation::component::GeometryConfiguration ;
 
     class_<Satellite, Component, Shared<Satellite>>(aModule, "Satellite")
 
@@ -56,12 +59,22 @@ inline void                     OpenSpaceToolkitSimulationPy_Satellite      (   
             arg("simulator")
         )
 
-        // .def("is_defined", &Satellite::isDefined)
-
-        // .def("get_id", &Satellite::getId)
-        // .def("get_name", &Satellite::getName)
-
         .def_static("undefined", &Satellite::Undefined)
+
+    ;
+
+    class_<SatelliteConfiguration>(aModule, "SatelliteConfiguration")
+
+        .def
+        (
+            init<const String&, const String&, const Profile&, const Array<ComponentConfiguration>&, const Array<String>&, const Array<GeometryConfiguration>&>(),
+            arg("id"),
+            arg("name"),
+            arg("profile"),
+            arg("components"),
+            arg("tags"),
+            arg("geometries")
+        )
 
     ;
 

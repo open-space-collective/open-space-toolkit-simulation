@@ -121,7 +121,7 @@ TEST (OpenSpaceToolkit_Simulation_Simulator, Test_1)
                             {
                                 "2",
                                 "Camera",
-                                Component::Type::Other,
+                                Component::Type::Sensor,
                                 {"tag-a", "tag-b"},
                                 Quaternion::Unit(),
                                 {

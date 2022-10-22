@@ -25,10 +25,10 @@ export docker_release_image_jupyter_repository := $(docker_image_repository)-jup
 export jupyter_notebook_image_repository := jupyter/scipy-notebook:latest
 export jupyter_notebook_port := 9006
 
-export open_space_toolkit_core_version := 0.4.3
-export open_space_toolkit_io_version := 0.4.3
-export open_space_toolkit_mathematics_version := 0.4.4
-export open_space_toolkit_physics_version := 0.5.13
+export open_space_toolkit_core_version := 0.4.5
+export open_space_toolkit_io_version := 0.4.5
+export open_space_toolkit_mathematics_version := 0.4.8
+export open_space_toolkit_physics_version := 0.5.21
 export open_space_toolkit_astrodynamics_version := 0.4.22
 
 export open_space_toolkit_core_directory := $(project_directory)/../open-space-toolkit-core

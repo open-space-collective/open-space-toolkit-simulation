@@ -1,6 +1,6 @@
 # Open Space Toolkit ▸ Simulation
 
-[![Build Status](https://travis-ci.com/open-space-collective/open-space-toolkit-simulation.svg?branch=main)](https://travis-ci.com/open-space-collective/open-space-toolkit-simulation)
+[![Build and Test](https://github.com/open-space-collective/open-space-toolkit-simulation/actions/workflows/build-test.yml/badge.svg?branch=main)](https://github.com/open-space-collective/open-space-toolkit-simulation/actions/workflows/build-test.yml)
 [![Code Coverage](https://codecov.io/gh/open-space-collective/open-space-toolkit-simulation/branch/main/graph/badge.svg)](https://codecov.io/gh/open-space-collective/open-space-toolkit-simulation)
 [![Documentation](https://img.shields.io/readthedocs/pip/stable.svg)](https://open-space-collective.github.io/open-space-toolkit-simulation)
 [![GitHub version](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-simulation.svg)](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-simulation)

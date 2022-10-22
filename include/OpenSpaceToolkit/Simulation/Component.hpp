@@ -97,8 +97,6 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
 
         bool                    isDefined                                   ( ) const ;
 
-        const State&            accessState                                 ( ) const ;
-
         const Shared<const Frame>& accessFrame                              ( ) const ;
 
         const Geometry&         accessGeometryWithName                      (   const   String&                     aName                                       ) const ;
@@ -106,8 +104,6 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
         const Simulator&        accessSimulator                             ( ) const ;
 
         Component::Type         getType                                     ( ) const ;
-
-        State                   getState                                    ( ) const ;
 
         Array<String>           getTags                                     ( ) const ;
 

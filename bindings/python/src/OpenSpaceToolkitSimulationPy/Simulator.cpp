@@ -22,9 +22,11 @@ inline void                     OpenSpaceToolkitSimulationPy_Simulator      (   
     using ostk::physics::Environment ;
 
     using ostk::simulation::Simulator ;
+    using ostk::simulation::SimulatorConfiguration ;
     using ostk::simulation::Satellite ;
+    using ostk::simulation::SatelliteConfiguration ;
 
-    class_<Simulator>(aModule, "Simulator")
+    class_<Simulator, Shared<Simulator>>(aModule, "Simulator")
 
         .def
         (
@@ -46,7 +48,18 @@ inline void                     OpenSpaceToolkitSimulationPy_Simulator      (   
         .def("add_satellite", &Simulator::addSatellite, arg("satellite"))
 
         .def_static("undefined", &Simulator::Undefined)
-        // .def_static("configure", &Simulator::Configure)
+        .def_static("configure", &Simulator::Configure)
+
+    ;
+
+    class_<SimulatorConfiguration>(aModule, "SimulatorConfiguration")
+
+        .def
+        (
+            init<const Environment&, const Array<SatelliteConfiguration>&>(),
+            arg("environment"),
+            arg("satellites")
+        )
 
     ;
 

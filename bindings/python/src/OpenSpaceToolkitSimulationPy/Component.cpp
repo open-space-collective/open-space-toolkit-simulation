@@ -23,19 +23,22 @@ inline void                     OpenSpaceToolkitSimulationPy_Component      (   
     using ostk::core::types::String ;
     using ostk::core::ctnr::Array ;
 
-    using ostk::math::geom::d3::trf::rot::RotationMatrix ;
+    using ostk::math::geom::d3::trf::rot::Quaternion ;
 
     using ostk::physics::coord::Frame ;
 
     using ostk::simulation::Simulator ;
+    using ostk::simulation::Entity ;
     using ostk::simulation::Component ;
+    using ostk::simulation::ComponentConfiguration ;
     using ostk::simulation::component::Geometry ;
+    using ostk::simulation::component::GeometryConfiguration ;
     using ostk::simulation::component::State ;
     using ostk::simulation::utilities::ComponentHolder ;
 
     {
 
-        class_<Component, Shared<Component>> component_class(aModule, "Component") ;
+        class_<Component, Entity, ComponentHolder, Shared<Component>> component_class(aModule, "Component") ;
 
         component_class.def
         (
@@ -67,13 +70,11 @@ inline void                     OpenSpaceToolkitSimulationPy_Component      (   
 
             .def("is_defined", &Component::isDefined)
 
-            .def("access_state", &Component::accessState)
             .def("access_frame", &Component::accessFrame)
             .def("access_geometry_with_name", &Component::accessGeometryWithName, arg("name"))
             .def("access_simulator", &Component::accessSimulator)
 
             .def("get_type", &Component::getType)
-            .def("get_state", &Component::getState)
             .def("get_tags", &Component::getTags)
             .def("get_geometries", &Component::getGeometries)
 
@@ -83,11 +84,12 @@ inline void                     OpenSpaceToolkitSimulationPy_Component      (   
 
             .def_static("undefined", &Component::Undefined)
             // .def_static("configure", &Component::Configure)
+
             .def_static("string_from_type", &Component::StringFromType, arg("type"))
 
         ;
 
-        enum_<Component::Type>(component_class, "Type")
+    enum_<Component::Type>(component_class, "Type")
 
             .value("Undefined", Component::Type::Undefined)
             .value("Assembly", Component::Type::Assembly)
@@ -98,6 +100,31 @@ inline void                     OpenSpaceToolkitSimulationPy_Component      (   
         ;
 
     }
+
+    class_<ComponentConfiguration>(aModule, "ComponentConfiguration")
+
+        .def
+        (
+            init
+            <
+                const String&,
+                const String&,
+                const Component::Type&,
+                const Array<String>&,
+                const Quaternion&,
+                const Array<GeometryConfiguration>&,
+                const Array<ComponentConfiguration>&
+            >(),
+            arg("id"),
+            arg("name"),
+            arg("type"),
+            arg("tags"),
+            arg("orientation"),
+            arg("geometries"),
+            arg("components")
+        )
+
+    ;
 
     // Create python submodule
     auto component = aModule.def_submodule("component") ;

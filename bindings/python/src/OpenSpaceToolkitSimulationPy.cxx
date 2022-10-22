@@ -9,11 +9,17 @@
 
 #include <pybind11/pybind11.h>
 #include <pybind11/operators.h>
+#include <pybind11/stl.h>
+#include <pybind11/eigen.h>
+#include <pybind11/numpy.h>
 
+#include <OpenSpaceToolkitSimulationPy/Utilities/ArrayCasting.hpp>
 #include <OpenSpaceToolkitSimulationPy/Utilities/ShiftToString.hpp>
+#include <OpenSpaceToolkitSimulationPy/Utilities/ComponentHolder.cpp>
 
-#include <OpenSpaceToolkitSimulationPy/Component.cpp>
 #include <OpenSpaceToolkitSimulationPy/Satellite.cpp>
+#include <OpenSpaceToolkitSimulationPy/Component.cpp>
+#include <OpenSpaceToolkitSimulationPy/Entity.cpp>
 #include <OpenSpaceToolkitSimulationPy/Simulator.cpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,9 +43,12 @@ PYBIND11_MODULE (OpenSpaceToolkitSimulationPy, m)
         m.attr("__version__") = "dev" ;
     #endif
 
+    OpenSpaceToolkitSimulationPy_Utilities_ComponentHolder(m) ;
+
     OpenSpaceToolkitSimulationPy_Simulator(m) ;
-    OpenSpaceToolkitSimulationPy_Satellite(m) ;
+    OpenSpaceToolkitSimulationPy_Entity(m) ;
     OpenSpaceToolkitSimulationPy_Component(m) ;
+    OpenSpaceToolkitSimulationPy_Satellite(m) ;
 
 }
 

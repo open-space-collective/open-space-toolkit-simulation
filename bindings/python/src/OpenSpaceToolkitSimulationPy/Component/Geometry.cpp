@@ -24,14 +24,32 @@ inline void                     OpenSpaceToolkitSimulationPy_Component_Geometry 
     using ostk::math::geom::d3::objects::Composite ;
 
     using ostk::physics::coord::Frame ;
+    using ObjectGeometry = ostk::physics::env::object::Geometry ;
 
     using ostk::simulation::Component ;
     using ostk::simulation::component::Geometry ;
+    using ostk::simulation::component::GeometryConfiguration ;
 
-    class_<Geometry>(aModule, "Geometry")
+    // class_<Geometry, ObjectGeometry, Shared<Geometry>>(aModule, "Geometry")
+    class_<Geometry, ObjectGeometry>(aModule, "Geometry")
 
-        .def(init<const String&, const Object&, const Shared<const Frame>&, const Shared<const Component>&>())
-        .def(init<const String&, const Composite&, const Shared<const Frame>&, const Shared<const Component>&>())
+        .def
+        (
+            init<const String&, const Object&, const Shared<const Frame>&, const Shared<const Component>&>(),
+            arg("name"),
+            arg("object"),
+            arg("frame"),
+            arg("component")
+        )
+
+        // .def
+        // (
+        //     init<const String&, const Composite&, const Shared<const Frame>&, const Shared<const Component>&>(),
+        //     arg("name"),
+        //     arg("composite"),
+        //     arg("frame"),
+        //     arg("component")
+        // )
 
         .def("__str__", &(shiftToString<Geometry>))
         .def("__repr__", &(shiftToString<Geometry>))
@@ -48,6 +66,17 @@ inline void                     OpenSpaceToolkitSimulationPy_Component_Geometry 
 
         .def_static("undefined", &Geometry::Undefined)
         // .def_static("configure", &Geometry::Configure)
+
+    ;
+
+    class_<GeometryConfiguration>(aModule, "GeometryConfiguration")
+
+        .def
+        (
+            init<const String&, const Object&>(),
+            arg("name"),
+            arg("object")
+        )
 
     ;
 
