@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.cpp___": "cpp",
+        "core": "cpp",
+        "*.tpp": "cpp",
+        "complex": "cpp"
+    },
+}

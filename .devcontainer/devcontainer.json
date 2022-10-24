@@ -5,11 +5,9 @@
     },
     "extensions": [
         "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools",
         "ms-python.python",
         "mhutchie.git-graph"
     ],
-    "settings": {
-		"terminal.integrated.shell.linux": "/bin/bash"
-	},
     "shutdownAction": "stopContainer"
 }
