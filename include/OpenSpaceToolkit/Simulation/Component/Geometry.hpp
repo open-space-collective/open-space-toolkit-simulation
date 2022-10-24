@@ -67,8 +67,6 @@ class Geometry
         /// @param              [in] aGeometry A geometry
         /// @return             Reference to geometry
 
-        Geometry&               operator =                                  (   const   Geometry&                   aGeometry                                   ) = delete ;
-
         /// @brief              Equal to operator
         ///
         /// @param              [in] aGeometry A geometry

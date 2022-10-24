@@ -58,8 +58,6 @@ class ComponentHolder
 
                                 ~ComponentHolder                            ( ) ;
 
-        ComponentHolder&        operator =                                  (   const   ComponentHolder&            aComponentHolder                            ) = delete ;
-
         bool                    hasComponentWithId                          (   const   String&                     aComponentId                                ) const ;
 
         bool                    hasComponentWithName                        (   const   String&                     aComponentName                              ) const ;

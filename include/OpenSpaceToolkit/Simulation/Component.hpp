@@ -98,8 +98,6 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
 
         virtual Component*      clone                                       ( ) const ;
 
-        Component&              operator =                                  (   const   Component&                  aComponent                                  ) = delete ;
-
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Component&                  aComponent                                  ) ;
 

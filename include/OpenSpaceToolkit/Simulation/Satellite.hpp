@@ -78,8 +78,6 @@ class Satellite : public Component
 
         Satellite*              clone                                       ( ) const ;
 
-        Satellite&              operator =                                  (   const   Satellite&                  aSatellite                                  ) = delete ;
-
         friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
                                                                                 const   Satellite&                  aSatellite                                  ) ;
 
