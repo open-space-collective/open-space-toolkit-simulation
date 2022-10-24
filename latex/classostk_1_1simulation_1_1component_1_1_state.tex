@@ -1,0 +1,167 @@
+\hypertarget{classostk_1_1simulation_1_1component_1_1_state}{}\section{ostk\+:\+:simulation\+:\+:component\+:\+:State Class Reference}
+\label{classostk_1_1simulation_1_1component_1_1_state}\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}
+
+
+\hyperlink{classostk_1_1simulation_1_1_component}{Component} state.  
+
+
+
+
+{\ttfamily \#include $<$State.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{Status} \{ \newline
+\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58aec0fc0100c4fc1ce4eea230c3dc10360}{Status\+::\+Undefined}, 
+\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ab9f5c797ebbf55adccdd8539a65a0241}{Status\+::\+Disabled}, 
+\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}{Status\+::\+Idle}, 
+\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ad8a942ef2b04672adfafef0ad817a407}{Status\+::\+Busy}, 
+\newline
+\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58a902b0d55fddef6f8d651fe1035b7d4bd}{Status\+::\+Error}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State} (const \hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{State\+::\+Status} \&a\+Status=\hyperlink{_state_8hpp_a188ce67e515b427589d4c363d1132018}{D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+T\+A\+T\+US}, const bool \&is\+Verbose=\hyperlink{_state_8hpp_a4ad8faebfc1723fec1090b84ec0f680e}{D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+E\+R\+B\+O\+SE})
+\item 
+\hyperlink{classostk_1_1simulation_1_1component_1_1_state_a36adbe9bccb78bec881e2c3f267724ed}{State} (const \hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State} \&a\+State)
+\item 
+virtual \hyperlink{classostk_1_1simulation_1_1component_1_1_state_a57c4cf4d8c50c2482402e3740483c29e}{$\sim$\+State} ()
+\item 
+virtual \hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State} $\ast$ \hyperlink{classostk_1_1simulation_1_1component_1_1_state_a32e9b1349918070f114cb38e61828897}{clone} () const
+\item 
+\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State} \& \hyperlink{classostk_1_1simulation_1_1component_1_1_state_ac8aaea99357f670afab3c087de08446f}{operator=} (const \hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State} \&a\+State)
+\item 
+bool \hyperlink{classostk_1_1simulation_1_1component_1_1_state_ad4440388904bac640dc57ffbc5b77019}{operator==} (const \hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State} \&a\+State) const
+\begin{DoxyCompactList}\small\item\em Equal to operator. \end{DoxyCompactList}\item 
+bool \hyperlink{classostk_1_1simulation_1_1component_1_1_state_abfb0349ee570125276b52aa2c3b1156d}{is\+Defined} () const
+\item 
+\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{State\+::\+Status} \hyperlink{classostk_1_1simulation_1_1component_1_1_state_a5ff60e1d912483effdb53b2b5c555cf9}{get\+Status} () const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State} \hyperlink{classostk_1_1simulation_1_1component_1_1_state_a21a79240817592992c4791699b2d623f}{Undefined} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classostk_1_1simulation_1_1_component}{Component} state. 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}\label{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}} 
+\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!Status@{Status}}
+\index{Status@{Status}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}
+\subsubsection{\texorpdfstring{Status}{Status}}
+{\footnotesize\ttfamily enum \hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{ostk\+::simulation\+::component\+::\+State\+::\+Status}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!Undefined@{Undefined}}}\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58aec0fc0100c4fc1ce4eea230c3dc10360}\label{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58aec0fc0100c4fc1ce4eea230c3dc10360}} 
+Undefined&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Disabled@{Disabled}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!Disabled@{Disabled}}}\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ab9f5c797ebbf55adccdd8539a65a0241}\label{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ab9f5c797ebbf55adccdd8539a65a0241}} 
+Disabled&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Idle@{Idle}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!Idle@{Idle}}}\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}\label{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}} 
+Idle&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Busy@{Busy}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!Busy@{Busy}}}\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ad8a942ef2b04672adfafef0ad817a407}\label{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ad8a942ef2b04672adfafef0ad817a407}} 
+Busy&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Error@{Error}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!Error@{Error}}}\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58a902b0d55fddef6f8d651fe1035b7d4bd}\label{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58a902b0d55fddef6f8d651fe1035b7d4bd}} 
+Error&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}\label{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}} 
+\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!State@{State}}
+\index{State@{State}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}
+\subsubsection{\texorpdfstring{State()}{State()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ostk\+::simulation\+::component\+::\+State\+::\+State (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{State\+::\+Status} \&}]{a\+Status = {\ttfamily \hyperlink{_state_8hpp_a188ce67e515b427589d4c363d1132018}{D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+T\+A\+T\+US}},  }\item[{const bool \&}]{is\+Verbose = {\ttfamily \hyperlink{_state_8hpp_a4ad8faebfc1723fec1090b84ec0f680e}{D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+E\+R\+B\+O\+SE}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_a36adbe9bccb78bec881e2c3f267724ed}\label{classostk_1_1simulation_1_1component_1_1_state_a36adbe9bccb78bec881e2c3f267724ed}} 
+\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!State@{State}}
+\index{State@{State}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}
+\subsubsection{\texorpdfstring{State()}{State()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ostk\+::simulation\+::component\+::\+State\+::\+State (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State} \&}]{a\+State }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_a57c4cf4d8c50c2482402e3740483c29e}\label{classostk_1_1simulation_1_1component_1_1_state_a57c4cf4d8c50c2482402e3740483c29e}} 
+\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!````~State@{$\sim$\+State}}
+\index{````~State@{$\sim$\+State}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}
+\subsubsection{\texorpdfstring{$\sim$\+State()}{~State()}}
+{\footnotesize\ttfamily ostk\+::simulation\+::component\+::\+State\+::$\sim$\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_a32e9b1349918070f114cb38e61828897}\label{classostk_1_1simulation_1_1component_1_1_state_a32e9b1349918070f114cb38e61828897}} 
+\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!clone@{clone}}
+\index{clone@{clone}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State} $\ast$ ostk\+::simulation\+::component\+::\+State\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_a5ff60e1d912483effdb53b2b5c555cf9}\label{classostk_1_1simulation_1_1component_1_1_state_a5ff60e1d912483effdb53b2b5c555cf9}} 
+\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!get\+Status@{get\+Status}}
+\index{get\+Status@{get\+Status}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}
+\subsubsection{\texorpdfstring{get\+Status()}{getStatus()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{State\+::\+Status} ostk\+::simulation\+::component\+::\+State\+::get\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_abfb0349ee570125276b52aa2c3b1156d}\label{classostk_1_1simulation_1_1component_1_1_state_abfb0349ee570125276b52aa2c3b1156d}} 
+\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!is\+Defined@{is\+Defined}}
+\index{is\+Defined@{is\+Defined}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}
+\subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
+{\footnotesize\ttfamily bool ostk\+::simulation\+::component\+::\+State\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_ac8aaea99357f670afab3c087de08446f}\label{classostk_1_1simulation_1_1component_1_1_state_ac8aaea99357f670afab3c087de08446f}} 
+\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!operator=@{operator=}}
+\index{operator=@{operator=}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State} \& ostk\+::simulation\+::component\+::\+State\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State} \&}]{a\+State }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_ad4440388904bac640dc57ffbc5b77019}\label{classostk_1_1simulation_1_1component_1_1_state_ad4440388904bac640dc57ffbc5b77019}} 
+\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!operator==@{operator==}}
+\index{operator==@{operator==}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool ostk\+::simulation\+::component\+::\+State\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State} \&}]{a\+State }\end{DoxyParamCaption}) const}
+
+
+
+Equal to operator. 
+
+
+\begin{DoxyCode}
+\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State} firstState = ... ;
+\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State} secondState = ... ;
+firstState == secondState ; \textcolor{comment}{// True}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a\+State} & A state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if states are equal 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_a21a79240817592992c4791699b2d623f}\label{classostk_1_1simulation_1_1component_1_1_state_a21a79240817592992c4791699b2d623f}} 
+\index{ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!ostk\+::simulation\+::component\+::\+State@{ostk\+::simulation\+::component\+::\+State}}
+\subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily \hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State} ostk\+::simulation\+::component\+::\+State\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Simulation/\+Component/\hyperlink{_state_8hpp}{State.\+hpp}\item 
+src/\+Open\+Space\+Toolkit/\+Simulation/\+Component/\hyperlink{_state_8cpp}{State.\+cpp}\end{DoxyCompactItemize}

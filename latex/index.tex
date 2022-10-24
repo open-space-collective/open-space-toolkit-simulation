@@ -1,0 +1,223 @@
+Structure
+
+\href{https://github.com/open-space-collective/open-space-toolkit-simulation/actions/workflows/build-test.yml}{\tt } \href{https://codecov.io/gh/open-space-collective/open-space-toolkit-simulation}{\tt } \href{https://open-space-collective.github.io/open-space-toolkit-simulation}{\tt } \href{https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-simulation}{\tt } \href{https://badge.fury.io/py/open-space-toolkit-simulation}{\tt } \href{https://opensource.org/licenses/Apache-2.0}{\tt }
+
+Spacecraft simulation.
+
+{\itshape This library is still in draft state. Do not use!}
+
+\subsection*{Getting Started}
+
+Want to get started? This is the simplest and quickest way\+:
+
+\href{https://mybinder.org/v2/gh/open-space-collective/open-space-toolkit/master?urlpath=lab/tree/notebooks}{\tt }
+
+{\itshape Nothing to download or install! This will automatically start a \href{https://jupyterlab.readthedocs.io/en/stable/}{\tt Jupyter\+Lab} environment in your browser with Open Space Toolkit libraries and example notebooks ready to use.}
+
+\subsubsection*{Alternatives}
+
+\paragraph*{Docker Images}
+
+\href{https://www.docker.com/}{\tt Docker} must be installed on your system.
+
+\subparagraph*{i\+Python}
+
+The following command will start an \href{https://ipython.org/}{\tt i\+Python} shell within a container where the O\+S\+Tk components are already installed\+:
+
+
+\begin{DoxyCode}
+docker run -it openspacecollective/open-space-toolkit-simulation-python
+\end{DoxyCode}
+
+
+Once the shell is up and running, playing with it is easy\+:
+
+
+\begin{DoxyCode}
+\textcolor{comment}{# TBC...}
+\end{DoxyCode}
+
+
+By default, O\+S\+Tk fetches the ephemeris from J\+PL, Earth Orientation Parameters (E\+OP) and leap second count from I\+E\+RS.
+
+As a result, when running O\+S\+Tk for the first time, it may take a minute to fetch all the necessary data.
+
+{\itshape Tip\+: Use tab for auto-\/completion!}
+
+\subparagraph*{Jupyter\+Lab}
+
+The following command will start a \href{https://jupyterlab.readthedocs.io/en/stable/}{\tt Jupyter\+Lab} server within a container where the O\+S\+Tk components are already installed\+:
+
+
+\begin{DoxyCode}
+docker run --publish=8888:8888 openspacecollective/open-space-toolkit-simulation-jupyter
+\end{DoxyCode}
+
+
+Once the container is running, access \href{http://localhost:8888/lab}{\tt http\+://localhost\+:8888/lab} and create a Python 3 Notebook.
+
+\subsection*{Installation}
+
+\subsubsection*{C++}
+
+The binary packages are hosted using \href{https://github.com/open-space-collective/open-space-toolkit-simulation/releases}{\tt Git\+Hub Releases}\+:
+
+
+\begin{DoxyItemize}
+\item Runtime libraries\+: {\ttfamily open-\/space-\/toolkit-\/simulation-\/\+X.\+Y.\+Z-\/1.\+x86\+\_\+64-\/runtime}
+\item C++ headers\+: {\ttfamily open-\/space-\/toolkit-\/simulation-\/\+X.\+Y.\+Z-\/1.\+x86\+\_\+64-\/devel}
+\item Python bindings\+: {\ttfamily open-\/space-\/toolkit-\/simulation-\/\+X.\+Y.\+Z-\/1.\+x86\+\_\+64-\/python}
+\end{DoxyItemize}
+
+\paragraph*{Debian / Ubuntu}
+
+After downloading the relevant {\ttfamily .deb} binary packages, install\+:
+
+
+\begin{DoxyCode}
+apt install open-space-toolkit-simulation-*.deb
+\end{DoxyCode}
+
+
+\paragraph*{Fedora / Cent\+OS}
+
+After downloading the relevant {\ttfamily .rpm} binary packages, install\+:
+
+
+\begin{DoxyCode}
+dnf install open-space-toolkit-simulation-*.rpm
+\end{DoxyCode}
+
+
+\subsubsection*{Python}
+
+Install from \href{https://pypi.org/project/open-space-toolkit-simulation/}{\tt Py\+PI}\+:
+
+
+\begin{DoxyCode}
+pip install open-space-toolkit-simulation
+\end{DoxyCode}
+
+
+\subsection*{Documentation}
+
+Documentation is available here\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://open-space-collective.github.io/open-space-toolkit-simulation}{\tt C++}
+\item \href{./bindings/python/docs}{\tt Python}
+\end{DoxyItemize}
+
+$<$details$>$
+
+The library exhibits the following detailed and descriptive structure\+:
+
+
+\begin{DoxyCode}
+└── Spacecraft
+\end{DoxyCode}
+
+
+$<$/details$>$
+
+\subsection*{Tutorials}
+
+Tutorials are available here\+:
+
+
+\begin{DoxyItemize}
+\item \href{./tutorials/cpp}{\tt C++}
+\item \href{./tutorials/python}{\tt Python}
+\end{DoxyItemize}
+
+\subsection*{Setup}
+
+\subsubsection*{Development Environment}
+
+Using \href{https://www.docker.com}{\tt Docker} for development is recommended, to simplify the installation of the necessary build tools and dependencies. Instructions on how to install Docker are available \href{https://docs.docker.com/install/}{\tt here}.
+
+To start the development environment\+:
+
+
+\begin{DoxyCode}
+make start-development
+\end{DoxyCode}
+
+
+This will\+:
+
+
+\begin{DoxyEnumerate}
+\item Build the {\ttfamily openspacecollective/open-\/space-\/toolkit-\/simulation-\/development} Docker image.
+\item Create a development environment container with local source files and helper scripts mounted.
+\item Start a {\ttfamily bash} shell from the {\ttfamily ./build} working directory.
+\end{DoxyEnumerate}
+
+If installing Docker is not an option, you can manually install the development tools (G\+CC, C\+Make) and all required dependencies, by following a procedure similar to the one described in the \href{./docker/development/Dockerfile}{\tt Development Dockerfile}.
+
+\subsubsection*{Build}
+
+From the {\ttfamily ./build} directory\+:
+
+
+\begin{DoxyCode}
+cmake ..
+make
+\end{DoxyCode}
+
+
+{\itshape Tip\+: {\ttfamily helpers/build.\+sh} simplifies building from within the development environment.}
+
+\subsubsection*{Test}
+
+To start a container to build and run the tests\+:
+
+
+\begin{DoxyCode}
+make test
+\end{DoxyCode}
+
+
+Or to run them manually\+:
+
+
+\begin{DoxyCode}
+./bin/open-space-toolkit-simulation.test
+\end{DoxyCode}
+
+
+{\itshape Tip\+: {\ttfamily helpers/test.\+sh} simplifies running tests from within the development environment.}
+
+\subsection*{Dependencies}
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Name }&\textbf{ Version }&\textbf{ License }&\textbf{ Link  }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Name }&\textbf{ Version }&\textbf{ License }&\textbf{ Link  }\\\cline{1-4}
+\endhead
+Pybind11 &2.\+6.\+1 &B\+S\+D-\/3-\/\+Clause &\href{https://github.com/pybind/pybind11}{\tt github.\+com/pybind/pybind11} \\\cline{1-4}
+Core &master &Apache License 2.\+0 &\href{https://github.com/open-space-collective/open-space-toolkit-core}{\tt github.\+com/open-\/space-\/collective/open-\/space-\/toolkit-\/core} \\\cline{1-4}
+I/O &master &Apache License 2.\+0 &\href{https://github.com/open-space-collective/open-space-toolkit-io}{\tt github.\+com/open-\/space-\/collective/open-\/space-\/toolkit-\/io} \\\cline{1-4}
+Mathematics &master &Apache License 2.\+0 &\href{https://github.com/open-space-collective/open-space-toolkit-mathematics}{\tt github.\+com/open-\/space-\/collective/open-\/space-\/toolkit-\/mathematics} \\\cline{1-4}
+Physics &master &Apache License 2.\+0 &\href{https://github.com/open-space-collective/open-space-toolkit-physics}{\tt github.\+com/open-\/space-\/collective/open-\/space-\/toolkit-\/physics} \\\cline{1-4}
+Astrodynamics &master &Apache License 2.\+0 &\href{https://github.com/open-space-collective/open-space-toolkit-astrodynamics}{\tt github.\+com/open-\/space-\/collective/open-\/space-\/toolkit-\/astrodynamics} \\\cline{1-4}
+\end{longtabu}
+\subsection*{Contribution}
+
+Contributions are more than welcome!
+
+Please read our \hyperlink{_c_o_n_t_r_i_b_u_t_i_n_g_8md}{contributing guide} to learn about our development process, how to propose fixes and improvements, and how to build and test the code.
+
+\subsection*{Special Thanks}
+
+\href{https://www.loftorbital.com/}{\tt }
+
+\subsection*{License}
+
+Apache License 2.\+0 
