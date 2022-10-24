@@ -134,7 +134,7 @@ Shared<Satellite>               Satellite::Configure                        (   
         Array<Shared<Component>>::Empty(),
         Satellite::GenerateFrame
         (
-            aSatelliteConfiguration.id,
+            String::Format("Satellite [{}]", aSatelliteConfiguration.id),
             profileSPtr
         ),
         profileSPtr,
@@ -196,7 +196,7 @@ Shared<const Frame>             Satellite::GenerateFrame                    (   
         }
     ) ;
 
-    return Frame::Construct(String::Format("Satellite [{}]", aName), false, Frame::GCRF(), transformProviderSPtr) ;
+    return Frame::Construct(aName, false, Frame::GCRF(), transformProviderSPtr) ;
 
 }
 

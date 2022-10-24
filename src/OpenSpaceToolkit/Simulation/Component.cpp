@@ -244,7 +244,7 @@ Shared<Component>               Component::Configure                        (   
         aParentComponentSPtr,
         Component::GenerateFrame
         (
-            aComponentConfiguration.id,
+            String::Format("Component [{}]", aComponentConfiguration.id),
             aComponentConfiguration.orientation,
             aParentComponentSPtr->accessFrame()
         ),
@@ -327,7 +327,7 @@ Shared<const Frame>             Component::GenerateFrame                    (   
         }
     ) ;
 
-    return Frame::Construct(String::Format("Component [{}]", aName), false, aParentFrameSPtr, transformProviderSPtr) ;
+    return Frame::Construct(aName, false, aParentFrameSPtr, transformProviderSPtr) ;
 
 }
 
