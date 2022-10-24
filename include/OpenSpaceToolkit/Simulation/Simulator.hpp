@@ -30,6 +30,10 @@ namespace simulation
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#define                         DEFAULT_SATELLITES                              Array<SatelliteConfiguration>::Empty()
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 using ostk::core::types::String ;
 using ostk::core::types::Shared ;
 using ostk::core::ctnr::Array ;
@@ -101,7 +105,7 @@ struct SimulatorConfiguration
 {
 
     const Environment           environment ;
-    const Array<SatelliteConfiguration> satellites ;
+    const Array<SatelliteConfiguration> satellites = DEFAULT_SATELLITES ;
 
 } ;
 

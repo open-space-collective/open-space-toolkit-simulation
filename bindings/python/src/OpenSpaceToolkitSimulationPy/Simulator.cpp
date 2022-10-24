@@ -48,7 +48,7 @@ inline void                     OpenSpaceToolkitSimulationPy_Simulator      (   
         .def("add_satellite", &Simulator::addSatellite, arg("satellite"))
 
         .def_static("undefined", &Simulator::Undefined)
-        .def_static("configure", &Simulator::Configure)
+        .def_static("configure", &Simulator::Configure, arg("configuration"))
 
     ;
 
@@ -58,7 +58,7 @@ inline void                     OpenSpaceToolkitSimulationPy_Simulator      (   
         (
             init<const Environment&, const Array<SatelliteConfiguration>&>(),
             arg("environment"),
-            arg("satellites")
+            arg("satellites") = DEFAULT_SATELLITES
         )
 
     ;

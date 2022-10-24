@@ -60,6 +60,7 @@ inline void                     OpenSpaceToolkitSimulationPy_Satellite      (   
         )
 
         .def_static("undefined", &Satellite::Undefined)
+        .def_static("configure", &Satellite::Configure, arg("configuration"), arg("simulator"))
 
     ;
 
@@ -71,9 +72,9 @@ inline void                     OpenSpaceToolkitSimulationPy_Satellite      (   
             arg("id"),
             arg("name"),
             arg("profile"),
-            arg("components"),
-            arg("tags"),
-            arg("geometries")
+            arg("components") = DEFAULT_COMPONENTS,
+            arg("tags") = DEFAULT_TAGS,
+            arg("geometries") = DEFAULT_GEOMETRIES
         )
 
     ;

@@ -9,13 +9,12 @@
 
 from datetime import datetime
 
-import numpy as np
-
 from ostk.mathematics.geometry.d2.objects import Point as Point2d
 from ostk.mathematics.geometry.d2.objects import Polygon as Polygon2d
 from ostk.mathematics.geometry.d3.objects import Point
 from ostk.mathematics.geometry.d3.objects import Polygon
 from ostk.mathematics.geometry.d3.objects import Pyramid
+from ostk.mathematics.geometry.d3.objects import Composite
 from ostk.mathematics.geometry.d3.transformations.rotations import Quaternion
 
 from ostk.physics import Environment
@@ -51,7 +50,7 @@ class TestSimulator:
         )
 
         simulator = Simulator.configure(
-            SimulatorConfiguration(
+            configuration = SimulatorConfiguration(
                 environment = environment,
                 satellites = [
                     SatelliteConfiguration(
@@ -72,41 +71,39 @@ class TestSimulator:
                                 geometries = [
                                     GeometryConfiguration(
                                         name = 'FOV',
-                                        object = Pyramid(
-                                            Polygon(
-                                                Polygon2d([Point2d(-0.1, -1.0), Point2d(+0.1, -1.0), Point2d(+0.1, +1.0), Point2d(-0.1, +1.0)]),
-                                                Point(0.0, 0.0, 1.0),
-                                                (1.0, 0.0, 0.0),
-                                                (0.0, 1.0, 0.0),
+                                        composite = Composite(
+                                            Pyramid(
+                                                Polygon(
+                                                    Polygon2d([Point2d(-0.1, -1.0), Point2d(+0.1, -1.0), Point2d(+0.1, +1.0), Point2d(-0.1, +1.0)]),
+                                                    Point(0.0, 0.0, 1.0),
+                                                    (1.0, 0.0, 0.0),
+                                                    (0.0, 1.0, 0.0),
+                                                ),
+                                                Point(0.0, 0.0, 0.0),
                                             ),
-                                            Point(0.0, 0.0, 0.0),
                                         ),
                                     ),
                                 ],
-                                components = [],
                             ),
                         ],
-                        geometries = [],
                     ),
                 ],
-            )
+            ),
         )
 
         instant = Instant.date_time(datetime(2020, 1, 1, 0, 0, 0), Scale.UTC)
-        print('instant = ', instant)
 
         simulator.set_instant(instant)
 
         camera = simulator.access_satellite_with_name('LoftSat-1').access_component_with_name('Camera')
-        print('camera = ', camera)
 
         camera_geometry = camera.access_geometry_with_name('FOV')
-        earth_geometry = environment.access_celestial_object_with_name('Earth').access_geometry()
+        earth = environment.access_celestial_object_with_name('Earth')
 
-        assert camera_geometry.intersects(earth_geometry) is True
+        assert camera_geometry.intersects(earth) is True
 
-        # EXPECT_EQ(2, camera_geometry.intersectionWith(earth_geometry).access_composite().getObjectCount()) ;
-        # EXPECT_TRUE(camera_geometry.intersectionWith(earth_geometry).accessComposite().accessObjectAt(0).is<LineString>()) ;
-        # EXPECT_TRUE(camera_geometry.intersectionWith(earth_geometry).accessComposite().accessObjectAt(1).is<LineString>()) ;
+        assert camera_geometry.intersection_with(earth).access_composite().get_object_count() == 2
+        assert camera_geometry.intersection_with(earth).access_composite().access_object_at(0).is_line_string() is True
+        assert camera_geometry.intersection_with(earth).access_composite().access_object_at(1).is_line_string() is True
 
 ################################################################################################################################################################

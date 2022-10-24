@@ -15,6 +15,7 @@
 
 #include <OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp>
 
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Composite.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Polygon.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Pyramid.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/LineString.hpp>
@@ -74,6 +75,7 @@ TEST (OpenSpaceToolkit_Simulation_Simulator, Test_1)
     using ostk::math::geom::d3::objects::LineString ;
     using ostk::math::geom::d3::objects::Polygon ;
     using ostk::math::geom::d3::objects::Pyramid ;
+    using ostk::math::geom::d3::objects::Composite ;
 
     using ostk::physics::Environment ;
     using ostk::physics::units::Length ;
@@ -127,16 +129,19 @@ TEST (OpenSpaceToolkit_Simulation_Simulator, Test_1)
                                 {
                                     {
                                         "FOV",
-                                        Pyramid
+                                        Composite
                                         {
-                                            Polygon
+                                            Pyramid
                                             {
-                                                { { { -0.1, -1.0 }, { +0.1, -1.0 }, { +0.1, +1.0 }, { -0.1, +1.0 } } },
-                                                Point { 0.0, 0.0, 1.0 },
-                                                { 1.0, 0.0, 0.0 },
-                                                { 0.0, 1.0, 0.0 }
-                                            },
-                                            Point { 0.0, 0.0, 0.0 }
+                                                Polygon
+                                                {
+                                                    { { { -0.1, -1.0 }, { +0.1, -1.0 }, { +0.1, +1.0 }, { -0.1, +1.0 } } },
+                                                    Point { 0.0, 0.0, 1.0 },
+                                                    { 1.0, 0.0, 0.0 },
+                                                    { 0.0, 1.0, 0.0 }
+                                                },
+                                                Point { 0.0, 0.0, 0.0 }
+                                            }
                                         }
                                     }
                                 }

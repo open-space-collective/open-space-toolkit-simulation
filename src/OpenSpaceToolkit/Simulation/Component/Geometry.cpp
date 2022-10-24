@@ -26,24 +26,17 @@ namespace component
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                                 Geometry::Geometry                          (   const   String&                     aName,
-                                                                                const   Object&                     anObject,
-                                                                                const   Shared<const Frame>&        aFrameSPtr,
-                                                                                const   Shared<const Component>&    aComponentSPtr                              )
-                                :   ObjectGeometry(anObject, aFrameSPtr),
-                                    name_(aName),
-                                    componentPtr_(aComponentSPtr)
-{
-
-}
-
-                                Geometry::Geometry                          (   const   String&                     aName,
                                                                                 const   Composite&                  aComposite,
-                                                                                const   Shared<const Frame>&        aFrameSPtr,
                                                                                 const   Shared<const Component>&    aComponentSPtr                              )
-                                :   ObjectGeometry(aComposite, aFrameSPtr),
-                                    name_(aName),
+                                :   name_(aName),
+                                    geometry_(ObjectGeometry::Undefined()),
                                     componentPtr_(aComponentSPtr)
 {
+
+    if (componentPtr_ != nullptr)
+    {
+        geometry_ = ObjectGeometry(aComposite, componentPtr_->accessFrame()) ;
+    }
 
 }
 
@@ -55,7 +48,7 @@ bool                            Geometry::operator ==                       (   
         return false ;
     }
 
-    return ObjectGeometry::operator == (aGeometry) && (this->name_ == aGeometry.name_) ;
+    return (this->name_ == aGeometry.name_) && (this->geometry_ == aGeometry.geometry_) && (this->componentPtr_ == aGeometry.componentPtr_) ;
 
 
 }
@@ -75,7 +68,7 @@ std::ostream&                   operator <<                                 (   
 bool                            Geometry::isDefined                         ( ) const
 {
 
-    return ObjectGeometry::isDefined() && !name_.isEmpty() && (componentPtr_ != nullptr) ;
+    return !this->name_.isEmpty() && this->geometry_.isDefined() && (this->componentPtr_ != nullptr) ;
 
 }
 
@@ -116,8 +109,13 @@ bool                            Geometry::intersects                        (   
     const Instant instant = this->accessComponent().accessSimulator().getInstant() ;
 
     // TBM: Why GCRF?
-    return this->in(Frame::GCRF(), instant).intersects(aGeometry.in(Frame::GCRF(), instant)) ;
+    return this->geometry_.in(Frame::GCRF(), instant).intersects(aGeometry.in(Frame::GCRF(), instant)) ;
 
+}
+
+bool                            Geometry::intersects                        (   const   Celestial&                  aCelestialObject                            ) const
+{
+    return this->intersects(aCelestialObject.accessGeometry()) ;
 }
 
 bool                            Geometry::contains                          (   const   ObjectGeometry&             aGeometry                                   ) const
@@ -133,8 +131,23 @@ bool                            Geometry::contains                          (   
     const Instant instant = this->accessComponent().accessSimulator().getInstant() ;
 
     // TBM: Why GCRF?
-    return this->in(Frame::GCRF(), instant).contains(aGeometry.in(Frame::GCRF(), instant)) ;
+    return this->geometry_.in(Frame::GCRF(), instant).contains(aGeometry.in(Frame::GCRF(), instant)) ;
 
+}
+
+bool                            Geometry::contains                          (   const   Celestial&                  aCelestialObject                            ) const
+{
+    return this->contains(aCelestialObject.accessGeometry()) ;
+}
+
+const Composite&                Geometry::accessComposite                   ( ) const
+{
+    return this->geometry_.accessComposite() ;
+}
+
+Shared<const Frame>             Geometry::accessFrame                       ( ) const
+{
+    return this->geometry_.accessFrame() ;
 }
 
 ObjectGeometry                  Geometry::intersectionWith                  (   const   ObjectGeometry&             aGeometry                                   ) const
@@ -150,8 +163,13 @@ ObjectGeometry                  Geometry::intersectionWith                  (   
     const Instant instant = this->accessComponent().accessSimulator().getInstant() ;
 
     // TBM: Why GCRF?
-    return this->in(Frame::GCRF(), instant).intersectionWith(aGeometry.in(Frame::GCRF(), instant)) ;
+    return this->geometry_.in(Frame::GCRF(), instant).intersectionWith(aGeometry.in(Frame::GCRF(), instant)) ;
 
+}
+
+ObjectGeometry                  Geometry::intersectionWith                  (   const   Celestial&                  aCelestialObject                            ) const
+{
+    return this->intersectionWith(aCelestialObject.accessGeometry()) ;
 }
 
 Geometry                        Geometry::Undefined                         ( )
@@ -161,7 +179,6 @@ Geometry                        Geometry::Undefined                         ( )
     {
         String::Empty(),
         Composite::Undefined(),
-        Frame::Undefined(),
         nullptr
     } ;
 
@@ -179,8 +196,7 @@ Shared<Geometry>                Geometry::Configure                         (   
     return std::make_shared<Geometry>
     (
         aGeometryConfiguration.name,
-        aGeometryConfiguration.object,
-        aComponentSPtr->accessFrame(),
+        aGeometryConfiguration.composite,
         aComponentSPtr
     ) ;
 

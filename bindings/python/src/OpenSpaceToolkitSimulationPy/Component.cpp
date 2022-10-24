@@ -83,7 +83,7 @@ inline void                     OpenSpaceToolkitSimulationPy_Component      (   
             .def("add_component", &Component::addComponent, arg("component"))
 
             .def_static("undefined", &Component::Undefined)
-            // .def_static("configure", &Component::Configure)
+            .def_static("configure", &Component::Configure, arg("configuration"), arg("parent_component"))
 
             .def_static("string_from_type", &Component::StringFromType, arg("type"))
 
@@ -117,11 +117,11 @@ inline void                     OpenSpaceToolkitSimulationPy_Component      (   
             >(),
             arg("id"),
             arg("name"),
-            arg("type"),
-            arg("tags"),
-            arg("orientation"),
-            arg("geometries"),
-            arg("components")
+            arg("type") = DEFAULT_COMPONENT_TYPE,
+            arg("tags") = DEFAULT_TAGS,
+            arg("orientation") = DEFAULT_ORIENTATION,
+            arg("geometries") = DEFAULT_GEOMETRIES,
+            arg("components") = DEFAULT_COMPONENTS
         )
 
     ;

@@ -45,6 +45,12 @@ using ostk::simulation::ComponentConfiguration ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#define                         DEFAULT_COMPONENTS                              Array<ComponentConfiguration>::Empty()
+#define                         DEFAULT_TAGS                                    Array<String>::Empty()
+#define                         DEFAULT_GEOMETRIES                              Array<GeometryConfiguration>::Empty()
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 class Simulator ;
 struct SatelliteConfiguration ;
 
@@ -109,9 +115,9 @@ struct SatelliteConfiguration
     const String                id ;
     const String                name ;
     const Profile               profile ;
-    const Array<ComponentConfiguration> components                              =   Array<ComponentConfiguration>::Empty() ;
-    const Array<String>         tags                                            =   Array<String>::Empty() ;
-    const Array<GeometryConfiguration> geometries                               =   Array<GeometryConfiguration>::Empty() ;
+    const Array<ComponentConfiguration> components                              =   DEFAULT_COMPONENTS ;
+    const Array<String>         tags                                            =   DEFAULT_TAGS ;
+    const Array<GeometryConfiguration> geometries                               =   DEFAULT_GEOMETRIES ;
 
 } ;
 

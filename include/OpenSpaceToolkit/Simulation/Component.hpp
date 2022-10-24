@@ -50,6 +50,14 @@ using ostk::simulation::component::GeometryConfiguration ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#define                         DEFAULT_COMPONENT_TYPE                          Component::Type::Undefined
+#define                         DEFAULT_TAGS                                    Array<String>::Empty()
+#define                         DEFAULT_ORIENTATION                             Quaternion::Unit()
+#define                         DEFAULT_GEOMETRIES                              Array<GeometryConfiguration>::Empty()
+#define                         DEFAULT_COMPONENTS                              Array<ComponentConfiguration>::Empty()
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 class Simulator ;
 struct ComponentConfiguration ;
 
@@ -155,11 +163,11 @@ struct ComponentConfiguration
 
     const String                id ;
     const String                name ;
-    const Component::Type       type                                            =   Component::Type::Undefined ;
-    const Array<String>         tags                                            =   Array<String>::Empty() ;
-    const Quaternion            orientation                                     =   Quaternion::Unit() ;
-    const Array<GeometryConfiguration> geometries                               =   Array<GeometryConfiguration>::Empty() ;
-    const Array<ComponentConfiguration> components                              =   Array<ComponentConfiguration>::Empty() ;
+    const Component::Type       type                                            =   DEFAULT_COMPONENT_TYPE ;
+    const Array<String>         tags                                            =   DEFAULT_TAGS ;
+    const Quaternion            orientation                                     =   DEFAULT_ORIENTATION ;
+    const Array<GeometryConfiguration> geometries                               =   DEFAULT_GEOMETRIES ;
+    const Array<ComponentConfiguration> components                              =   DEFAULT_COMPONENTS ;
 
 } ;
 

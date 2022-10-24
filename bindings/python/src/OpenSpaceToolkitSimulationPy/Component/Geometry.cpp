@@ -25,31 +25,21 @@ inline void                     OpenSpaceToolkitSimulationPy_Component_Geometry 
 
     using ostk::physics::coord::Frame ;
     using ObjectGeometry = ostk::physics::env::object::Geometry ;
+    using ostk::physics::env::obj::Celestial ;
 
     using ostk::simulation::Component ;
     using ostk::simulation::component::Geometry ;
     using ostk::simulation::component::GeometryConfiguration ;
 
-    // class_<Geometry, ObjectGeometry, Shared<Geometry>>(aModule, "Geometry")
-    class_<Geometry, ObjectGeometry>(aModule, "Geometry")
+    class_<Geometry, Shared<Geometry>>(aModule, "Geometry")
 
         .def
         (
-            init<const String&, const Object&, const Shared<const Frame>&, const Shared<const Component>&>(),
+            init<const String&, const Composite&, const Shared<const Component>&>(),
             arg("name"),
-            arg("object"),
-            arg("frame"),
+            arg("composite"),
             arg("component")
         )
-
-        // .def
-        // (
-        //     init<const String&, const Composite&, const Shared<const Frame>&, const Shared<const Component>&>(),
-        //     arg("name"),
-        //     arg("composite"),
-        //     arg("frame"),
-        //     arg("component")
-        // )
 
         .def("__str__", &(shiftToString<Geometry>))
         .def("__repr__", &(shiftToString<Geometry>))
@@ -60,12 +50,15 @@ inline void                     OpenSpaceToolkitSimulationPy_Component_Geometry 
 
         .def("get_name", &Geometry::getName)
 
-        .def("intersects", &Geometry::intersects, arg("geometry"))
-        .def("contains", &Geometry::contains, arg("geometry"))
-        .def("intersection_with", &Geometry::intersectionWith, arg("geometry"))
+        .def("intersects", overload_cast<const ObjectGeometry&>(&Geometry::intersects, const_), arg("geometry"))
+        .def("intersects", overload_cast<const Celestial&>(&Geometry::intersects, const_), arg("celestial_object"))
+        .def("contains", overload_cast<const ObjectGeometry&>(&Geometry::contains, const_), arg("geometry"))
+        .def("contains", overload_cast<const ObjectGeometry&>(&Geometry::contains, const_), arg("geometry"))
+        .def("intersection_with", overload_cast<const ObjectGeometry&>(&Geometry::intersectionWith, const_), arg("geometry"))
+        .def("intersection_with", overload_cast<const Celestial&>(&Geometry::intersectionWith, const_), arg("celestial_object"))
 
         .def_static("undefined", &Geometry::Undefined)
-        // .def_static("configure", &Geometry::Configure)
+        .def_static("configure", &Geometry::Configure, arg("configuration"), arg("component"))
 
     ;
 
@@ -73,9 +66,9 @@ inline void                     OpenSpaceToolkitSimulationPy_Component_Geometry 
 
         .def
         (
-            init<const String&, const Object&>(),
+            init<const String&, const Composite&>(),
             arg("name"),
-            arg("object")
+            arg("composite")
         )
 
     ;
