@@ -76,7 +76,7 @@ RUN mkdir -p /tmp/open-space-toolkit-io \
 
 ## Open Space Toolkit ▸ Mathematics
 
-ARG OSTK_MATHEMATICS_VERSION=0.4.6
+ARG OSTK_MATHEMATICS_VERSION=0.4.8
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
@@ -87,7 +87,7 @@ RUN mkdir -p /tmp/open-space-toolkit-mathematics \
 
 ## Open Space Toolkit ▸ Physics
 
-ARG OSTK_PHYSICS_VERSION=0.5.17
+ARG OSTK_PHYSICS_VERSION=0.5.21
 
 RUN mkdir -p /tmp/open-space-toolkit-physics \
  && cd /tmp/open-space-toolkit-physics \
@@ -105,7 +105,7 @@ ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local
 
 ## Open Space Toolkit ▸ Astrodynamics
 
-ARG OSTK_ASTRODYNAMICS_VERSION=0.4.21
+ARG OSTK_ASTRODYNAMICS_VERSION=0.4.22
 
 RUN mkdir -p /tmp/open-space-toolkit-astrodynamics \
  && cd /tmp/open-space-toolkit-astrodynamics \

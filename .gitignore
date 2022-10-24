@@ -17,8 +17,19 @@
 
 ## Visual Studio Code
 
-.vscode/
-*.code-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+!.vscode/c_cpp_properties.json
+
+### Local History for Visual Studio Code
+.history/
+
+### Built Visual Studio Code Extensions
+*.vsix
 
 ## Sublime Text
 

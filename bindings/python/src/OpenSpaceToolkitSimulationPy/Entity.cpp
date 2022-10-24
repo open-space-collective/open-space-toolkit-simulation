@@ -1,28 +1,39 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// @project        Open Space Toolkit ▸ Simulation
-/// @file           bindings/python/src/OpenSpaceToolkitSimulationPy/Spacecraft.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
+/// @file           bindings/python/src/OpenSpaceToolkitSimulationPy/Entity.cpp
+/// @author         Lucas Brémond <lucas@loftorbital.com>, Remy Derollez <remy@loftorbital.com>
 /// @license        Apache License 2.0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include <OpenSpaceToolkit/Simulation/Spacecraft.hpp>
+#include <OpenSpaceToolkit/Simulation/Entity.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-inline void                     OpenSpaceToolkitSimulationPy_Spacecraft                     (              pybind11::module&        aModule                    )
+inline void                     OpenSpaceToolkitSimulationPy_Entity         (           pybind11::module&           aModule                                     )
 {
 
     using namespace pybind11 ;
 
-    using ostk::simulation::Spacecraft ;
+    using ostk::core::types::Shared ;
 
-    class_<Spacecraft>(aModule, "Spacecraft")
+    using ostk::simulation::Entity ;
 
-    .def(init<>())
+    {
 
-    ;
+        class_<Entity, Shared<Entity>>(aModule, "Entity")
+
+            .def("is_defined", &Entity::isDefined)
+
+            .def("get_id", &Entity::getId)
+            .def("get_name", &Entity::getName)
+
+            .def_static("undefined", &Entity::Undefined)
+
+        ;
+
+    }
 
 }
 

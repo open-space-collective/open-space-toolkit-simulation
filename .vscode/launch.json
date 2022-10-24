@@ -1,0 +1,81 @@
+{
+    "configurations": [
+        {
+            "name": "C++: Debug Tests",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/open-space-toolkit-simulation.test",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+              {
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+              }
+            ]
+        },
+        // Not working yet.
+        // {
+        //     "name": "C/C++: g++ build and debug active file",
+        //     "type": "cppdbg",
+        //     "request": "launch",
+        //     "program": "${fileDirname}/${fileBasenameNoExtension}",
+        //     "args": [],
+        //     "stopAtEntry": false,
+        //     "cwd": "${fileDirname}",
+        //     "environment": [],
+        //     "externalConsole": false,
+        //     "MIMode": "gdb",
+        //     "miDebuggerPath": "/usr/bin/gdb",
+        //     "setupCommands": [
+        //         {
+        //             "description": "Enable pretty-printing for gdb",
+        //             "text": "-enable-pretty-printing",
+        //             "ignoreFailures": true
+        //         },
+        //         {
+        //             "description": "Set Disassembly Flavor to Intel",
+        //             "text": "-gdb-set disassembly-flavor intel",
+        //             "ignoreFailures": true
+        //         }
+        //     ],
+        //     "preLaunchTask": "C++: build active file"
+        // },
+        {
+            "name": "Python: Debug Tests",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/usr/local/bin/python3.8",
+            "args": [
+                "-m",
+                "pytest",
+                "-svx"
+            ],
+            "stopAtEntry": false,
+            // "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/bindings/python/test",
+            "environment": [
+                {
+                    "name": "PYTHONPATH",
+                    "value": "/usr/local/lib"
+                }
+            ],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+    ],
+    "version": "2.0.0"
+}
