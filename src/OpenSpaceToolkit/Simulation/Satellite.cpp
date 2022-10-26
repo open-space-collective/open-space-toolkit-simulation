@@ -181,10 +181,10 @@ Shared<const Frame>             Satellite::GenerateFrame                    (   
                 return Transform::Passive
                 (
                     anInstant,
-                    -state.getPosition(),
-                    -state.getVelocity(), // TBM: Random expression, didn't test at all
+                    -state.getPosition().getCoordinates(),
+                    -state.getVelocity().getCoordinates(), // TBM: Random expression, didn't test this at all
                     state.getAttitude(),
-                    -state.getAngularVelocity() // TBM: Random expression, didn't test at all
+                    -state.getAngularVelocity() // TBM: Random expression, didn't test this at all
                 ) ;
 
             }

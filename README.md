@@ -15,7 +15,7 @@ Spacecraft simulation.
 
 Want to get started? This is the simplest and quickest way:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open-space-collective/open-space-toolkit/master?urlpath=lab/tree/notebooks)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open-space-collective/open-space-toolkit/main?urlpath=lab/tree/notebooks)
 
 *Nothing to download or install! This will automatically start a [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) environment in your browser with Open Space Toolkit libraries and example notebooks ready to use.*
 
@@ -170,11 +170,11 @@ Or to run them manually:
 | Name          | Version | License            | Link                                                                                                                                           |
 | ------------- | ------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | Pybind11      | 2.6.1   | BSD-3-Clause       | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)                                                                               |
-| Core          | master  | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)                   |
-| I/O           | master  | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                       |
-| Mathematics   | master  | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics)     |
-| Physics       | master  | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-physics](https://github.com/open-space-collective/open-space-toolkit-physics)             |
-| Astrodynamics | master  | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-astrodynamics](https://github.com/open-space-collective/open-space-toolkit-astrodynamics) |
+| Core          | main    | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)                   |
+| I/O           | main    | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                       |
+| Mathematics   | main    | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics)     |
+| Physics       | main    | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-physics](https://github.com/open-space-collective/open-space-toolkit-physics)             |
+| Astrodynamics | main    | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-astrodynamics](https://github.com/open-space-collective/open-space-toolkit-astrodynamics) |
 
 ## Contribution
 
@@ -184,7 +184,7 @@ Please read our [contributing guide](CONTRIBUTING.md) to learn about our develop
 
 ## Special Thanks
 
-[![Loft Orbital](https://github.com/open-space-collective/open-space-toolkit/blob/master/assets/thanks/loft_orbital.png)](https://www.loftorbital.com/)
+[![Loft Orbital](https://github.com/open-space-collective/open-space-toolkit/blob/main/assets/thanks/loft_orbital.png)](https://www.loftorbital.com/)
 
 ## License
 
