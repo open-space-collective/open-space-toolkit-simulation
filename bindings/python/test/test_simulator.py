@@ -22,6 +22,7 @@ from ostk.physics.units import Length
 from ostk.physics.time import Instant
 from ostk.physics.time import Scale
 from ostk.physics.time import Time
+from ostk.physics.coordinate import Frame
 
 from ostk.astrodynamics.trajectory import Orbit
 from ostk.astrodynamics.flight import Profile
@@ -101,6 +102,11 @@ class TestSimulator:
         earth = environment.access_celestial_object_with_name('Earth')
 
         assert camera_geometry.intersects(earth) is True
+
+        assert camera_geometry.access_composite() is not None
+        assert camera_geometry.access_frame() is not None
+        assert camera_geometry.get_geometry_in(Frame.GCRF()) is not None
+        assert camera_geometry.get_geometry_in(Frame.ITRF()) is not None
 
         assert camera_geometry.intersection_with(earth).access_composite().get_object_count() == 2
         assert camera_geometry.intersection_with(earth).access_composite().access_object_at(0).is_line_string() is True

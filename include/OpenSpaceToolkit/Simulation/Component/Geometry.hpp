@@ -144,6 +144,12 @@ class Geometry
 
         Shared<const Frame>     accessFrame                                 ( ) const ;
 
+        /// @brief              Get geometry in frame
+        ///
+        /// @return             Geometry
+
+        ObjectGeometry          getGeometryIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const ;
+
         /// @brief              Compute intersection of geometry with another geometry
         ///
         /// @param              [in] aGeometry A geometry
