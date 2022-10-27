@@ -8,6 +8,7 @@ var searchData=
   ['geometry_2ehpp',['Geometry.hpp',['../_geometry_8hpp.html',1,'']]],
   ['geometryconfiguration',['GeometryConfiguration',['../structostk_1_1simulation_1_1component_1_1_geometry_configuration.html',1,'ostk::simulation::component']]],
   ['getgeometries',['getGeometries',['../classostk_1_1simulation_1_1_component.html#aba0796b346cbd27323c2e5c1df8ffcf2',1,'ostk::simulation::Component']]],
+  ['getgeometryin',['getGeometryIn',['../classostk_1_1simulation_1_1component_1_1_geometry.html#a39ea10b795b8732bafc20ee0fb9df962',1,'ostk::simulation::component::Geometry']]],
   ['getid',['getId',['../classostk_1_1simulation_1_1_entity.html#a33286b8807aacec430d105646c021a79',1,'ostk::simulation::Entity']]],
   ['getinstant',['getInstant',['../classostk_1_1simulation_1_1_simulator.html#a64483af631b1f905850bb8b366f6fb0a',1,'ostk::simulation::Simulator']]],
   ['getname',['getName',['../classostk_1_1simulation_1_1component_1_1_geometry.html#a2f13ab1988d7d64407f63100fd547fd0',1,'ostk::simulation::component::Geometry::getName()'],['../classostk_1_1simulation_1_1_entity.html#a17050a1483e16e62ca10e3b1ecade1d5',1,'ostk::simulation::Entity::getName()']]],

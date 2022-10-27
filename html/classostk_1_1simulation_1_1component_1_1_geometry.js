@@ -6,6 +6,7 @@ var classostk_1_1simulation_1_1component_1_1_geometry =
     [ "accessFrame", "classostk_1_1simulation_1_1component_1_1_geometry.html#afed7aa31b6b37090e90a7723af33f346", null ],
     [ "contains", "classostk_1_1simulation_1_1component_1_1_geometry.html#af39e2376a527720e37e46dc57f3eb6a5", null ],
     [ "contains", "classostk_1_1simulation_1_1component_1_1_geometry.html#ade44921582930e30c598dbeba365f528", null ],
+    [ "getGeometryIn", "classostk_1_1simulation_1_1component_1_1_geometry.html#a39ea10b795b8732bafc20ee0fb9df962", null ],
     [ "getName", "classostk_1_1simulation_1_1component_1_1_geometry.html#a2f13ab1988d7d64407f63100fd547fd0", null ],
     [ "intersectionWith", "classostk_1_1simulation_1_1component_1_1_geometry.html#a3fe1b4be3ee05faab0ff647697afcd6e", null ],
     [ "intersectionWith", "classostk_1_1simulation_1_1component_1_1_geometry.html#ab36a969d150208ea070d214eff3d52d7", null ],
