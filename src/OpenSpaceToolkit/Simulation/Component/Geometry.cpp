@@ -68,7 +68,7 @@ std::ostream&                   operator <<                                 (   
 bool                            Geometry::isDefined                         ( ) const
 {
 
-    return !this->name_.isEmpty() && this->geometry_.isDefined() && (this->componentPtr_ != nullptr) ;
+    return (!this->name_.isEmpty()) && this->geometry_.isDefined() && (this->componentPtr_ != nullptr) ;
 
 }
 
@@ -109,7 +109,7 @@ bool                            Geometry::intersects                        (   
     const Instant instant = this->accessComponent().accessSimulator().getInstant() ;
 
     // TBM: Why GCRF?
-    return this->geometry_.in(Frame::GCRF(), instant).intersects(aGeometry.in(Frame::GCRF(), instant)) ;
+    return this->getGeometryIn(Frame::GCRF()).intersects(aGeometry.in(Frame::GCRF(), instant)) ;
 
 }
 
@@ -131,7 +131,7 @@ bool                            Geometry::contains                          (   
     const Instant instant = this->accessComponent().accessSimulator().getInstant() ;
 
     // TBM: Why GCRF?
-    return this->geometry_.in(Frame::GCRF(), instant).contains(aGeometry.in(Frame::GCRF(), instant)) ;
+    return this->getGeometryIn(Frame::GCRF()).contains(aGeometry.in(Frame::GCRF(), instant)) ;
 
 }
 
@@ -150,6 +150,18 @@ Shared<const Frame>             Geometry::accessFrame                       ( ) 
     return this->geometry_.accessFrame() ;
 }
 
+ObjectGeometry                  Geometry::getGeometryIn                     (   const   Shared<const Frame>&        aFrameSPtr                                  ) const
+{
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Geometry") ;
+    }
+
+    return this->geometry_.in(aFrameSPtr, this->accessComponent().accessSimulator().getInstant()) ;
+
+}
+
 ObjectGeometry                  Geometry::intersectionWith                  (   const   ObjectGeometry&             aGeometry                                   ) const
 {
 
@@ -163,7 +175,7 @@ ObjectGeometry                  Geometry::intersectionWith                  (   
     const Instant instant = this->accessComponent().accessSimulator().getInstant() ;
 
     // TBM: Why GCRF?
-    return this->geometry_.in(Frame::GCRF(), instant).intersectionWith(aGeometry.in(Frame::GCRF(), instant)) ;
+    return this->getGeometryIn(Frame::GCRF()).intersectionWith(aGeometry.in(Frame::GCRF(), instant)) ;
 
 }
 

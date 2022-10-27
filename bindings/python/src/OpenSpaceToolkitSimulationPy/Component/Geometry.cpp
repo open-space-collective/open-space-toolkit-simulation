@@ -54,6 +54,9 @@ inline void                     OpenSpaceToolkitSimulationPy_Component_Geometry 
         .def("intersects", overload_cast<const Celestial&>(&Geometry::intersects, const_), arg("celestial_object"))
         .def("contains", overload_cast<const ObjectGeometry&>(&Geometry::contains, const_), arg("geometry"))
         .def("contains", overload_cast<const ObjectGeometry&>(&Geometry::contains, const_), arg("geometry"))
+        .def("access_composite", &Geometry::accessComposite, return_value_policy::reference)
+        .def("access_frame", &Geometry::accessFrame)
+        .def("get_geometry_in", &Geometry::getGeometryIn, arg("frame"))
         .def("intersection_with", overload_cast<const ObjectGeometry&>(&Geometry::intersectionWith, const_), arg("geometry"))
         .def("intersection_with", overload_cast<const Celestial&>(&Geometry::intersectionWith, const_), arg("celestial_object"))
 
