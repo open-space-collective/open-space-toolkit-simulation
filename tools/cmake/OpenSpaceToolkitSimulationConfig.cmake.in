@@ -9,7 +9,7 @@
 
 SET (OpenSpaceToolkitSimulation_ROOT_DIR ${OpenSpaceToolkitSimulation_ROOT_DIR} @CMAKE_INSTALL_PREFIX@)
 
-FIND_PATH (OpenSpaceToolkitSimulation_INCLUDE_DIR "OpenSpaceToolkit/Simulation/Spacecraft.hpp" PATHS ${OpenSpaceToolkitSimulation_ROOT_DIR} PATH_SUFFIXES "include" NO_DEFAULT_PATH)
+FIND_PATH (OpenSpaceToolkitSimulation_INCLUDE_DIR "OpenSpaceToolkit/Simulation/Satellite.hpp" PATHS ${OpenSpaceToolkitSimulation_ROOT_DIR} PATH_SUFFIXES "include" NO_DEFAULT_PATH)
 FIND_LIBRARY (OpenSpaceToolkitSimulation_LIBRARY NAMES "libopen-space-toolkit-simulation.so" PATHS ${OpenSpaceToolkitSimulation_ROOT_DIR} PATH_SUFFIXES "lib" NO_DEFAULT_PATH)
 
 # MESSAGE (STATUS "OpenSpaceToolkitSimulation_ROOT_DIR = ${OpenSpaceToolkitSimulation_ROOT_DIR}")

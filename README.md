@@ -103,7 +103,7 @@ Documentation is available here:
 The library exhibits the following detailed and descriptive structure:
 
 ```txt
-└── Spacecraft
+└── Satellite
 ```
 
 </p>
@@ -169,7 +169,7 @@ Or to run them manually:
 
 | Name          | Version | License            | Link                                                                                                                                           |
 | ------------- | ------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pybind11      | 2.6.1   | BSD-3-Clause       | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)                                                                               |
+| Pybind11      | 2.10.0  | BSD-3-Clause       | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)                                                                               |
 | Core          | main    | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)                   |
 | I/O           | main    | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                       |
 | Mathematics   | main    | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics)     |
