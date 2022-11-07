@@ -103,7 +103,7 @@ Documentation is available here:
 The library exhibits the following detailed and descriptive structure:
 
 ```txt
-└── Spacecraft
+└── Satellite
 ```
 
 </p>
