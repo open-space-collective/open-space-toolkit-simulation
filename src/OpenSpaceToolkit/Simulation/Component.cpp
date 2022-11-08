@@ -90,7 +90,7 @@ std::ostream&                   operator <<                                 (   
 
 bool                            Component::isDefined                        ( ) const
 {
-    return Entity::isDefined() && frameSPtr_ && simulatorSPtr_ ;
+    return Entity::isDefined() && frameSPtr_ ;
 }
 
 const Shared<const Frame>&      Component::accessFrame                      ( ) const
@@ -131,6 +131,11 @@ const Simulator&                Component::accessSimulator                  ( ) 
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Component") ;
+    }
+
+    if (!simulatorSPtr_)
+    {
+        throw ostk::core::error::runtime::Undefined("Simulator") ;
     }
 
     return *(this->simulatorSPtr_) ;
