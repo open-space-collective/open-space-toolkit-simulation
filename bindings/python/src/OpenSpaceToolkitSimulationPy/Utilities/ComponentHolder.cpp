@@ -18,7 +18,6 @@ inline void                     OpenSpaceToolkitSimulationPy_Utilities_Component
 
     using ostk::core::types::Shared ;
 
-    using ostk::simulation::Component ;
     using ostk::simulation::utilities::ComponentHolder ;
 
     class_<ComponentHolder, Shared<ComponentHolder>>(aModule, "ComponentHolder")
