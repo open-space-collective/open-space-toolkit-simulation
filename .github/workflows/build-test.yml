@@ -12,22 +12,29 @@ name: Build and Test
 on:
   push:
     branches:
+      - /^\d+\.\d+(\.\d+)?(-\S*)?$/
       - main
+      - dev
+    tags:
+      - '*.*.*'
   pull_request:
+    branches:
+      - main
 
 concurrency:
-  group: main-${{ github.ref }}
+  group: ci-tests-${{ github.ref }}-1
   cancel-in-progress: true
 
 env:
-  PROJECT_NAME: open-space-toolkit-simulation
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  LANG: en_US.UTF-8
 
 jobs:
   prepare-environment:
     name: Prepare Environment Variables
     runs-on: ubuntu-latest
     outputs:
-      project_name: ${{ steps.project-name.outputs.value }}
       project_version: ${{ steps.project-version.outputs.value }}
     steps:
       - name: Checkout Repository
@@ -35,11 +42,6 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - id: project-name
-        name: Get Project Name
-        run: |
-          echo "Project name: ${project_version}"
-          echo "::set-output name=value::${{ env.PROJECT_NAME }}"
       - id: project-version
         name: Get Project Version
         run: |
@@ -47,14 +49,267 @@ jobs:
           echo "Project version: ${project_version}"
           echo "::set-output name=value::${project_version}"
 
-  build-and-test:
-    name: Build & Test
+  build-image-development:
+    name: Build Development Image (Debian)
+    runs-on: ubuntu-latest
     needs:
       - prepare-environment
-    uses: open-space-collective/open-space-toolkit/.github/workflows/build-test.yml@main
-    with:
-      project_name: ${{ needs.prepare-environment.outputs.project_name }}
-      project_version: ${{ needs.prepare-environment.outputs.project_version }}
-    secrets: inherit
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Development Image
+        uses: docker/build-push-action@v3
+        with:
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}-debian
+          context: ./docker/development/debian
+          build-args: |
+            BASE_IMAGE_SYSTEM=debian
+            VERSION=${{ needs.prepare-environment.outputs.project_version }}
+          push: true
+
+  test-unit-cpp:
+    name: Run C++ Unit Tests
+    runs-on: ubuntu-latest
+    needs:
+      - prepare-environment
+      - build-image-development
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull Development Image
+        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}-debian
+      - name: Run Unit Tests C++
+        run: make test-coverage-cpp-debian
+      - name: Upload Coverage Results
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage/
+          fail_ci_if_error: false
+
+  test-unit-python:
+    name: Run Python Unit Tests
+    runs-on: ubuntu-latest
+    needs:
+      - prepare-environment
+      - build-image-development
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull Development Image
+        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}-debian
+      - name: Run Unit Tests Python
+        run: make test-unit-python-debian
+
+  build-package-cpp-debian:
+    name: Build C++ Package (Debian)
+    runs-on: ubuntu-latest
+    needs:
+      - prepare-environment
+      - test-unit-cpp
+      - test-unit-python
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull Development Image
+        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}-debian
+      - name: Build C++ Package (Debian)
+        run: make build-packages-cpp-debian
+      - name: Upload C++ Package (Debian)
+        uses: actions/upload-artifact@v3
+        with:
+          name: cpp-package-debian
+          path: packages/cpp/
+
+  build-package-python-debian:
+    name: Build Python Package (Debian)
+    runs-on: ubuntu-latest
+    needs:
+      - prepare-environment
+      - test-unit-cpp
+      - test-unit-python
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull Development Image
+        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}-debian
+      - name: Build Python Package (Debian)
+        run: make build-packages-python-debian
+      - name: Upload Python Package (Debian)
+        uses: actions/upload-artifact@v3
+        with:
+          name: python-package-debian
+          path: packages/python/
+
+  build-documentation:
+    name: Build Documentation
+    runs-on: ubuntu-latest
+    needs:
+      - prepare-environment
+      - test-unit-cpp
+      - test-unit-python
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Documentation
+        run: make build-documentation
+      - name: Upload Documentation
+        uses: actions/upload-artifact@v3
+        with:
+          name: docs
+          path: docs/
+
+  # Add image push
+
+  # Below move to release.yml when testing is done
+
+  deploy-documentation:
+    name: Deploy Documentation
+    runs-on: ubuntu-latest
+    needs:
+      - build-package-cpp-debian
+      - build-documentation
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Download Documentation
+        uses: actions/download-artifact@v3
+        with:
+          name: docs
+          path: docs/
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: docs
+
+  deploy-package-cpp-debian:
+    name: Deploy C++ Package (Debian)
+    runs-on: ubuntu-latest
+    needs:
+      - build-package-cpp-debian
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Download C++ Package (Debian)
+        uses: actions/download-artifact@v3
+        with:
+          name: cpp-package-debian
+          path: packages/cpp/
+      - name: Deploy C++ Package (Debian)
+        run: |
+          cd packages/cpp
+          export archive=$(find . -name "*-devel.deb")
+          curl -F archive=@${archive} https://${{ secrets.PYPI_API_TOKEN }}@package.loftorbital.com/apt
+          export archive=$(find . -name "*-python.deb")
+          curl -F archive=@${archive} https://${{ secrets.PYPI_API_TOKEN }}@package.loftorbital.com/apt
+          export archive=$(find . -name "*-runtime.deb")
+          curl -F archive=@${archive} https://${{ secrets.PYPI_API_TOKEN }}@package.loftorbital.com/apt
+
+  deploy-package-python-debian:
+    name: Deploy Python Package (Debian)
+    runs-on: ubuntu-latest
+    needs:
+      - build-package-python-debian
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Download Python Package (Debian)
+        uses: actions/download-artifact@v3
+        with:
+          name: python-package-debian
+          path: packages/python/
+      - name: Deploy Python Package (Debian)
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository_url: ${{ secrets.PACKAGE_REPOSITORY_URL }}/pypi/
+          user: ${{ secrets.PYPI_API_TOKEN }}
+          password: ""
+          packages_dir: packages/python/
+          verbose: true
 
 ################################################################################################################################################################
