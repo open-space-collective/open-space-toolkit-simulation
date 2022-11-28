@@ -2,149 +2,124 @@
 
 # @project        Open Space Toolkit ▸ Simulation
 # @file           .github/workflows/build-test.yml
-# @author         Lucas Brémond <lucas@loftorbital.com>
+# @author         Remy Derollez <remy@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
 
-# name: Release
+name: Release
 
-# on:
-#   release:
-#     types: [published]
+on:
+  release:
+    types: [published]
 
-# env:
-#   REGISTRY: ghcr.io
-#   IMAGE_NAME: ${{ github.repository }}
-#   LANG: en_US.UTF-8
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  LANG: en_US.UTF-8
 
-# jobs:
-  # release-package-cpp-debian:
-  #   name: Deploy C++ Package (Debian)
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     contents: write
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
-  #         lfs: true
-  #     - name: Log in to the Container registry
-  #       uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-  #       with:
-  #         registry: ${{ env.REGISTRY }}
-  #         username: ${{ github.actor }}
-  #         password: ${{ secrets.GITHUB_TOKEN }}
-  #     - name: Download C++ Package (Debian)
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: cpp-package-debian
-  #         path: packages/cpp/
-  #     - name: Release C++ Package (Debian)
-  #       uses: softprops/action-gh-release@v1
-  #       if: startsWith(github.ref, 'refs/tags/')
-  #       with:
-  #         files: packages/cpp/*
+jobs:
+  deploy-package-cpp-debian:
+    name: Deploy C++ Package (Debian)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Download C++ Package (Debian)
+        uses: actions/download-artifact@v3
+        with:
+          name: cpp-package-debian
+          path: packages/cpp/
+      - name: Deploy C++ Package (Debian)
+        run: |
+          cd packages/cpp
+          export archive=$(find . -name "*-devel.deb")
+          curl -F archive=@${archive} https://${{ secrets.PYPI_API_TOKEN }}@package.loftorbital.com/apt
+          export archive=$(find . -name "*-python.deb")
+          curl -F archive=@${archive} https://${{ secrets.PYPI_API_TOKEN }}@package.loftorbital.com/apt
+          export archive=$(find . -name "*-runtime.deb")
+          curl -F archive=@${archive} https://${{ secrets.PYPI_API_TOKEN }}@package.loftorbital.com/apt
 
-  # deploy-package-python-debian:
-  #   name: Deploy Python Package (Debian)
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     contents: write
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
-  #         lfs: true
-  #     - name: Download Python Package (Debian)
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: python-package-debian
-  #         path: packages/python/
-  #     - name: Deploy Python Package (Debian)
-  #       uses: pypa/gh-action-pypi-publish@release/v1
-  #       with:
-  #         repository_url: ${{ secrets.PACKAGE_REPOSITORY_URL }}
-  #         password: ${{ secrets.PYPI_API_TOKEN }}
-  #         packages_dir: packages/python/
+  deploy-package-python-debian:
+    name: Deploy Python Package (Debian)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Download Python Package (Debian)
+        uses: actions/download-artifact@v3
+        with:
+          name: python-package-debian
+          path: packages/python/
+      - name: Deploy Python Package (Debian)
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository_url: ${{ secrets.PACKAGE_REPOSITORY_URL }}/pypi/
+          user: ${{ secrets.PYPI_API_TOKEN }}
+          password: ""
+          packages_dir: packages/python/
+          verbose: true
 
-  # deploy-documentation:
-  #   name: Deploy Documentation
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     contents: write
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
-  #         lfs: true
-  #     - name: Download Documentation
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: docs
-  #         path: docs/
-  #     - name: Deploy to GitHub Pages
-  #       uses: JamesIves/github-pages-deploy-action@v4
-  #       with:
-  #         branch: gh-pages
-  #         folder: docs
+  deploy-image-jupyter:
+    name: Deploy Jupyter Image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Jupyter Image
+        uses: docker/build-push-action@v3
+        with:
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-jupyter:${{ needs.prepare-environment.outputs.project_version }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-jupyter:latest
+          context: ./docker/jupyter
+          build-args: |
+            JUPYTER_NOTEBOOK_IMAGE_REPOSITORY=jupyter/scipy-notebook:latest
+          push: true
 
-  # deploy-image-jupyter:
-  #   name: Deploy Jupyter Image
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
-  #         lfs: true
-  #     - name: Set up Docker Buildx
-  #       uses: docker/setup-buildx-action@v2
-  #     - name: Log in to the Container registry
-  #       uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-  #       with:
-  #         registry: ${{ env.REGISTRY }}
-  #         username: ${{ github.actor }}
-  #         password: ${{ secrets.GITHUB_TOKEN }}
-      # - name: Build Jupyter Image
-      #   uses: docker/build-push-action@v3
-      #   with:
-      #     tags: |
-      #       ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-jupyter:${{ inputs.project_version }}
-      #       ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-jupyter:latest
-      #     context: ./docker/jupyter
-      #     build-args: |
-      #       JUPYTER_NOTEBOOK_IMAGE_REPOSITORY=jupyter/scipy-notebook:latest
-      #     push: true
-
-  # deploy-package-python-debian:
-  #   name: Deploy Python Package (Debian)
-  #   runs-on: ubuntu-latest
-  #   needs:
-  #     - build-package-python-debian
-  #   permissions:
-  #     contents: write
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
-  #         lfs: true
-  #     - name: Download Python Package (Debian)
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: python-package-debian
-  #         path: packages/python/
-  #     - name: Deploy Python Package (Debian)
-  #       uses: pypa/gh-action-pypi-publish@release/v1
-  #       with:
-  #         repository_url: ${{ secrets.PACKAGE_REPOSITORY_URL }}/pypi/
-  #         user: ${{ secrets.PYPI_API_TOKEN }}
-  #         password: ""
-  #         packages_dir: packages/python/
-  #         verbose: true
+  deploy-documentation:
+    name: Deploy Documentation
+    runs-on: ubuntu-latest
+    needs:
+      - deploy-package-cpp-debian
+      - deploy-package-python-debian
+      - deploy-image-jupyter
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Download Documentation
+        uses: actions/download-artifact@v3
+        with:
+          name: docs
+          path: docs/
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: docs
 
 ################################################################################################################################################################
