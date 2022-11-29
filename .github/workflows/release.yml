@@ -2,7 +2,7 @@
 
 # @project        Open Space Toolkit ▸ Simulation
 # @file           .github/workflows/release.yml
-# @author         Lucas Brémond <lucas@loftorbital.com>
+# @author         Remy Derollez <remy@loftorbital.com>
 # @license        Apache License 2.0
 
 ################################################################################################################################################################
@@ -14,52 +14,112 @@ on:
     types: [published]
 
 env:
-  PROJECT_NAME: open-space-toolkit-simulation
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  LANG: en_US.UTF-8
 
 jobs:
-  prepare-environment:
-    name: Prepare Environment Variables
+  deploy-package-cpp-debian:
+    name: Deploy C++ Package (Debian)
     runs-on: ubuntu-latest
-    outputs:
-      project_name: ${{ steps.project-name.outputs.value }}
-      project_version: ${{ steps.project-version.outputs.value }}
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
           lfs: true
-      - id: project-name
-        name: Get Project Name
+      - name: Download C++ Package (Debian)
+        uses: actions/download-artifact@v3
+        with:
+          name: cpp-package-debian
+          path: packages/cpp/
+      - name: Deploy C++ Package (Debian)
         run: |
-          echo "Project name: ${project_version}"
-          echo "::set-output name=value::${{ env.PROJECT_NAME }}"
-      - id: project-version
-        name: Get Project Version
-        run: |
-          project_version=$(git describe --tags --always)
-          echo "Project version: ${project_version}"
-          echo "::set-output name=value::${project_version}"
+          cd packages/cpp
+          export archive=$(find . -name "*-devel.deb")
+          curl -F archive=@${archive} https://${{ secrets.PYPI_API_TOKEN }}@package.loftorbital.com/apt
+          export archive=$(find . -name "*-python.deb")
+          curl -F archive=@${archive} https://${{ secrets.PYPI_API_TOKEN }}@package.loftorbital.com/apt
+          export archive=$(find . -name "*-runtime.deb")
+          curl -F archive=@${archive} https://${{ secrets.PYPI_API_TOKEN }}@package.loftorbital.com/apt
 
-  build-and-test:
-    name: Build & Test
-    needs:
-      - prepare-environment
-    uses: open-space-collective/open-space-toolkit/.github/workflows/build-test.yml@main
-    with:
-      project_name: ${{ needs.prepare-environment.outputs.project_name }}
-      project_version: ${{ needs.prepare-environment.outputs.project_version }}
-    secrets: inherit
+  deploy-package-python-debian:
+    name: Deploy Python Package (Debian)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Download Python Package (Debian)
+        uses: actions/download-artifact@v3
+        with:
+          name: python-package-debian
+          path: packages/python/
+      - name: Deploy Python Package (Debian)
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository_url: ${{ secrets.PACKAGE_REPOSITORY_URL }}/pypi/
+          user: ${{ secrets.PYPI_API_TOKEN }}
+          password: ""
+          packages_dir: packages/python/
+          verbose: true
 
-  release:
-    name: Release
+  deploy-image-jupyter:
+    name: Deploy Jupyter Image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Jupyter Image
+        uses: docker/build-push-action@v3
+        with:
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-jupyter:${{ needs.prepare-environment.outputs.project_version }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-jupyter:latest
+          context: ./docker/jupyter
+          build-args: |
+            JUPYTER_NOTEBOOK_IMAGE_REPOSITORY=jupyter/scipy-notebook:latest
+          push: true
+
+  deploy-documentation:
+    name: Deploy Documentation
+    runs-on: ubuntu-latest
     needs:
-      - prepare-environment
-      - build-and-test
-    uses: open-space-collective/open-space-toolkit/.github/workflows/release.yml@main
-    with:
-      project_name: ${{ needs.prepare-environment.outputs.project_name }}
-      project_version: ${{ needs.prepare-environment.outputs.project_version }}
-    secrets: inherit
+      - deploy-package-cpp-debian
+      - deploy-package-python-debian
+      - deploy-image-jupyter
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Download Documentation
+        uses: actions/download-artifact@v3
+        with:
+          name: docs
+          path: docs/
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: docs
 
 ################################################################################################################################################################

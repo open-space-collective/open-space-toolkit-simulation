@@ -10,7 +10,7 @@
 project_name := simulation
 project_version := $(shell git describe --tags --always)
 
-docker_registry_path := openspacecollective
+docker_registry_path := ghcr.io/loft-orbital
 docker_image_repository := $(docker_registry_path)/open-space-toolkit-$(project_name)
 docker_image_version := $(project_version)
 
@@ -473,7 +473,7 @@ _test-unit-python: _build-release-image-python
 
 	docker run \
 		--rm \
-		--workdir=/usr/local/lib/python3.8/site-packages/ostk/$(project_name) \
+		--workdir=/usr/local/lib/python3.9/site-packages/ostk/$(project_name) \
 		--entrypoint="" \
 		$(docker_release_image_python_repository):$(docker_image_version)-$(target) \
 		/bin/bash -c "pip install pytest && pytest -sv ."

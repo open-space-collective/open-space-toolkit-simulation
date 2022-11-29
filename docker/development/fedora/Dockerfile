@@ -48,7 +48,7 @@ RUN mkdir /tmp/eigen \
 
 ## Open Space Toolkit ▸ Core
 
-ARG OSTK_CORE_VERSION=0.4.5
+ARG OSTK_CORE_VERSION=0.4.6
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \
@@ -70,7 +70,7 @@ RUN mkdir -p /tmp/open-space-toolkit-io \
 
 ## Open Space Toolkit ▸ Mathematics
 
-ARG OSTK_MATHEMATICS_VERSION=0.5.0
+ARG OSTK_MATHEMATICS_VERSION=0.5.1
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
@@ -81,7 +81,7 @@ RUN mkdir -p /tmp/open-space-toolkit-mathematics \
 
 ## Open Space Toolkit ▸ Physics
 
-ARG OSTK_PHYSICS_VERSION=0.5.22
+ARG OSTK_PHYSICS_VERSION=0.5.24
 
 RUN mkdir -p /tmp/open-space-toolkit-physics \
  && cd /tmp/open-space-toolkit-physics \
@@ -99,7 +99,7 @@ COPY --from=us.gcr.io/loft-orbital-public/software/open-space-toolkit/data:0.3.0
 
 ## Open Space Toolkit ▸ Astrodynamics
 
-ARG OSTK_ASTRODYNAMICS_VERSION=0.7.0
+ARG OSTK_ASTRODYNAMICS_VERSION=0.7.5
 
 RUN mkdir -p /tmp/open-space-toolkit-astrodynamics \
  && cd /tmp/open-space-toolkit-astrodynamics \
