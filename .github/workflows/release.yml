@@ -1,7 +1,7 @@
 ################################################################################################################################################################
 
 # @project        Open Space Toolkit ▸ Simulation
-# @file           .github/workflows/build-test.yml
+# @file           .github/workflows/release.yml
 # @author         Remy Derollez <remy@loftorbital.com>
 # @license        Apache License 2.0
 
