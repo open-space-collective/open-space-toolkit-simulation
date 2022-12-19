@@ -24,8 +24,6 @@ inline void                     OpenSpaceToolkitSimulationPy_Satellite      (   
 
     using ostk::astro::flight::Profile ;
 
-    using ostk::simulation::Component ;
-
     using ostk::simulation::Simulator ;
     using ostk::simulation::Satellite ;
     using ostk::simulation::SatelliteConfiguration ;
@@ -60,7 +58,7 @@ inline void                     OpenSpaceToolkitSimulationPy_Satellite      (   
         )
 
         .def_static("undefined", &Satellite::Undefined)
-        .def_static("configure", &Satellite::Configure, arg("configuration"), arg("simulator"))
+        .def_static("configure", &Satellite::Configure, arg("configuration"), arg("simulator") = nullptr)
 
     ;
 

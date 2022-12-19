@@ -74,13 +74,13 @@ class TestSimulator:
                                         name = 'FOV',
                                         composite = Composite(
                                             Pyramid(
-                                                Polygon(
+                                                base = Polygon(
                                                     Polygon2d([Point2d(-0.1, -1.0), Point2d(+0.1, -1.0), Point2d(+0.1, +1.0), Point2d(-0.1, +1.0)]),
                                                     Point(0.0, 0.0, 1.0),
                                                     (1.0, 0.0, 0.0),
                                                     (0.0, 1.0, 0.0),
                                                 ),
-                                                Point(0.0, 0.0, 0.0),
+                                                apex = Point(0.0, 0.0, 0.0),
                                             ),
                                         ),
                                     ),
