@@ -28,18 +28,18 @@ setuptools.setup(
         'Development Status :: 3 - Alpha',
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: Apache Software License',
-        'Operating System :: POSIX :: Linux'
+        'Operating System :: POSIX :: Linux',
     ],
     keywords = 'open-space-collective open-space-toolkit simulation',
     package_dir = {'': '${CMAKE_CURRENT_BINARY_DIR}/${NAME}'},
-    packages = setuptools.find_packages(where='${CMAKE_CURRENT_BINARY_DIR}/${NAME}'),
+    packages = setuptools.find_packages(where = '${CMAKE_CURRENT_BINARY_DIR}/${NAME}'),
     package_data = {
         '': [
+            '${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/libopen-space-toolkit-simulation.so.0',
             '${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/${LIBRARY_TARGET}.*${EXTENSION}*.so',
-            '${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/libopen-space-toolkit-simulation.so.0'
         ]
     },
-    install_requires = requirements
+    install_requires = requirements,
 )
 
 ################################################################################################################################################################
