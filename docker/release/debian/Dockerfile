@@ -11,6 +11,11 @@ ARG VERSION
 
 ARG CPP_BUILDER_IMAGE=${CPP_BUILDER_IMAGE:-ghcr.io/loft-orbital/open-space-toolkit-simulation-development}
 
+ARG PYTHON_TEST_VERSION="3.10"
+ARG PYTHON_TEST_VERSION_WITHOUT_DOT="310"
+
+################################################################################################################################################################
+
 FROM ${CPP_BUILDER_IMAGE}:${VERSION}-debian as cpp-builder
 
 RUN mkdir -p /app/bin /app/build /app/lib
@@ -54,15 +59,16 @@ ENTRYPOINT ["/usr/local/test/OpenSpaceToolkit/Simulation/open-space-toolkit-simu
 
 ################################################################################################################################################################
 
-FROM python:3.9-slim as python-builder
+FROM python:${PYTHON_TEST_VERSION}-slim as python-builder
 
 COPY --from=cpp-builder /app/build/bindings/python/dist /dist
 
-RUN pip install /dist/*39*.whl
+ARG PYTHON_TEST_VERSION_WITHOUT_DOT
+RUN pip install /dist/*${PYTHON_TEST_VERSION_WITHOUT_DOT}*.whl
 
 ################################################################################################################################################################
 
-FROM python:3.9-slim as python-release
+FROM python:${PYTHON_TEST_VERSION}-slim as python-release
 
 LABEL maintainer="lucas@loftorbital.com"
 
@@ -79,7 +85,8 @@ ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/lo
 ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
 ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
 
-COPY --from=python-builder /usr/local/lib/python3.9/site-packages/ostk /usr/local/lib/python3.9/site-packages/ostk
+ARG PYTHON_TEST_VERSION
+COPY --from=python-builder /usr/local/lib/python${PYTHON_TEST_VERSION}/site-packages/ostk /usr/local/lib/python${PYTHON_TEST_VERSION}/site-packages/ostk
 
 ENTRYPOINT ["ipython"]
 

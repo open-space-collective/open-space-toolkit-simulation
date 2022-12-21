@@ -24,6 +24,8 @@ jupyter_notebook_port := 9006
 jupyter_python_version := 3.8
 jupyter_project_name_python_shared_object := OpenSpaceToolkitSimulationPy.cpython-38-x86_64-linux-gnu
 
+python-test-version := 3.10
+
 ################################################################################################################################################################
 
 pull: ## Pull all images
@@ -477,7 +479,7 @@ _test-unit-python: _build-release-image-python
 
 	docker run \
 		--rm \
-		--workdir=/usr/local/lib/python3.9/site-packages/ostk/$(project_name) \
+		--workdir=/usr/local/lib/python$(python-test-version)/site-packages/ostk/$(project_name) \
 		--entrypoint="" \
 		$(docker_release_image_python_repository):$(docker_image_version)-$(target) \
 		/bin/bash -c "pip install pytest && pytest -sv ."
