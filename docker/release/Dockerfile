@@ -56,7 +56,7 @@ FROM python:3.11-slim as python-builder
 
 COPY --from=cpp-builder /app/build/bindings/python/dist /dist
 
-RUN pip install /dist/*38*.whl
+RUN pip install /dist/*311*.whl
 
 ################################################################################################################################################################
 
@@ -77,7 +77,7 @@ ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/lo
 ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
 ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
 
-COPY --from=python-builder /usr/local/lib/python3.8/site-packages/ostk /usr/local/lib/python3.8/site-packages/ostk
+COPY --from=python-builder /usr/local/lib/python3.11/site-packages/ostk /usr/local/lib/python3.11/site-packages/ostk
 
 ENTRYPOINT ["ipython"]
 
