@@ -60,7 +60,7 @@ RUN pip install /dist/*38*.whl
 
 ################################################################################################################################################################
 
-FROM python:3-11-slim as python-release
+FROM python:3.11-slim as python-release
 
 LABEL maintainer="lucas@loftorbital.com"
 
