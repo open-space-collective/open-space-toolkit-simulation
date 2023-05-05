@@ -1,7 +1,7 @@
 ################################################################################################################################################################
 
 # @project        Open Space Toolkit ▸ Simulation
-# @file           docker/release/debian/Dockerfile
+# @file           docker/release/Dockerfile
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
@@ -9,7 +9,7 @@
 
 ARG VERSION
 
-FROM openspacecollective/open-space-toolkit-simulation-development:${VERSION}-debian as cpp-builder
+FROM openspacecollective/open-space-toolkit-simulation-development:${VERSION} as cpp-builder
 
 RUN mkdir -p /app/bin /app/build /app/lib
 
@@ -52,7 +52,7 @@ ENTRYPOINT ["/usr/local/test/OpenSpaceToolkit/Simulation/open-space-toolkit-simu
 
 ################################################################################################################################################################
 
-FROM python:3.8-slim as python-builder
+FROM python:3.11-slim as python-builder
 
 COPY --from=cpp-builder /app/build/bindings/python/dist /dist
 
@@ -60,7 +60,7 @@ RUN pip install /dist/*38*.whl
 
 ################################################################################################################################################################
 
-FROM python:3.8-slim as python-release
+FROM python:3-11-slim as python-release
 
 LABEL maintainer="lucas@loftorbital.com"
 

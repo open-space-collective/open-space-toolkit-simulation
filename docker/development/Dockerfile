@@ -1,7 +1,7 @@
 ################################################################################################################################################################
 
 # @project        Open Space Toolkit ▸ Simulation
-# @file           docker/development/fedora/Dockerfile
+# @file           docker/development/Dockerfile
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
@@ -9,11 +9,17 @@
 
 ARG BASE_IMAGE_VERSION=latest
 
-FROM openspacecollective/open-space-toolkit-base:${BASE_IMAGE_VERSION}-fedora
+FROM openspacecollective/open-space-toolkit-base:${BASE_IMAGE_VERSION}
 
 LABEL maintainer="lucas@loftorbital.com"
 
 # Dependencies
+
+## Zip
+
+RUN apt-get update \
+ && apt-get install -y unzip \
+ && rm -rf /var/lib/apt/lists/*
 
 ## {fmt} [5.2.0]
 
@@ -52,31 +58,31 @@ ARG OSTK_CORE_VERSION=0.5.0
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${OSTK_CORE_VERSION}/open-space-toolkit-core-${OSTK_CORE_VERSION}-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${OSTK_CORE_VERSION}/open-space-toolkit-core-${OSTK_CORE_VERSION}-1.x86_64-devel.rpm \
- && dnf install -y ./*.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${OSTK_CORE_VERSION}/open-space-toolkit-core-${OSTK_CORE_VERSION}-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${OSTK_CORE_VERSION}/open-space-toolkit-core-${OSTK_CORE_VERSION}-1.x86_64-devel.deb \
+ && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-core
 
-## Open Space Toolkit ▸ IO
+## Open Space Toolkit ▸ I/O
 
 ARG OSTK_IO_VERSION=0.5.0
 
 RUN mkdir -p /tmp/open-space-toolkit-io \
  && cd /tmp/open-space-toolkit-io \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${OSTK_IO_VERSION}/open-space-toolkit-io-${OSTK_IO_VERSION}-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${OSTK_IO_VERSION}/open-space-toolkit-io-${OSTK_IO_VERSION}-1.x86_64-devel.rpm \
- && dnf install -y ./*.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${OSTK_IO_VERSION}/open-space-toolkit-io-${OSTK_IO_VERSION}-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${OSTK_IO_VERSION}/open-space-toolkit-io-${OSTK_IO_VERSION}-1.x86_64-devel.deb \
+ && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-io
 
 ## Open Space Toolkit ▸ Mathematics
 
-ARG OSTK_MATHEMATICS_VERSION=0.6.0
+ARG OSTK_MATHEMATICS_VERSION=0.5.0
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${OSTK_MATHEMATICS_VERSION}/open-space-toolkit-mathematics-${OSTK_MATHEMATICS_VERSION}-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${OSTK_MATHEMATICS_VERSION}/open-space-toolkit-mathematics-${OSTK_MATHEMATICS_VERSION}-1.x86_64-devel.rpm \
- && dnf install -y ./*.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${OSTK_MATHEMATICS_VERSION}/open-space-toolkit-mathematics-${OSTK_MATHEMATICS_VERSION}-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${OSTK_MATHEMATICS_VERSION}/open-space-toolkit-mathematics-${OSTK_MATHEMATICS_VERSION}-1.x86_64-devel.deb \
+ && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-mathematics
 
 ## Open Space Toolkit ▸ Physics
@@ -85,17 +91,17 @@ ARG OSTK_PHYSICS_VERSION=0.6.0
 
 RUN mkdir -p /tmp/open-space-toolkit-physics \
  && cd /tmp/open-space-toolkit-physics \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${OSTK_PHYSICS_VERSION}/open-space-toolkit-physics-${OSTK_PHYSICS_VERSION}-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${OSTK_PHYSICS_VERSION}/open-space-toolkit-physics-${OSTK_PHYSICS_VERSION}-1.x86_64-devel.rpm \
- && dnf install -y ./*.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${OSTK_PHYSICS_VERSION}/open-space-toolkit-physics-${OSTK_PHYSICS_VERSION}-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${OSTK_PHYSICS_VERSION}/open-space-toolkit-physics-${OSTK_PHYSICS_VERSION}-1.x86_64-devel.deb \
+ && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-physics
+
+COPY --from=us.gcr.io/loft-orbital-public/software/open-space-toolkit/data:0.3.0 /open-space-toolkit/physics /usr/local/share/OpenSpaceToolkit/Physics
 
 ENV OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
 ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"
 ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
 ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
-
-COPY --from=us.gcr.io/loft-orbital-public/software/open-space-toolkit/data:0.3.0 /open-space-toolkit/physics /usr/local/share/OpenSpaceToolkit/Physics
 
 ## Open Space Toolkit ▸ Astrodynamics
 
@@ -103,9 +109,9 @@ ARG OSTK_ASTRODYNAMICS_VERSION=0.10.0
 
 RUN mkdir -p /tmp/open-space-toolkit-astrodynamics \
  && cd /tmp/open-space-toolkit-astrodynamics \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${OSTK_ASTRODYNAMICS_VERSION}/open-space-toolkit-astrodynamics-${OSTK_ASTRODYNAMICS_VERSION}-1.x86_64-runtime.rpm \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${OSTK_ASTRODYNAMICS_VERSION}/open-space-toolkit-astrodynamics-${OSTK_ASTRODYNAMICS_VERSION}-1.x86_64-devel.rpm \
- && dnf install -y ./*.rpm \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${OSTK_ASTRODYNAMICS_VERSION}/open-space-toolkit-astrodynamics-${OSTK_ASTRODYNAMICS_VERSION}-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${OSTK_ASTRODYNAMICS_VERSION}/open-space-toolkit-astrodynamics-${OSTK_ASTRODYNAMICS_VERSION}-1.x86_64-devel.deb \
+ && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-astrodynamics
 
 # Labels
