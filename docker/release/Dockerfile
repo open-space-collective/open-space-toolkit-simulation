@@ -65,7 +65,7 @@ FROM python:3.11-slim as python-release
 LABEL maintainer="lucas@loftorbital.com"
 
 RUN apt-get update -y \
- && apt-get install -y libcurl4-openssl-dev libssl-dev wget unzip \
+ && apt-get install -y wget libcurl4-openssl-dev libssl-dev unzip \
  && rm -rf /var/lib/apt/lists/*
 
 RUN pip install ipython numpy
