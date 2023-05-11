@@ -1,7 +1,7 @@
 ################################################################################################################################################################
 
 # @project        Open Space Toolkit ▸ Simulation
-# @file           docker/development/debian/Dockerfile
+# @file           docker/development/Dockerfile
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
@@ -9,7 +9,7 @@
 
 ARG BASE_IMAGE_VERSION=latest
 
-FROM openspacecollective/open-space-toolkit-base:${BASE_IMAGE_VERSION}-debian
+FROM openspacecollective/open-space-toolkit-base:${BASE_IMAGE_VERSION}
 
 LABEL maintainer="lucas@loftorbital.com"
 
@@ -21,9 +21,11 @@ RUN apt-get update \
  && apt-get install -y unzip \
  && rm -rf /var/lib/apt/lists/*
 
-## {fmt} [5.2.0]
+## {fmt}
 
-RUN git clone --branch 5.2.0 --depth 1 https://github.com/fmtlib/fmt.git /tmp/fmt \
+ARG FMT_VERSION="5.2.0"
+
+RUN git clone --branch ${FMT_VERSION} --depth 1 https://github.com/fmtlib/fmt.git /tmp/fmt \
  && cd /tmp/fmt \
  && mkdir build \
  && cd build \
@@ -32,20 +34,24 @@ RUN git clone --branch 5.2.0 --depth 1 https://github.com/fmtlib/fmt.git /tmp/fm
  && make install \
  && rm -rf /tmp/fmt
 
-## ordered-map [0.6.0]
+## ordered-map
 
-RUN git clone --branch v0.6.0 --depth 1 https://github.com/Tessil/ordered-map.git /tmp/ordered-map \
+ARG ORDERED_MAP_VERSION="0.6.0"
+
+RUN git clone --branch v${ORDERED_MAP_VERSION} --depth 1 https://github.com/Tessil/ordered-map.git /tmp/ordered-map \
  && cd /tmp/ordered-map \
  && cp -r ./include/tsl /usr/local/include \
  && rm -rf /tmp/ordered-map
 
-## Eigen [3.3.7]
+## Eigen
+
+ARG EIGEN_VERSION="3.3.7"
 
 RUN mkdir /tmp/eigen \
  && cd /tmp/eigen \
- && wget --quiet https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.gz \
- && tar -xvf eigen-3.3.7.tar.gz \
- && cd eigen-3.3.7 \
+ && wget --quiet https://gitlab.com/libeigen/eigen/-/archive/${EIGEN_VERSION}/eigen-${EIGEN_VERSION}.tar.gz \
+ && tar -xvf eigen-${EIGEN_VERSION}.tar.gz \
+ && cd eigen-${EIGEN_VERSION} \
  && mkdir build \
  && cd build \
  && cmake .. \
@@ -54,7 +60,7 @@ RUN mkdir /tmp/eigen \
 
 ## Open Space Toolkit ▸ Core
 
-ARG OSTK_CORE_VERSION=0.5.0
+ARG OSTK_CORE_VERSION=0.6.0
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \
@@ -65,7 +71,7 @@ RUN mkdir -p /tmp/open-space-toolkit-core \
 
 ## Open Space Toolkit ▸ I/O
 
-ARG OSTK_IO_VERSION=0.5.0
+ARG OSTK_IO_VERSION=0.6.0
 
 RUN mkdir -p /tmp/open-space-toolkit-io \
  && cd /tmp/open-space-toolkit-io \
@@ -76,7 +82,7 @@ RUN mkdir -p /tmp/open-space-toolkit-io \
 
 ## Open Space Toolkit ▸ Mathematics
 
-ARG OSTK_MATHEMATICS_VERSION=0.5.0
+ARG OSTK_MATHEMATICS_VERSION=0.7.1
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
@@ -87,7 +93,7 @@ RUN mkdir -p /tmp/open-space-toolkit-mathematics \
 
 ## Open Space Toolkit ▸ Physics
 
-ARG OSTK_PHYSICS_VERSION=0.6.0
+ARG OSTK_PHYSICS_VERSION=0.7.0
 
 RUN mkdir -p /tmp/open-space-toolkit-physics \
  && cd /tmp/open-space-toolkit-physics \
@@ -105,7 +111,7 @@ ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local
 
 ## Open Space Toolkit ▸ Astrodynamics
 
-ARG OSTK_ASTRODYNAMICS_VERSION=0.10.0
+ARG OSTK_ASTRODYNAMICS_VERSION=0.12.0
 
 RUN mkdir -p /tmp/open-space-toolkit-astrodynamics \
  && cd /tmp/open-space-toolkit-astrodynamics \
