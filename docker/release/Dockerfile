@@ -1,7 +1,7 @@
 ################################################################################################################################################################
 
 # @project        Open Space Toolkit ▸ Simulation
-# @file           docker/release/debian/Dockerfile
+# @file           docker/release/Dockerfile
 # @author         Lucas Brémond <lucas@loftorbital.com>
 # @license        Apache License 2.0
 
@@ -9,7 +9,7 @@
 
 ARG VERSION
 
-FROM openspacecollective/open-space-toolkit-simulation-development:${VERSION}-debian as cpp-builder
+FROM openspacecollective/open-space-toolkit-simulation-development:${VERSION} as cpp-builder
 
 RUN mkdir -p /app/bin /app/build /app/lib
 
@@ -52,20 +52,20 @@ ENTRYPOINT ["/usr/local/test/OpenSpaceToolkit/Simulation/open-space-toolkit-simu
 
 ################################################################################################################################################################
 
-FROM python:3.8-slim as python-builder
+FROM python:3.11-slim as python-builder
 
 COPY --from=cpp-builder /app/build/bindings/python/dist /dist
 
-RUN pip install /dist/*38*.whl
+RUN pip install /dist/*311*.whl
 
 ################################################################################################################################################################
 
-FROM python:3.8-slim as python-release
+FROM python:3.11-slim as python-release
 
 LABEL maintainer="lucas@loftorbital.com"
 
 RUN apt-get update -y \
- && apt-get install -y libcurl4-openssl-dev libssl-dev wget unzip \
+ && apt-get install -y wget libcurl4-openssl-dev libssl-dev unzip \
  && rm -rf /var/lib/apt/lists/*
 
 RUN pip install ipython numpy
@@ -77,7 +77,7 @@ ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/lo
 ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
 ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
 
-COPY --from=python-builder /usr/local/lib/python3.8/site-packages/ostk /usr/local/lib/python3.8/site-packages/ostk
+COPY --from=python-builder /usr/local/lib/python3.11/site-packages/ostk /usr/local/lib/python3.11/site-packages/ostk
 
 ENTRYPOINT ["ipython"]
 

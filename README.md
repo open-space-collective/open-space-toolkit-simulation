@@ -73,14 +73,6 @@ After downloading the relevant `.deb` binary packages, install:
 apt install open-space-toolkit-simulation-*.deb
 ```
 
-#### Fedora / CentOS
-
-After downloading the relevant `.rpm` binary packages, install:
-
-```bash
-dnf install open-space-toolkit-simulation-*.rpm
-```
-
 ### Python
 
 Install from [PyPI](https://pypi.org/project/open-space-toolkit-simulation/):
