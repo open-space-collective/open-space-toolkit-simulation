@@ -1,72 +1,47 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Simulation
-/// @file           OpenSpaceToolkit/Simulation/Entity.hpp
-/// @author         Remy Derollez <remy@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Simulation_Entity__
 #define __OpenSpaceToolkit_Simulation_Entity__
 
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 namespace ostk
 {
 namespace simulation
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-using ostk::core::types::String ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::String;
 
 /// @brief                      Entity
 
 class Entity
 {
+   public:
+    Entity(const String& aName);
 
-    public:
+    Entity(const String& anId, const String& aName);
 
-                                Entity                                      (   const   String&                     aName                                       ) ;
+    bool isDefined() const;
 
-                                Entity                                      (   const   String&                     anId,
-                                                                                const   String&                     aName                                       ) ;
+    String getId() const;
 
-        bool                    isDefined                                   ( ) const ;
+    String getName() const;
 
-        String                  getId                                       ( ) const ;
+    /// @brief              Print entity
+    ///
+    /// @param              [in] anOutputStream An output stream
+    /// @param              [in] (optional) displayDecorators If true, display decorators
 
-        String                  getName                                     ( ) const ;
+    void print(std::ostream& anOutputStream, bool displayDecorators = true) const;
 
-        /// @brief              Print entity
-        ///
-        /// @param              [in] anOutputStream An output stream
-        /// @param              [in] (optional) displayDecorators If true, display decorators
+    static Entity Undefined();
 
-        void                    print                                       (           std::ostream&               anOutputStream,
-                                                                                        bool                        displayDecorators                           =   true ) const ;
+   private:
+    String id_;
+    String name_;
+};
 
-        static Entity           Undefined                                   ( ) ;
-
-    private:
-
-        String                  id_ ;
-        String                  name_ ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace simulation
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

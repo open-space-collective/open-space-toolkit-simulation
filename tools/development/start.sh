@@ -1,13 +1,6 @@
 #!/bin/bash
 
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Simulation
-# @file           tools/development/start.sh
-# @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 if [[ -z ${project_directory} ]]; then
     echo "Variable [project_directory] is undefined."
@@ -75,4 +68,3 @@ ${options} \
 ${docker_development_image_repository}:${docker_image_version}-${target} \
 /bin/bash -c "${command}"
 
-################################################################################################################################################################

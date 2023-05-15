@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Simulation
-# @file           Makefile
-# @author         Lucas Brémond <lucas@loftorbital.com>, Remy Derollez <remy@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 project_name := simulation
 project_version := $(shell git describe --tags --always)
@@ -26,7 +19,7 @@ jupyter_python_version := 3.8
 project_name_camel_case := $(shell echo $(project_name) | sed -r 's/(^|-)([a-z])/\U\2/g')
 jupyter_project_name_python_shared_object := $(shell echo "OpenSpaceToolkit${project_name_camel_case}.cpython-38-x86_64-linux-gnu")
 
-################################################################################################################################################################
+clang_format_sources_path ?= $(shell find ~+ src/ include/ test/ bindings/python/src/ -name '*.cpp' -o -name '*.cxx' -o -name '*.hpp' -o -name '*.tpp')
 
 pull: ## Pull all images
 
@@ -85,7 +78,6 @@ pull-release-image-jupyter:
 
 .PHONY: pull-release-image-jupyter
 
-################################################################################################################################################################
 
 build: build-images ## Build all images
 
@@ -240,7 +232,6 @@ build-packages-python-standalone: ## Build Python packages (standalone)
 
 .PHONY: build-packages-python-standalone
 
-################################################################################################################################################################
 
 start-development-no-link: build-development-image ## Start development environment
 
@@ -320,7 +311,6 @@ debug-jupyter-notebook: build-release-image-jupyter
 
 .PHONY: debug-jupyter-notebook
 
-################################################################################################################################################################
 
 debug-development: build-development-image ## Debug development environment
 
@@ -358,7 +348,41 @@ debug-python-release: build-release-image-python ## Debug Python release environ
 
 .PHONY: debug-python-release
 
-################################################################################################################################################################
+
+format: build-development-image ## Format all of the source code with the rules in .clang-format
+
+	docker run \
+		--rm \
+		--volume="$(CURDIR):/app" \
+		--workdir=/app \
+		--user="$(shell id -u):$(shell id -g)" \
+		$(docker_development_image_repository):$(docker_image_version) \
+		clang-format -i -style=file:thirdparty/clang/.clang-format ${clang_format_sources_path}
+
+.PHONY: format
+
+format-check: build-development-image ## Runs the clang-format tool to check the code against rules and formatting
+
+	docker run \
+		--rm \
+		--volume="$(CURDIR):/app" \
+		--workdir=/app \
+		--user="$(shell id -u):$(shell id -g)" \
+		$(docker_development_image_repository):$(docker_image_version) \
+		clang-format -Werror --dry-run -style=file:thirdparty/clang/.clang-format ${clang_format_sources_path}
+
+.PHONY: format-check
+
+format-python: build-development-image  ## Runs the black format tool against python code
+
+	docker run \
+		--rm \
+		--volume="$(CURDIR):/app" \
+		--workdir=/app \
+		$(docker_development_image_repository):$(docker_image_version) \
+		/bin/bash -c "python3.11 -m black --line-length=90 bindings/python/"
+
+.PHONY: format-python
 
 test: ## Run tests
 
@@ -460,7 +484,6 @@ test-coverage-cpp-standalone: ## Run C++ tests with coverage (standalone)
 
 .PHONY: test-coverage-cpp-standalone
 
-################################################################################################################################################################
 
 clean: ## Clean
 
@@ -477,7 +500,6 @@ clean: ## Clean
 
 .PHONY: clean
 
-################################################################################################################################################################
 
 help:
 
@@ -487,4 +509,3 @@ export DOCKER_BUILDKIT = 1
 
 .DEFAULT_GOAL := help
 
-################################################################################################################################################################
