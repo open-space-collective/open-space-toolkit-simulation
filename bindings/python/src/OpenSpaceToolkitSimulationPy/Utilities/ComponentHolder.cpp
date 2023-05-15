@@ -1,25 +1,15 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Simulation
-/// @file           bindings/python/src/OpenSpaceToolkitSimulationPy/Utilities/ComponentHolder.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-inline void                     OpenSpaceToolkitSimulationPy_Utilities_ComponentHolder ( pybind11::module&          aModule                                     )
+inline void OpenSpaceToolkitSimulationPy_Utilities_ComponentHolder(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Shared;
 
-    using ostk::core::types::Shared ;
-
-    using ostk::simulation::Component ;
-    using ostk::simulation::utilities::ComponentHolder ;
+    using ostk::simulation::Component;
+    using ostk::simulation::utilities::ComponentHolder;
 
     class_<ComponentHolder, Shared<ComponentHolder>>(aModule, "ComponentHolder")
 
@@ -35,8 +25,5 @@ inline void                     OpenSpaceToolkitSimulationPy_Utilities_Component
 
         .def("add_component", &ComponentHolder::addComponent)
 
-    ;
-
+        ;
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

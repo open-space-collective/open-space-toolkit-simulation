@@ -1,221 +1,182 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
-/// @project        Open Space Toolkit ▸ Simulation
-/// @file           OpenSpaceToolkit/Simulation/Component.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>, Remy Derollez <remy@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#include <OpenSpaceToolkit/Simulation/Utilities/Identifier.hpp>
 #include <OpenSpaceToolkit/Simulation/Component.hpp>
-
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
+#include <OpenSpaceToolkit/Simulation/Utilities/Identifier.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utilities.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
 
 namespace ostk
 {
 namespace simulation
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::physics::coord::Transform;
+using ostk::physics::coord::frame::Provider;
+using DynamicProvider = ostk::physics::coord::frame::provider::Dynamic;
 
-using ostk::physics::coord::Transform ;
-using ostk::physics::coord::frame::Provider ;
-using DynamicProvider = ostk::physics::coord::frame::provider::Dynamic ;
+using namespace ostk::simulation::utilities;
 
-using namespace ostk::simulation::utilities ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                                Component::Component                        (   const   String&                     anId,
-                                                                                const   String&                     aName,
-                                                                                const   Component::Type&            aType,
-                                                                                const   Array<String>&              aTagArray,
-                                                                                const   Array<Shared<Geometry>>&    aGeometryArray,
-                                                                                const   Array<Shared<Component>>&   aComponentArray,
-                                                                                const   Shared<ComponentHolder>&    aParentComponentSPtr,
-                                                                                const   Shared<const Frame>&        aFrameSPtr,
-                                                                                const   Shared<const Simulator>&    aSimulatorSPtr                              )
-                                :   Entity(anId, aName),
-                                    ComponentHolder(aComponentArray),
-                                    type_(aType),
-                                    tags_(aTagArray),
-                                    geometries_(aGeometryArray),
-                                    parentWPtr_(aParentComponentSPtr),
-                                    frameSPtr_(aFrameSPtr),
-                                    simulatorSPtr_(aSimulatorSPtr)
+Component::Component(
+    const String& anId,
+    const String& aName,
+    const Component::Type& aType,
+    const Array<String>& aTagArray,
+    const Array<Shared<Geometry>>& aGeometryArray,
+    const Array<Shared<Component>>& aComponentArray,
+    const Shared<ComponentHolder>& aParentComponentSPtr,
+    const Shared<const Frame>& aFrameSPtr,
+    const Shared<const Simulator>& aSimulatorSPtr
+)
+    : Entity(anId, aName),
+      ComponentHolder(aComponentArray),
+      type_(aType),
+      tags_(aTagArray),
+      geometries_(aGeometryArray),
+      parentWPtr_(aParentComponentSPtr),
+      frameSPtr_(aFrameSPtr),
+      simulatorSPtr_(aSimulatorSPtr)
 {
-
 }
 
-                                Component::Component                        (   const   Component&                  aComponent                                  )
-                                :   Entity(aComponent),
-                                    ComponentHolder(aComponent),
-                                    enable_shared_from_this(aComponent),
-                                    type_(aComponent.type_),
-                                    tags_(aComponent.tags_),
-                                    geometries_(aComponent.geometries_),
-                                    parentWPtr_(aComponent.parentWPtr_),
-                                    frameSPtr_(aComponent.frameSPtr_),
-                                    simulatorSPtr_(aComponent.simulatorSPtr_)
+Component::Component(const Component& aComponent)
+    : Entity(aComponent),
+      ComponentHolder(aComponent),
+      enable_shared_from_this(aComponent),
+      type_(aComponent.type_),
+      tags_(aComponent.tags_),
+      geometries_(aComponent.geometries_),
+      parentWPtr_(aComponent.parentWPtr_),
+      frameSPtr_(aComponent.frameSPtr_),
+      simulatorSPtr_(aComponent.simulatorSPtr_)
 {
-
 }
 
-                                Component::~Component                       ( )
-{
+Component::~Component() {}
 
+Component* Component::clone() const
+{
+    return new Component(*this);
 }
 
-Component*                      Component::clone                            ( ) const
+std::ostream& operator<<(std::ostream& anOutputStream, const Component& aComponent)
 {
-    return new Component(*this) ;
+    aComponent.print(anOutputStream, true);
+
+    return anOutputStream;
 }
 
-std::ostream&                   operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Component&                  aComponent                                  )
+bool Component::isDefined() const
 {
-
-    aComponent.print(anOutputStream, true) ;
-
-    return anOutputStream ;
-
+    return Entity::isDefined() && frameSPtr_;
 }
 
-bool                            Component::isDefined                        ( ) const
+const Shared<const Frame>& Component::accessFrame() const
 {
-    return Entity::isDefined() && frameSPtr_ ;
-}
-
-const Shared<const Frame>&      Component::accessFrame                      ( ) const
-{
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Component") ;
+        throw ostk::core::error::runtime::Undefined("Component");
     }
 
-    return this->frameSPtr_ ;
-
+    return this->frameSPtr_;
 }
 
-const Geometry&                 Component::accessGeometryWithName           (   const   String&                     aName                                       ) const
+const Geometry& Component::accessGeometryWithName(const String& aName) const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Component") ;
+        throw ostk::core::error::runtime::Undefined("Component");
     }
 
     for (const auto& geometryStr : this->geometries_)
     {
         if (geometryStr->getName() == aName)
         {
-            return *geometryStr ;
+            return *geometryStr;
         }
     }
 
-    throw ostk::core::error::RuntimeError("No Geometry found with name [{}].", aName) ;
-
+    throw ostk::core::error::RuntimeError("No Geometry found with name [{}].", aName);
 }
 
-const Simulator&                Component::accessSimulator                  ( ) const
+const Simulator& Component::accessSimulator() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Component") ;
+        throw ostk::core::error::runtime::Undefined("Component");
     }
 
     if (!simulatorSPtr_)
     {
-        throw ostk::core::error::runtime::Undefined("Simulator") ;
+        throw ostk::core::error::runtime::Undefined("Simulator");
     }
 
-    return *(this->simulatorSPtr_) ;
-
+    return *(this->simulatorSPtr_);
 }
 
-Component::Type                 Component::getType                          ( ) const
+Component::Type Component::getType() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Component") ;
+        throw ostk::core::error::runtime::Undefined("Component");
     }
 
-    return this->type_ ;
-
+    return this->type_;
 }
 
-Array<String>                   Component::getTags                          ( ) const
+Array<String> Component::getTags() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Component") ;
+        throw ostk::core::error::runtime::Undefined("Component");
     }
 
-    return this->tags_ ;
-
+    return this->tags_;
 }
 
-Array<Shared<Geometry>>         Component::getGeometries                    ( ) const
+Array<Shared<Geometry>> Component::getGeometries() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Component") ;
+        throw ostk::core::error::runtime::Undefined("Component");
     }
 
-    return this->geometries_ ;
-
+    return this->geometries_;
 }
 
-void                            Component::setParent                        (   const   Shared<Component>&          aComponentSPtr                              )
+void Component::setParent(const Shared<Component>& aComponentSPtr)
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Component") ;
+        throw ostk::core::error::runtime::Undefined("Component");
     }
 
-    this->parentWPtr_ = aComponentSPtr ;
-
+    this->parentWPtr_ = aComponentSPtr;
 }
 
-void                            Component::addGeometry                      (   const   Shared<Geometry>&           aGeometrySPtr                               )
+void Component::addGeometry(const Shared<Geometry>& aGeometrySPtr)
 {
-
     if ((!aGeometrySPtr) || (!aGeometrySPtr->isDefined()))
     {
-        throw ostk::core::error::runtime::Undefined("Geometry") ;
+        throw ostk::core::error::runtime::Undefined("Geometry");
     }
 
-    this->geometries_.add(aGeometrySPtr) ;
-
+    this->geometries_.add(aGeometrySPtr);
 }
 
-void                            Component::addComponent                     (   const   Shared<Component>&          aComponentSPtr                              )
+void Component::addComponent(const Shared<Component>& aComponentSPtr)
 {
+    aComponentSPtr->setParent(this->shared_from_this());
 
-    aComponentSPtr->setParent(this->shared_from_this()) ;
-
-    ComponentHolder::addComponent(aComponentSPtr) ;
-
+    ComponentHolder::addComponent(aComponentSPtr);
 }
 
-Component                       Component::Undefined                        ( )
+Component Component::Undefined()
 {
-
-    return
-    {
+    return {
         String::Empty(),
         String::Empty(),
         Component::Type::Undefined,
@@ -224,22 +185,19 @@ Component                       Component::Undefined                        ( )
         Array<Shared<Component>>::Empty(),
         nullptr,
         nullptr,
-        nullptr
-    } ;
-
+        nullptr};
 }
 
-Shared<Component>               Component::Configure                        (   const   ComponentConfiguration&     aComponentConfiguration,
-                                                                                const   Shared<Component>&          aParentComponentSPtr                        )
+Shared<Component> Component::Configure(
+    const ComponentConfiguration& aComponentConfiguration, const Shared<Component>& aParentComponentSPtr
+)
 {
-
     if ((!aParentComponentSPtr) || (!aParentComponentSPtr->isDefined()))
     {
-        throw ostk::core::error::runtime::Undefined("Parent component") ;
+        throw ostk::core::error::runtime::Undefined("Parent component");
     }
 
-    const Shared<Component> componentSPtr = std::make_shared<Component>
-    (
+    const Shared<Component> componentSPtr = std::make_shared<Component>(
         aComponentConfiguration.id,
         aComponentConfiguration.name,
         aComponentConfiguration.type,
@@ -247,114 +205,85 @@ Shared<Component>               Component::Configure                        (   
         Array<Shared<Geometry>>::Empty(),
         Array<Shared<Component>>::Empty(),
         aParentComponentSPtr,
-        Component::GenerateFrame
-        (
+        Component::GenerateFrame(
             String::Format("Component [{}]", aComponentConfiguration.id),
             aComponentConfiguration.orientation,
             aParentComponentSPtr->accessFrame()
         ),
         aParentComponentSPtr->simulatorSPtr_
-    ) ;
+    );
 
     for (const auto& geometryConfiguration : aComponentConfiguration.geometries)
     {
-        componentSPtr->addGeometry(Geometry::Configure(geometryConfiguration, componentSPtr)) ;
+        componentSPtr->addGeometry(Geometry::Configure(geometryConfiguration, componentSPtr));
     }
 
     for (const auto& componentConfiguration : aComponentConfiguration.components)
     {
-        componentSPtr->addComponent(Component::Configure(componentConfiguration, componentSPtr)) ;
+        componentSPtr->addComponent(Component::Configure(componentConfiguration, componentSPtr));
     }
 
-    return componentSPtr ;
-
+    return componentSPtr;
 }
 
-String                          Component::StringFromType                   (   const   Component::Type&            aType                                       )
+String Component::StringFromType(const Component::Type& aType)
 {
+    static const Map<Component::Type, String> typeStringMap = {
+        {Component::Type::Undefined, "Undefined"},
+        {Component::Type::Assembly, "Assembly"},
+        {Component::Type::Controller, "Controller"},
+        {Component::Type::Sensor, "Sensor"},
+        {Component::Type::Actuator, "Actuator"},
+        {Component::Type::Other, "Other"}};
 
-    static const Map<Component::Type, String> typeStringMap =
-    {
-        { Component::Type::Undefined,  "Undefined" },
-        { Component::Type::Assembly,   "Assembly" },
-        { Component::Type::Controller, "Controller" },
-        { Component::Type::Sensor,     "Sensor" },
-        { Component::Type::Actuator,   "Actuator" },
-        { Component::Type::Other,      "Other" }
-    } ;
-
-    return typeStringMap.at(aType) ;
-
+    return typeStringMap.at(aType);
 }
 
-Shared<const Frame>             Component::GenerateFrame                    (   const   String&                     aName,
-                                                                                const   Quaternion&                 aQuaternion,
-                                                                                const   Shared<const Frame>&        aParentFrameSPtr                                )
+Shared<const Frame> Component::GenerateFrame(
+    const String& aName, const Quaternion& aQuaternion, const Shared<const Frame>& aParentFrameSPtr
+)
 {
-
-    using ostk::physics::time::Instant ;
+    using ostk::physics::time::Instant;
 
     if (Frame::Exists(aName))
     {
-        Frame::Destruct(aName) ;
+        Frame::Destruct(aName);
     }
 
     if (aParentFrameSPtr == nullptr)
     {
-        throw ostk::core::error::runtime::Undefined("Frame") ;
+        throw ostk::core::error::runtime::Undefined("Frame");
     }
 
-    const Weak<const Frame> frameWPtr = aParentFrameSPtr ;
+    const Weak<const Frame> frameWPtr = aParentFrameSPtr;
 
-    const Shared<const DynamicProvider> transformProviderSPtr = std::make_shared<const DynamicProvider>
-    (
-        [frameWPtr, aQuaternion] (const Instant& anInstant) -> Transform
+    const Shared<const DynamicProvider> transformProviderSPtr = std::make_shared<const DynamicProvider>(
+        [frameWPtr, aQuaternion](const Instant& anInstant) -> Transform
         {
-
             if (Shared<const Frame> frameSPtr = frameWPtr.lock())
             {
-
-                return Transform::Passive
-                (
-                    anInstant,
-                    { 0.0, 0.0, 0.0 },
-                    { 0.0, 0.0, 0.0 },
-                    aQuaternion,
-                    { 0.0, 0.0, 0.0 }
-                ) ;
-
+                return Transform::Passive(anInstant, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, aQuaternion, {0.0, 0.0, 0.0});
             }
             else
             {
-                throw ostk::core::error::RuntimeError("Cannot get pointer to Profile.") ;
+                throw ostk::core::error::RuntimeError("Cannot get pointer to Profile.");
             }
-
         }
-    ) ;
+    );
 
-    return Frame::Construct(aName, false, aParentFrameSPtr, transformProviderSPtr) ;
-
+    return Frame::Construct(aName, false, aParentFrameSPtr, transformProviderSPtr);
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-void                            Component::print                            (           std::ostream&               anOutputStream,
-                                                                                        bool                        displayDecorators                           ) const
+void Component::print(std::ostream& anOutputStream, bool displayDecorators) const
 {
+    displayDecorators ? ostk::core::utils::Print::Header(anOutputStream, "Component") : void();
 
-    displayDecorators ? ostk::core::utils::Print::Header(anOutputStream, "Component") : void () ;
+    Entity::print(anOutputStream, false);
 
-    Entity::print(anOutputStream, false) ;
+    ostk::core::utils::Print::Line(anOutputStream) << "Type:" << Component::StringFromType(type_);
 
-    ostk::core::utils::Print::Line(anOutputStream) << "Type:" << Component::StringFromType(type_) ;
-
-    displayDecorators ? ostk::core::utils::Print::Footer(anOutputStream) : void () ;
-
+    displayDecorators ? ostk::core::utils::Print::Footer(anOutputStream) : void();
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace simulation
+}  // namespace ostk

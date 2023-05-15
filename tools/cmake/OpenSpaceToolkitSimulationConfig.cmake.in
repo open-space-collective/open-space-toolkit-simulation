@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Simulation
-# @file           tools/cmake/OpenSpaceToolkitSimulationConfig.cmake.in
-# @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 SET (OpenSpaceToolkitSimulation_ROOT_DIR ${OpenSpaceToolkitSimulation_ROOT_DIR} @CMAKE_INSTALL_PREFIX@)
 
@@ -26,4 +19,3 @@ IF (OpenSpaceToolkitSimulation_INCLUDE_DIR)
 
 ENDIF ()
 
-################################################################################################################################################################
