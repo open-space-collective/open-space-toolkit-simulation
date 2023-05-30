@@ -1,4 +1,4 @@
 # Apache License 2.0
 
-open-space-toolkit-astrodynamics~=0.7
+open-space-toolkit-astrodynamics~=0.12.2
 
