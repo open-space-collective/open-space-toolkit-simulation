@@ -104,7 +104,7 @@ if [[ ! -z ${1} ]] && [[ ${1} == "--link" ]]; then
             cp -as /mnt/open-space-toolkit-physics/include/OpenSpaceToolkit/Physics /usr/local/include/OpenSpaceToolkit/Physics; \
             cp -as /mnt/open-space-toolkit-physics/src/OpenSpaceToolkit/Physics/* /usr/local/include/OpenSpaceToolkit/Physics/; \
             ln -s /mnt/open-space-toolkit-physics/lib/libopen-space-toolkit-physics.so /usr/local/lib/; \
-            ln -s /mnt/open-space-toolkit-physics/lib/libopen-space-toolkit-physics.so.0 /usr/local/lib/;"
+            ln -s /mnt/open-space-toolkit-physics/lib/libopen-space-toolkit-physics.so.1 /usr/local/lib/;"
 
         fi
 

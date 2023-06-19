@@ -14,7 +14,6 @@ SET (PROJECT_VENDOR_NAME "Lucas Brémond")
 SET (PROJECT_VENDOR_CONTACT "lucas.bremond@gmail.com")
 SET (PROJECT_VENDOR_URL "lucas.bremond.info")
 
-
 ## Setup
 
 ### Compatibility Check
@@ -37,7 +36,6 @@ OPTION (BUILD_WHEELS_IN_CMAKE "Build python wheels with cmake." ON)
 ## Project Configuration
 
 PROJECT (${PROJECT_NAME} VERSION ${PROJECT_VERSION_STRING} LANGUAGES "C" "CXX")
-
 
 ## Helper Functions
 
@@ -125,10 +123,15 @@ FUNCTION (PY_ADD_PACKAGE_DIRECTORY NAME)
     # Get python extension for relevant shared library spotting
     STRING (REPLACE "." "" EXTENSION "${PYTHON_VERSION}")
 
-    # Configure setup.py file
-    SET (SETUP_PY_IN "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/setup.py.in")
-    SET (SETUP_PY "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/setup.py")
-    CONFIGURE_FILE (${SETUP_PY_IN} ${SETUP_PY})
+    # Configure setup.cfg file
+    SET (SETUP_CFG_IN "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/setup.cfg.in")
+    SET (SETUP_CFG "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/setup.cfg")
+    CONFIGURE_FILE (${SETUP_CFG_IN} ${SETUP_CFG})
+
+    # Configure pyproject.toml file
+    SET (PYPROJECT_TOML_IN "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/pyproject.toml.in")
+    SET (PYPROJECT_TOML "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/pyproject.toml")
+    CONFIGURE_FILE (${PYPROJECT_TOML_IN} ${PYPROJECT_TOML})
 
     IF (BUILD_WHEELS_IN_CMAKE)
 
@@ -139,14 +142,16 @@ FUNCTION (PY_ADD_PACKAGE_DIRECTORY NAME)
                             COMMAND cp -r "${CMAKE_CURRENT_SOURCE_DIR}/test" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/test"
                             COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_GROUP}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_GROUP}/__init__.py"
                             COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/__init__.py"
-                            COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${SHARED_LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/libopen-space-toolkit-simulation.so.0"
+                            COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${SHARED_LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/${SHARED_LIBRARY_TARGET}.${PROJECT_VERSION_MAJOR}"
                             COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${LIBRARY_TARGET}.*${EXTENSION}*.so" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/"
-                            COMMAND python${PYTHON_VERSION} ${SETUP_PY} -q build --build-base=./lib${EXTENSION} bdist_wheel --python-tag=py${EXTENSION} --bdist-dir=./dist${EXTENSION}
+                            COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/requirements.txt" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/requirements.txt"
+                            COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/README.md" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/README.md"
+                            COMMAND cd "${CMAKE_CURRENT_BINARY_DIR}/${NAME}" && python${PYTHON_VERSION} -m build --no-isolation -w
+                            COMMAND mkdir -p "${CMAKE_CURRENT_BINARY_DIR}/dist"
+                            COMMAND cp "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/dist/*" "${CMAKE_CURRENT_BINARY_DIR}/dist"
                             DEPENDS ${DEPS})
-        # Install package on the machine
-        # INSTALL (CODE "execute_process(COMMAND python${PYTHON_VERSION} ${SETUP_PY} install)")
-    ELSE ()
 
+        ELSE()
         # Build package directories only to integrate with a ci build wheel process
         ADD_CUSTOM_COMMAND (OUTPUT ${OUTPUT}
                             COMMAND mkdir -p "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}"
@@ -161,7 +166,6 @@ FUNCTION (PY_ADD_PACKAGE_DIRECTORY NAME)
     ADD_CUSTOM_TARGET (${NAME} ALL DEPENDS ${OUTPUT})
     ADD_DEPENDENCIES (${NAME} "${LIBRARY_TARGET}_${PYTHON_VERSION}")
 ENDFUNCTION ()
-
 
 ## Dependencies
 
@@ -186,7 +190,6 @@ FOREACH (PYTHON_VERSION ${PYTHON_SEARCH_VERSIONS})
     ENDIF ()
 ENDFOREACH ()
 
-
 ## Target
 
 SET (LIBRARY_NAME ${PROJECT_PACKAGE_NAME})
@@ -208,7 +211,6 @@ FOREACH (PYTHON_VERSION ${PYTHON_VERSIONS})
     INSTALL (FILES "${PROJECT_SOURCE_DIR}/tools/python/${PROJECT_GROUP}/__init__.py" DESTINATION "${INSTALL_LIB}/${PROJECT_GROUP}" COMPONENT "python")
     INSTALL (FILES "${PROJECT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" DESTINATION "${INSTALL_LIB}/${PROJECT_PATH}" COMPONENT "python")
 ENDFOREACH ()
-
 
 ## Generate python package directory/wheels
 
