@@ -7,7 +7,7 @@ ARG CPP_BUILDER_IMAGE=${CPP_BUILDER_IMAGE:-ghcr.io/loft-orbital/open-space-toolk
 ARG PYTHON_TEST_VERSION="3.11"
 ARG PYTHON_TEST_VERSION_WITHOUT_DOT="311"
 
-FROM ${CPP_BUILDER_IMAGE}:${VERSION}-debian as cpp-builder
+FROM ${CPP_BUILDER_IMAGE}:${VERSION} as cpp-builder
 
 RUN mkdir -p /app/bin /app/build /app/lib
 
