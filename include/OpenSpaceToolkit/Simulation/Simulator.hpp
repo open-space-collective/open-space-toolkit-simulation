@@ -5,92 +5,83 @@
 
 #include <OpenSpaceToolkit/Simulation/Satellite.hpp>
 
-#include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
-#include <OpenSpaceToolkit/Physics/Environment.hpp>
-
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Map.hpp>
 #include <OpenSpaceToolkit/Core/Types/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
+
+#include <OpenSpaceToolkit/Physics/Environment.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 namespace ostk
 {
 namespace simulation
 {
 
-#define                         DEFAULT_SATELLITES                              Array<SatelliteConfiguration>::Empty()
+#define DEFAULT_SATELLITES Array<SatelliteConfiguration>::Empty()
 
-using ostk::core::types::String ;
-using ostk::core::types::Shared ;
-using ostk::core::ctnr::Array ;
-using ostk::core::ctnr::Map ;
+using ostk::core::types::String;
+using ostk::core::types::Shared;
+using ostk::core::ctnr::Array;
+using ostk::core::ctnr::Map;
 
-using ostk::physics::Environment ;
-using ostk::physics::time::Instant ;
-using ostk::physics::time::Duration ;
+using ostk::physics::Environment;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Duration;
 
-using ostk::simulation::Satellite ;
+using ostk::simulation::Satellite;
 
-struct SimulatorConfiguration ;
+struct SimulatorConfiguration;
 
 /// @brief                      Simulator
 
 class Simulator
 {
+   public:
+    Simulator(const Environment& anEnvironment, const Array<Shared<Satellite>>& aSatelliteArray);
 
-    public:
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Simulator& aSimulator);
 
-                                Simulator                                   (   const   Environment&                anEnvironment,
-                                                                                const   Array<Shared<Satellite>>&   aSatelliteArray                             ) ;
+    bool isDefined() const;
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Simulator&                  aSimulator                                  ) ;
+    bool hasSatelliteWithName(const String& aSatelliteName) const;
 
-        bool                    isDefined                                   ( ) const ;
+    const Environment& accessEnvironment() const;
 
-        bool                    hasSatelliteWithName                        (   const   String&                     aSatelliteName                              ) const ;
+    const Satellite& accessSatelliteWithName(const String& aSatelliteName) const;
 
-        const Environment&      accessEnvironment                           ( ) const ;
+    Instant getInstant() const;
 
-        const Satellite&        accessSatelliteWithName                     (   const   String&                     aSatelliteName                              ) const ;
+    /// @brief              Print simulator
+    ///
+    /// @param              [in] anOutputStream An output stream
+    /// @param              [in] (optional) displayDecorators If true, display decorators
 
-        Instant                 getInstant                                  ( ) const ;
+    void print(std::ostream& anOutputStream, bool displayDecorators = true) const;
 
-        /// @brief              Print simulator
-        ///
-        /// @param              [in] anOutputStream An output stream
-        /// @param              [in] (optional) displayDecorators If true, display decorators
+    void setInstant(const Instant& anInstant);
 
-        void                    print                                       (           std::ostream&               anOutputStream,
-                                                                                        bool                        displayDecorators                           =   true ) const ;
+    void stepForward(const Duration& aDuration);
 
-        void                    setInstant                                  (   const   Instant&                    anInstant                                   ) ;
+    void addSatellite(const Shared<Satellite>& aSatelliteSPtr);
 
-        void                    stepForward                                 (   const   Duration&                   aDuration                                   ) ;
+    static Simulator Undefined();
 
-        void                    addSatellite                                (   const   Shared<Satellite>&          aSatelliteSPtr                              ) ;
+    static Shared<Simulator> Configure(const SimulatorConfiguration& aSimulatorConfiguration);
 
-        static Simulator        Undefined                                   ( ) ;
-
-        static Shared<Simulator> Configure                                  (   const   SimulatorConfiguration&     aSimulatorConfiguration                     ) ;
-
-    private:
-
-        Environment             environment_ ;
-        Map<String, Shared<Satellite>> satelliteMap_ ;
-
-} ;
+   private:
+    Environment environment_;
+    Map<String, Shared<Satellite>> satelliteMap_;
+};
 
 struct SimulatorConfiguration
 {
+    const Environment environment;
+    const Array<SatelliteConfiguration> satellites = DEFAULT_SATELLITES;
+};
 
-    const Environment           environment ;
-    const Array<SatelliteConfiguration> satellites = DEFAULT_SATELLITES ;
-
-} ;
-
-}
-}
+}  // namespace simulation
+}  // namespace ostk
 
 #endif

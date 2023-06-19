@@ -2,17 +2,15 @@
 
 #include <OpenSpaceToolkit/Simulation/Entity.hpp>
 
-inline void                     OpenSpaceToolkitSimulationPy_Entity         (           pybind11::module&           aModule                                     )
+inline void OpenSpaceToolkitSimulationPy_Entity(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Shared;
 
-    using ostk::core::types::Shared ;
-
-    using ostk::simulation::Entity ;
+    using ostk::simulation::Entity;
 
     {
-
         class_<Entity, Shared<Entity>>(aModule, "Entity")
 
             .def("is_defined", &Entity::isDefined)
@@ -22,8 +20,6 @@ inline void                     OpenSpaceToolkitSimulationPy_Entity         (   
 
             .def_static("undefined", &Entity::Undefined)
 
-        ;
-
+            ;
     }
-
 }

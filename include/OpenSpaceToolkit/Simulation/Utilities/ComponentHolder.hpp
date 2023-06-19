@@ -3,72 +3,68 @@
 #ifndef __OpenSpaceToolkit_Simulation_Utilties_ComponentHolder__
 #define __OpenSpaceToolkit_Simulation_Utilties_ComponentHolder__
 
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
+#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Pair.hpp>
 #include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
 
 namespace ostk
 {
 namespace simulation
 {
 
-class Component ;
-class ComponentConfiguration ;
+class Component;
+class ComponentConfiguration;
 
 namespace utilities
 {
 
-using ostk::core::types::String ;
-using ostk::core::types::Unique ;
-using ostk::core::types::Shared ;
-using ostk::core::ctnr::Pair ;
-using ostk::core::ctnr::Array ;
-using ostk::core::ctnr::Map ;
+using ostk::core::types::String;
+using ostk::core::types::Unique;
+using ostk::core::types::Shared;
+using ostk::core::ctnr::Pair;
+using ostk::core::ctnr::Array;
+using ostk::core::ctnr::Map;
 
 /// @brief                      Generic Component holder
 
 class ComponentHolder
 {
+   public:
+    ComponentHolder(const Array<Shared<Component>>& aComponentArray = Array<Shared<Component>>::Empty());
 
-    public:
+    ComponentHolder(const ComponentHolder& aComponentHolder);
 
-                                ComponentHolder                             (   const   Array<Shared<Component>>&   aComponentArray                             =   Array<Shared<Component>>::Empty() ) ;
+    ~ComponentHolder();
 
-                                ComponentHolder                             (   const   ComponentHolder&            aComponentHolder                            ) ;
+    bool hasComponentWithId(const String& aComponentId) const;
 
-                                ~ComponentHolder                            ( ) ;
+    bool hasComponentWithName(const String& aComponentName) const;
 
-        bool                    hasComponentWithId                          (   const   String&                     aComponentId                                ) const ;
+    bool hasComponentAt(const String& aComponentPath) const;
 
-        bool                    hasComponentWithName                        (   const   String&                     aComponentName                              ) const ;
+    Array<Shared<Component>> accessComponents() const;
 
-        bool                    hasComponentAt                              (   const   String&                     aComponentPath                              ) const ;
+    const Component& accessComponentWithId(const String& aComponentId) const;
 
-        Array<Shared<Component>> accessComponents                           ( ) const ;
+    const Component& accessComponentWithName(const String& aComponentName) const;
 
-        const Component&        accessComponentWithId                       (   const   String&                     aComponentId                                ) const ;
+    Array<Shared<const Component>> accessComponentsWithTag(const String& aComponentTag) const;
 
-        const Component&        accessComponentWithName                     (   const   String&                     aComponentName                              ) const ;
+    const Component& accessComponentAt(const String& aComponentPath) const;
 
-        Array<Shared<const Component>> accessComponentsWithTag              (   const   String&                     aComponentTag                               ) const ;
+    void addComponent(const Shared<Component>& aComponentSPtr);
 
-        const Component&        accessComponentAt                           (   const   String&                     aComponentPath                              ) const ;
+   private:
+    Map<String, Shared<Component>> componentMap_;
+};
 
-        void                    addComponent                                (   const   Shared<Component>&          aComponentSPtr                              ) ;
+Pair<String, String> splitComponentPath(const String& aComponentPath);
 
-    private:
-
-        Map<String, Shared<Component>> componentMap_ ;
-
-} ;
-
-Pair<String, String>            splitComponentPath                          (   const    String&                    aComponentPath                              ) ;
-
-}
-}
-}
+}  // namespace utilities
+}  // namespace simulation
+}  // namespace ostk
 
 #endif

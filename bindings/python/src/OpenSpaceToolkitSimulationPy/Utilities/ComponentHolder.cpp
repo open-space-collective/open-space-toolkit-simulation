@@ -2,14 +2,13 @@
 
 #include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
 
-inline void                     OpenSpaceToolkitSimulationPy_Utilities_ComponentHolder ( pybind11::module&          aModule                                     )
+inline void OpenSpaceToolkitSimulationPy_Utilities_ComponentHolder(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::types::Shared;
 
-    using ostk::core::types::Shared ;
-
-    using ostk::simulation::utilities::ComponentHolder ;
+    using ostk::simulation::utilities::ComponentHolder;
 
     class_<ComponentHolder, Shared<ComponentHolder>>(aModule, "ComponentHolder")
 
@@ -25,6 +24,5 @@ inline void                     OpenSpaceToolkitSimulationPy_Utilities_Component
 
         .def("add_component", &ComponentHolder::addComponent)
 
-    ;
-
+        ;
 }

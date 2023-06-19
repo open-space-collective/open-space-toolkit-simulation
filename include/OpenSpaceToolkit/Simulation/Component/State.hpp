@@ -10,66 +10,61 @@ namespace simulation
 namespace component
 {
 
-#define                         DEFAULT_STATUS                                  State::Status::Disabled
-#define                         DEFAULT_VERBOSE                                 false
+#define DEFAULT_STATUS State::Status::Disabled
+#define DEFAULT_VERBOSE false
 
 /// @brief                      Component state
 
 class State
 {
+   public:
+    enum class Status
+    {
 
-    public:
+        Undefined,
+        Disabled,
+        Idle,
+        Busy,
+        Error
 
-        enum class Status
-        {
+    };
 
-            Undefined,
-            Disabled,
-            Idle,
-            Busy,
-            Error
+    State(const State::Status& aStatus = DEFAULT_STATUS, const bool& isVerbose = DEFAULT_VERBOSE);
 
-        } ;
+    State(const State& aState);
 
-                                State                                       (   const   State::Status&              aStatus                                     =   DEFAULT_STATUS,
-                                                                                const   bool&                       isVerbose                                   =   DEFAULT_VERBOSE ) ;
+    virtual ~State();
 
-                                State                                       (   const   State&                      aState                                      ) ;
+    virtual State* clone() const;
 
-        virtual                 ~State                                      ( ) ;
+    State& operator=(const State& aState);
 
-        virtual State*          clone                                       ( ) const ;
+    /// @brief              Equal to operator
+    ///
+    /// @code
+    ///                     State firstState = ... ;
+    ///                     State secondState = ... ;
+    ///                     firstState == secondState ; // True
+    /// @endcode
+    ///
+    /// @param              [in] aState A state
+    /// @return             True if states are equal
 
-        State&                  operator =                                  (   const   State&                      aState                                      ) ;
+    bool operator==(const State& aState) const;
 
-        /// @brief              Equal to operator
-        ///
-        /// @code
-        ///                     State firstState = ... ;
-        ///                     State secondState = ... ;
-        ///                     firstState == secondState ; // True
-        /// @endcode
-        ///
-        /// @param              [in] aState A state
-        /// @return             True if states are equal
+    bool isDefined() const;
 
-        bool                    operator ==                                 (   const   State&                      aState                                      ) const ;
+    State::Status getStatus() const;
 
-        bool                    isDefined                                   ( ) const ;
+    static State Undefined();
 
-        State::Status           getStatus                                   ( ) const ;
+   private:
+    State::Status status_;
+    bool verbose_;
+};
 
-        static State            Undefined                                   ( ) ;
-
-    private:
-
-        State::Status           status_ ;
-        bool                    verbose_ ;
-
-} ;
-
-}
-}
-}
+}  // namespace component
+}  // namespace simulation
+}  // namespace ostk
 
 #endif

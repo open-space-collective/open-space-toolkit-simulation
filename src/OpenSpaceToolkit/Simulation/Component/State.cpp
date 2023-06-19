@@ -12,78 +12,66 @@ namespace simulation
 namespace component
 {
 
-                                State::State                                (   const   State::Status&              aStatus,
-                                                                                const   bool&                       isVerbose                                   )
-                                :   status_(aStatus),
-                                    verbose_(isVerbose)
+State::State(const State::Status& aStatus, const bool& isVerbose)
+    : status_(aStatus),
+      verbose_(isVerbose)
 {
-
 }
 
-                                State::State                                (   const   State&                      aState                                      )
-                                :   status_(aState.status_),
-                                    verbose_(aState.verbose_)
+State::State(const State& aState)
+    : status_(aState.status_),
+      verbose_(aState.verbose_)
 {
-
 }
 
-                                State::~State                               ( )
-{
+State::~State() {}
 
+State* State::clone() const
+{
+    return new State(*this);
 }
 
-State*                          State::clone                                ( ) const
+State& State::operator=(const State& aState)
 {
-    return new State(*this) ;
-}
-
-State&                          State::operator =                           (   const   State&                      aState                                      )
-{
-
     if (this != &aState)
     {
-        status_ = aState.status_ ;
-        verbose_ = aState.verbose_ ;
+        status_ = aState.status_;
+        verbose_ = aState.verbose_;
     }
 
-    return *this ;
-
+    return *this;
 }
 
-bool                            State::operator ==                          (   const   State&                      aState                                      ) const
+bool State::operator==(const State& aState) const
 {
-
     if ((!this->isDefined()) || (!aState.isDefined()))
     {
-        return false ;
+        return false;
     }
 
-    return (status_ == aState.status_) && (verbose_ == aState.verbose_) ;
-
+    return (status_ == aState.status_) && (verbose_ == aState.verbose_);
 }
 
-bool                            State::isDefined                            ( ) const
+bool State::isDefined() const
 {
-    return status_ != State::Status::Undefined ;
+    return status_ != State::Status::Undefined;
 }
 
-State::Status                   State::getStatus                            ( ) const
+State::Status State::getStatus() const
 {
-
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("State") ;
+        throw ostk::core::error::runtime::Undefined("State");
     }
 
-    return status_ ;
-
+    return status_;
 }
 
-State                           State::Undefined                            ( )
+State State::Undefined()
 {
-    return { State::Status::Undefined } ;
+    return {State::Status::Undefined};
 }
 
-}
-}
-}
+}  // namespace component
+}  // namespace simulation
+}  // namespace ostk

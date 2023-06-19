@@ -2,29 +2,23 @@
 
 #include <OpenSpaceToolkit/Simulation/Simulator.hpp>
 
-inline void                     OpenSpaceToolkitSimulationPy_Simulator      (           pybind11::module&           aModule                                     )
+inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::core::ctnr::Array;
+    using ostk::core::types::Shared;
 
-    using ostk::core::ctnr::Array ;
-    using ostk::core::types::Shared ;
+    using ostk::physics::Environment;
 
-    using ostk::physics::Environment ;
-
-    using ostk::simulation::Simulator ;
-    using ostk::simulation::SimulatorConfiguration ;
-    using ostk::simulation::Satellite ;
-    using ostk::simulation::SatelliteConfiguration ;
+    using ostk::simulation::Simulator;
+    using ostk::simulation::SimulatorConfiguration;
+    using ostk::simulation::Satellite;
+    using ostk::simulation::SatelliteConfiguration;
 
     class_<Simulator, Shared<Simulator>>(aModule, "Simulator")
 
-        .def
-        (
-            init<const Environment&, const Array<Shared<Satellite>>&>(),
-            arg("environment"),
-            arg("satellites")
-        )
+        .def(init<const Environment&, const Array<Shared<Satellite>>&>(), arg("environment"), arg("satellites"))
 
         .def("is_defined", &Simulator::isDefined)
         .def("has_satellite_with_name", &Simulator::hasSatelliteWithName, arg("name"))
@@ -41,17 +35,15 @@ inline void                     OpenSpaceToolkitSimulationPy_Simulator      (   
         .def_static("undefined", &Simulator::Undefined)
         .def_static("configure", &Simulator::Configure, arg("configuration"))
 
-    ;
+        ;
 
     class_<SimulatorConfiguration>(aModule, "SimulatorConfiguration")
 
-        .def
-        (
+        .def(
             init<const Environment&, const Array<SatelliteConfiguration>&>(),
             arg("environment"),
             arg("satellites") = DEFAULT_SATELLITES
         )
 
-    ;
-
+        ;
 }

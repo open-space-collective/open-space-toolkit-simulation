@@ -6,101 +6,95 @@
 #include <OpenSpaceToolkit/Simulation/Component.hpp>
 #include <OpenSpaceToolkit/Simulation/Entity.hpp>
 
-#include <OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp>
-
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
-
 #include <OpenSpaceToolkit/Core/Containers/Array.hpp>
 #include <OpenSpaceToolkit/Core/Containers/Map.hpp>
 #include <OpenSpaceToolkit/Core/Types/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
+
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+
+#include <OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp>
 
 namespace ostk
 {
 namespace simulation
 {
 
-using ostk::core::types::String ;
-using ostk::core::types::Shared ;
-using ostk::core::ctnr::Map ;
-using ostk::core::ctnr::Array ;
+using ostk::core::types::String;
+using ostk::core::types::Shared;
+using ostk::core::ctnr::Map;
+using ostk::core::ctnr::Array;
 
-using ostk::physics::coord::Frame ;
+using ostk::physics::coord::Frame;
 
-using ostk::astro::flight::Profile ;
+using ostk::astro::flight::Profile;
 
-using ostk::simulation::Component ;
-using ostk::simulation::ComponentConfiguration ;
+using ostk::simulation::Component;
+using ostk::simulation::ComponentConfiguration;
 
-#define                         DEFAULT_COMPONENTS                              Array<ComponentConfiguration>::Empty()
-#define                         DEFAULT_TAGS                                    Array<String>::Empty()
-#define                         DEFAULT_GEOMETRIES                              Array<GeometryConfiguration>::Empty()
+#define DEFAULT_COMPONENTS Array<ComponentConfiguration>::Empty()
+#define DEFAULT_TAGS Array<String>::Empty()
+#define DEFAULT_GEOMETRIES Array<GeometryConfiguration>::Empty()
 
-class Simulator ;
-struct SatelliteConfiguration ;
+class Simulator;
+struct SatelliteConfiguration;
 
 /// @brief                      Satellite
 
 class Satellite : public Component
 {
+   public:
+    Satellite(
+        const String& anId,
+        const String& aName,
+        const Array<String>& aTagArray,
+        const Array<Shared<Geometry>>& aGeometryArray,
+        const Array<Shared<Component>>& aComponentArray,
+        const Shared<const Frame>& aFrameSPtr,
+        const Shared<Profile>& aProfileSPtr,
+        const Shared<const Simulator>& aSimulatorSPtr
+    );
 
-    public:
+    Satellite(const Satellite& aSatellite);
 
-                                Satellite                                   (   const   String&                     anId,
-                                                                                const   String&                     aName,
-                                                                                const   Array<String>&              aTagArray,
-                                                                                const   Array<Shared<Geometry>>&    aGeometryArray,
-                                                                                const   Array<Shared<Component>>&   aComponentArray,
-                                                                                const   Shared<const Frame>&        aFrameSPtr,
-                                                                                const   Shared<Profile>&            aProfileSPtr,
-                                                                                const   Shared<const Simulator>&    aSimulatorSPtr                              ) ;
+    ~Satellite();
 
-                                Satellite                                   (   const   Satellite&                  aSatellite                                  ) ;
+    Satellite* clone() const;
 
-                                ~Satellite                                  ( ) ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Satellite& aSatellite);
 
-        Satellite*              clone                                       ( ) const ;
+    bool isDefined() const;
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Satellite&                  aSatellite                                  ) ;
+    /// @brief              Print satellite
+    ///
+    /// @param              [in] anOutputStream An output stream
+    /// @param              [in] (optional) displayDecorators If true, display decorators
 
-        bool                    isDefined                                   ( ) const ;
+    void print(std::ostream& anOutputStream, bool displayDecorators = true) const;
 
-        /// @brief              Print satellite
-        ///
-        /// @param              [in] anOutputStream An output stream
-        /// @param              [in] (optional) displayDecorators If true, display decorators
+    static Satellite Undefined();
 
-        void                    print                                       (           std::ostream&               anOutputStream,
-                                                                                        bool                        displayDecorators                           =   true ) const ;
+    static Shared<Satellite> Configure(
+        const SatelliteConfiguration& aSatelliteConfiguration, const Shared<const Simulator>& aSimulatorSPtr
+    );
 
-        static Satellite        Undefined                                   ( ) ;
+    static Shared<const Frame> GenerateFrame(const String& aName, const Shared<const Profile>& aProfile);
 
-        static Shared<Satellite> Configure                                  (   const   SatelliteConfiguration&     aSatelliteConfiguration,
-                                                                                const   Shared<const Simulator>&    aSimulatorSPtr                              ) ;
-
-        static Shared<const Frame> GenerateFrame                            (   const   String&                     aName,
-                                                                                const   Shared<const Profile>&      aProfile                                    ) ;
-
-    private:
-
-        Shared<const Profile>   profileSPtr_ ;
-
-} ;
+   private:
+    Shared<const Profile> profileSPtr_;
+};
 
 struct SatelliteConfiguration
 {
+    const String id;
+    const String name;
+    const Profile profile;
+    const Array<ComponentConfiguration> components = DEFAULT_COMPONENTS;
+    const Array<String> tags = DEFAULT_TAGS;
+    const Array<GeometryConfiguration> geometries = DEFAULT_GEOMETRIES;
+};
 
-    const String                id ;
-    const String                name ;
-    const Profile               profile ;
-    const Array<ComponentConfiguration> components                              =   DEFAULT_COMPONENTS ;
-    const Array<String>         tags                                            =   DEFAULT_TAGS ;
-    const Array<GeometryConfiguration> geometries                               =   DEFAULT_GEOMETRIES ;
-
-} ;
-
-}
-}
+}  // namespace simulation
+}  // namespace ostk
 
 #endif
