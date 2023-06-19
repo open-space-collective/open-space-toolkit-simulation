@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Simulation
-# @file           docker/release/debian/Dockerfile
-# @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 ARG VERSION
 
@@ -14,9 +7,7 @@ ARG CPP_BUILDER_IMAGE=${CPP_BUILDER_IMAGE:-ghcr.io/loft-orbital/open-space-toolk
 ARG PYTHON_TEST_VERSION="3.11"
 ARG PYTHON_TEST_VERSION_WITHOUT_DOT="311"
 
-################################################################################################################################################################
-
-FROM ${CPP_BUILDER_IMAGE}:${VERSION}-debian as cpp-builder
+FROM ${CPP_BUILDER_IMAGE}:${VERSION} as cpp-builder
 
 RUN mkdir -p /app/bin /app/build /app/lib
 
@@ -39,8 +30,6 @@ RUN cmake .. \
  && make -j $(nproc) \
  && make install
 
-################################################################################################################################################################
-
 FROM debian:buster as cpp-release
 
 ENV LD_LIBRARY_PATH /usr/local/lib
@@ -57,16 +46,12 @@ COPY --from=cpp-builder /usr/local/test/OpenSpaceToolkit /usr/local/test/OpenSpa
 
 ENTRYPOINT ["/usr/local/test/OpenSpaceToolkit/Simulation/open-space-toolkit-simulation.test"]
 
-################################################################################################################################################################
-
 FROM python:${PYTHON_TEST_VERSION}-slim as python-builder
 
 COPY --from=cpp-builder /app/build/bindings/python/dist /dist
 
 ARG PYTHON_TEST_VERSION_WITHOUT_DOT
 RUN pip install /dist/*${PYTHON_TEST_VERSION_WITHOUT_DOT}*.whl
-
-################################################################################################################################################################
 
 FROM python:${PYTHON_TEST_VERSION}-slim as python-release
 
@@ -89,5 +74,3 @@ ARG PYTHON_TEST_VERSION
 COPY --from=python-builder /usr/local/lib/python${PYTHON_TEST_VERSION}/site-packages/ostk /usr/local/lib/python${PYTHON_TEST_VERSION}/site-packages/ostk
 
 ENTRYPOINT ["ipython"]
-
-################################################################################################################################################################

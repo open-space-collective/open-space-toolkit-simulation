@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Simulation
-# @file           bindings/python/test/test_simulator.py
-# @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 from datetime import datetime
 
@@ -35,52 +28,56 @@ from ostk.simulation import Component
 from ostk.simulation import ComponentConfiguration
 from ostk.simulation.component import GeometryConfiguration
 
-################################################################################################################################################################
 
 class TestSimulator:
-
-    def test_end_to_end (self):
-
+    def test_end_to_end(self):
         environment = Environment.default()
 
         orbit = Orbit.sun_synchronous(
-            epoch = Instant.date_time(datetime(2020, 1, 1, 0, 0, 0), Scale.UTC),
-            altitude = Length.kilometers(500.0),
-            local_time_at_descending_node = Time(14, 0, 0),
-            celestial_object = environment.access_celestial_object_with_name('Earth'),
+            epoch=Instant.date_time(datetime(2020, 1, 1, 0, 0, 0), Scale.UTC),
+            altitude=Length.kilometers(500.0),
+            local_time_at_descending_node=Time(14, 0, 0),
+            celestial_object=environment.access_celestial_object_with_name("Earth"),
         )
 
         simulator = Simulator.configure(
-            configuration = SimulatorConfiguration(
-                environment = environment,
-                satellites = [
+            configuration=SimulatorConfiguration(
+                environment=environment,
+                satellites=[
                     SatelliteConfiguration(
-                        id = '9ea22c07-6977-48a7-8f68-dff758971d57',
-                        name = 'LoftSat-1',
-                        tags = ['a', 'b'],
-                        profile = Profile.nadir_pointing(
-                            orbit = orbit,
-                            orbital_frame_type = Orbit.FrameType.VVLH,
+                        id="9ea22c07-6977-48a7-8f68-dff758971d57",
+                        name="LoftSat-1",
+                        tags=["a", "b"],
+                        profile=Profile.nadir_pointing(
+                            orbit=orbit,
+                            orbital_frame_type=Orbit.FrameType.VVLH,
                         ),
-                        components = [
+                        components=[
                             ComponentConfiguration(
-                                id = 'dc261118-dad7-476d-ab6c-fdfef12f20fd',
-                                name = 'Camera',
-                                type = Component.Type.Sensor,
-                                tags = ['c', 'd'],
-                                orientation = Quaternion.unit(),
-                                geometries = [
+                                id="dc261118-dad7-476d-ab6c-fdfef12f20fd",
+                                name="Camera",
+                                type=Component.Type.Sensor,
+                                tags=["c", "d"],
+                                orientation=Quaternion.unit(),
+                                geometries=[
                                     GeometryConfiguration(
-                                        name = 'FOV',
-                                        composite = Composite(
+                                        name="FOV",
+                                        composite=Composite(
                                             Pyramid(
-                                                base = Polygon(
-                                                    Polygon2d([Point2d(-0.1, -1.0), Point2d(+0.1, -1.0), Point2d(+0.1, +1.0), Point2d(-0.1, +1.0)]),
+                                                base=Polygon(
+                                                    Polygon2d(
+                                                        [
+                                                            Point2d(-0.1, -1.0),
+                                                            Point2d(+0.1, -1.0),
+                                                            Point2d(+0.1, +1.0),
+                                                            Point2d(-0.1, +1.0),
+                                                        ]
+                                                    ),
                                                     Point(0.0, 0.0, 1.0),
                                                     (1.0, 0.0, 0.0),
                                                     (0.0, 1.0, 0.0),
                                                 ),
-                                                apex = Point(0.0, 0.0, 0.0),
+                                                apex=Point(0.0, 0.0, 0.0),
                                             ),
                                         ),
                                     ),
@@ -96,10 +93,12 @@ class TestSimulator:
 
         simulator.set_instant(instant)
 
-        camera = simulator.access_satellite_with_name('LoftSat-1').access_component_with_name('Camera')
+        camera = simulator.access_satellite_with_name(
+            "LoftSat-1"
+        ).access_component_with_name("Camera")
 
-        camera_geometry = camera.access_geometry_with_name('FOV')
-        earth = environment.access_celestial_object_with_name('Earth')
+        camera_geometry = camera.access_geometry_with_name("FOV")
+        earth = environment.access_celestial_object_with_name("Earth")
 
         assert camera_geometry.intersects(earth) is True
 
@@ -108,8 +107,21 @@ class TestSimulator:
         assert camera_geometry.get_geometry_in(Frame.GCRF()) is not None
         assert camera_geometry.get_geometry_in(Frame.ITRF()) is not None
 
-        assert camera_geometry.intersection_with(earth).access_composite().get_object_count() == 2
-        assert camera_geometry.intersection_with(earth).access_composite().access_object_at(0).is_line_string() is True
-        assert camera_geometry.intersection_with(earth).access_composite().access_object_at(1).is_line_string() is True
-
-################################################################################################################################################################
+        assert (
+            camera_geometry.intersection_with(earth).access_composite().get_object_count()
+            == 2
+        )
+        assert (
+            camera_geometry.intersection_with(earth)
+            .access_composite()
+            .access_object_at(0)
+            .is_line_string()
+            is True
+        )
+        assert (
+            camera_geometry.intersection_with(earth)
+            .access_composite()
+            .access_object_at(1)
+            .is_line_string()
+            is True
+        )

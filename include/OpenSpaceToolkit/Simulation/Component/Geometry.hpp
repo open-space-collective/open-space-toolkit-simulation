@@ -1,200 +1,165 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Simulation
-/// @file           OpenSpaceToolkit/Simulation/Component/Geometry.hpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>, Remy Derollez <remy@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #ifndef __OpenSpaceToolkit_Simulation_Component_Geometry__
 #define __OpenSpaceToolkit_Simulation_Component_Geometry__
 
-#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp>
-
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Composite.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object.hpp>
-
 #include <OpenSpaceToolkit/Core/Types/String.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Composite.hpp>
+
+#include <OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
 
 namespace ostk
 {
 namespace simulation
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-class Component ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Component;
 
 namespace component
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using ostk::core::types::String;
+using ostk::core::types::Shared;
+using ostk::math::geom::d3::Object;
+using ostk::math::geom::d3::objects::Composite;
 
-using ostk::core::types::String ;
-using ostk::core::types::Shared ;
-using ostk::math::geom::d3::Object ;
-using ostk::math::geom::d3::objects::Composite ;
+using ostk::physics::coord::Frame;
+using ObjectGeometry = ostk::physics::env::object::Geometry;
+using ostk::physics::env::obj::Celestial;
 
-using ostk::physics::coord::Frame ;
-using ObjectGeometry = ostk::physics::env::object::Geometry ;
-using ostk::physics::env::obj::Celestial ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-struct GeometryConfiguration ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+struct GeometryConfiguration;
 
 /// @brief                      Component geometry
 
 class Geometry
 {
+   public:
+    Geometry(const String& aName, const Composite& aComposite, const Shared<const Component>& aComponentSPtr);
 
-    public:
+    /// @brief              Copy assignment operator
+    ///
+    /// @param              [in] aGeometry A geometry
+    /// @return             Reference to geometry
 
-                                Geometry                                    (   const   String&                     aName,
-                                                                                const   Composite&                  aComposite,
-                                                                                const   Shared<const Component>&    aComponentSPtr                              ) ;
+    /// @brief              Equal to operator
+    ///
+    /// @param              [in] aGeometry A geometry
+    /// @return             True if geometries are equal
 
-        /// @brief              Copy assignment operator
-        ///
-        /// @param              [in] aGeometry A geometry
-        /// @return             Reference to geometry
+    bool operator==(const Geometry& aGeometry) const;
 
-        /// @brief              Equal to operator
-        ///
-        /// @param              [in] aGeometry A geometry
-        /// @return             True if geometries are equal
+    /// @brief              Not equal to operator
+    ///
+    /// @param              [in] aGeometry A geometry
+    /// @return             True if geometries are not equal
 
-        bool                    operator ==                                 (   const   Geometry&                   aGeometry                                   ) const ;
+    bool operator!=(const Geometry& aGeometry) const;
 
-        /// @brief              Not equal to operator
-        ///
-        /// @param              [in] aGeometry A geometry
-        /// @return             True if geometries are not equal
+    /// @brief              Output stream operator
+    ///
+    /// @param              [in] anOutputStream An output stream
+    /// @param              [in] aGeometry A geometry
+    /// @return             A reference to output stream
 
-        bool                    operator !=                                 (   const   Geometry&                   aGeometry                                   ) const ;
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Geometry& aGeometry);
 
-        /// @brief              Output stream operator
-        ///
-        /// @param              [in] anOutputStream An output stream
-        /// @param              [in] aGeometry A geometry
-        /// @return             A reference to output stream
+    /// @brief              Check if geometry is defined
+    ///
+    /// @return             True if geometry is defined
 
-        friend std::ostream&    operator <<                                 (           std::ostream&               anOutputStream,
-                                                                                const   Geometry&                   aGeometry                                   ) ;
+    bool isDefined() const;
 
-        /// @brief              Check if geometry is defined
-        ///
-        /// @return             True if geometry is defined
+    ///                     TBI
 
-        bool                    isDefined                                   ( ) const ;
+    const Component& accessComponent() const;
 
-        ///                     TBI
+    ///                     TBI
 
-        const Component&        accessComponent                             ( ) const ;
+    String getName() const;
 
-        ///                     TBI
+    /// @brief              Check if geometry intersects another geometry
+    ///
+    /// @param              [in] aGeometry A geometry
+    /// @return             True if geometry intersects another geometry
 
-        String                  getName                                     ( ) const ;
+    bool intersects(const ObjectGeometry& aGeometry) const;
 
-        /// @brief              Check if geometry intersects another geometry
-        ///
-        /// @param              [in] aGeometry A geometry
-        /// @return             True if geometry intersects another geometry
+    /// @brief              Check if geometry intersects a celestial object
+    ///
+    /// @param              [in] aCelestialObject A celestial object
+    /// @return             True if geometry intersects a celestial object
 
-        bool                    intersects                                  (   const   ObjectGeometry&             aGeometry                                   ) const ;
+    bool intersects(const Celestial& aCelestialObject) const;
 
-        /// @brief              Check if geometry intersects a celestial object
-        ///
-        /// @param              [in] aCelestialObject A celestial object
-        /// @return             True if geometry intersects a celestial object
+    /// @brief              Check if geometry contains another geometry
+    ///
+    /// @param              [in] aGeometry A geometry
+    /// @return             True if geometry contains another geometry
 
-        bool                    intersects                                  (   const   Celestial&                  aCelestialObject                            ) const ;
+    bool contains(const ObjectGeometry& aGeometry) const;
 
-        /// @brief              Check if geometry contains another geometry
-        ///
-        /// @param              [in] aGeometry A geometry
-        /// @return             True if geometry contains another geometry
+    /// @brief              Check if geometry contains a celestial object
+    ///
+    /// @param              [in] aCelestialObject A celestial object
+    /// @return             True if geometry contains a celestial object
 
-        bool                    contains                                    (   const   ObjectGeometry&             aGeometry                                   ) const ;
+    bool contains(const Celestial& aCelestialObject) const;
 
-        /// @brief              Check if geometry contains a celestial object
-        ///
-        /// @param              [in] aCelestialObject A celestial object
-        /// @return             True if geometry contains a celestial object
+    /// @brief              Access composite
+    ///
+    /// @return             Reference to composite
 
-        bool                    contains                                    (   const   Celestial&                  aCelestialObject                            ) const ;
+    const Composite& accessComposite() const;
 
-        /// @brief              Access composite
-        ///
-        /// @return             Reference to composite
+    /// @brief              Access frame
+    ///
+    /// @return             Shared pointer to frame
 
-        const Composite&        accessComposite                             ( ) const ;
+    Shared<const Frame> accessFrame() const;
 
-        /// @brief              Access frame
-        ///
-        /// @return             Shared pointer to frame
+    /// @brief              Get geometry in frame
+    ///
+    /// @return             Geometry
 
-        Shared<const Frame>     accessFrame                                 ( ) const ;
+    ObjectGeometry getGeometryIn(const Shared<const Frame>& aFrameSPtr) const;
 
-        /// @brief              Get geometry in frame
-        ///
-        /// @return             Geometry
+    /// @brief              Compute intersection of geometry with another geometry
+    ///
+    /// @param              [in] aGeometry A geometry
+    /// @return             Intersection of geometry with another geometry
 
-        ObjectGeometry          getGeometryIn                               (   const   Shared<const Frame>&        aFrameSPtr                                  ) const ;
+    ObjectGeometry intersectionWith(const ObjectGeometry& aGeometry) const;
 
-        /// @brief              Compute intersection of geometry with another geometry
-        ///
-        /// @param              [in] aGeometry A geometry
-        /// @return             Intersection of geometry with another geometry
+    /// @brief              Compute intersection of geometry with a celestial object
+    ///
+    /// @param              [in] aCelestialObject A celestial object
+    /// @return             Intersection of geometry with a celestial object
 
-        ObjectGeometry          intersectionWith                            (   const   ObjectGeometry&             aGeometry                                   ) const ;
+    ObjectGeometry intersectionWith(const Celestial& aCelestialObject) const;
 
-        /// @brief              Compute intersection of geometry with a celestial object
-        ///
-        /// @param              [in] aCelestialObject A celestial object
-        /// @return             Intersection of geometry with a celestial object
+    static Geometry Undefined();
 
-        ObjectGeometry          intersectionWith                            (   const   Celestial&                  aCelestialObject                            ) const ;
+    static Shared<Geometry> Configure(
+        const GeometryConfiguration& aGeometryConfiguration, const Shared<const Component>& aComponentSPtr
+    );
 
-        static Geometry         Undefined                                   ( ) ;
-
-        static Shared<Geometry> Configure                                   (   const   GeometryConfiguration&      aGeometryConfiguration,
-                                                                                const   Shared<const Component>&    aComponentSPtr                              ) ;
-
-    private:
-
-        String                  name_ ;
-        ObjectGeometry          geometry_ ;
-        Shared<const Component> componentPtr_ ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   private:
+    String name_;
+    ObjectGeometry geometry_;
+    Shared<const Component> componentPtr_;
+};
 
 struct GeometryConfiguration
 {
+    const String name;
+    const Composite composite;
+};
 
-    const String                name ;
-    const Composite             composite ;
-
-} ;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}
-}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace component
+}  // namespace simulation
+}  // namespace ostk
 
 #endif
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

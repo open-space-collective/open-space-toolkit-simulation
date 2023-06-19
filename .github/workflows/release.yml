@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Simulation
-# @file           .github/workflows/release.yml
-# @author         Remy Derollez <remy@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 name: Release
 
@@ -38,7 +31,7 @@ jobs:
           echo "::set-output name=value::${project_version}"
 
   build-image-development:
-    name: Build Development Image (Debian)
+    name: Build Development Image
     runs-on: ubuntu-latest
     needs:
       - prepare-environment
@@ -60,10 +53,9 @@ jobs:
       - name: Build Development Image
         uses: docker/build-push-action@v3
         with:
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}-debian
-          context: ./docker/development/debian
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}
+          context: ./docker/development
           build-args: |
-            BASE_IMAGE_SYSTEM=debian
             VERSION=${{ needs.prepare-environment.outputs.project_version }}
           push: true
 
@@ -89,9 +81,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Pull Development Image
-        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}-debian
+        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}
       - name: Run Unit Tests C++
-        run: make test-coverage-cpp-debian
+        run: make test-coverage-cpp
       - name: Upload Coverage Results
         uses: codecov/codecov-action@v3
         with:
@@ -121,12 +113,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Pull Development Image
-        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}-debian
+        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}
       - name: Run Unit Tests Python
-        run: make test-unit-python-debian
+        run: make test-unit-python
 
-  build-package-cpp-debian:
-    name: Build C++ Package (Debian)
+  build-package-cpp:
+    name: Build C++ Package
     runs-on: ubuntu-latest
     needs:
       - prepare-environment
@@ -148,17 +140,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Pull Development Image
-        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}-debian
-      - name: Build C++ Package (Debian)
-        run: make build-packages-cpp-debian
-      - name: Upload C++ Package (Debian)
+        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}
+      - name: Build C++ Package
+        run: make build-packages-cpp
+      - name: Upload C++ Package
         uses: actions/upload-artifact@v3
         with:
-          name: cpp-package-debian
+          name: cpp-package
           path: packages/cpp/
 
-  build-package-python-debian:
-    name: Build Python Package (Debian)
+  build-package-python:
+    name: Build Python Package
     runs-on: ubuntu-latest
     needs:
       - prepare-environment
@@ -180,13 +172,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Pull Development Image
-        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}-debian
-      - name: Build Python Package (Debian)
-        run: make build-packages-python-debian
-      - name: Upload Python Package (Debian)
+        run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-development:${{ needs.prepare-environment.outputs.project_version }}
+      - name: Build Python Package
+        run: make build-packages-python
+      - name: Upload Python Package
         uses: actions/upload-artifact@v3
         with:
-          name: python-package-debian
+          name: python-package
           path: packages/python/
 
   build-documentation:
@@ -216,12 +208,12 @@ jobs:
           name: docs
           path: docs/
 
-  deploy-package-cpp-debian:
-    name: Deploy C++ Package (Debian)
+  deploy-package-cpp:
+    name: Deploy C++ Package
     runs-on: ubuntu-latest
     needs:
-      - build-package-cpp-debian
-      - build-package-python-debian
+      - build-package-cpp
+      - build-package-python
       - build-documentation
     permissions:
       contents: write
@@ -231,12 +223,12 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - name: Download C++ Package (Debian)
+      - name: Download C++ Package
         uses: actions/download-artifact@v3
         with:
-          name: cpp-package-debian
+          name: cpp-package
           path: packages/cpp/
-      - name: Deploy C++ Package (Debian)
+      - name: Deploy C++ Package
         run: |
           cd packages/cpp
           export archive=$(find . -name "*-devel.deb")
@@ -246,12 +238,12 @@ jobs:
           export archive=$(find . -name "*-runtime.deb")
           curl -F archive=@${archive} https://${{ secrets.PYPI_API_TOKEN }}@package.loftorbital.com/apt
 
-  deploy-package-python-debian:
-    name: Deploy Python Package (Debian)
+  deploy-package-python:
+    name: Deploy Python Package
     runs-on: ubuntu-latest
     needs:
-      - build-package-cpp-debian
-      - build-package-python-debian
+      - build-package-cpp
+      - build-package-python
       - build-documentation
     permissions:
       contents: write
@@ -261,12 +253,12 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - name: Download Python Package (Debian)
+      - name: Download Python Package
         uses: actions/download-artifact@v3
         with:
-          name: python-package-debian
+          name: python-package
           path: packages/python/
-      - name: Deploy Python Package (Debian)
+      - name: Deploy Python Package
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository_url: ${{ secrets.PACKAGE_REPOSITORY_URL }}/pypi/
@@ -280,8 +272,8 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - prepare-environment
-      - build-package-cpp-debian
-      - build-package-python-debian
+      - build-package-cpp
+      - build-package-python
       - build-documentation
     steps:
       - name: Checkout Repository
@@ -310,8 +302,8 @@ jobs:
     name: Deploy Documentation
     runs-on: ubuntu-latest
     needs:
-      - build-package-cpp-debian
-      - build-package-python-debian
+      - build-package-cpp
+      - build-package-python
       - build-documentation
     permissions:
       contents: write
@@ -331,5 +323,3 @@ jobs:
         with:
           branch: gh-pages
           folder: docs
-
-################################################################################################################################################################

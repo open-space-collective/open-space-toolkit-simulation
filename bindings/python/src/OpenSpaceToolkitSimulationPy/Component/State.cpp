@@ -1,26 +1,17 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/// @project        Open Space Toolkit ▸ Simulation
-/// @file           bindings/python/src/OpenSpaceToolkitSimulationPy/Component/State.cpp
-/// @author         Lucas Brémond <lucas@loftorbital.com>, Remy Derollez <remy@loftorbital.com>
-/// @license        Apache License 2.0
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Apache License 2.0
 
 #include <OpenSpaceToolkit/Simulation/Component/State.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-inline void                     OpenSpaceToolkitSimulationPy_Component_State    (           pybind11::module&       aModule                                     )
+inline void OpenSpaceToolkitSimulationPy_Component_State(pybind11::module& aModule)
 {
+    using namespace pybind11;
 
-    using namespace pybind11 ;
+    using ostk::simulation::component::State;
 
-    using ostk::simulation::component::State ;
+    class_<State> state(aModule, "State");
 
-    class_<State> state(aModule, "State") ;
-
-    state.def(init<const State::Status&>())
+    state
+        .def(init<const State::Status&>())
 
         // .def("__str__", &(shiftToString<State>))
         // .def("__repr__", &(shiftToString<State>))
@@ -31,7 +22,7 @@ inline void                     OpenSpaceToolkitSimulationPy_Component_State    
 
         .def_static("undefined", &State::Undefined)
 
-    ;
+        ;
 
     enum_<State::Status>(state, "Status")
 
@@ -41,8 +32,5 @@ inline void                     OpenSpaceToolkitSimulationPy_Component_State    
         .value("Busy", State::Status::Busy)
         .value("Error", State::Status::Error)
 
-    ;
-
+        ;
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
