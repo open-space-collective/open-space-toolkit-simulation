@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Simulation
-# @file           bindings/python/test/test_simulator.py
-# @author         Lucas Brémond <lucas@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 from datetime import datetime
 
@@ -35,7 +28,6 @@ from ostk.simulation import Component
 from ostk.simulation import ComponentConfiguration
 from ostk.simulation.component import GeometryConfiguration
 
-################################################################################################################################################################
 
 class TestSimulator:
 
@@ -111,5 +103,3 @@ class TestSimulator:
         assert camera_geometry.intersection_with(earth).access_composite().get_object_count() == 2
         assert camera_geometry.intersection_with(earth).access_composite().access_object_at(0).is_line_string() is True
         assert camera_geometry.intersection_with(earth).access_composite().access_object_at(1).is_line_string() is True
-
-################################################################################################################################################################

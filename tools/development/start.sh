@@ -1,13 +1,6 @@
 #!/bin/bash
 
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Simulation
-# @file           tools/development/start.sh
-# @author         Remy Derollez <remy@loftorbital.com>
-# @license        Copyright © 2018-2022 Loft Orbital Solutions Inc.
-
-################################################################################################################################################################
+# Apache License 2.0
 
 # Check input arguments
 
@@ -23,11 +16,6 @@ fi
 
 if [[ -z ${docker_image_version} ]]; then
     echo "Variable [docker_image_version] is undefined."
-    exit 1
-fi
-
-if [[ -z ${target} ]]; then
-    echo "Variable [target] is undefined."
     exit 1
 fi
 
@@ -153,7 +141,5 @@ docker run \
 -v "${project_directory}:/app:delegated" \
 -v "${project_directory}/tools/development/helpers:/app/build/helpers:ro,delegated" \
 --workdir="/app/build" \
-${docker_development_image_repository}:${docker_image_version}-${target} \
+${docker_development_image_repository}:${docker_image_version} \
 /bin/bash -c "${command}"
-
-################################################################################################################################################################

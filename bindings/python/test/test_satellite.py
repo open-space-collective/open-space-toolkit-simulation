@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Simulation
-# @file           bindings/python/test/test_satellite.py
-# @author         Robin Petitdemange <robin@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 from datetime import datetime
 
@@ -21,7 +14,6 @@ from ostk.astrodynamics.flight import Profile
 from ostk.simulation import Satellite
 from ostk.simulation import SatelliteConfiguration
 
-################################################################################################################################################################
 
 class TestSatellite:
 
@@ -48,5 +40,3 @@ class TestSatellite:
         )
 
         assert satellite.is_defined()
-
-################################################################################################################################################################

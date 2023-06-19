@@ -1,11 +1,4 @@
-################################################################################################################################################################
-
-# @project        Open Space Toolkit ▸ Simulation
-# @file           Makefile
-# @author         Lucas Brémond <lucas@loftorbital.com>, Remy Derollez <remy@loftorbital.com>
-# @license        Apache License 2.0
-
-################################################################################################################################################################
+# Apache License 2.0
 
 project_name := simulation
 project_version := $(shell git describe --tags --always)
@@ -26,7 +19,7 @@ jupyter_project_name_python_shared_object := OpenSpaceToolkitSimulationPy.cpytho
 
 python-test-version := 3.11
 
-################################################################################################################################################################
+clang_format_sources_path ?= $(shell find ~+ src/ include/ test/ bindings/python/src/ -name '*.cpp' -o -name '*.cxx' -o -name '*.hpp' -o -name '*.tpp')
 
 pull: ## Pull all images
 
@@ -35,60 +28,52 @@ pull: ## Pull all images
 	@ make pull-development-images
 	@ make pull-release-images
 
+.PHONY: pull
+
 pull-development-images: ## Pull development images
 
 	@ echo "Pulling development images..."
 
-	@ make pull-development-image-debian
-	@ make pull-development-image-fedora
+	@ make pull-development-image
 
-pull-development-image-debian: target := debian
-pull-development-image-fedora: target := fedora
+.PHONY: pull-development-images
 
-pull-development-image-debian pull-development-image-fedora: _pull-development-image
+pull-development-image:
 
-_pull-development-image:
+	@ echo "Pulling development image..."
 
-	@ echo "Pulling [$(target)] development image..."
+	docker pull $(docker_development_image_repository):$(docker_image_version) || true
+	docker pull $(docker_development_image_repository):latest || true
 
-	docker pull $(docker_development_image_repository):$(docker_image_version)-$(target) || true
-	docker pull $(docker_development_image_repository):latest-$(target) || true
+.PHONY: pull-development-image
 
 pull-release-images: ## Pull release images
 
 	@ echo "Pull release images..."
 
-	@ make pull-release-image-cpp-debian
-	@ make pull-release-image-cpp-fedora
-
-	@ make pull-release-image-python-debian
-	@ make pull-release-image-python-fedora
-
+	@ make pull-release-image-cpp
+	@ make pull-release-image-python
 	@ make pull-release-image-jupyter
 
-pull-release-image-cpp-debian: target := debian
-pull-release-image-cpp-fedora: target := fedora
+.PHONY: pull-release-images
 
-pull-release-image-cpp-debian pull-release-image-cpp-fedora: _pull-release-image-cpp
+pull-release-image-cpp:
 
-_pull-release-image-cpp:
+	@ echo "Pull C++ release image..."
 
-	@ echo "Pull [$(target)] C++ release image..."
+	docker pull $(docker_release_image_cpp_repository):$(docker_image_version) || true
+	docker pull $(docker_release_image_cpp_repository):latest || true
 
-	docker pull $(docker_release_image_cpp_repository):$(docker_image_version)-$(target) || true
-	docker pull $(docker_release_image_cpp_repository):latest-$(target) || true
+.PHONY: pull-release-image-cpp
 
-pull-release-image-python-debian: target := debian
-pull-release-image-python-fedora: target := fedora
+pull-release-image-python: pull-development-image
 
-pull-release-image-python-debian pull-release-image-python-fedora: _pull-release-image-python
+	@ echo "Pulling Python release image..."
 
-_pull-release-image-python: _pull-development-image
+	docker pull $(docker_release_image_python_repository):$(docker_image_version) || true
+	docker pull $(docker_release_image_python_repository):latest || true
 
-	@ echo "Pulling [$(target)] Python release image..."
-
-	docker pull $(docker_release_image_python_repository):$(docker_image_version)-$(target) || true
-	docker pull $(docker_release_image_python_repository):latest-$(target) || true
+.PHONY: pull-release-image-python
 
 pull-release-image-jupyter:
 
@@ -97,9 +82,11 @@ pull-release-image-jupyter:
 	docker pull $(docker_release_image_jupyter_repository):$(docker_image_version) || true
 	docker pull $(docker_release_image_jupyter_repository):latest || true
 
-################################################################################################################################################################
+.PHONY: pull-release-image-jupyter
 
 build: build-images ## Build all images
+
+.PHONY: build
 
 build-images: ## Build development and release images
 
@@ -108,77 +95,69 @@ build-images: ## Build development and release images
 	@ make build-development-images
 	@ make build-release-images
 
+.PHONY: build-images
+
 build-development-images: ## Build development images
 
 	@ echo "Building development images..."
 
-	@ make build-development-image-debian
-	@ make build-development-image-fedora
+	@ make build-development-image
 
-build-development-image-debian: target := debian
-build-development-image-fedora: target := fedora
+.PHONY: build-development-images
 
-build-development-image-debian build-development-image-fedora: _build-development-image
+build-development-image: pull-development-image
 
-_build-development-image: _pull-development-image
-
-	@ echo "Building [$(target)] development image..."
+	@ echo "Building development image..."
 
 	docker build \
-		--cache-from=$(docker_development_image_repository):latest-$(target) \
-		--file="$(CURDIR)/docker/development/$(target)/Dockerfile" \
-		--tag=$(docker_development_image_repository):$(docker_image_version)-$(target) \
-		--tag=$(docker_development_image_repository):latest-$(target) \
+		--cache-from=$(docker_development_image_repository):latest \
+		--file="$(CURDIR)/docker/development/Dockerfile" \
+		--tag=$(docker_development_image_repository):$(docker_image_version) \
+		--tag=$(docker_development_image_repository):latest \
 		--build-arg="VERSION=$(docker_image_version)" \
 		"$(CURDIR)"
+
+.PHONY: build-development-image
 
 build-release-images: ## Build release images
 
 	@ echo "Building release images..."
 
-	@ make build-release-image-cpp-debian
-	@ make build-release-image-cpp-fedora
-
-	@ make build-release-image-python-debian
-	@ make build-release-image-python-fedora
-
+	@ make build-release-image-cpp
+	@ make build-release-image-python
 	@ make build-release-image-jupyter
 
-build-release-image-cpp-debian: target := debian
-build-release-image-cpp-fedora: target := fedora
+.PHONY: build-release-images
 
-build-release-image-cpp-debian build-release-image-cpp-fedora: _build-release-image-cpp
+build-release-image-cpp: build-development-image pull-release-image-cpp
 
-_build-release-image-cpp: _build-development-image _pull-release-image-cpp
-
-	@ echo "Building [$(target)] C++ release image..."
+	@ echo "Building C++ release image..."
 
 	docker build \
-		--cache-from=$(docker_release_image_cpp_repository):latest-$(target) \
-		--file="$(CURDIR)/docker/release/$(target)/Dockerfile" \
-		--tag=$(docker_release_image_cpp_repository):$(docker_image_version)-$(target) \
-		--tag=$(docker_release_image_cpp_repository):latest-$(target) \
+		--cache-from=$(docker_release_image_cpp_repository):latest \
+		--file="$(CURDIR)/docker/release/Dockerfile" \
+		--tag=$(docker_release_image_cpp_repository):$(docker_image_version) \
+		--tag=$(docker_release_image_cpp_repository):latest \
 		--build-arg="VERSION=$(docker_image_version)" \
 		--target=cpp-release \
 		"$(CURDIR)"
 
-build-release-image-python-debian: target := debian
-build-release-image-python-fedora: target := fedora
+.PHONY: build-release-image-cpp
 
-build-release-image-python-debian build-release-image-python-fedora: _build-release-image-python
+build-release-image-python: build-development-image pull-release-image-python
 
-_build-release-image-python: _build-development-image _pull-release-image-python
-
-	@ echo "Building [$(target)] Python release image..."
+	@ echo "Building Python release image..."
 
 	docker build \
-		--cache-from=$(docker_release_image_python_repository):latest-$(target) \
-		--file="$(CURDIR)/docker/release/$(target)/Dockerfile" \
-		--tag=$(docker_release_image_python_repository):$(docker_image_version)-$(target) \
-		--tag=$(docker_release_image_python_repository):latest-$(target) \
+		--cache-from=$(docker_release_image_python_repository):latest \
+		--file="$(CURDIR)/docker/release/Dockerfile" \
+		--tag=$(docker_release_image_python_repository):$(docker_image_version) \
+		--tag=$(docker_release_image_python_repository):latest \
 		--build-arg="VERSION=$(docker_image_version)" \
 		--target=python-release \
 		"$(CURDIR)"
+
+.PHONY: build-release-image-python
 
 build-release-image-jupyter: pull-release-image-jupyter
 
@@ -192,20 +171,22 @@ build-release-image-jupyter: pull-release-image-jupyter
 		--build-arg="JUPYTER_NOTEBOOK_IMAGE_REPOSITORY=$(jupyter_notebook_image_repository)" \
 		"$(CURDIR)/docker/jupyter"
 
-build-documentation: target := debian
+.PHONY: build-release-image-jupyter
 
-build-documentation: _build-development-image ## Build documentation
+build-documentation: build-development-image ## Build documentation
 
-	@ echo "Building [$(target)] documentation..."
+	@ echo "Building documentation..."
 
 	docker run \
 		--rm \
 		--volume="$(CURDIR):/app:delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
-		$(docker_development_image_repository):$(docker_image_version)-$(target) \
+		$(docker_development_image_repository):$(docker_image_version) \
 		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=OFF -DBUILD_DOCUMENTATION=ON .. \
 		&& make docs"
+
+.PHONY: build-documentation
 
 build-packages: ## Build packages
 
@@ -214,81 +195,48 @@ build-packages: ## Build packages
 	@ make build-packages-cpp
 	@ make build-packages-python
 
-build-packages-cpp: ## Build C++ packages
+.PHONY: build-packages
+
+build-packages-cpp: package_generator := DEB
+build-packages-cpp: package_extension := deb
+
+build-packages-cpp: build-development-image ## Build C++ packages
 
 	@ echo "Building C++ packages..."
-
-	@ make build-packages-cpp-debian
-	@ make build-packages-cpp-fedora
-
-build-packages-cpp-debian: target := debian
-build-packages-cpp-fedora: target := fedora
-
-build-packages-cpp-debian: package_generator := DEB
-build-packages-cpp-fedora: package_generator := RPM
-
-build-packages-cpp-debian: package_extension := deb
-build-packages-cpp-fedora: package_extension := rpm
-
-build-packages-cpp-debian build-packages-cpp-fedora: _build-packages-cpp
-
-_build-packages-cpp: _build-development-image
-
-	@ echo "Building [$(target)] C++ packages..."
 
 	docker run \
 		--rm \
 		--volume="$(CURDIR):/app:delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
-		$(docker_development_image_repository):$(docker_image_version)-$(target) \
+		$(docker_development_image_repository):$(docker_image_version) \
 		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=OFF -DCPACK_GENERATOR=$(package_generator) .. \
 		&& make package \
 		&& mkdir -p /app/packages/cpp \
 		&& mv /app/build/*.$(package_extension) /app/packages/cpp"
 
-build-packages-python: ## Build Python packages
+.PHONY: build-packages-cpp
+
+build-packages-python: build-development-image ## Build Python packages
 
 	@ echo "Building Python packages..."
-
-	@ make build-packages-python-debian
-
-build-packages-python-debian: target := debian
-build-packages-python-fedora: target := fedora
-
-build-packages-python-debian build-packages-python-fedora: _build-packages-python
-
-_build-packages-python: _build-development-image
-
-	@ echo "Building [$(target)] Python packages..."
 
 	docker run \
 		--rm \
 		--volume="$(CURDIR):/app:delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
-		$(docker_development_image_repository):$(docker_image_version)-$(target) \
+		$(docker_development_image_repository):$(docker_image_version) \
 		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=ON .. \
 		&& make -j 4 \
 		&& mkdir -p /app/packages/python \
 		&& mv /app/build/bindings/python/dist/*.whl /app/packages/python"
 
-################################################################################################################################################################
+.PHONY: build-packages-python
 
-start-development: ## Start development environment
+start-development: build-development-image ## Start development environment
 
 	@ echo "Starting development environment..."
-
-	make start-development-debian
-
-start-development-debian: target := debian
-start-development-fedora: target := fedora
-
-start-development-debian start-development-fedora: _start-development
-
-_start-development: _build-development-image
-
-	@ echo "Starting [$(target)] development environment..."
 
 	docker run \
 		-it \
@@ -297,46 +245,31 @@ _start-development: _build-development-image
 		--volume="$(CURDIR):/app:delegated" \
 		--volume="$(CURDIR)/tools/development/helpers:/app/build/helpers:ro,delegated" \
 		--workdir=/app/build \
-		$(docker_development_image_repository):$(docker_image_version)-$(target) \
+		$(docker_development_image_repository):$(docker_image_version) \
 		/bin/bash
 
-start-development-link: ## Start linked development environment
+.PHONY: start-development
 
-	@ echo "Starting linked development environment..."
-
-	make start-development-link-debian
-
-start-development-link-debian: target := debian
-
-start-development-link-debian: _start-development-link
-
-_start-development-link: _build-development-image
+start-development-link: build-development-image ## Start linked development environment
 
 	$(if $(links), , $(error "You need to provide the links to the C++ dependency repositories you want to link with, separated by white spaces. For example: make start-development-link links="/home/Loft\ Orbital/OSTk/open-space-toolkit-astrodynamics /home/Loft\ Orbital/OSTk/open-space-toolkit-physics"))
 
-	@ echo "Starting [$(target)] development environment (linked)..."
+	@ echo "Starting development environment (linked)..."
 
-	@ project_directory="$(CURDIR)" docker_development_image_repository=$(docker_development_image_repository) docker_image_version=$(docker_image_version) target=$(target) "$(CURDIR)/tools/development/start.sh" --link $(links)
+	@ project_directory="$(CURDIR)" docker_development_image_repository=$(docker_development_image_repository) docker_image_version=$(docker_image_version) "$(CURDIR)/tools/development/start.sh" --link $(links)
 
-start-python: ## Start Python runtime environment
+.PHONY: start-development-link
+
+start-python: build-release-image-python ## Start Python runtime environment
 
 	@ echo "Starting Python runtime environment..."
-
-	@ make start-python-debian
-
-start-python-debian: target := debian
-start-python-fedora: target := fedora
-
-start-python-debian start-python-fedora: _start-python
-
-_start-python: _build-release-image-python
-
-	@ echo "Starting [$(target)] Python runtime environment..."
 
 	docker run \
 		-it \
 		--rm \
-		$(docker_release_image_python_repository):$(docker_image_version)-$(target)
+		$(docker_release_image_python_repository):$(docker_image_version)
+
+.PHONY: start-python
 
 start-jupyter-notebook: build-release-image-jupyter ## Starting Jupyter Notebook environment
 
@@ -350,6 +283,8 @@ start-jupyter-notebook: build-release-image-jupyter ## Starting Jupyter Notebook
 		--workdir="/home/jovyan" \
 		$(docker_release_image_jupyter_repository):$(docker_image_version) \
 		bash -c "start-notebook.sh --NotebookApp.token=''"
+
+.PHONY: start-jupyter-notebook
 
 debug-jupyter-notebook: build-release-image-jupyter
 
@@ -367,60 +302,43 @@ debug-jupyter-notebook: build-release-image-jupyter
 		$(docker_release_image_jupyter_repository):$(docker_image_version) \
 		bash -c "start-notebook.sh --NotebookApp.token=''"
 
-################################################################################################################################################################
+.PHONY: debug-jupyter-notebook
 
-debug-development:
+debug-development: build-development-image ## Debug Development
 
 	@ echo "Debugging development environment..."
 
-	make debug-development-debian
-
-debug-development-debian: target := debian
-debug-development-fedora: target := fedora
-
-debug-development-debian debug-development-fedora: _debug-development
-
-_debug-development: _build-development-image
-
-	@ echo "Debugging [$(target)] development environment..."
-
 	docker run \
 		-it \
 		--rm \
-		$(docker_development_image_repository):$(docker_image_version)-$(target) \
+		$(docker_development_image_repository):$(docker_image_version) \
 		/bin/bash
 
-debug-cpp-release-debian: target := debian
-debug-cpp-release-fedora: target := fedora
+.PHONY: debug-development
 
-debug-cpp-release-debian debug-cpp-release-fedora: _debug-cpp-release
+debug-cpp-release: build-release-image-cpp ## Debug Cpp Release
 
-_debug-cpp-release: _build-release-image-cpp
-
-	@ echo "Debugging [$(target)] C++ release environment..."
+	@ echo "Debugging C++ release environment..."
 
 	docker run \
 		-it \
 		--rm \
 		--entrypoint=/bin/bash \
-		$(docker_release_image_cpp_repository):$(docker_image_version)-$(target)
+		$(docker_release_image_cpp_repository):$(docker_image_version)
 
-debug-python-release-debian: target := debian
-debug-python-release-fedora: target := fedora
+.PHONY: debug-cpp-release
 
-debug-python-release-debian debug-python-release-fedora: _debug-python-release
+debug-python-release: build-release-image-python ## Debug Python Release
 
-_debug-python-release: _build-release-image-python
-
-	@ echo "Debugging [$(target)] Python release environment..."
+	@ echo "Debugging Python release environment..."
 
 	docker run \
 		-it \
 		--rm \
 		--entrypoint=/bin/bash \
-		$(docker_release_image_python_repository):$(docker_image_version)-$(target)
+		$(docker_release_image_python_repository):$(docker_image_version)
 
-################################################################################################################################################################
+.PHONY: debug-python-release
 
 test: ## Run tests
 
@@ -429,60 +347,45 @@ test: ## Run tests
 	@ make test-unit
 	@ make test-coverage
 
-test-unit: ## Run unit tests
+.PHONY: test
+
+test-unit:
 
 	@ echo "Running unit tests..."
 
-	@ make test-unit-debian
+	@ make test-unit-cpp
+	@ make test-unit-python
 
-test-unit-debian:
+.PHONY: test-unit
 
-	@ echo "Running [debian] unit tests..."
+test-unit-cpp: build-development-image
 
-	@ make test-unit-cpp-debian
-	@ make test-unit-python-debian
-
-test-unit-fedora:
-
-	@ echo "Running [fedora] unit tests..."
-
-	@ make test-unit-cpp-fedora
-	@ make test-unit-python-fedora
-
-test-unit-cpp-debian: target := debian
-test-unit-cpp-fedora: target := fedora
-
-test-unit-cpp-debian test-unit-cpp-fedora: _test-unit-cpp
-
-_test-unit-cpp: _build-development-image
-
-	@ echo "Running [$(target)] C++ unit tests..."
+	@ echo "Running C++ unit tests..."
 
 	docker run \
 		--rm \
 		--volume="$(CURDIR):/app:delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
-		$(docker_development_image_repository):$(docker_image_version)-$(target) \
+		$(docker_development_image_repository):$(docker_image_version) \
 		/bin/bash -c "cmake -DBUILD_PYTHON_BINDINGS=OFF -DBUILD_UNIT_TESTS=ON .. \
 		&& make -j 4 \
 		&& make test"
 
-test-unit-python-debian: target := debian
-test-unit-python-fedora: target := fedora
+.PHONY: test-unit-cpp
 
-test-unit-python-debian test-unit-python-fedora: _test-unit-python
+test-unit-python: build-release-image-python
 
-_test-unit-python: _build-release-image-python
-
-	@ echo "Running [$(target)] Python unit tests..."
+	@ echo "Running Python unit tests..."
 
 	docker run \
 		--rm \
 		--workdir=/usr/local/lib/python$(python-test-version)/site-packages/ostk/$(project_name) \
 		--entrypoint="" \
-		$(docker_release_image_python_repository):$(docker_image_version)-$(target) \
+		$(docker_release_image_python_repository):$(docker_image_version) \
 		/bin/bash -c "pip install pytest && pytest -sv ."
+
+.PHONY: test-unit-python
 
 test-coverage: ## Run test coverage cpp
 
@@ -490,27 +393,18 @@ test-coverage: ## Run test coverage cpp
 
 	@ make test-coverage-cpp
 
-test-coverage-cpp:
+.PHONY: test-coverage
+
+test-coverage-cpp: build-development-image
 
 	@ echo "Running C++ coverage tests..."
-
-	@ make test-coverage-cpp-debian
-
-test-coverage-cpp-debian: target := debian
-test-coverage-cpp-fedora: target := fedora
-
-test-coverage-cpp-debian test-coverage-cpp-fedora: _test-coverage-cpp
-
-_test-coverage-cpp: _build-development-image
-
-	@ echo "Running [$(target)] C++ coverage tests..."
 
 	docker run \
 		--rm \
 		--volume="$(CURDIR):/app:delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
-		$(docker_development_image_repository):$(docker_image_version)-$(target) \
+		$(docker_development_image_repository):$(docker_image_version) \
 		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=ON -DBUILD_PYTHON_BINDINGS=OFF -DBUILD_CODE_COVERAGE=ON .. \
 		&& make -j 4 \
 		&& make coverage \
@@ -518,7 +412,42 @@ _test-coverage-cpp: _build-development-image
 		&& mkdir /app/coverage \
 		&& mv /app/build/coverage* /app/coverage"
 
-################################################################################################################################################################
+.PHONY: test-coverage-cpp
+
+format: build-development-image ## Format all of the source code with the rules in .clang-format
+
+	docker run \
+		--rm \
+		--volume="$(CURDIR):/app" \
+		--workdir=/app \
+		--user="$(shell id -u):$(shell id -g)" \
+		$(docker_development_image_repository):$(docker_image_version) \
+		clang-format -i -style=file:thirdparty/clang/.clang-format ${clang_format_sources_path}
+
+.PHONY: format
+
+format-check: build-development-image ## Runs the clang-format tool to check the code against rules and formatting
+
+	docker run \
+		--rm \
+		--volume="$(CURDIR):/app" \
+		--workdir=/app \
+		--user="$(shell id -u):$(shell id -g)" \
+		$(docker_development_image_repository):$(docker_image_version) \
+		clang-format -Werror --dry-run -style=file:thirdparty/clang/.clang-format ${clang_format_sources_path}
+
+.PHONY: format-check
+
+format-python: build-development-image  ## Runs the black format tool against python code
+
+	docker run \
+		--rm \
+		--volume="$(CURDIR):/app" \
+		--workdir=/app \
+		$(docker_development_image_repository):$(docker_image_version) \
+		/bin/bash -c "python3.11 -m black --line-length=90 bindings/python/"
+
+.PHONY: format-python
 
 clean: ## Clean
 
@@ -533,37 +462,10 @@ clean: ## Clean
 	rm -rf "$(CURDIR)/packages"
 	rm -rf "$(CURDIR)/.open-space-toolkit"
 
-################################################################################################################################################################
-
-.PHONY: pull pull-development-images pull-development-image-debian pull-development-image-fedora _pull-development-image \
-		build build-images \
-		build-development-images build-development-image-debian build-development-image-fedora \
-		pull-release-images pull-release-image-cpp-debian pull-release-image-cpp-fedora _pull-release-image-cpp \
-		pull-release-image-python-debian pull-release-image-python-fedora _pull-release-image-python \
-		pull-release-image-jupyter \
-		build-release-image-cpp-debian build-release-image-python-debian build-release-image-python-fedora \
-		build-release-image-jupyter \
-		build-documentation \
-		build-packages-cpp build-packages-cpp-debian build-packages-cpp-fedora \
-		start-development start-development-debian start-development-fedora \
-		start-python start-python-debian start-python-fedora \
-		start-jupyter-notebook debug-jupyter-notebook \
-		debug-development-debian debug-cpp-release-debian debug-python-release-debian \
-		debug-development-fedora debug-cpp-release-fedora debug-python-release-fedora \
-		test \
-		test-unit test-unit-debian test-unit-fedora \
-		test-unit-cpp-debian test-unit-cpp-fedora \
-		test-unit-python-debian test-unit-python-fedora \
-		test-coverage \
-		test-coverage-cpp test-coverage-cpp-debian test-coverage-cpp-fedora \
-		clean
-
-################################################################################################################################################################
+.PHONY: clean
 
 help:
 
 	@grep -E '^[0-9a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .DEFAULT_GOAL := help
-
-################################################################################################################################################################
