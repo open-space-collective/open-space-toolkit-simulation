@@ -111,7 +111,7 @@ build-development-image: pull-development-image
 
 	docker build \
 		--cache-from=$(docker_development_image_repository):latest \
-		--file="$(CURDIR)/docker/Dockerfile" \
+		--file="$(CURDIR)/docker/development/Dockerfile" \
 		--tag=$(docker_development_image_repository):$(docker_image_version) \
 		--tag=$(docker_development_image_repository):latest \
 		--build-arg="VERSION=$(docker_image_version)" \
@@ -135,7 +135,7 @@ build-release-image-cpp: build-development-image pull-release-image-cpp
 
 	docker build \
 		--cache-from=$(docker_release_image_cpp_repository):latest \
-		--file="$(CURDIR)/docker/Dockerfile" \
+		--file="$(CURDIR)/docker/release/Dockerfile" \
 		--tag=$(docker_release_image_cpp_repository):$(docker_image_version) \
 		--tag=$(docker_release_image_cpp_repository):latest \
 		--build-arg="VERSION=$(docker_image_version)" \
@@ -150,7 +150,7 @@ build-release-image-python: build-development-image pull-release-image-python
 
 	docker build \
 		--cache-from=$(docker_release_image_python_repository):latest \
-		--file="$(CURDIR)/docker/Dockerfile" \
+		--file="$(CURDIR)/docker/release/Dockerfile" \
 		--tag=$(docker_release_image_python_repository):$(docker_image_version) \
 		--tag=$(docker_release_image_python_repository):latest \
 		--build-arg="VERSION=$(docker_image_version)" \
