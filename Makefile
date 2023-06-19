@@ -383,7 +383,7 @@ test-unit-python: build-release-image-python
 		--workdir=/usr/local/lib/python$(python-test-version)/site-packages/ostk/$(project_name) \
 		--entrypoint="" \
 		$(docker_release_image_python_repository):$(docker_image_version) \
-		/bin/bash -c "pip install pytest && pytest -sv ."
+		/bin/bash -c "python$(python-test-version) -m pip install pytest && python$(python-test-version) -m pytest -sv ."
 
 .PHONY: test-unit-python
 
