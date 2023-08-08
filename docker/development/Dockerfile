@@ -8,10 +8,10 @@ LABEL maintainer="lucas@loftorbital.com"
 
 # Dependencies
 
-## Zip
+## Zip & jq
 
 RUN apt-get update \
- && apt-get install -y unzip \
+ && apt-get install -y unzip jq \
  && rm -rf /var/lib/apt/lists/*
 
 ## {fmt}
@@ -59,96 +59,93 @@ ARG OSTK_CORE_MINOR="7"
 ## Force an image rebuild when new Core patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-core/git/matching-refs/tags/${OSTK_CORE_MAJOR}.${OSTK_CORE_MINOR} /tmp/open-space-toolkit-core/versions.json
 
-RUN cat /tmp/open-space-toolkit-core/versions.json
-
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \
  && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
- && echo ${LATEST_PATCH_OF_MINOR}
-#  && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-core-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
-#  && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-core-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
-#  && apt-get install -y ./*.deb \
-#  && rm -rf /tmp/open-space-toolkit-core
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-core-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-core-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
+ && apt-get install -y ./*.deb \
+ && rm -rf /tmp/open-space-toolkit-core
 
-# ## Open Space Toolkit ▸ I/O
+## Open Space Toolkit ▸ I/O
 
-# ARG OSTK_IO_MAJOR="0"
-# ARG OSTK_IO_MINOR="6"
+ARG OSTK_IO_MAJOR="0"
+ARG OSTK_IO_MINOR="6"
 
-# ## Force an image rebuild when new IO patch versions are detected
-# ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-io/git/matching-refs/tags/${OSTK_IO_MAJOR}.${OSTK_IO_MINOR} /tmp/open-space-toolkit-io/versions.json
+## Force an image rebuild when new IO patch versions are detected
+ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-io/git/matching-refs/tags/${OSTK_IO_MAJOR}.${OSTK_IO_MINOR} /tmp/open-space-toolkit-io/versions.json
 
-# RUN mkdir -p /tmp/open-space-toolkit-io \
-#  && cd /tmp/open-space-toolkit-io \
-#  && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
-#  && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-io-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
-#  && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-io-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
-#  && apt-get install -y ./*.deb \
-#  && rm -rf /tmp/open-space-toolkit-io
+RUN mkdir -p /tmp/open-space-toolkit-io \
+ && cd /tmp/open-space-toolkit-io \
+ && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-io-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-io-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
+ && apt-get install -y ./*.deb \
+ && rm -rf /tmp/open-space-toolkit-io
 
-# ## Open Space Toolkit ▸ Mathematics
+## Open Space Toolkit ▸ Mathematics
 
-# ARG OSTK_MATHEMATICS_MAJOR="0"
-# ARG OSTK_MATHEMATICS_MINOR="7"
+ARG OSTK_MATHEMATICS_MAJOR="0"
+ARG OSTK_MATHEMATICS_MINOR="7"
 
-# ## Force an image rebuild when new Mathematics patch versions are detected
-# ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-mathematics/git/matching-refs/tags/${OSTK_MATHEMATICS_MAJOR}.${OSTK_MATHEMATICS_MINOR} /tmp/open-space-toolkit-mathematics/versions.json
+## Force an image rebuild when new Mathematics patch versions are detected
+ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-mathematics/git/matching-refs/tags/${OSTK_MATHEMATICS_MAJOR}.${OSTK_MATHEMATICS_MINOR} /tmp/open-space-toolkit-mathematics/versions.json
 
-# RUN mkdir -p /tmp/open-space-toolkit-mathematics \
-#  && cd /tmp/open-space-toolkit-mathematics \
-#  && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
-#  && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-mathematics-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
-#  && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-mathematics-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
-#  && apt-get install -y ./*.deb \
-#  && rm -rf /tmp/open-space-toolkit-mathematics
+RUN mkdir -p /tmp/open-space-toolkit-mathematics \
+ && cd /tmp/open-space-toolkit-mathematics \
+ && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-mathematics-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-mathematics-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
+ && apt-get install -y ./*.deb \
+ && rm -rf /tmp/open-space-toolkit-mathematics
 
-# ## Open Space Toolkit ▸ Physics
+## Open Space Toolkit ▸ Physics
 
-# ARG OSTK_PHYSICS_MAJOR="1"
-# ARG OSTK_PHYSICS_MINOR="2"
+ARG OSTK_PHYSICS_MAJOR="1"
+ARG OSTK_PHYSICS_MINOR="2"
 
-# ## Force an image rebuild when new Physics patch versions are detected
-# ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-physics/git/matching-refs/tags/${OSTK_PHYSICS_MAJOR}.${OSTK_PHYSICS_MINOR} /tmp/open-space-toolkit-physics/versions.json
+## Force an image rebuild when new Physics patch versions are detected
+ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-physics/git/matching-refs/tags/${OSTK_PHYSICS_MAJOR}.${OSTK_PHYSICS_MINOR} /tmp/open-space-toolkit-physics/versions.json
 
-# RUN mkdir -p /tmp/open-space-toolkit-physics \
-#  && cd /tmp/open-space-toolkit-physics \
-#  && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
-#  && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-physics-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
-#  && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-physics-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
-#  && apt-get install -y ./*.deb \
-#  && rm -rf /tmp/open-space-toolkit-physics
+RUN mkdir -p /tmp/open-space-toolkit-physics \
+ && cd /tmp/open-space-toolkit-physics \
+ && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-physics-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-physics-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
+ && apt-get install -y ./*.deb \
+ && rm -rf /tmp/open-space-toolkit-physics
 
-# ## Open Space Toolkit ▸ Astrodynamics
+## Open Space Toolkit ▸ Astrodynamics
 
-# ARG OSTK_ASTRODYNAMICS_MAJOR="1"
-# ARG OSTK_ASTRODYNAMICS_MINOR="2"
+ARG OSTK_ASTRODYNAMICS_MAJOR="1"
+ARG OSTK_ASTRODYNAMICS_MINOR="2"
 
-# ## Force an image rebuild when new Astrodynamics patch versions are detected
-# ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-astrodynamics/git/matching-refs/tags/${OSTK_ASTRODYNAMICS_MAJOR}.${OSTK_ASTRODYNAMICS_MINOR} /tmp/open-space-toolkit-astrodynamics/versions.json
+## Force an image rebuild when new Astrodynamics patch versions are detected
+ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-astrodynamics/git/matching-refs/tags/${OSTK_ASTRODYNAMICS_MAJOR}.${OSTK_ASTRODYNAMICS_MINOR} /tmp/open-space-toolkit-astrodynamics/versions.json
 
-# RUN mkdir -p /tmp/open-space-toolkit-astrodynamics \
-#  && cd /tmp/open-space-toolkit-astrodynamics \
-#  && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
-#  && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-astrodynamics-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
-#  && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-astrodynamics-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
-#  && apt-get install -y ./*.deb \
-#  && rm -rf /tmp/open-space-toolkit-astrodynamics
+RUN mkdir -p /tmp/open-space-toolkit-astrodynamics \
+ && cd /tmp/open-space-toolkit-astrodynamics \
+ && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-astrodynamics-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-astrodynamics-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
+ && apt-get install -y ./*.deb \
+ && rm -rf /tmp/open-space-toolkit-astrodynamics
 
-# # Install data
+# Install data
 
-# COPY --from=us.gcr.io/loft-orbital-public/software/open-space-toolkit/data:0.3.0 /open-space-toolkit/physics /usr/local/share/OpenSpaceToolkit/Physics
+COPY --from=us.gcr.io/loft-orbital-public/software/open-space-toolkit/data:0.3.0 /open-space-toolkit/physics /usr/local/share/OpenSpaceToolkit/Physics
 
-# ENV OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
-# ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"
-# ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
-# ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
+ENV OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
+ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"
+ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
+ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
 
-# # Labels
+# Labels
 
-# ARG VERSION
-# ENV VERSION="${VERSION}"
-# LABEL VERSION="${VERSION}"
+ARG VERSION
+ENV VERSION="${VERSION}"
+LABEL VERSION="${VERSION}"
 
-# # Execution
+# Execution
 
-# CMD [ "/bin/bash" ]
+CMD [ "/bin/bash" ]
