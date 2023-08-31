@@ -241,7 +241,7 @@ ENDIF ()
 
 ### Open Space Toolkit ▸ Core
 
-FIND_PACKAGE ("OpenSpaceToolkitCore" "0.2" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitCore" "0.7" REQUIRED)
 
 IF (NOT OpenSpaceToolkitCore_FOUND)
 
@@ -251,7 +251,7 @@ ENDIF ()
 
 ### Open Space Toolkit ▸ I/O
 
-FIND_PACKAGE ("OpenSpaceToolkitIO" "0.2" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitIO" "0.7" REQUIRED)
 
 IF (NOT OpenSpaceToolkitIO_FOUND)
 
@@ -261,7 +261,7 @@ ENDIF ()
 
 ### Open Space Toolkit ▸ Mathematics
 
-FIND_PACKAGE ("OpenSpaceToolkitMathematics" "0.2" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitMathematics" "0.7" REQUIRED)
 
 IF (NOT OpenSpaceToolkitMathematics_FOUND)
 
@@ -271,7 +271,7 @@ ENDIF ()
 
 ### Open Space Toolkit ▸ Physics
 
-FIND_PACKAGE ("OpenSpaceToolkitPhysics" "1.0" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitPhysics" "2.0" REQUIRED)
 
 IF (NOT OpenSpaceToolkitPhysics_FOUND)
 
@@ -281,7 +281,7 @@ ENDIF ()
 
 ### Open Space Toolkit ▸ Astrodynamics
 
-FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "1.0" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "2.0" REQUIRED)
 
 IF (NOT OpenSpaceToolkitAstrodynamics_FOUND)
 
