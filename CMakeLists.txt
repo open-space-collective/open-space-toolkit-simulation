@@ -281,7 +281,7 @@ ENDIF ()
 
 ### Open Space Toolkit ▸ Astrodynamics
 
-FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "2.0" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "3.0" REQUIRED)
 
 IF (NOT OpenSpaceToolkitAstrodynamics_FOUND)
 
