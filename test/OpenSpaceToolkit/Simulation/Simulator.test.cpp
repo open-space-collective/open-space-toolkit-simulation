@@ -50,12 +50,12 @@ TEST(OpenSpaceToolkit_Simulation_Simulator, Test_1)
     using ostk::core::types::Shared;
     using ostk::core::ctnr::Array;
 
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::objects::LineString;
-    using ostk::math::geom::d3::objects::Polygon;
-    using ostk::math::geom::d3::objects::Pyramid;
-    using ostk::math::geom::d3::objects::Composite;
+    using ostk::math::geometry::d3::transformation::rotation::Quaternion;
+    using ostk::math::geometry::d3::objects::Point;
+    using ostk::math::geometry::d3::objects::LineString;
+    using ostk::math::geometry::d3::objects::Polygon;
+    using ostk::math::geometry::d3::objects::Pyramid;
+    using ostk::math::geometry::d3::objects::Composite;
 
     using ostk::physics::Environment;
     using ostk::physics::units::Length;

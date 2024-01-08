@@ -1,8 +1,10 @@
 # Apache License 2.0
 
-ARG BASE_IMAGE_VERSION=latest
+ARG BASE_IMAGE_VERSION="latest"
 
-FROM openspacecollective/open-space-toolkit-base:${BASE_IMAGE_VERSION}
+# General purpose development image (root user)
+
+FROM openspacecollective/open-space-toolkit-base:${BASE_IMAGE_VERSION} as root-user
 
 LABEL maintainer="lucas@loftorbital.com"
 
@@ -133,12 +135,9 @@ RUN mkdir -p /tmp/open-space-toolkit-astrodynamics \
 
 # Install data
 
-COPY --from=us.gcr.io/loft-orbital-public/software/open-space-toolkit/data:0.3.0 /open-space-toolkit/physics /usr/local/share/OpenSpaceToolkit/Physics
+RUN git clone --branch main --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git /var/cache/open-space-toolkit-data
 
-ENV OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
-ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"
-ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
-ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
+ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data/data"
 
 # Labels
 
@@ -146,6 +145,45 @@ ARG VERSION
 ENV VERSION="${VERSION}"
 LABEL VERSION="${VERSION}"
 
-# Execution
+# Development image for humans (non-root user)
+
+FROM root-user as non-root-user
+
+# Install dev utilities
+
+RUN apt-get update \
+ && apt-get install -y zsh sudo \
+ && rm -rf /var/lib/apt/lists/*
+
+# Create non-root user and group
+
+ARG USERNAME="developer"
+ARG USER_UID="1000"
+ARG USER_GID=${USER_UID}
+RUN groupadd --gid ${USER_GID} ${USERNAME} || true \
+ && adduser --uid ${USER_UID} --gid ${USER_GID} ${USERNAME} \
+ && echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${USERNAME}
+
+# Change ownership of OSTK_PHYSICS_DATA_LOCAL_REPOSITORY
+
+RUN chown -R ${USERNAME}:${USERNAME} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
+
+# Use non-root user
+
+USER ${USERNAME}
+
+# Install shell utilities
+
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
+ && git clone https://github.com/bhilburn/powerlevel9k.git /home/${USERNAME}/.oh-my-zsh/custom/themes/powerlevel9k \
+ && git clone https://github.com/zsh-users/zsh-autosuggestions /home/${USERNAME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
+ && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/${USERNAME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting \
+ && mkdir -p /home/${USERNAME}/.vscode-server/extensions /home/${USERNAME}/.vscode-server-insiders/extensions
+
+## Configure environment
+
+ENV PATH="/home/${USERNAME}/.local/bin:${PATH}"
+
+# Entrypoint
 
 CMD [ "/bin/bash" ]

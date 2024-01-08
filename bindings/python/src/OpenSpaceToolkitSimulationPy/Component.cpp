@@ -13,7 +13,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
     using ostk::core::types::String;
     using ostk::core::ctnr::Array;
 
-    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::math::geometry::d3::transformation::rotation::Quaternion;
 
     using ostk::physics::coord::Frame;
 
