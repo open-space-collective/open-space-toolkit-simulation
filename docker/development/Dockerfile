@@ -11,125 +11,125 @@ LABEL maintainer="lucas@loftorbital.com"
 ## Zip & jq
 
 RUN apt-get update \
- && apt-get install -y unzip jq \
- && rm -rf /var/lib/apt/lists/*
+    && apt-get install -y unzip jq \
+    && rm -rf /var/lib/apt/lists/*
 
 ## {fmt}
 
 ARG FMT_VERSION="5.2.0"
 
 RUN git clone --branch ${FMT_VERSION} --depth 1 https://github.com/fmtlib/fmt.git /tmp/fmt \
- && cd /tmp/fmt \
- && mkdir build \
- && cd build \
- && cmake -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE .. \
- && make --silent -j $(nproc) \
- && make install \
- && rm -rf /tmp/fmt
+    && cd /tmp/fmt \
+    && mkdir build \
+    && cd build \
+    && cmake -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE .. \
+    && make --silent -j $(nproc) \
+    && make install \
+    && rm -rf /tmp/fmt
 
 ## ordered-map
 
 ARG ORDERED_MAP_VERSION="0.6.0"
 
 RUN git clone --branch v${ORDERED_MAP_VERSION} --depth 1 https://github.com/Tessil/ordered-map.git /tmp/ordered-map \
- && cd /tmp/ordered-map \
- && cp -r ./include/tsl /usr/local/include \
- && rm -rf /tmp/ordered-map
+    && cd /tmp/ordered-map \
+    && cp -r ./include/tsl /usr/local/include \
+    && rm -rf /tmp/ordered-map
 
 ## Eigen
 
-ARG EIGEN_VERSION="3.3.7"
+ARG EIGEN_VERSION="3.4.0"
 
 RUN mkdir /tmp/eigen \
- && cd /tmp/eigen \
- && wget --quiet https://gitlab.com/libeigen/eigen/-/archive/${EIGEN_VERSION}/eigen-${EIGEN_VERSION}.tar.gz \
- && tar -xvf eigen-${EIGEN_VERSION}.tar.gz \
- && cd eigen-${EIGEN_VERSION} \
- && mkdir build \
- && cd build \
- && cmake .. \
- && make install \
- && rm -rf /tmp/eigen
+    && cd /tmp/eigen \
+    && wget --quiet https://gitlab.com/libeigen/eigen/-/archive/${EIGEN_VERSION}/eigen-${EIGEN_VERSION}.tar.gz \
+    && tar -xvf eigen-${EIGEN_VERSION}.tar.gz \
+    && cd eigen-${EIGEN_VERSION} \
+    && mkdir build \
+    && cd build \
+    && cmake .. \
+    && make install \
+    && rm -rf /tmp/eigen
 
 ## Open Space Toolkit ▸ Core
 
-ARG OSTK_CORE_MAJOR="0"
-ARG OSTK_CORE_MINOR="7"
+ARG OSTK_CORE_MAJOR="1"
+ARG OSTK_CORE_MINOR="0"
 
 ## Force an image rebuild when new Core patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-core/git/matching-refs/tags/${OSTK_CORE_MAJOR}.${OSTK_CORE_MINOR} /tmp/open-space-toolkit-core/versions.json
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
- && cd /tmp/open-space-toolkit-core \
- && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-core-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-core-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
- && apt-get install -y ./*.deb \
- && rm -rf /tmp/open-space-toolkit-core
+    && cd /tmp/open-space-toolkit-core \
+    && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+    && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-core-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
+    && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-core-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
+    && apt-get install -y ./*.deb \
+    && rm -rf /tmp/open-space-toolkit-core
 
 ## Open Space Toolkit ▸ I/O
 
-ARG OSTK_IO_MAJOR="0"
-ARG OSTK_IO_MINOR="7"
+ARG OSTK_IO_MAJOR="1"
+ARG OSTK_IO_MINOR="0"
 
 ## Force an image rebuild when new IO patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-io/git/matching-refs/tags/${OSTK_IO_MAJOR}.${OSTK_IO_MINOR} /tmp/open-space-toolkit-io/versions.json
 
 RUN mkdir -p /tmp/open-space-toolkit-io \
- && cd /tmp/open-space-toolkit-io \
- && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-io-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-io-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
- && apt-get install -y ./*.deb \
- && rm -rf /tmp/open-space-toolkit-io
+    && cd /tmp/open-space-toolkit-io \
+    && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+    && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-io-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
+    && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-io-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
+    && apt-get install -y ./*.deb \
+    && rm -rf /tmp/open-space-toolkit-io
 
 ## Open Space Toolkit ▸ Mathematics
 
-ARG OSTK_MATHEMATICS_MAJOR="0"
-ARG OSTK_MATHEMATICS_MINOR="7"
+ARG OSTK_MATHEMATICS_MAJOR="1"
+ARG OSTK_MATHEMATICS_MINOR="0"
 
 ## Force an image rebuild when new Mathematics patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-mathematics/git/matching-refs/tags/${OSTK_MATHEMATICS_MAJOR}.${OSTK_MATHEMATICS_MINOR} /tmp/open-space-toolkit-mathematics/versions.json
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
- && cd /tmp/open-space-toolkit-mathematics \
- && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-mathematics-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-mathematics-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
- && apt-get install -y ./*.deb \
- && rm -rf /tmp/open-space-toolkit-mathematics
+    && cd /tmp/open-space-toolkit-mathematics \
+    && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+    && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-mathematics-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
+    && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-mathematics-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
+    && apt-get install -y ./*.deb \
+    && rm -rf /tmp/open-space-toolkit-mathematics
 
 ## Open Space Toolkit ▸ Physics
 
-ARG OSTK_PHYSICS_MAJOR="3"
+ARG OSTK_PHYSICS_MAJOR="4"
 ARG OSTK_PHYSICS_MINOR="0"
 
 ## Force an image rebuild when new Physics patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-physics/git/matching-refs/tags/${OSTK_PHYSICS_MAJOR}.${OSTK_PHYSICS_MINOR} /tmp/open-space-toolkit-physics/versions.json
 
 RUN mkdir -p /tmp/open-space-toolkit-physics \
- && cd /tmp/open-space-toolkit-physics \
- && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-physics-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-physics-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
- && apt-get install -y ./*.deb \
- && rm -rf /tmp/open-space-toolkit-physics
+    && cd /tmp/open-space-toolkit-physics \
+    && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+    && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-physics-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
+    && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-physics-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
+    && apt-get install -y ./*.deb \
+    && rm -rf /tmp/open-space-toolkit-physics
 
 ## Open Space Toolkit ▸ Astrodynamics
 
-ARG OSTK_ASTRODYNAMICS_MAJOR="4"
-ARG OSTK_ASTRODYNAMICS_MINOR="1"
+ARG OSTK_ASTRODYNAMICS_MAJOR="5"
+ARG OSTK_ASTRODYNAMICS_MINOR="2"
 
 ## Force an image rebuild when new Astrodynamics patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-astrodynamics/git/matching-refs/tags/${OSTK_ASTRODYNAMICS_MAJOR}.${OSTK_ASTRODYNAMICS_MINOR} /tmp/open-space-toolkit-astrodynamics/versions.json
 
 RUN mkdir -p /tmp/open-space-toolkit-astrodynamics \
- && cd /tmp/open-space-toolkit-astrodynamics \
- && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-astrodynamics-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-astrodynamics-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
- && apt-get install -y ./*.deb \
- && rm -rf /tmp/open-space-toolkit-astrodynamics
+    && cd /tmp/open-space-toolkit-astrodynamics \
+    && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+    && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-astrodynamics-${LATEST_PATCH_OF_MINOR}-1.x86_64-runtime.deb \
+    && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-astrodynamics-${LATEST_PATCH_OF_MINOR}-1.x86_64-devel.deb \
+    && apt-get install -y ./*.deb \
+    && rm -rf /tmp/open-space-toolkit-astrodynamics
 
 # Install data
 
