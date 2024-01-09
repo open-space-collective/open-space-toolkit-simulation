@@ -28,7 +28,7 @@ using ostk::core::types::Weak;
 using ostk::core::ctnr::Array;
 using ostk::core::ctnr::Map;
 
-using ostk::math::geom::d3::trf::rot::Quaternion;
+using ostk::math::geometry::d3::transformation::rotation::Quaternion;
 
 using ostk::physics::coord::Frame;
 

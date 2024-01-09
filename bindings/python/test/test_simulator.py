@@ -8,7 +8,7 @@ from ostk.mathematics.geometry.d3.objects import Point
 from ostk.mathematics.geometry.d3.objects import Polygon
 from ostk.mathematics.geometry.d3.objects import Pyramid
 from ostk.mathematics.geometry.d3.objects import Composite
-from ostk.mathematics.geometry.d3.transformations.rotations import Quaternion
+from ostk.mathematics.geometry.d3.transformation.rotation import Quaternion
 
 from ostk.physics import Environment
 from ostk.physics.units import Length
@@ -22,7 +22,6 @@ from ostk.astrodynamics.flight import Profile
 
 from ostk.simulation import Simulator
 from ostk.simulation import SimulatorConfiguration
-from ostk.simulation import Satellite
 from ostk.simulation import SatelliteConfiguration
 from ostk.simulation import Component
 from ostk.simulation import ComponentConfiguration
@@ -108,7 +107,9 @@ class TestSimulator:
         assert camera_geometry.get_geometry_in(Frame.ITRF()) is not None
 
         assert (
-            camera_geometry.intersection_with(earth).access_composite().get_object_count()
+            camera_geometry.intersection_with(earth)
+            .access_composite()
+            .get_object_count()
             == 2
         )
         assert (

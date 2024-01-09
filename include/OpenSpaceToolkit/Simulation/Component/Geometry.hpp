@@ -23,12 +23,12 @@ namespace component
 
 using ostk::core::types::String;
 using ostk::core::types::Shared;
-using ostk::math::geom::d3::Object;
-using ostk::math::geom::d3::objects::Composite;
+using ostk::math::geometry::d3::Object;
+using ostk::math::geometry::d3::objects::Composite;
 
 using ostk::physics::coord::Frame;
-using ObjectGeometry = ostk::physics::env::object::Geometry;
-using ostk::physics::env::obj::Celestial;
+using ObjectGeometry = ostk::physics::environment::object::Geometry;
+using ostk::physics::environment::object::Celestial;
 
 struct GeometryConfiguration;
 
