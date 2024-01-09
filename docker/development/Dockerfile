@@ -10,10 +10,10 @@ LABEL maintainer="lucas@loftorbital.com"
 
 # Dependencies
 
-## Zip & jq
+## Zip, jq & git-lfs
 
 RUN apt-get update \
-    && apt-get install -y unzip jq \
+    && apt-get install -y unzip jq git-lfs \
     && rm -rf /var/lib/apt/lists/*
 
 ## {fmt}
@@ -152,8 +152,8 @@ FROM root-user as non-root-user
 # Install dev utilities
 
 RUN apt-get update \
- && apt-get install -y zsh sudo \
- && rm -rf /var/lib/apt/lists/*
+    && apt-get install -y zsh sudo \
+    && rm -rf /var/lib/apt/lists/*
 
 # Create non-root user and group
 
@@ -161,8 +161,8 @@ ARG USERNAME="developer"
 ARG USER_UID="1000"
 ARG USER_GID=${USER_UID}
 RUN groupadd --gid ${USER_GID} ${USERNAME} || true \
- && adduser --uid ${USER_UID} --gid ${USER_GID} ${USERNAME} \
- && echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${USERNAME}
+    && adduser --uid ${USER_UID} --gid ${USER_GID} ${USERNAME} \
+    && echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${USERNAME}
 
 # Change ownership of OSTK_PHYSICS_DATA_LOCAL_REPOSITORY
 
@@ -175,10 +175,10 @@ USER ${USERNAME}
 # Install shell utilities
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
- && git clone https://github.com/bhilburn/powerlevel9k.git /home/${USERNAME}/.oh-my-zsh/custom/themes/powerlevel9k \
- && git clone https://github.com/zsh-users/zsh-autosuggestions /home/${USERNAME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
- && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/${USERNAME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting \
- && mkdir -p /home/${USERNAME}/.vscode-server/extensions /home/${USERNAME}/.vscode-server-insiders/extensions
+    && git clone https://github.com/bhilburn/powerlevel9k.git /home/${USERNAME}/.oh-my-zsh/custom/themes/powerlevel9k \
+    && git clone https://github.com/zsh-users/zsh-autosuggestions /home/${USERNAME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
+    && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/${USERNAME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting \
+    && mkdir -p /home/${USERNAME}/.vscode-server/extensions /home/${USERNAME}/.vscode-server-insiders/extensions
 
 ## Configure environment
 
