@@ -1,6 +1,6 @@
 {
     "name": "Open Space Toolkit Simulation",
-    "image": "openspacecollective/open-space-toolkit-simulation-development-non-root:latest",
+    "image": "ghcr.io/loft-orbital/open-space-toolkit-simulation-development-non-root:latest",
     "initializeCommand": "make build-development-image-non-root && mkdir -p ${localWorkspaceFolder}/build",
     "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
     "workspaceFolder": "/app",
