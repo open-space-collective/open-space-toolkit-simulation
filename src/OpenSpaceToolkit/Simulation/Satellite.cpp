@@ -89,7 +89,8 @@ Satellite Satellite::Undefined()
         Array<Shared<Component>>::Empty(),
         nullptr,
         nullptr,
-        nullptr};
+        nullptr
+    };
 }
 
 Shared<Satellite> Satellite::Configure(

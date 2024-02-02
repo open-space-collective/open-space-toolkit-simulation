@@ -185,7 +185,8 @@ Component Component::Undefined()
         Array<Shared<Component>>::Empty(),
         nullptr,
         nullptr,
-        nullptr};
+        nullptr
+    };
 }
 
 Shared<Component> Component::Configure(
@@ -234,7 +235,8 @@ String Component::StringFromType(const Component::Type& aType)
         {Component::Type::Controller, "Controller"},
         {Component::Type::Sensor, "Sensor"},
         {Component::Type::Actuator, "Actuator"},
-        {Component::Type::Other, "Other"}};
+        {Component::Type::Other, "Other"}
+    };
 
     return typeStringMap.at(aType);
 }

@@ -100,8 +100,10 @@ TEST(OpenSpaceToolkit_Simulation_Simulator, Test_1)
                            {{{-0.1, -1.0}, {+0.1, -1.0}, {+0.1, +1.0}, {-0.1, +1.0}}},
                            Point {0.0, 0.0, 1.0},
                            {1.0, 0.0, 0.0},
-                           {0.0, 1.0, 0.0}},
-                       Point {0.0, 0.0, 0.0}}}}}}}}}}
+                           {0.0, 1.0, 0.0}
+                       },
+                       Point {0.0, 0.0, 0.0}
+                   }}}}}}}}}
         );
 
         const Instant instant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC);

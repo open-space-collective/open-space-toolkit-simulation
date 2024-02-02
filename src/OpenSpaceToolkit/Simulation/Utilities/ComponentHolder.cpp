@@ -206,7 +206,8 @@ Pair<String, String> splitComponentPath(const String& aComponentPath)
 
     return {
         aComponentPath.getHead(tokenPosition),
-        aComponentPath.getSubstring(tokenPosition + 1, aComponentPath.getLength() - tokenPosition - 1)};
+        aComponentPath.getSubstring(tokenPosition + 1, aComponentPath.getLength() - tokenPosition - 1)
+    };
 }
 
 }  // namespace utilities
