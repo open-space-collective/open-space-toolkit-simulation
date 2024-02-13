@@ -24,6 +24,7 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
         .def("has_satellite_with_name", &Simulator::hasSatelliteWithName, arg("name"))
 
         .def("access_environment", &Simulator::accessEnvironment)
+        .def("access_satellite_map", &Simulator::accessSatelliteMap)
         .def("access_satellite_with_name", &Simulator::accessSatelliteWithName, arg("name"))
 
         .def("get_instant", &Simulator::getInstant)

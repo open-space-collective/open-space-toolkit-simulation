@@ -57,6 +57,16 @@ const Environment& Simulator::accessEnvironment() const
     return this->environment_;
 }
 
+const Map<String, Shared<Satellite>>& Simulator::accessSatelliteMap() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Simulator");
+    }
+
+    return this->satelliteMap_;
+}
+
 const Satellite& Simulator::accessSatelliteWithName(const String& aSatelliteName) const
 {
     if (aSatelliteName.isEmpty())
