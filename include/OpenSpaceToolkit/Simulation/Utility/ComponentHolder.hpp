@@ -18,7 +18,7 @@ namespace simulation
 class Component;
 class ComponentConfiguration;
 
-namespace utilities
+namespace utility
 {
 
 using ostk::core::type::String;
@@ -63,7 +63,7 @@ class ComponentHolder
 
 Pair<String, String> splitComponentPath(const String& aComponentPath);
 
-}  // namespace utilities
+}  // namespace utility
 }  // namespace simulation
 }  // namespace ostk
 

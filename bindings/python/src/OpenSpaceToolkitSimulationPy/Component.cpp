@@ -24,7 +24,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
     using ostk::simulation::component::Geometry;
     using ostk::simulation::component::GeometryConfiguration;
     using ostk::simulation::component::State;
-    using ostk::simulation::utilities::ComponentHolder;
+    using ostk::simulation::utility::ComponentHolder;
 
     {
         class_<Component, Entity, ComponentHolder, Shared<Component>> component_class(aModule, "Component");
@@ -110,7 +110,6 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
 
     // Create python submodule
     auto component = aModule.def_submodule("component");
-
 
     // Add objects to python submodule
     OpenSpaceToolkitSimulationPy_Component_Geometry(component);

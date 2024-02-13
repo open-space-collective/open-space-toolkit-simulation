@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Simulation/Component.hpp>
-#include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
+#include <OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Type/Index.hpp>
@@ -11,7 +11,7 @@ namespace ostk
 {
 namespace simulation
 {
-namespace utilities
+namespace utility
 {
 
 ComponentHolder::ComponentHolder(const Array<Shared<Component>>& aComponentArray)
@@ -210,6 +210,6 @@ Pair<String, String> splitComponentPath(const String& aComponentPath)
     };
 }
 
-}  // namespace utilities
+}  // namespace utility
 }  // namespace simulation
 }  // namespace ostk

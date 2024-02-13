@@ -6,7 +6,7 @@
 #include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
 #include <OpenSpaceToolkit/Simulation/Component/State.hpp>
 #include <OpenSpaceToolkit/Simulation/Entity.hpp>
-#include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
+#include <OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
@@ -32,7 +32,7 @@ using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 
 using ostk::physics::coordinate::Frame;
 
-using ostk::simulation::utilities::ComponentHolder;
+using ostk::simulation::utility::ComponentHolder;
 using ostk::simulation::component::State;
 using ostk::simulation::component::Geometry;
 using ostk::simulation::component::GeometryConfiguration;
