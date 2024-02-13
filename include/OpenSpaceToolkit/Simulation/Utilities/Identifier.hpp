@@ -17,7 +17,7 @@ namespace simulation
 namespace utilities
 {
 
-using ostk::core::types::String;
+using ostk::core::type::String;
 
 String generateId();
 

@@ -21,10 +21,10 @@ namespace simulation
 
 #define DEFAULT_SATELLITES Array<SatelliteConfiguration>::Empty()
 
-using ostk::core::types::String;
-using ostk::core::types::Shared;
-using ostk::core::ctnr::Array;
-using ostk::core::ctnr::Map;
+using ostk::core::type::String;
+using ostk::core::type::Shared;
+using ostk::core::container::Array;
+using ostk::core::container::Map;
 
 using ostk::physics::Environment;
 using ostk::physics::time::Instant;

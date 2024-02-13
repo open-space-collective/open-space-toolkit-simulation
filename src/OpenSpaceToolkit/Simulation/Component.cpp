@@ -14,9 +14,9 @@ namespace ostk
 namespace simulation
 {
 
-using ostk::physics::coord::Transform;
-using ostk::physics::coord::frame::Provider;
-using DynamicProvider = ostk::physics::coord::frame::provider::Dynamic;
+using ostk::physics::coordinate::Transform;
+using ostk::physics::coordinate::frame::Provider;
+using DynamicProvider = ostk::physics::coordinate::frame::provider::Dynamic;
 
 using namespace ostk::simulation::utilities;
 

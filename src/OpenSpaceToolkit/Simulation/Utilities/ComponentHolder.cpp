@@ -185,7 +185,7 @@ const Component& ComponentHolder::accessComponentAt(const String& aComponentPath
 
 Pair<String, String> splitComponentPath(const String& aComponentPath)
 {
-    using ostk::core::types::Index;
+    using ostk::core::type::Index;
 
     if (aComponentPath.getFirst() == '/')
     {

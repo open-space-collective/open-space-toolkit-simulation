@@ -6,7 +6,7 @@
 
 TEST(OpenSpaceToolkit_Simulation_Utilities_Identifier, GenerateId)
 {
-    using ostk::core::types::String;
+    using ostk::core::type::String;
 
     using ostk::simulation::utilities::generateId;
 

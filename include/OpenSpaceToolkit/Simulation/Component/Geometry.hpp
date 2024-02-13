@@ -21,12 +21,12 @@ class Component;
 namespace component
 {
 
-using ostk::core::types::String;
-using ostk::core::types::Shared;
-using ostk::math::geometry::d3::Object;
-using ostk::math::geometry::d3::objects::Composite;
+using ostk::core::type::String;
+using ostk::core::type::Shared;
+using ostk::mathematics::geometry::d3::Object;
+using ostk::mathematics::geometry::d3::object::Composite;
 
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Frame;
 using ObjectGeometry = ostk::physics::environment::object::Geometry;
 using ostk::physics::environment::object::Celestial;
 

@@ -21,11 +21,11 @@ class OpenSpaceToolkit_Simulation_Satellite : public ::testing::Test
    protected:
     void SetUp() override
     {
-        using ostk::core::types::Shared;
-        using ostk::core::types::String;
-        using ostk::core::ctnr::Array;
+        using ostk::core::type::Shared;
+        using ostk::core::type::String;
+        using ostk::core::container::Array;
 
-        using ostk::astro::flight::Profile;
+        using ostk::astrodynamics::flight::Profile;
 
         using ostk::simulation::Component;
         using ostk::simulation::component::Geometry;
