@@ -49,6 +49,8 @@ class Simulator
 
     const Environment& accessEnvironment() const;
 
+    const Map<String, Shared<Satellite>>& accessSatelliteMap() const;
+
     const Satellite& accessSatelliteWithName(const String& aSatelliteName) const;
 
     Instant getInstant() const;
