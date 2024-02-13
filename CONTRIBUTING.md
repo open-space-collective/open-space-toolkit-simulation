@@ -19,8 +19,8 @@ Include order from specific to generic:
 ```cpp
 #include <OpenSpaceToolkit/Simulation/Orbit.hpp>
 
-#include <OpenSpaceToolkit/Core/Types/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <map>
 #include <string>

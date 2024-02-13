@@ -4,7 +4,7 @@
 #include <OpenSpaceToolkit/Simulation/Utilities/Identifier.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 namespace ostk
 {

@@ -4,8 +4,8 @@
 #include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Types/Index.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Type/Index.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 namespace ostk
 {

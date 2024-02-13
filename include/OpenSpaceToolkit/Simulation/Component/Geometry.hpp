@@ -3,13 +3,13 @@
 #ifndef __OpenSpaceToolkit_Simulation_Component_Geometry__
 #define __OpenSpaceToolkit_Simulation_Component_Geometry__
 
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Composite.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Composite.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp>
 
 namespace ostk
 {
