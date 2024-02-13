@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Simulation/Component.hpp>
-#include <OpenSpaceToolkit/Simulation/Utilities/Identifier.hpp>
+#include <OpenSpaceToolkit/Simulation/Utility/Identifier.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
@@ -18,7 +18,7 @@ using ostk::physics::coordinate::Transform;
 using ostk::physics::coordinate::frame::Provider;
 using DynamicProvider = ostk::physics::coordinate::frame::provider::Dynamic;
 
-using namespace ostk::simulation::utilities;
+using namespace ostk::simulation::utility;
 
 Component::Component(
     const String& anId,

@@ -18,15 +18,15 @@ namespace simulation
 class Component;
 class ComponentConfiguration;
 
-namespace utilities
+namespace utility
 {
 
 using ostk::core::type::String;
 using ostk::core::type::Unique;
 using ostk::core::type::Shared;
-using ostk::core::container::Pair;
-using ostk::core::container::Array;
-using ostk::core::container::Map;
+using ostk::core::ctnr::Pair;
+using ostk::core::ctnr::Array;
+using ostk::core::ctnr::Map;
 
 /// @brief                      Generic Component holder
 
@@ -63,7 +63,7 @@ class ComponentHolder
 
 Pair<String, String> splitComponentPath(const String& aComponentPath);
 
-}  // namespace utilities
+}  // namespace utility
 }  // namespace simulation
 }  // namespace ostk
 

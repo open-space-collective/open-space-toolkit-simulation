@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Simulation/Entity.hpp>
-#include <OpenSpaceToolkit/Simulation/Utilities/Identifier.hpp>
+#include <OpenSpaceToolkit/Simulation/Utility/Identifier.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
@@ -11,10 +11,10 @@ namespace ostk
 namespace simulation
 {
 
-using namespace ostk::simulation::utilities;
+using namespace ostk::simulation::utility;
 
 Entity::Entity(const String& aName)
-    : id_(utilities::generateId()),
+    : id_(utility::generateId()),
       name_(aName)
 {
 }

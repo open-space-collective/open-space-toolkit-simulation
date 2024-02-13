@@ -14,14 +14,14 @@ namespace ostk
 {
 namespace simulation
 {
-namespace utilities
+namespace utility
 {
 
 using ostk::core::type::String;
 
 String generateId();
 
-}  // namespace utilities
+}  // namespace utility
 }  // namespace simulation
 }  // namespace ostk
 

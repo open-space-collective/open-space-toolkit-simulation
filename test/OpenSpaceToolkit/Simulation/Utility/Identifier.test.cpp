@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Simulation/Utilities/Identifier.hpp>
+#include <OpenSpaceToolkit/Simulation/Utility/Identifier.hpp>
 
 #include <Global.test.hpp>
 
@@ -8,7 +8,7 @@ TEST(OpenSpaceToolkit_Simulation_Utilities_Identifier, GenerateId)
 {
     using ostk::core::type::String;
 
-    using ostk::simulation::utilities::generateId;
+    using ostk::simulation::utility::generateId;
 
     {
         const String id_1 = generateId();
