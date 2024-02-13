@@ -22,12 +22,12 @@ using ostk::core::type::Shared;
 using ostk::core::container::Array;
 using ostk::core::container::Map;
 
-using ostk::math::geometry::d3::transformation::rotation::Quaternion;
-using ostk::math::geometry::d3::object::Point;
-using ostk::math::geometry::d3::object::LineString;
-using ostk::math::geometry::d3::object::Polygon;
-using ostk::math::geometry::d3::object::Pyramid;
-using ostk::math::geometry::d3::object::Composite;
+using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
+using ostk::mathematics::geometry::d3::object::Point;
+using ostk::mathematics::geometry::d3::object::LineString;
+using ostk::mathematics::geometry::d3::object::Polygon;
+using ostk::mathematics::geometry::d3::object::Pyramid;
+using ostk::mathematics::geometry::d3::object::Composite;
 
 using ostk::physics::Environment;
 using ostk::physics::unit::Length;
@@ -38,8 +38,8 @@ using ostk::physics::time::Duration;
 using ostk::physics::time::Time;
 using ostk::physics::coordinate::Frame;
 
-using ostk::astro::trajectory::Orbit;
-using ostk::astro::flight::Profile;
+using ostk::astrodynamics::trajectory::Orbit;
+using ostk::astrodynamics::flight::Profile;
 
 using ostk::simulation::Simulator;
 using ostk::simulation::SimulatorConfiguration;
