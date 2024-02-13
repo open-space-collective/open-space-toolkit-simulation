@@ -1,0 +1,131 @@
+\hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder}{}\doxysection{ostk\+::simulation\+::utility\+::Component\+Holder Class Reference}
+\label{classostk_1_1simulation_1_1utility_1_1_component_holder}\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
+
+
+Generic \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} holder.  
+
+
+
+
+{\ttfamily \#include $<$Component\+Holder.\+hpp$>$}
+
+Inheritance diagram for ostk\+::simulation\+::utility\+::Component\+Holder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classostk_1_1simulation_1_1utility_1_1_component_holder}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a7229211c50e568af740b831f8cde2d0b}{Component\+Holder}} (const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$ \&a\+Component\+Array=Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$\+::Empty())
+\item 
+\mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_abbc39c68bfd9922229cf2c70291395a1}{Component\+Holder}} (const \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder}{Component\+Holder}} \&a\+Component\+Holder)
+\item 
+\mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a2d189ed7b58dd7dbddd2e619cf197c86}{$\sim$\+Component\+Holder}} ()
+\item 
+bool \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_aca60bf690ae2d94e094760ef276fcfc6}{has\+Component\+With\+Id}} (const String \&a\+Component\+Id) const
+\item 
+bool \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a6a570d1c15601cacb1ad7a9fab443317}{has\+Component\+With\+Name}} (const String \&a\+Component\+Name) const
+\item 
+bool \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a2992fe305dcb2243a0f3f0b3a2965773}{has\+Component\+At}} (const String \&a\+Component\+Path) const
+\item 
+Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_ab66566e91251de05a02198cec7ecc4b7}{access\+Components}} () const
+\item 
+const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a05ee37d6949d90619788e62a1b1db47a}{access\+Component\+With\+Id}} (const String \&a\+Component\+Id) const
+\item 
+const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a245084a9899a44bb0c3298d643c2b44d}{access\+Component\+With\+Name}} (const String \&a\+Component\+Name) const
+\item 
+Array$<$ Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a9f7c8444d12fcb0a8d4d1198c2181197}{access\+Components\+With\+Tag}} (const String \&a\+Component\+Tag) const
+\item 
+const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a83aefcdc6fea117a180edff14954f7a5}{access\+Component\+At}} (const String \&a\+Component\+Path) const
+\item 
+void \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a6012cd2e61416fe0cef0f9523e0121de}{add\+Component}} (const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ \&a\+Component\+S\+Ptr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Generic \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} holder. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a7229211c50e568af740b831f8cde2d0b}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a7229211c50e568af740b831f8cde2d0b}} 
+\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!ComponentHolder@{ComponentHolder}}
+\index{ComponentHolder@{ComponentHolder}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
+\doxysubsubsection{\texorpdfstring{ComponentHolder()}{ComponentHolder()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ostk\+::simulation\+::utility\+::\+Component\+Holder\+::\+Component\+Holder (\begin{DoxyParamCaption}\item[{const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$ \&}]{a\+Component\+Array = {\ttfamily Array$<$Shared$<$\mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}}$>$$>$\+:\+:Empty()} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_abbc39c68bfd9922229cf2c70291395a1}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_abbc39c68bfd9922229cf2c70291395a1}} 
+\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!ComponentHolder@{ComponentHolder}}
+\index{ComponentHolder@{ComponentHolder}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
+\doxysubsubsection{\texorpdfstring{ComponentHolder()}{ComponentHolder()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ostk\+::simulation\+::utility\+::\+Component\+Holder\+::\+Component\+Holder (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder}{Component\+Holder}} \&}]{a\+Component\+Holder }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a2d189ed7b58dd7dbddd2e619cf197c86}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a2d189ed7b58dd7dbddd2e619cf197c86}} 
+\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!````~ComponentHolder@{$\sim$ComponentHolder}}
+\index{````~ComponentHolder@{$\sim$ComponentHolder}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
+\doxysubsubsection{\texorpdfstring{$\sim$ComponentHolder()}{~ComponentHolder()}}
+{\footnotesize\ttfamily ostk\+::simulation\+::utility\+::\+Component\+Holder\+::$\sim$\+Component\+Holder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a83aefcdc6fea117a180edff14954f7a5}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a83aefcdc6fea117a180edff14954f7a5}} 
+\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!accessComponentAt@{accessComponentAt}}
+\index{accessComponentAt@{accessComponentAt}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
+\doxysubsubsection{\texorpdfstring{accessComponentAt()}{accessComponentAt()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& ostk\+::simulation\+::utility\+::\+Component\+Holder\+::access\+Component\+At (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Path }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_ab66566e91251de05a02198cec7ecc4b7}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_ab66566e91251de05a02198cec7ecc4b7}} 
+\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!accessComponents@{accessComponents}}
+\index{accessComponents@{accessComponents}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
+\doxysubsubsection{\texorpdfstring{accessComponents()}{accessComponents()}}
+{\footnotesize\ttfamily Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ $>$ ostk\+::simulation\+::utility\+::\+Component\+Holder\+::access\+Components (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a9f7c8444d12fcb0a8d4d1198c2181197}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a9f7c8444d12fcb0a8d4d1198c2181197}} 
+\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!accessComponentsWithTag@{accessComponentsWithTag}}
+\index{accessComponentsWithTag@{accessComponentsWithTag}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
+\doxysubsubsection{\texorpdfstring{accessComponentsWithTag()}{accessComponentsWithTag()}}
+{\footnotesize\ttfamily Array$<$ Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ $>$ ostk\+::simulation\+::utility\+::\+Component\+Holder\+::access\+Components\+With\+Tag (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Tag }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a05ee37d6949d90619788e62a1b1db47a}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a05ee37d6949d90619788e62a1b1db47a}} 
+\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!accessComponentWithId@{accessComponentWithId}}
+\index{accessComponentWithId@{accessComponentWithId}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
+\doxysubsubsection{\texorpdfstring{accessComponentWithId()}{accessComponentWithId()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& ostk\+::simulation\+::utility\+::\+Component\+Holder\+::access\+Component\+With\+Id (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Id }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a245084a9899a44bb0c3298d643c2b44d}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a245084a9899a44bb0c3298d643c2b44d}} 
+\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!accessComponentWithName@{accessComponentWithName}}
+\index{accessComponentWithName@{accessComponentWithName}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
+\doxysubsubsection{\texorpdfstring{accessComponentWithName()}{accessComponentWithName()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& ostk\+::simulation\+::utility\+::\+Component\+Holder\+::access\+Component\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Name }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a6012cd2e61416fe0cef0f9523e0121de}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a6012cd2e61416fe0cef0f9523e0121de}} 
+\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!addComponent@{addComponent}}
+\index{addComponent@{addComponent}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
+\doxysubsubsection{\texorpdfstring{addComponent()}{addComponent()}}
+{\footnotesize\ttfamily void ostk\+::simulation\+::utility\+::\+Component\+Holder\+::add\+Component (\begin{DoxyParamCaption}\item[{const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ \&}]{a\+Component\+S\+Ptr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a2992fe305dcb2243a0f3f0b3a2965773}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a2992fe305dcb2243a0f3f0b3a2965773}} 
+\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!hasComponentAt@{hasComponentAt}}
+\index{hasComponentAt@{hasComponentAt}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
+\doxysubsubsection{\texorpdfstring{hasComponentAt()}{hasComponentAt()}}
+{\footnotesize\ttfamily bool ostk\+::simulation\+::utility\+::\+Component\+Holder\+::has\+Component\+At (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Path }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_aca60bf690ae2d94e094760ef276fcfc6}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_aca60bf690ae2d94e094760ef276fcfc6}} 
+\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!hasComponentWithId@{hasComponentWithId}}
+\index{hasComponentWithId@{hasComponentWithId}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
+\doxysubsubsection{\texorpdfstring{hasComponentWithId()}{hasComponentWithId()}}
+{\footnotesize\ttfamily bool ostk\+::simulation\+::utility\+::\+Component\+Holder\+::has\+Component\+With\+Id (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Id }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a6a570d1c15601cacb1ad7a9fab443317}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a6a570d1c15601cacb1ad7a9fab443317}} 
+\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!hasComponentWithName@{hasComponentWithName}}
+\index{hasComponentWithName@{hasComponentWithName}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
+\doxysubsubsection{\texorpdfstring{hasComponentWithName()}{hasComponentWithName()}}
+{\footnotesize\ttfamily bool ostk\+::simulation\+::utility\+::\+Component\+Holder\+::has\+Component\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Name }\end{DoxyParamCaption}) const}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Open\+Space\+Toolkit/\+Simulation/\+Utility/\mbox{\hyperlink{_component_holder_8hpp}{Component\+Holder.\+hpp}}\item 
+src/\+Open\+Space\+Toolkit/\+Simulation/\+Utility/\mbox{\hyperlink{_component_holder_8cpp}{Component\+Holder.\+cpp}}\end{DoxyCompactItemize}

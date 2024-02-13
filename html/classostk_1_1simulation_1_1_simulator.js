@@ -2,6 +2,7 @@ var classostk_1_1simulation_1_1_simulator =
 [
     [ "Simulator", "classostk_1_1simulation_1_1_simulator.html#a6c69bdb82f84e62d0e006755d501e05a", null ],
     [ "accessEnvironment", "classostk_1_1simulation_1_1_simulator.html#aa1c20421b7a2ad00954fea7bdfbd4edd", null ],
+    [ "accessSatelliteMap", "classostk_1_1simulation_1_1_simulator.html#ace707d08b62eb3a233e268a9eb72ef31", null ],
     [ "accessSatelliteWithName", "classostk_1_1simulation_1_1_simulator.html#ada54ce66cb47bb512f245f4ac1b33f95", null ],
     [ "addSatellite", "classostk_1_1simulation_1_1_simulator.html#a03e47de54e6db4942b77d24c46dcc940", null ],
     [ "getInstant", "classostk_1_1simulation_1_1_simulator.html#a64483af631b1f905850bb8b366f6fb0a", null ],

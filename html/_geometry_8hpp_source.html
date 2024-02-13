@@ -88,13 +88,13 @@ $(document).ready(function(){initNavTree('_geometry_8hpp_source.html',''); initR
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef __OpenSpaceToolkit_Simulation_Component_Geometry__</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define __OpenSpaceToolkit_Simulation_Component_Geometry__</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Types/String.hpp&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Mathematics/Geometry/3D/Object.hpp&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Composite.hpp&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Composite.hpp&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Physics/Environment/Objects/Celestial.hpp&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="namespaceostk.html">   14</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceostk.html">ostk</a></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
@@ -106,12 +106,12 @@ $(document).ready(function(){initNavTree('_geometry_8hpp_source.html',''); initR
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="namespaceostk_1_1simulation_1_1component.html">   21</a></span>&#160;<span class="keyword">namespace </span>component</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> ostk::core::types::String;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using</span> ostk::core::types::Shared;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using</span> ostk::math::geometry::d3::Object;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> ostk::math::geometry::d3::objects::Composite;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> ostk::core::type::String;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using</span> ostk::core::type::Shared;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using</span> ostk::mathematics::geometry::d3::Object;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> ostk::mathematics::geometry::d3::object::Composite;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> ostk::physics::coord::Frame;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> ostk::physics::coordinate::Frame;</div>
 <div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="namespaceostk_1_1simulation_1_1component.html#a1b21648b0426cff0de1fe8bd25248ea5">   30</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceostk_1_1simulation_1_1component.html#a1b21648b0426cff0de1fe8bd25248ea5">ObjectGeometry</a> = ostk::physics::environment::object::Geometry;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> ostk::physics::environment::object::Celestial;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
