@@ -19,9 +19,6 @@ PYBIND11_MODULE(OpenSpaceToolkitSimulationPy, m)
     // Add optional docstring for package OpenSpaceToolkitSimulationPy
     m.doc() = "Elementary space systems blocks for Simulation in Open Space Toolkit.";
 
-    // Add __path__ attribute to python package
-    m.attr("__path__") = "ostk.simulation";
-
     // Change attribute __name__ to make OpenSpaceToolkitSimulationPy invisible in import path
     m.attr("__name__") = "ostk.simulation";
 

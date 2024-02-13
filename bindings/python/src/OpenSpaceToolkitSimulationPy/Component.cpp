@@ -111,8 +111,6 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
     // Create python submodule
     auto component = aModule.def_submodule("component");
 
-    // Add __path__ attribute for submodule
-    component.attr("__path__") = "ostk.simulation.component";
 
     // Add objects to python submodule
     OpenSpaceToolkitSimulationPy_Component_Geometry(component);
