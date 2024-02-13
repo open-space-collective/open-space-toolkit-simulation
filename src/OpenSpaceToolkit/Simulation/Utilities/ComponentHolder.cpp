@@ -4,8 +4,8 @@
 #include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Types/Index.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Type/Index.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 namespace ostk
 {
@@ -185,7 +185,7 @@ const Component& ComponentHolder::accessComponentAt(const String& aComponentPath
 
 Pair<String, String> splitComponentPath(const String& aComponentPath)
 {
-    using ostk::core::types::Index;
+    using ostk::core::type::Index;
 
     if (aComponentPath.getFirst() == '/')
     {

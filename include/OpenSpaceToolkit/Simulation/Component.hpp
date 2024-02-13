@@ -8,29 +8,29 @@
 #include <OpenSpaceToolkit/Simulation/Entity.hpp>
 #include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Weak.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Map.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Weak.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp>
 
 namespace ostk
 {
 namespace simulation
 {
 
-using ostk::core::types::String;
-using ostk::core::types::Unique;
-using ostk::core::types::Shared;
-using ostk::core::types::Weak;
-using ostk::core::ctnr::Array;
-using ostk::core::ctnr::Map;
+using ostk::core::type::String;
+using ostk::core::type::Unique;
+using ostk::core::type::Shared;
+using ostk::core::type::Weak;
+using ostk::core::container::Array;
+using ostk::core::container::Map;
 
-using ostk::math::geometry::d3::transformation::rotation::Quaternion;
+using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Frame;
 
 using ostk::simulation::utilities::ComponentHolder;
 using ostk::simulation::component::State;

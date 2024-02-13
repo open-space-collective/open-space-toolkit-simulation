@@ -2,16 +2,16 @@
 
 from datetime import datetime
 
-from ostk.mathematics.geometry.d2.objects import Point as Point2d
-from ostk.mathematics.geometry.d2.objects import Polygon as Polygon2d
-from ostk.mathematics.geometry.d3.objects import Point
-from ostk.mathematics.geometry.d3.objects import Polygon
-from ostk.mathematics.geometry.d3.objects import Pyramid
-from ostk.mathematics.geometry.d3.objects import Composite
+from ostk.mathematics.geometry.d2.object import Point as Point2d
+from ostk.mathematics.geometry.d2.object import Polygon as Polygon2d
+from ostk.mathematics.geometry.d3.object import Point
+from ostk.mathematics.geometry.d3.object import Polygon
+from ostk.mathematics.geometry.d3.object import Pyramid
+from ostk.mathematics.geometry.d3.object import Composite
 from ostk.mathematics.geometry.d3.transformation.rotation import Quaternion
 
 from ostk.physics import Environment
-from ostk.physics.units import Length
+from ostk.physics.unit import Length
 from ostk.physics.time import Instant
 from ostk.physics.time import Scale
 from ostk.physics.time import Time

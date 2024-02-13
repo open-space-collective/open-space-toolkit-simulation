@@ -6,10 +6,10 @@
 #include <OpenSpaceToolkit/Simulation/Component.hpp>
 #include <OpenSpaceToolkit/Simulation/Entity.hpp>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Map.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 
@@ -20,14 +20,14 @@ namespace ostk
 namespace simulation
 {
 
-using ostk::core::types::String;
-using ostk::core::types::Shared;
-using ostk::core::ctnr::Map;
-using ostk::core::ctnr::Array;
+using ostk::core::type::String;
+using ostk::core::type::Shared;
+using ostk::core::container::Map;
+using ostk::core::container::Array;
 
-using ostk::physics::coord::Frame;
+using ostk::physics::coordinate::Frame;
 
-using ostk::astro::flight::Profile;
+using ostk::astrodynamics::flight::Profile;
 
 using ostk::simulation::Component;
 using ostk::simulation::ComponentConfiguration;

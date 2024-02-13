@@ -6,12 +6,12 @@
 #include <OpenSpaceToolkit/Simulation/Satellite.hpp>
 #include <OpenSpaceToolkit/Simulation/Simulator.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Composite.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/LineString.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Point.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Polygon.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Pyramid.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Composite.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/LineString.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Point.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Polygon.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Pyramid.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp>
 
 #include <OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp>
 
@@ -19,8 +19,8 @@
 
 TEST(OpenSpaceToolkit_Simulation_Simulator, Constructor)
 {
-    using ostk::core::types::Shared;
-    using ostk::core::ctnr::Array;
+    using ostk::core::type::Shared;
+    using ostk::core::container::Array;
 
     using ostk::physics::Environment;
 
@@ -46,27 +46,27 @@ TEST(OpenSpaceToolkit_Simulation_Simulator, Undefined)
 
 TEST(OpenSpaceToolkit_Simulation_Simulator, Test_1)
 {
-    using ostk::core::types::String;
-    using ostk::core::types::Shared;
-    using ostk::core::ctnr::Array;
+    using ostk::core::type::String;
+    using ostk::core::type::Shared;
+    using ostk::core::container::Array;
 
-    using ostk::math::geometry::d3::transformation::rotation::Quaternion;
-    using ostk::math::geometry::d3::objects::Point;
-    using ostk::math::geometry::d3::objects::LineString;
-    using ostk::math::geometry::d3::objects::Polygon;
-    using ostk::math::geometry::d3::objects::Pyramid;
-    using ostk::math::geometry::d3::objects::Composite;
+    using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
+    using ostk::mathematics::geometry::d3::object::Point;
+    using ostk::mathematics::geometry::d3::object::LineString;
+    using ostk::mathematics::geometry::d3::object::Polygon;
+    using ostk::mathematics::geometry::d3::object::Pyramid;
+    using ostk::mathematics::geometry::d3::object::Composite;
 
     using ostk::physics::Environment;
-    using ostk::physics::units::Length;
+    using ostk::physics::unit::Length;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Time;
-    using ostk::physics::coord::Frame;
+    using ostk::physics::coordinate::Frame;
 
-    using ostk::astro::trajectory::Orbit;
-    using ostk::astro::flight::Profile;
+    using ostk::astrodynamics::trajectory::Orbit;
+    using ostk::astrodynamics::flight::Profile;
 
     using ostk::simulation::Simulator;
     using ostk::simulation::Satellite;

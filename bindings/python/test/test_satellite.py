@@ -3,7 +3,7 @@
 from datetime import datetime
 
 from ostk.physics import Environment
-from ostk.physics.units import Length
+from ostk.physics.unit import Length
 from ostk.physics.time import Instant
 from ostk.physics.time import Scale
 from ostk.physics.time import Time

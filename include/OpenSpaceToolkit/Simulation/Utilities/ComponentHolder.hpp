@@ -3,12 +3,12 @@
 #ifndef __OpenSpaceToolkit_Simulation_Utilties_ComponentHolder__
 #define __OpenSpaceToolkit_Simulation_Utilties_ComponentHolder__
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Pair.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
-#include <OpenSpaceToolkit/Core/Types/Unique.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Map.hpp>
+#include <OpenSpaceToolkit/Core/Container/Pair.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
 namespace ostk
 {
@@ -21,12 +21,12 @@ class ComponentConfiguration;
 namespace utilities
 {
 
-using ostk::core::types::String;
-using ostk::core::types::Unique;
-using ostk::core::types::Shared;
-using ostk::core::ctnr::Pair;
-using ostk::core::ctnr::Array;
-using ostk::core::ctnr::Map;
+using ostk::core::type::String;
+using ostk::core::type::Unique;
+using ostk::core::type::Shared;
+using ostk::core::container::Pair;
+using ostk::core::container::Array;
+using ostk::core::container::Map;
 
 /// @brief                      Generic Component holder
 
