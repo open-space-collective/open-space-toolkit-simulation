@@ -130,6 +130,10 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, AccessEnvironment)
 TEST_F(OpenSpaceToolkit_Simulation_Simulator, AccessSatelliteMap)
 {
     {
+        EXPECT_THROW(Simulator::Undefined().accessSatelliteMap(), ostk::core::error::runtime::Undefined);
+    }
+
+    {
         EXPECT_EQ(simulatorSPtr_->accessSatelliteMap().size(), 1);
     }
 }
