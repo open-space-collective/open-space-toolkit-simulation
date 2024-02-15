@@ -271,7 +271,7 @@ ENDIF ()
 
 ### Open Space Toolkit ▸ Physics
 
-FIND_PACKAGE ("OpenSpaceToolkitPhysics" "5.0" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitPhysics" "5.1" REQUIRED)
 
 IF (NOT OpenSpaceToolkitPhysics_FOUND)
 
@@ -281,7 +281,7 @@ ENDIF ()
 
 ### Open Space Toolkit ▸ Astrodynamics
 
-FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "7.0" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "8.0" REQUIRED)
 
 IF (NOT OpenSpaceToolkitAstrodynamics_FOUND)
 
