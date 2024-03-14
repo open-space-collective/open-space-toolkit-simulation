@@ -27,7 +27,7 @@ Satellite::Satellite(
     const Array<Shared<Geometry>>& aGeometryArray,
     const Array<Shared<Component>>& aComponentArray,
     const Shared<const Frame>& aFrameSPtr,
-    const Shared<Profile>& aProfileSPtr,
+    const Shared<const Profile>& aProfileSPtr,
     const Shared<const Simulator>& aSimulatorSPtr
 )
     : Component(
@@ -70,6 +70,16 @@ bool Satellite::isDefined() const
     return Entity::isDefined();
 }
 
+const Shared<const Profile> Satellite::accessProfile() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Satellite");
+    }
+
+    return this->profileSPtr_;
+}
+
 void Satellite::print(std::ostream& anOutputStream, bool displayDecorators) const
 {
     displayDecorators ? ostk::core::utils::Print::Header(anOutputStream, "Satellite") : void();
@@ -97,7 +107,7 @@ Shared<Satellite> Satellite::Configure(
     const SatelliteConfiguration& aSatelliteConfiguration, const Shared<const Simulator>& aSimulatorSPtr
 )
 {
-    const Shared<Profile> profileSPtr = std::make_shared<Profile>(aSatelliteConfiguration.profile);
+    const Shared<const Profile> profileSPtr = std::make_shared<Profile>(aSatelliteConfiguration.profile);
 
     const Shared<Satellite> satelliteSPtr = std::make_shared<Satellite>(
         aSatelliteConfiguration.id,
