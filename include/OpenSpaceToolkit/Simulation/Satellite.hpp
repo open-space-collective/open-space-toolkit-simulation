@@ -51,7 +51,7 @@ class Satellite : public Component
         const Array<Shared<Geometry>>& aGeometryArray,
         const Array<Shared<Component>>& aComponentArray,
         const Shared<const Frame>& aFrameSPtr,
-        const Shared<Profile>& aProfileSPtr,
+        const Shared<const Profile>& aProfileSPtr,
         const Shared<const Simulator>& aSimulatorSPtr
     );
 
@@ -64,6 +64,8 @@ class Satellite : public Component
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Satellite& aSatellite);
 
     bool isDefined() const;
+
+    const Shared<const Profile> accessProfile() const;
 
     /// @brief              Print satellite
     ///

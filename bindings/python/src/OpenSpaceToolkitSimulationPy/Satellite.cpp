@@ -44,6 +44,9 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
             arg("simulator")
         )
 
+        .def("is_defined", &Satellite::isDefined)
+        .def("access_profile", &Satellite::accessProfile)
+
         .def_static("undefined", &Satellite::Undefined)
         .def_static("configure", &Satellite::Configure, arg("configuration"), arg("simulator") = nullptr)
 
