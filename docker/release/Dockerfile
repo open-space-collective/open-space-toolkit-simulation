@@ -2,12 +2,10 @@
 
 ARG VERSION
 
-ARG CPP_BUILDER_IMAGE=${CPP_BUILDER_IMAGE:-ghcr.io/loft-orbital/open-space-toolkit-simulation-development}
-
 ARG PYTHON_TEST_VERSION="3.11"
 ARG PYTHON_TEST_VERSION_WITHOUT_DOT="311"
 
-FROM ${CPP_BUILDER_IMAGE}:${VERSION} as cpp-builder
+FROM openspacecollective/open-space-toolkit-simulation-development:${VERSION} as cpp-builder
 
 RUN mkdir -p /app/bin /app/build /app/lib
 
@@ -32,12 +30,14 @@ RUN cmake .. \
 
 FROM debian:buster as cpp-release
 
-ENV LD_LIBRARY_PATH /usr/local/lib
+ENV LD_LIBRARY_PATH="/usr/local/lib"
 
-ENV OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
-ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"
-ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
-ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
+# Install OSTk data
+
+ARG OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data"
+ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}"
+
+RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} && chmod -R g+w ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
 
 COPY --from=cpp-builder /usr/local/include/OpenSpaceToolkit /usr/local/include/OpenSpaceToolkit
 COPY --from=cpp-builder /usr/local/lib/libopen-space-toolkit-simulation.* /usr/local/lib/
@@ -58,17 +58,17 @@ FROM python:${PYTHON_TEST_VERSION}-slim as python-release
 LABEL maintainer="lucas@loftorbital.com"
 
 RUN apt-get update -y \
- && apt-get install -y wget libcurl4-openssl-dev libssl-dev unzip \
+ && apt-get install -y libcurl4-openssl-dev libssl-dev wget unzip \
  && rm -rf /var/lib/apt/lists/*
 
 RUN pip install ipython numpy
 
-COPY --from=us.gcr.io/loft-orbital-public/software/open-space-toolkit/data:0.3.0 /open-space-toolkit/physics /usr/local/share/OpenSpaceToolkit/Physics
+# Install OSTk data
 
-ENV OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
-ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"
-ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
-ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY="/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
+ARG OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data"
+ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}"
+
+RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} && chmod -R g+w ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
 
 ARG PYTHON_TEST_VERSION
 COPY --from=python-builder /usr/local/lib/python${PYTHON_TEST_VERSION}/site-packages/ostk /usr/local/lib/python${PYTHON_TEST_VERSION}/site-packages/ostk
