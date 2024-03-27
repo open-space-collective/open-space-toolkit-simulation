@@ -15,7 +15,7 @@
 
 #include <OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp>
 
-#include <OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp>
+#include <Global.test.hpp>
 
 using ostk::core::type::String;
 using ostk::core::type::Shared;
