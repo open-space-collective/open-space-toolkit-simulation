@@ -1,13 +1,46 @@
 {
     "name": "Open Space Toolkit Simulation",
-    "build": {
-        "dockerfile": "../docker/development/Dockerfile"
-    },
-    "extensions": [
-        "ms-vscode.cpptools",
-        "ms-vscode.cmake-tools",
-        "ms-python.python",
-        "mhutchie.git-graph"
+    "image": "ghcr.io/loft-orbital/open-space-toolkit-simulation-development-non-root:latest",
+    "initializeCommand": "make build-development-image-non-root && mkdir -p ${localWorkspaceFolder}/build",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
+    "workspaceFolder": "/app",
+    "containerUser": "developer",
+    "updateRemoteUserUID": true,
+    "runArgs": [
+        "--name",
+        "open-space-toolkit-simulation-dev-non-root"
     ],
-    "shutdownAction": "stopContainer"
+    "mounts": [
+        "source=ostk_simulation_vscode_extensions,target=/home/developer/.vscode-server/extensions,type=volume",
+        "source=${localEnv:HOME}/.ssh,target=/home/developer/.ssh,type=bind,readonly",
+        "source=${localEnv:HOME}/.gitconfig,target=/home/developer/.gitconfig,type=bind,readonly"
+    ],
+    "shutdownAction": "stopContainer",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-python.python",
+                "ms-python.black-formatter",
+                "mhutchie.git-graph",
+                "ms-vscode.cpptools-extension-pack",
+                "mechatroner.rainbow-csv",
+                "twxs.cmake"
+            ],
+            "settings": {
+                "C_Cpp.clang_format_style": "file:/app/thirdparty/clang/.clang-format",
+                "terminal.integrated.cwd": "/app/build",
+                "terminal.integrated.profile.linux": {
+                    "zsh": {
+                        "path": "/bin/zsh"
+                    }
+                },
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "python.defaultInterpreterPath": "/usr/local/bin/python3.11",
+                "python.analysis.diagnosticSeverityOverrides": {
+                    "reportMissingModuleSource": "none"
+                }
+            }
+        }
+    }
 }

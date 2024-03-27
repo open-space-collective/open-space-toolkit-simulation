@@ -6,16 +6,16 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Array;
+    using ostk::core::type::Shared;
+    using ostk::core::type::String;
+    using ostk::core::container::Array;
 
-    using ostk::math::geom::d3::Object;
-    using ostk::math::geom::d3::objects::Composite;
+    using ostk::mathematics::geometry::d3::Object;
+    using ostk::mathematics::geometry::d3::object::Composite;
 
-    using ostk::physics::coord::Frame;
-    using ObjectGeometry = ostk::physics::env::object::Geometry;
-    using ostk::physics::env::obj::Celestial;
+    using ostk::physics::coordinate::Frame;
+    using ObjectGeometry = ostk::physics::environment::object::Geometry;
+    using ostk::physics::environment::object::Celestial;
 
     using ostk::simulation::Component;
     using ostk::simulation::component::Geometry;

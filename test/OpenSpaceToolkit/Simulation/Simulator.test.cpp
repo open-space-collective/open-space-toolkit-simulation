@@ -6,74 +6,184 @@
 #include <OpenSpaceToolkit/Simulation/Satellite.hpp>
 #include <OpenSpaceToolkit/Simulation/Simulator.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Composite.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/LineString.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Point.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Polygon.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Objects/Pyramid.hpp>
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformations/Rotations/Quaternion.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Composite.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/LineString.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Point.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Polygon.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Pyramid.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp>
 
 #include <OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp>
 
-#include <Global.test.hpp>
+#include <OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp>
 
-TEST(OpenSpaceToolkit_Simulation_Simulator, Constructor)
+using ostk::core::type::String;
+using ostk::core::type::Shared;
+using ostk::core::container::Array;
+using ostk::core::container::Map;
+
+using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
+using ostk::mathematics::geometry::d3::object::Point;
+using ostk::mathematics::geometry::d3::object::LineString;
+using ostk::mathematics::geometry::d3::object::Polygon;
+using ostk::mathematics::geometry::d3::object::Pyramid;
+using ostk::mathematics::geometry::d3::object::Composite;
+
+using ostk::physics::Environment;
+using ostk::physics::unit::Length;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
+using ostk::physics::time::Time;
+using ostk::physics::coordinate::Frame;
+
+using ostk::astrodynamics::trajectory::Orbit;
+using ostk::astrodynamics::flight::Profile;
+
+using ostk::simulation::Simulator;
+using ostk::simulation::SimulatorConfiguration;
+using ostk::simulation::Satellite;
+using ostk::simulation::SatelliteConfiguration;
+using ostk::simulation::Component;
+using ostk::simulation::component::State;
+using ostk::simulation::component::Geometry;
+
+class OpenSpaceToolkit_Simulation_Simulator : public ::testing::Test
 {
-    using ostk::core::types::Shared;
-    using ostk::core::ctnr::Array;
+   protected:
+    const Environment environment_ = Environment::Default();
 
-    using ostk::physics::Environment;
+    const String satelliteName_ = "LoftSat-1";
 
-    using ostk::simulation::Simulator;
-    using ostk::simulation::Satellite;
+    const Orbit orbit_ = Orbit::SunSynchronous(
+        Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC),  // Epoch
+        Length::Kilometers(500.0),                                     // Altitude
+        Time(14, 0, 0),                                                // LTAN
+        environment_.accessCelestialObjectWithName("Earth")            // Celestial object
+    );
 
+    const Shared<Simulator> simulatorSPtr_ = Simulator::Configure(
+        {environment_,
+         {{"1",
+           satelliteName_,
+           Profile::NadirPointing(orbit_, Orbit::FrameType::VVLH),
+           {{"2",
+             "Camera",
+             Component::Type::Sensor,
+             {"tag-a", "tag-b"},
+             Quaternion::Unit(),
+             {{"FOV",
+               Composite {Pyramid {
+                   Polygon {
+                       {{{-0.1, -1.0}, {+0.1, -1.0}, {+0.1, +1.0}, {-0.1, +1.0}}},
+                       Point {0.0, 0.0, 1.0},
+                       {1.0, 0.0, 0.0},
+                       {0.0, 1.0, 0.0}
+                   },
+                   Point {0.0, 0.0, 0.0}
+               }}}}}}}}}
+    );
+};
+
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, Constructor)
+{
     {
-        const Environment environment = Environment::Default();
         const Array<Shared<Satellite>> satellites = Array<Shared<Satellite>>::Empty();
 
-        EXPECT_NO_THROW(Simulator simulator = Simulator(environment, satellites));
+        EXPECT_NO_THROW(Simulator simulator = Simulator(environment_, satellites));
     }
 }
 
-TEST(OpenSpaceToolkit_Simulation_Simulator, Undefined)
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, StreamOperator)
 {
-    using ostk::simulation::Simulator;
+    {
+        testing::internal::CaptureStdout();
+
+        EXPECT_NO_THROW(std::cout << *simulatorSPtr_ << std::endl);
+
+        EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, IsDefined)
+{
+    {
+        EXPECT_TRUE(simulatorSPtr_->isDefined());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, HasSatelliteWithName)
+{
+    {
+        EXPECT_TRUE(simulatorSPtr_->hasSatelliteWithName(satelliteName_));
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, AccessEnvironment)
+{
+    {
+        EXPECT_NO_THROW(simulatorSPtr_->accessEnvironment());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, AccessSatelliteMap)
+{
+    {
+        EXPECT_THROW(Simulator::Undefined().accessSatelliteMap(), ostk::core::error::runtime::Undefined);
+    }
 
     {
-        EXPECT_FALSE(Simulator::Undefined().isDefined());
+        EXPECT_EQ(simulatorSPtr_->accessSatelliteMap().size(), 1);
     }
 }
 
-TEST(OpenSpaceToolkit_Simulation_Simulator, Test_1)
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, AccessSatelliteWithName)
 {
-    using ostk::core::types::String;
-    using ostk::core::types::Shared;
-    using ostk::core::ctnr::Array;
+    {
+        EXPECT_EQ(satelliteName_, simulatorSPtr_->accessSatelliteWithName(satelliteName_).getName());
+    }
+}
 
-    using ostk::math::geom::d3::trf::rot::Quaternion;
-    using ostk::math::geom::d3::objects::Point;
-    using ostk::math::geom::d3::objects::LineString;
-    using ostk::math::geom::d3::objects::Polygon;
-    using ostk::math::geom::d3::objects::Pyramid;
-    using ostk::math::geom::d3::objects::Composite;
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, GetInstant)
+{
+    {
+        const Instant instant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC);
 
-    using ostk::physics::Environment;
-    using ostk::physics::units::Length;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Time;
-    using ostk::physics::coord::Frame;
+        simulatorSPtr_->setInstant(instant);
 
-    using ostk::astro::trajectory::Orbit;
-    using ostk::astro::flight::Profile;
+        EXPECT_EQ(instant, simulatorSPtr_->getInstant());
+    }
+}
 
-    using ostk::simulation::Simulator;
-    using ostk::simulation::Satellite;
-    using ostk::simulation::Component;
-    using ostk::simulation::component::State;
-    using ostk::simulation::component::Geometry;
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, SetInstant)
+{
+    {
+        const Instant instant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC);
 
+        simulatorSPtr_->setInstant(instant);
+
+        EXPECT_EQ(instant, simulatorSPtr_->getInstant());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, StepForward)
+{
+    {
+        const Instant instant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC);
+
+        simulatorSPtr_->setInstant(instant);
+
+        const Duration duration = Duration::Seconds(60.0);
+
+        simulatorSPtr_->stepForward(duration);
+
+        EXPECT_EQ(instant + duration, simulatorSPtr_->getInstant());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, Test_1)
+{
     {
         const Environment environment = Environment::Default();
 
@@ -100,8 +210,10 @@ TEST(OpenSpaceToolkit_Simulation_Simulator, Test_1)
                            {{{-0.1, -1.0}, {+0.1, -1.0}, {+0.1, +1.0}, {-0.1, +1.0}}},
                            Point {0.0, 0.0, 1.0},
                            {1.0, 0.0, 0.0},
-                           {0.0, 1.0, 0.0}},
-                       Point {0.0, 0.0, 0.0}}}}}}}}}}
+                           {0.0, 1.0, 0.0}
+                       },
+                       Point {0.0, 0.0, 0.0}
+                   }}}}}}}}}
         );
 
         const Instant instant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC);
@@ -120,5 +232,21 @@ TEST(OpenSpaceToolkit_Simulation_Simulator, Test_1)
         );
         EXPECT_TRUE(cameraGeometry.intersectionWith(earthGeometry).accessComposite().accessObjectAt(1).is<LineString>()
         );
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, Undefined)
+{
+    {
+        EXPECT_FALSE(Simulator::Undefined().isDefined());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, Configure)
+{
+    {
+        const Array<SatelliteConfiguration> satelliteConfiguraitons = Array<SatelliteConfiguration>::Empty();
+
+        EXPECT_NO_THROW(Simulator::Configure(SimulatorConfiguration {environment_, satelliteConfiguraitons}));
     }
 }

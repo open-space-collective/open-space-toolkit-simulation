@@ -1,17 +1,19 @@
 # Apache License 2.0
 
-ARG BASE_IMAGE_VERSION=latest
+ARG BASE_IMAGE_VERSION="latest"
 
-FROM openspacecollective/open-space-toolkit-base:${BASE_IMAGE_VERSION}
+# General purpose development image (root user)
+
+FROM openspacecollective/open-space-toolkit-base:${BASE_IMAGE_VERSION} as root-user
 
 LABEL maintainer="lucas@loftorbital.com"
 
 # Dependencies
 
-## Zip
+## Zip, jq & git-lfs
 
 RUN apt-get update \
- && apt-get install -y unzip \
+ && apt-get install -y unzip jq git-lfs \
  && rm -rf /var/lib/apt/lists/*
 
 ## {fmt}
@@ -38,7 +40,7 @@ RUN git clone --branch v${ORDERED_MAP_VERSION} --depth 1 https://github.com/Tess
 
 ## Eigen
 
-ARG EIGEN_VERSION="3.3.7"
+ARG EIGEN_VERSION="3.4.0"
 
 RUN mkdir /tmp/eigen \
  && cd /tmp/eigen \
@@ -53,75 +55,146 @@ RUN mkdir /tmp/eigen \
 
 ## Open Space Toolkit ▸ Core
 
-ARG OSTK_CORE_VERSION=0.6.0
+ARG TARGETPLATFORM
+ARG OSTK_CORE_MAJOR="3"
+ARG OSTK_CORE_MINOR="0"
+
+## Force an image rebuild when new Core patch versions are detected
+ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-core/git/matching-refs/tags/${OSTK_CORE_MAJOR}.${OSTK_CORE_MINOR} /tmp/open-space-toolkit-core/versions.json
 
 RUN mkdir -p /tmp/open-space-toolkit-core \
  && cd /tmp/open-space-toolkit-core \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${OSTK_CORE_VERSION}/open-space-toolkit-core-${OSTK_CORE_VERSION}-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${OSTK_CORE_VERSION}/open-space-toolkit-core-${OSTK_CORE_VERSION}-1.x86_64-devel.deb \
+ && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+ && export PACKAGE_PLATFORM=$(if [ ${TARGETPLATFORM} = "linux/amd64" ]; then echo "x86_64"; elif [ ${TARGETPLATFORM} = "linux/arm64" ]; then echo "aarch64"; else echo "Unknown platform" && exit 1; fi;) \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-core-${LATEST_PATCH_OF_MINOR}-1.${PACKAGE_PLATFORM}-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-core/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-core-${LATEST_PATCH_OF_MINOR}-1.${PACKAGE_PLATFORM}-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-core
 
 ## Open Space Toolkit ▸ I/O
 
-ARG OSTK_IO_VERSION=0.6.0
+ARG TARGETPLATFORM
+ARG OSTK_IO_MAJOR="3"
+ARG OSTK_IO_MINOR="0"
+
+## Force an image rebuild when new IO patch versions are detected
+ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-io/git/matching-refs/tags/${OSTK_IO_MAJOR}.${OSTK_IO_MINOR} /tmp/open-space-toolkit-io/versions.json
 
 RUN mkdir -p /tmp/open-space-toolkit-io \
  && cd /tmp/open-space-toolkit-io \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${OSTK_IO_VERSION}/open-space-toolkit-io-${OSTK_IO_VERSION}-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${OSTK_IO_VERSION}/open-space-toolkit-io-${OSTK_IO_VERSION}-1.x86_64-devel.deb \
+ && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+ && export PACKAGE_PLATFORM=$(if [ ${TARGETPLATFORM} = "linux/amd64" ]; then echo "x86_64"; elif [ ${TARGETPLATFORM} = "linux/arm64" ]; then echo "aarch64"; else echo "Unknown platform" && exit 1; fi;) \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-io-${LATEST_PATCH_OF_MINOR}-1.${PACKAGE_PLATFORM}-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-io/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-io-${LATEST_PATCH_OF_MINOR}-1.${PACKAGE_PLATFORM}-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-io
 
 ## Open Space Toolkit ▸ Mathematics
 
-ARG OSTK_MATHEMATICS_VERSION=0.7.1
+ARG TARGETPLATFORM
+ARG OSTK_MATHEMATICS_MAJOR="3"
+ARG OSTK_MATHEMATICS_MINOR="0"
+
+## Force an image rebuild when new Math patch versions are detected
+ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-mathematics/git/matching-refs/tags/${OSTK_MATHEMATICS_MAJOR}.${OSTK_MATHEMATICS_MINOR} /tmp/open-space-toolkit-mathematics/versions.json
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
  && cd /tmp/open-space-toolkit-mathematics \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${OSTK_MATHEMATICS_VERSION}/open-space-toolkit-mathematics-${OSTK_MATHEMATICS_VERSION}-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${OSTK_MATHEMATICS_VERSION}/open-space-toolkit-mathematics-${OSTK_MATHEMATICS_VERSION}-1.x86_64-devel.deb \
+ && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+ && export PACKAGE_PLATFORM=$(if [ ${TARGETPLATFORM} = "linux/amd64" ]; then echo "x86_64"; elif [ ${TARGETPLATFORM} = "linux/arm64" ]; then echo "aarch64"; else echo "Unknown platform" && exit 1; fi;) \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-mathematics-${LATEST_PATCH_OF_MINOR}-1.${PACKAGE_PLATFORM}-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-mathematics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-mathematics-${LATEST_PATCH_OF_MINOR}-1.${PACKAGE_PLATFORM}-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-mathematics
 
 ## Open Space Toolkit ▸ Physics
 
-ARG OSTK_PHYSICS_VERSION=0.8.1
+ARG TARGETPLATFORM
+ARG OSTK_PHYSICS_MAJOR="6"
+ARG OSTK_PHYSICS_MINOR="0"
+
+## Force an image rebuild when new Physics patch versions are detected
+ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-physics/git/matching-refs/tags/${OSTK_PHYSICS_MAJOR}.${OSTK_PHYSICS_MINOR} /tmp/open-space-toolkit-physics/versions.json
 
 RUN mkdir -p /tmp/open-space-toolkit-physics \
  && cd /tmp/open-space-toolkit-physics \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${OSTK_PHYSICS_VERSION}/open-space-toolkit-physics-${OSTK_PHYSICS_VERSION}-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${OSTK_PHYSICS_VERSION}/open-space-toolkit-physics-${OSTK_PHYSICS_VERSION}-1.x86_64-devel.deb \
+ && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+ && export PACKAGE_PLATFORM=$(if [ ${TARGETPLATFORM} = "linux/amd64" ]; then echo "x86_64"; elif [ ${TARGETPLATFORM} = "linux/arm64" ]; then echo "aarch64"; else echo "Unknown platform" && exit 1; fi;) \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-physics-${LATEST_PATCH_OF_MINOR}-1.${PACKAGE_PLATFORM}-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-physics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-physics-${LATEST_PATCH_OF_MINOR}-1.${PACKAGE_PLATFORM}-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-physics
 
-COPY --from=us.gcr.io/loft-orbital-public/software/open-space-toolkit/data:0.3.0 /open-space-toolkit/physics /usr/local/share/OpenSpaceToolkit/Physics
-
-ENV OSTK_PHYSICS_COORDINATE_FRAME_PROVIDERS_IERS_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/coordinate/frame/providers/iers"
-ENV OSTK_PHYSICS_ENVIRONMENT_EPHEMERIDES_SPICE_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/ephemerides/spice"
-ENV OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/gravitational/earth"
-ENV OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY "/usr/local/share/OpenSpaceToolkit/Physics/environment/magnetic/earth"
-
 ## Open Space Toolkit ▸ Astrodynamics
 
-ARG OSTK_ASTRODYNAMICS_VERSION=0.12.2
+ARG TARGETPLATFORM
+ARG OSTK_ASTRODYNAMICS_MAJOR="9"
+ARG OSTK_ASTRODYNAMICS_MINOR="0"
+
+## Force an image rebuild when new Astrodynamics patch versions are detected
+ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-astrodynamics/git/matching-refs/tags/${OSTK_ASTRODYNAMICS_MAJOR}.${OSTK_ASTRODYNAMICS_MINOR} /tmp/open-space-toolkit-astrodynamics/versions.json
 
 RUN mkdir -p /tmp/open-space-toolkit-astrodynamics \
  && cd /tmp/open-space-toolkit-astrodynamics \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${OSTK_ASTRODYNAMICS_VERSION}/open-space-toolkit-astrodynamics-${OSTK_ASTRODYNAMICS_VERSION}-1.x86_64-runtime.deb \
- && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${OSTK_ASTRODYNAMICS_VERSION}/open-space-toolkit-astrodynamics-${OSTK_ASTRODYNAMICS_VERSION}-1.x86_64-devel.deb \
+ && export LATEST_PATCH_OF_MINOR=$(jq -r .[-1].ref versions.json | cut -d "/" -f3) \
+ && export PACKAGE_PLATFORM=$(if [ ${TARGETPLATFORM} = "linux/amd64" ]; then echo "x86_64"; elif [ ${TARGETPLATFORM} = "linux/arm64" ]; then echo "aarch64"; else echo "Unknown platform" && exit 1; fi;) \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-astrodynamics-${LATEST_PATCH_OF_MINOR}-1.${PACKAGE_PLATFORM}-runtime.deb \
+ && wget --quiet https://github.com/open-space-collective/open-space-toolkit-astrodynamics/releases/download/${LATEST_PATCH_OF_MINOR}/open-space-toolkit-astrodynamics-${LATEST_PATCH_OF_MINOR}-1.${PACKAGE_PLATFORM}-devel.deb \
  && apt-get install -y ./*.deb \
  && rm -rf /tmp/open-space-toolkit-astrodynamics
+
+# Install OSTk data
+
+ARG OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="/var/cache/open-space-toolkit-data"
+ENV OSTK_PHYSICS_DATA_LOCAL_REPOSITORY="${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}"
+
+RUN git clone --branch v1 --single-branch --depth=1 https://github.com/open-space-collective/open-space-toolkit-data.git ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY} && chmod -R g+w ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
 
 # Labels
 
 ARG VERSION
-
-ENV VERSION ${VERSION}
-
+ENV VERSION="${VERSION}"
 LABEL VERSION="${VERSION}"
 
-# Execution
+# Development image for humans (non-root user)
 
-CMD ["/bin/bash"]
+FROM root-user as non-root-user
 
+# Install dev utilities
+
+RUN apt-get update \
+ && apt-get install -y zsh sudo \
+ && rm -rf /var/lib/apt/lists/*
+
+# Create non-root user and group
+
+ARG USERNAME="developer"
+ARG USER_UID="1000"
+ARG USER_GID=${USER_UID}
+RUN groupadd --gid ${USER_GID} ${USERNAME} || true \
+ && adduser --uid ${USER_UID} --gid ${USER_GID} ${USERNAME} \
+ && echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${USERNAME}
+
+# Change ownership of OSTK_PHYSICS_DATA_LOCAL_REPOSITORY
+
+RUN chown -R ${USERNAME}:${USERNAME} ${OSTK_PHYSICS_DATA_LOCAL_REPOSITORY}
+
+# Use non-root user
+
+USER ${USERNAME}
+
+# Install shell utilities
+
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
+ && git clone https://github.com/bhilburn/powerlevel9k.git /home/${USERNAME}/.oh-my-zsh/custom/themes/powerlevel9k \
+ && git clone https://github.com/zsh-users/zsh-autosuggestions /home/${USERNAME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
+ && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/${USERNAME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting \
+ && mkdir -p /home/${USERNAME}/.vscode-server/extensions /home/${USERNAME}/.vscode-server-insiders/extensions
+
+## Configure environment
+
+ENV PATH="/home/${USERNAME}/.local/bin:${PATH}"
+
+# Entrypoint
+
+CMD [ "/bin/bash" ]
