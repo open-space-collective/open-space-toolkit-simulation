@@ -1,5 +1,5 @@
 var _component_holder_8hpp =
 [
-    [ "ComponentHolder", "classostk_1_1simulation_1_1utilities_1_1_component_holder.html", "classostk_1_1simulation_1_1utilities_1_1_component_holder" ],
-    [ "splitComponentPath", "_component_holder_8hpp.html#a7fd2c2aead74267f4a1dfc806741986d", null ]
+    [ "ComponentHolder", "classostk_1_1simulation_1_1utility_1_1_component_holder.html", "classostk_1_1simulation_1_1utility_1_1_component_holder" ],
+    [ "splitComponentPath", "_component_holder_8hpp.html#a2084483160c51091dc6577f796001b55", null ]
 ];

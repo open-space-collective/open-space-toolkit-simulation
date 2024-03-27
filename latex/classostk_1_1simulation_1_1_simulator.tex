@@ -1,110 +1,118 @@
-\hypertarget{classostk_1_1simulation_1_1_simulator}{}\section{ostk\+:\+:simulation\+:\+:Simulator Class Reference}
-\label{classostk_1_1simulation_1_1_simulator}\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
+\hypertarget{classostk_1_1simulation_1_1_simulator}{}\doxysection{ostk\+::simulation\+::Simulator Class Reference}
+\label{classostk_1_1simulation_1_1_simulator}\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}}
 
 
-\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}.  
+\mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}}.  
 
 
 
 
 {\ttfamily \#include $<$Simulator.\+hpp$>$}
 
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classostk_1_1simulation_1_1_simulator_a6c69bdb82f84e62d0e006755d501e05a}{Simulator} (const Environment \&an\+Environment, const Array$<$ Shared$<$ \hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite} $>$$>$ \&a\+Satellite\+Array)
+\mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a6c69bdb82f84e62d0e006755d501e05a}{Simulator}} (const Environment \&an\+Environment, const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $>$$>$ \&a\+Satellite\+Array)
 \item 
-bool \hyperlink{classostk_1_1simulation_1_1_simulator_a666148ccdc39474edbe83e7ffc65bac1}{is\+Defined} () const
+bool \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a666148ccdc39474edbe83e7ffc65bac1}{is\+Defined}} () const
 \item 
-bool \hyperlink{classostk_1_1simulation_1_1_simulator_a055842428d08ac13305da1b3ad339568}{has\+Satellite\+With\+Name} (const String \&a\+Satellite\+Name) const
+bool \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a055842428d08ac13305da1b3ad339568}{has\+Satellite\+With\+Name}} (const String \&a\+Satellite\+Name) const
 \item 
-const Environment \& \hyperlink{classostk_1_1simulation_1_1_simulator_aa1c20421b7a2ad00954fea7bdfbd4edd}{access\+Environment} () const
+const Environment \& \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_aa1c20421b7a2ad00954fea7bdfbd4edd}{access\+Environment}} () const
 \item 
-const \hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite} \& \hyperlink{classostk_1_1simulation_1_1_simulator_ada54ce66cb47bb512f245f4ac1b33f95}{access\+Satellite\+With\+Name} (const String \&a\+Satellite\+Name) const
+const Map$<$ String, Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $>$ $>$ \& \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_ace707d08b62eb3a233e268a9eb72ef31}{access\+Satellite\+Map}} () const
 \item 
-Instant \hyperlink{classostk_1_1simulation_1_1_simulator_a64483af631b1f905850bb8b366f6fb0a}{get\+Instant} () const
+const \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_ada54ce66cb47bb512f245f4ac1b33f95}{access\+Satellite\+With\+Name}} (const String \&a\+Satellite\+Name) const
 \item 
-void \hyperlink{classostk_1_1simulation_1_1_simulator_a820c217ea08c035aa3b171112998b334}{print} (std\+::ostream \&an\+Output\+Stream, bool display\+Decorators=true) const
+Instant \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a64483af631b1f905850bb8b366f6fb0a}{get\+Instant}} () const
+\item 
+void \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a820c217ea08c035aa3b171112998b334}{print}} (std\+::ostream \&an\+Output\+Stream, bool display\+Decorators=true) const
 \begin{DoxyCompactList}\small\item\em Print simulator. \end{DoxyCompactList}\item 
-void \hyperlink{classostk_1_1simulation_1_1_simulator_ab5fb0cb4864bbbbb35b3ab65d76d0a84}{set\+Instant} (const Instant \&an\+Instant)
+void \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_ab5fb0cb4864bbbbb35b3ab65d76d0a84}{set\+Instant}} (const Instant \&an\+Instant)
 \item 
-void \hyperlink{classostk_1_1simulation_1_1_simulator_acb6015e28195acde22acc04ff2e8b8a8}{step\+Forward} (const Duration \&a\+Duration)
+void \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_acb6015e28195acde22acc04ff2e8b8a8}{step\+Forward}} (const Duration \&a\+Duration)
 \item 
-void \hyperlink{classostk_1_1simulation_1_1_simulator_a03e47de54e6db4942b77d24c46dcc940}{add\+Satellite} (const Shared$<$ \hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite} $>$ \&a\+Satellite\+S\+Ptr)
+void \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a03e47de54e6db4942b77d24c46dcc940}{add\+Satellite}} (const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $>$ \&a\+Satellite\+S\+Ptr)
 \end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
+\doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator} \hyperlink{classostk_1_1simulation_1_1_simulator_a99876309ee0abbb7fb47b232bb28e6db}{Undefined} ()
+static \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a99876309ee0abbb7fb47b232bb28e6db}{Undefined}} ()
 \item 
-static Shared$<$ \hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator} $>$ \hyperlink{classostk_1_1simulation_1_1_simulator_ad95b067abdc0a5ddf348897161af46f1}{Configure} (const \hyperlink{structostk_1_1simulation_1_1_simulator_configuration}{Simulator\+Configuration} \&a\+Simulator\+Configuration)
+static Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_ad95b067abdc0a5ddf348897161af46f1}{Configure}} (const \mbox{\hyperlink{structostk_1_1simulation_1_1_simulator_configuration}{Simulator\+Configuration}} \&a\+Simulator\+Configuration)
 \end{DoxyCompactItemize}
-\subsection*{Friends}
+\doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-std\+::ostream \& \hyperlink{classostk_1_1simulation_1_1_simulator_a69c38d700ebaa96e61bccca4bdbe717d}{operator$<$$<$} (std\+::ostream \&an\+Output\+Stream, const \hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator} \&a\+Simulator)
+std\+::ostream \& \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a69c38d700ebaa96e61bccca4bdbe717d}{operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} \&a\+Simulator)
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}. 
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}}. 
 
-\subsection{Constructor \& Destructor Documentation}
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a6c69bdb82f84e62d0e006755d501e05a}\label{classostk_1_1simulation_1_1_simulator_a6c69bdb82f84e62d0e006755d501e05a}} 
-\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}!Simulator@{Simulator}}
-\index{Simulator@{Simulator}!ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
-\subsubsection{\texorpdfstring{Simulator()}{Simulator()}}
-{\footnotesize\ttfamily ostk\+::simulation\+::\+Simulator\+::\+Simulator (\begin{DoxyParamCaption}\item[{const Environment \&}]{an\+Environment,  }\item[{const Array$<$ Shared$<$ \hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite} $>$$>$ \&}]{a\+Satellite\+Array }\end{DoxyParamCaption})}
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!Simulator@{Simulator}}
+\index{Simulator@{Simulator}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{Simulator()}{Simulator()}}
+{\footnotesize\ttfamily ostk\+::simulation\+::\+Simulator\+::\+Simulator (\begin{DoxyParamCaption}\item[{const Environment \&}]{an\+Environment,  }\item[{const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $>$$>$ \&}]{a\+Satellite\+Array }\end{DoxyParamCaption})}
 
 
 
-\subsection{Member Function Documentation}
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_aa1c20421b7a2ad00954fea7bdfbd4edd}\label{classostk_1_1simulation_1_1_simulator_aa1c20421b7a2ad00954fea7bdfbd4edd}} 
-\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}!access\+Environment@{access\+Environment}}
-\index{access\+Environment@{access\+Environment}!ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
-\subsubsection{\texorpdfstring{access\+Environment()}{accessEnvironment()}}
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!accessEnvironment@{accessEnvironment}}
+\index{accessEnvironment@{accessEnvironment}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{accessEnvironment()}{accessEnvironment()}}
 {\footnotesize\ttfamily const Environment \& ostk\+::simulation\+::\+Simulator\+::access\+Environment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+\mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_ace707d08b62eb3a233e268a9eb72ef31}\label{classostk_1_1simulation_1_1_simulator_ace707d08b62eb3a233e268a9eb72ef31}} 
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!accessSatelliteMap@{accessSatelliteMap}}
+\index{accessSatelliteMap@{accessSatelliteMap}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{accessSatelliteMap()}{accessSatelliteMap()}}
+{\footnotesize\ttfamily const Map$<$ String, Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $>$ $>$ \& ostk\+::simulation\+::\+Simulator\+::access\+Satellite\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_ada54ce66cb47bb512f245f4ac1b33f95}\label{classostk_1_1simulation_1_1_simulator_ada54ce66cb47bb512f245f4ac1b33f95}} 
-\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}!access\+Satellite\+With\+Name@{access\+Satellite\+With\+Name}}
-\index{access\+Satellite\+With\+Name@{access\+Satellite\+With\+Name}!ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
-\subsubsection{\texorpdfstring{access\+Satellite\+With\+Name()}{accessSatelliteWithName()}}
-{\footnotesize\ttfamily const \hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite} \& ostk\+::simulation\+::\+Simulator\+::access\+Satellite\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Satellite\+Name }\end{DoxyParamCaption}) const}
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!accessSatelliteWithName@{accessSatelliteWithName}}
+\index{accessSatelliteWithName@{accessSatelliteWithName}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{accessSatelliteWithName()}{accessSatelliteWithName()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} \& ostk\+::simulation\+::\+Simulator\+::access\+Satellite\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Satellite\+Name }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a03e47de54e6db4942b77d24c46dcc940}\label{classostk_1_1simulation_1_1_simulator_a03e47de54e6db4942b77d24c46dcc940}} 
-\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}!add\+Satellite@{add\+Satellite}}
-\index{add\+Satellite@{add\+Satellite}!ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
-\subsubsection{\texorpdfstring{add\+Satellite()}{addSatellite()}}
-{\footnotesize\ttfamily void ostk\+::simulation\+::\+Simulator\+::add\+Satellite (\begin{DoxyParamCaption}\item[{const Shared$<$ \hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite} $>$ \&}]{a\+Satellite\+S\+Ptr }\end{DoxyParamCaption})}
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!addSatellite@{addSatellite}}
+\index{addSatellite@{addSatellite}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{addSatellite()}{addSatellite()}}
+{\footnotesize\ttfamily void ostk\+::simulation\+::\+Simulator\+::add\+Satellite (\begin{DoxyParamCaption}\item[{const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $>$ \&}]{a\+Satellite\+S\+Ptr }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_ad95b067abdc0a5ddf348897161af46f1}\label{classostk_1_1simulation_1_1_simulator_ad95b067abdc0a5ddf348897161af46f1}} 
-\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}!Configure@{Configure}}
-\index{Configure@{Configure}!ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
-\subsubsection{\texorpdfstring{Configure()}{Configure()}}
-{\footnotesize\ttfamily Shared$<$ \hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator} $>$ ostk\+::simulation\+::\+Simulator\+::\+Configure (\begin{DoxyParamCaption}\item[{const \hyperlink{structostk_1_1simulation_1_1_simulator_configuration}{Simulator\+Configuration} \&}]{a\+Simulator\+Configuration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!Configure@{Configure}}
+\index{Configure@{Configure}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{Configure()}{Configure()}}
+{\footnotesize\ttfamily Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} $>$ ostk\+::simulation\+::\+Simulator\+::\+Configure (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structostk_1_1simulation_1_1_simulator_configuration}{Simulator\+Configuration}} \&}]{a\+Simulator\+Configuration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a64483af631b1f905850bb8b366f6fb0a}\label{classostk_1_1simulation_1_1_simulator_a64483af631b1f905850bb8b366f6fb0a}} 
-\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}!get\+Instant@{get\+Instant}}
-\index{get\+Instant@{get\+Instant}!ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
-\subsubsection{\texorpdfstring{get\+Instant()}{getInstant()}}
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!getInstant@{getInstant}}
+\index{getInstant@{getInstant}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{getInstant()}{getInstant()}}
 {\footnotesize\ttfamily Instant ostk\+::simulation\+::\+Simulator\+::get\+Instant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a055842428d08ac13305da1b3ad339568}\label{classostk_1_1simulation_1_1_simulator_a055842428d08ac13305da1b3ad339568}} 
-\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}!has\+Satellite\+With\+Name@{has\+Satellite\+With\+Name}}
-\index{has\+Satellite\+With\+Name@{has\+Satellite\+With\+Name}!ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
-\subsubsection{\texorpdfstring{has\+Satellite\+With\+Name()}{hasSatelliteWithName()}}
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!hasSatelliteWithName@{hasSatelliteWithName}}
+\index{hasSatelliteWithName@{hasSatelliteWithName}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{hasSatelliteWithName()}{hasSatelliteWithName()}}
 {\footnotesize\ttfamily bool ostk\+::simulation\+::\+Simulator\+::has\+Satellite\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Satellite\+Name }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a666148ccdc39474edbe83e7ffc65bac1}\label{classostk_1_1simulation_1_1_simulator_a666148ccdc39474edbe83e7ffc65bac1}} 
-\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}!is\+Defined@{is\+Defined}}
-\index{is\+Defined@{is\+Defined}!ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
-\subsubsection{\texorpdfstring{is\+Defined()}{isDefined()}}
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!isDefined@{isDefined}}
+\index{isDefined@{isDefined}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
 {\footnotesize\ttfamily bool ostk\+::simulation\+::\+Simulator\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a820c217ea08c035aa3b171112998b334}\label{classostk_1_1simulation_1_1_simulator_a820c217ea08c035aa3b171112998b334}} 
-\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}!print@{print}}
-\index{print@{print}!ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
-\subsubsection{\texorpdfstring{print()}{print()}}
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!print@{print}}
+\index{print@{print}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
 {\footnotesize\ttfamily void ostk\+::simulation\+::\+Simulator\+::print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{bool}]{display\+Decorators = {\ttfamily true} }\end{DoxyParamCaption}) const}
 
 
@@ -113,41 +121,41 @@ Print simulator.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em an\+Output\+Stream} & An output stream \\
+\mbox{\texttt{ in}}  & {\em an\+Output\+Stream} & An output stream \\
 \hline
-\mbox{\tt in}  & {\em (optional)} & display\+Decorators If true, display decorators \\
+\mbox{\texttt{ in}}  & {\em (optional)} & display\+Decorators If true, display decorators \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_ab5fb0cb4864bbbbb35b3ab65d76d0a84}\label{classostk_1_1simulation_1_1_simulator_ab5fb0cb4864bbbbb35b3ab65d76d0a84}} 
-\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}!set\+Instant@{set\+Instant}}
-\index{set\+Instant@{set\+Instant}!ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
-\subsubsection{\texorpdfstring{set\+Instant()}{setInstant()}}
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!setInstant@{setInstant}}
+\index{setInstant@{setInstant}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{setInstant()}{setInstant()}}
 {\footnotesize\ttfamily void ostk\+::simulation\+::\+Simulator\+::set\+Instant (\begin{DoxyParamCaption}\item[{const Instant \&}]{an\+Instant }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_acb6015e28195acde22acc04ff2e8b8a8}\label{classostk_1_1simulation_1_1_simulator_acb6015e28195acde22acc04ff2e8b8a8}} 
-\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}!step\+Forward@{step\+Forward}}
-\index{step\+Forward@{step\+Forward}!ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
-\subsubsection{\texorpdfstring{step\+Forward()}{stepForward()}}
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!stepForward@{stepForward}}
+\index{stepForward@{stepForward}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{stepForward()}{stepForward()}}
 {\footnotesize\ttfamily void ostk\+::simulation\+::\+Simulator\+::step\+Forward (\begin{DoxyParamCaption}\item[{const Duration \&}]{a\+Duration }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a99876309ee0abbb7fb47b232bb28e6db}\label{classostk_1_1simulation_1_1_simulator_a99876309ee0abbb7fb47b232bb28e6db}} 
-\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}!Undefined@{Undefined}}
-\index{Undefined@{Undefined}!ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
-\subsubsection{\texorpdfstring{Undefined()}{Undefined()}}
-{\footnotesize\ttfamily \hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator} ostk\+::simulation\+::\+Simulator\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!Undefined@{Undefined}}
+\index{Undefined@{Undefined}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} ostk\+::simulation\+::\+Simulator\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-\subsection{Friends And Related Function Documentation}
+\doxysubsection{Friends And Related Function Documentation}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a69c38d700ebaa96e61bccca4bdbe717d}\label{classostk_1_1simulation_1_1_simulator_a69c38d700ebaa96e61bccca4bdbe717d}} 
-\index{ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}!operator$<$$<$@{operator$<$$<$}}
-\index{operator$<$$<$@{operator$<$$<$}!ostk\+::simulation\+::\+Simulator@{ostk\+::simulation\+::\+Simulator}}
-\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
-{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator} \&}]{a\+Simulator }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} \&}]{a\+Simulator }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/\+Open\+Space\+Toolkit/\+Simulation/\hyperlink{_simulator_8hpp}{Simulator.\+hpp}\item 
-src/\+Open\+Space\+Toolkit/\+Simulation/\hyperlink{_simulator_8cpp}{Simulator.\+cpp}\end{DoxyCompactItemize}
+include/\+Open\+Space\+Toolkit/\+Simulation/\mbox{\hyperlink{_simulator_8hpp}{Simulator.\+hpp}}\item 
+src/\+Open\+Space\+Toolkit/\+Simulation/\mbox{\hyperlink{_simulator_8cpp}{Simulator.\+cpp}}\end{DoxyCompactItemize}

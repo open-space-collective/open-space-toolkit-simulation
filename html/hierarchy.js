@@ -1,7 +1,7 @@
 var hierarchy =
 [
     [ "ostk::simulation::ComponentConfiguration", "structostk_1_1simulation_1_1_component_configuration.html", null ],
-    [ "ostk::simulation::utilities::ComponentHolder", "classostk_1_1simulation_1_1utilities_1_1_component_holder.html", [
+    [ "ostk::simulation::utility::ComponentHolder", "classostk_1_1simulation_1_1utility_1_1_component_holder.html", [
       [ "ostk::simulation::Component", "classostk_1_1simulation_1_1_component.html", [
         [ "ostk::simulation::Satellite", "classostk_1_1simulation_1_1_satellite.html", null ]
       ] ]
