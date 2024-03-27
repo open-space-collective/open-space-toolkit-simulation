@@ -4,7 +4,7 @@ project_name := simulation
 project_name_camel_case := $(shell echo $(project_name) | sed -r 's/(^|-)([a-z])/\U\2/g')
 project_version := $(shell git describe --tags --always)
 
-docker_registry_path := ghcr.io/loft-orbital
+docker_registry_path := openspacecollective
 docker_image_repository := $(docker_registry_path)/open-space-toolkit-$(project_name)
 docker_image_version := $(project_version)
 
@@ -331,7 +331,7 @@ debug-jupyter-rebuild: build-development-image ## Debug jupyter notebook using t
 		--volume="$(CURDIR):/app:delegated" \
 		--workdir=/app/build \
 		$(docker_development_image_repository):$(docker_image_version) \
-		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=ON -DPYTHON_SEARCH_VERSIONS="$(jupyter_python_version)" .. \
+		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_BENCHMARK=OFF -DBUILD_PYTHON_BINDINGS=ON -DPYTHON_SEARCH_VERSIONS="$(jupyter_python_version)" .. \
 		&& $(MAKE) -j $(shell nproc)"
 
 	@ $(MAKE) debug-jupyter
@@ -499,7 +499,6 @@ test-unit-cpp-standalone: ## Run C++ unit tests (standalone)
 	docker run \
 		--rm \
 		--volume="$(CURDIR):/app:delegated" \
-		--volume="$(CURDIR)/share/OpenSpaceToolkit:/usr/local/share/OpenSpaceToolkit:delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
 		$(docker_development_image_repository):$(docker_image_version) \
@@ -553,7 +552,6 @@ test-coverage-cpp-standalone: ## Run C++ tests with coverage (standalone)
 	docker run \
 		--rm \
 		--volume="$(CURDIR):/app:delegated" \
-		--volume="$(CURDIR)/share/OpenSpaceToolkit:/usr/local/share/OpenSpaceToolkit:delegated" \
 		--volume="/app/build" \
 		--workdir=/app/build \
 		$(docker_development_image_repository):$(docker_image_version) \
@@ -571,10 +569,10 @@ clean: ## Clean
 	@ echo "Cleaning up..."
 
 	rm -rf "$(CURDIR)/build"
-	rm -rf "$(CURDIR)/bin/"*.test*
+	rm -rf "$(CURDIR)/bin"
 	rm -rf "$(CURDIR)/docs/html"
 	rm -rf "$(CURDIR)/docs/latex"
-	rm -rf "$(CURDIR)/lib/"*.so*
+	rm -rf "$(CURDIR)/lib"
 	rm -rf "$(CURDIR)/coverage"
 	rm -rf "$(CURDIR)/packages"
 	rm -rf "$(CURDIR)/.open-space-toolkit"
