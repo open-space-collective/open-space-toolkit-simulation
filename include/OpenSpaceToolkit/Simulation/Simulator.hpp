@@ -5,10 +5,10 @@
 
 #include <OpenSpaceToolkit/Simulation/Satellite.hpp>
 
-#include <OpenSpaceToolkit/Core/Containers/Array.hpp>
-#include <OpenSpaceToolkit/Core/Containers/Map.hpp>
-#include <OpenSpaceToolkit/Core/Types/Shared.hpp>
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Map.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
@@ -21,10 +21,10 @@ namespace simulation
 
 #define DEFAULT_SATELLITES Array<SatelliteConfiguration>::Empty()
 
-using ostk::core::types::String;
-using ostk::core::types::Shared;
-using ostk::core::ctnr::Array;
-using ostk::core::ctnr::Map;
+using ostk::core::type::String;
+using ostk::core::type::Shared;
+using ostk::core::container::Array;
+using ostk::core::container::Map;
 
 using ostk::physics::Environment;
 using ostk::physics::time::Instant;
@@ -48,6 +48,8 @@ class Simulator
     bool hasSatelliteWithName(const String& aSatelliteName) const;
 
     const Environment& accessEnvironment() const;
+
+    const Map<String, Shared<Satellite>>& accessSatelliteMap() const;
 
     const Satellite& accessSatelliteWithName(const String& aSatelliteName) const;
 

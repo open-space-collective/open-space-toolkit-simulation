@@ -1,15 +1,14 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Simulation/Utilities/ComponentHolder.hpp>
+#include <OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp>
 
-inline void OpenSpaceToolkitSimulationPy_Utilities_ComponentHolder(pybind11::module& aModule)
+inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
+    using ostk::core::type::Shared;
 
-    using ostk::simulation::Component;
-    using ostk::simulation::utilities::ComponentHolder;
+    using ostk::simulation::utility::ComponentHolder;
 
     class_<ComponentHolder, Shared<ComponentHolder>>(aModule, "ComponentHolder")
 

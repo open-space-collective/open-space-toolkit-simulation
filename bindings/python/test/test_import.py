@@ -1,7 +1,5 @@
 # Apache License 2.0
 
-import pytest
-
 
 class TestImport:
     def test_import(self):

@@ -18,4 +18,3 @@ IF (OpenSpaceToolkitSimulation_INCLUDE_DIR)
     SET (OpenSpaceToolkitSimulation_FOUND TRUE)
 
 ENDIF ()
-

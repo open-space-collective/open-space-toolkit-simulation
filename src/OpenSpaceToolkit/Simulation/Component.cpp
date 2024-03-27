@@ -1,24 +1,24 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Simulation/Component.hpp>
-#include <OpenSpaceToolkit/Simulation/Utilities/Identifier.hpp>
+#include <OpenSpaceToolkit/Simulation/Utility/Identifier.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Utilities.hpp>
+#include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Providers/Dynamic.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp>
 
 namespace ostk
 {
 namespace simulation
 {
 
-using ostk::physics::coord::Transform;
-using ostk::physics::coord::frame::Provider;
-using DynamicProvider = ostk::physics::coord::frame::provider::Dynamic;
+using ostk::physics::coordinate::Transform;
+using ostk::physics::coordinate::frame::Provider;
+using DynamicProvider = ostk::physics::coordinate::frame::provider::Dynamic;
 
-using namespace ostk::simulation::utilities;
+using namespace ostk::simulation::utility;
 
 Component::Component(
     const String& anId,
@@ -185,7 +185,8 @@ Component Component::Undefined()
         Array<Shared<Component>>::Empty(),
         nullptr,
         nullptr,
-        nullptr};
+        nullptr
+    };
 }
 
 Shared<Component> Component::Configure(
@@ -234,7 +235,8 @@ String Component::StringFromType(const Component::Type& aType)
         {Component::Type::Controller, "Controller"},
         {Component::Type::Sensor, "Sensor"},
         {Component::Type::Actuator, "Actuator"},
-        {Component::Type::Other, "Other"}};
+        {Component::Type::Other, "Other"}
+    };
 
     return typeStringMap.at(aType);
 }

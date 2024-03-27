@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Simulation/Utilities/Identifier.hpp>
+#include <OpenSpaceToolkit/Simulation/Utility/Identifier.hpp>
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
@@ -9,7 +9,7 @@ namespace ostk
 {
 namespace simulation
 {
-namespace utilities
+namespace utility
 {
 
 String generateId()
@@ -18,6 +18,6 @@ String generateId()
     return boost::uuids::to_string(generator());
 }
 
-}  // namespace utilities
+}  // namespace utility
 }  // namespace simulation
 }  // namespace ostk

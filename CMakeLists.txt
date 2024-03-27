@@ -21,7 +21,7 @@ OPTION (BUILD_UNIT_TESTS "Build tests" ON)
 OPTION (BUILD_PYTHON_BINDINGS "Build Python bindings." ON)
 OPTION (BUILD_CODE_COVERAGE "Build code coverage" OFF)
 OPTION (BUILD_DOCUMENTATION "Build documentation" OFF)
-
+OPTION (BUILD_WITH_DEBUG_SYMBOLS "Build with debug symbols" ON)
 
 ## Setup
 
@@ -136,8 +136,15 @@ SET (CMAKE_CXX_STANDARD 17)
 SET (CMAKE_CXX_STANDARD_REQUIRED ON)
 SET (CMAKE_CXX_EXTENSIONS OFF)
 
+### Debug Symbols
 
-## Debugging Options
+IF (BUILD_WITH_DEBUG_SYMBOLS)
+
+    SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+
+ENDIF ()
+
+### Debugging Options
 
 SET (CMAKE_VERBOSE_MAKEFILE 0) # Use 1 for debugging, 0 for release
 
@@ -218,6 +225,23 @@ SET (Boost_USE_MULTITHREADED ON)
 
 FIND_PACKAGE ("Boost" "1.82" REQUIRED COMPONENTS)
 
+## Stacktrace definitions
+# Detect system architecture
+if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
+    # Architecture-specific include for x86_64
+    set(BACKTRACE_INCLUDE "/usr/lib/gcc/x86_64-linux-gnu/9/include/backtrace.h")
+elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
+    # Example path adjustment for aarch64, adjust the path as needed
+    set(BACKTRACE_INCLUDE "/usr/lib/gcc/aarch64-linux-gnu/9/include/backtrace.h")
+else()
+    message(FATAL_ERROR "Unsupported architecture: ${CMAKE_SYSTEM_PROCESSOR}")
+endif()
+
+# Add definitions with architecture-specific path
+ADD_DEFINITIONS(-DBOOST_THREAD_DYN_LINK)
+ADD_DEFINITIONS(-DBOOST_STACKTRACE_USE_BACKTRACE)
+ADD_DEFINITIONS(-DBOOST_STACKTRACE_BACKTRACE_INCLUDE_FILE=<${BACKTRACE_INCLUDE}>)
+
 IF (NOT Boost_FOUND)
     MESSAGE (SEND_ERROR "[Boost] not found.")
 ENDIF ()
@@ -232,9 +256,9 @@ ELSE ()
     MESSAGE (SEND_ERROR "[Eigen 3] not found.")
 ENDIF ()
 
-### Open Space Toolkit ▸ Core
+### Open Space Toolkit ▸ Core [3.0.x]
 
-FIND_PACKAGE ("OpenSpaceToolkitCore" "0.2" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitCore" "3.0" REQUIRED)
 
 IF (NOT OpenSpaceToolkitCore_FOUND)
 
@@ -242,9 +266,9 @@ IF (NOT OpenSpaceToolkitCore_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ I/O
+### Open Space Toolkit ▸ I/O [3.0.x]
 
-FIND_PACKAGE ("OpenSpaceToolkitIO" "0.2" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitIO" "3.0" REQUIRED)
 
 IF (NOT OpenSpaceToolkitIO_FOUND)
 
@@ -252,9 +276,9 @@ IF (NOT OpenSpaceToolkitIO_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ Mathematics
+### Open Space Toolkit ▸ Mathematics [3.0.x]
 
-FIND_PACKAGE ("OpenSpaceToolkitMathematics" "0.2" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitMathematics" "3.0" REQUIRED)
 
 IF (NOT OpenSpaceToolkitMathematics_FOUND)
 
@@ -262,9 +286,9 @@ IF (NOT OpenSpaceToolkitMathematics_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ Physics
+### Open Space Toolkit ▸ Physics [6.0.x]
 
-FIND_PACKAGE ("OpenSpaceToolkitPhysics" "0.2" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitPhysics" "6.0" REQUIRED)
 
 IF (NOT OpenSpaceToolkitPhysics_FOUND)
 
@@ -272,17 +296,15 @@ IF (NOT OpenSpaceToolkitPhysics_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ Astrodynamics
+### Open Space Toolkit ▸ Astrodynamics [9.0.x]
 
-FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "0.3" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "9.0" REQUIRED)
 
 IF (NOT OpenSpaceToolkitAstrodynamics_FOUND)
 
     MESSAGE (SEND_ERROR "[Open Space Toolkit ▸ Astrodynamics] not found.")
 
 ENDIF ()
-
-#####################################################################################3###########################################################################
 
 ## Versioning
 
@@ -315,6 +337,7 @@ IF (BUILD_SHARED_LIBRARY)
     TARGET_INCLUDE_DIRECTORIES (${SHARED_LIBRARY_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/src/")
 
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "pthread")
+    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "dl")
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitCore_LIBRARIES})
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitIO_LIBRARIES})
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitMathematics_LIBRARIES})
@@ -344,18 +367,18 @@ IF (BUILD_STATIC_LIBRARY)
     TARGET_INCLUDE_DIRECTORIES (${STATIC_LIBRARY_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/include/")
 
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "pthread")
-    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${Boost_LIBRARIES})
+    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "dl")
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${OpenSpaceToolkitCore_LIBRARIES})
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${OpenSpaceToolkitIO_LIBRARIES})
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${OpenSpaceToolkitMathematics_LIBRARIES})
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${OpenSpaceToolkitPhysics_LIBRARIES})
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${OpenSpaceToolkitAstrodynamics_LIBRARIES})
 
-    SET_TARGET_PROPERTIES (${STATIC_LIBRARY_TARGET} PROPERTIES VERSION ${PROJECT_VERSION_STRING} OUTPUT_NAME ${SHARED_LIBRARY_NAME} CLEAN_DIRECT_OUTPUT 1 INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/")
+    SET_TARGET_PROPERTIES (${STATIC_LIBRARY_TARGET} PROPERTIES VERSION ${PROJECT_VERSION_STRING} OUTPUT_NAME ${STATIC_LIBRARY_NAME} CLEAN_DIRECT_OUTPUT 1 INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/")
 
     INSTALL (DIRECTORY "${PROJECT_SOURCE_DIR}/include/${PROJECT_PATH}/" DESTINATION ${INSTALL_INCLUDE} COMPONENT "headers" FILES_MATCHING PATTERN "*.hpp")
     INSTALL (DIRECTORY "${PROJECT_SOURCE_DIR}/src/${PROJECT_PATH}/" DESTINATION ${INSTALL_INCLUDE} COMPONENT "headers" FILES_MATCHING PATTERN "*.tpp")
-    INSTALL (TARGETS ${SHARED_LIBRARY_TARGET} DESTINATION ${INSTALL_LIB} COMPONENT "libraries")
+    INSTALL (TARGETS ${STATIC_LIBRARY_TARGET} DESTINATION ${INSTALL_LIB} COMPONENT "libraries")
 
 ENDIF ()
 
@@ -549,4 +572,3 @@ SET (CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST
 )
 
 INCLUDE (CPack)
-

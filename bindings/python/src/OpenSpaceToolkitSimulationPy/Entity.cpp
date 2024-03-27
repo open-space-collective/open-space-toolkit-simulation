@@ -6,7 +6,7 @@ inline void OpenSpaceToolkitSimulationPy_Entity(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
+    using ostk::core::type::Shared;
 
     using ostk::simulation::Entity;
 

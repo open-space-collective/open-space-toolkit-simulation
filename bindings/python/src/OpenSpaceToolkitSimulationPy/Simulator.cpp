@@ -6,8 +6,8 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::ctnr::Array;
-    using ostk::core::types::Shared;
+    using ostk::core::container::Array;
+    using ostk::core::type::Shared;
 
     using ostk::physics::Environment;
 
@@ -24,6 +24,7 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
         .def("has_satellite_with_name", &Simulator::hasSatelliteWithName, arg("name"))
 
         .def("access_environment", &Simulator::accessEnvironment)
+        .def("access_satellite_map", &Simulator::accessSatelliteMap)
         .def("access_satellite_with_name", &Simulator::accessSatelliteWithName, arg("name"))
 
         .def("get_instant", &Simulator::getInstant)

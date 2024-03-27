@@ -2,69 +2,82 @@
 
 # Apache License 2.0
 
-if [[ -z ${project_directory} ]]; then
-    echo "Variable [project_directory] is undefined."
+# Check input arguments
+
+if [[ -z ${docker_development_image_repository} ]]; then
+    echo "Variable [docker_development_image_repository] is undefined."
     exit 1
 fi
 
-options=""
-command="/bin/bash"
+if [[ -z ${docker_image_version} ]]; then
+    echo "Variable [docker_image_version] is undefined."
+    exit 1
+fi
+
+project_directory=$(git rev-parse --show-toplevel)
+project_name="simulation"
+
+# Initialize variables
+
+options=()
+command=""
+deps=""
 
 # Setup linked mode
 
 if [[ ! -z ${1} ]] && [[ ${1} == "--link" ]]; then
 
-    options=""
-    command=""
+    for link in "${@:2}"
 
-    # Open Space Toolkit ▸ Core
+    do
 
-    if [[ -z ${open_space_toolkit_core_directory} ]]; then
-        echo "Variable [open_space_toolkit_core_directory] is undefined."
-        exit 1
-    fi
+        # Extract last part of the path
 
-    if [[ ! -d ${open_space_toolkit_core_directory} ]]; then
-        echo "Open Space Toolkit ▸ Core directory [${open_space_toolkit_core_directory}] cannot be found."
-        exit 1
-    fi
+        dep=$(basename ${link})
 
-    options="${options} \
-    --volume=${open_space_toolkit_core_directory}:/mnt/open-space-toolkit-core:ro"
+        deps+=" ${dep}"
 
-    command=" \
-    rm -rf /usr/local/include/OpenSpaceToolkit/Core; \
-    rm -f /usr/local/lib/libopen-space-toolkit-core.so*; \
-    cp -as /mnt/open-space-toolkit-core/include/OpenSpaceToolkit/Core /usr/local/include/OpenSpaceToolkit/Core; \
-    cp -as /mnt/open-space-toolkit-core/src/OpenSpaceToolkit/Core/* /usr/local/include/OpenSpaceToolkit/Core/; \
-    ln -s /mnt/open-space-toolkit-core/lib/libopen-space-toolkit-core.so /usr/local/lib/; \
-    ln -s /mnt/open-space-toolkit-core/lib/libopen-space-toolkit-core.so.0 /usr/local/lib/;"
+        # Log the linking step
 
-    # Open Space Toolkit ▸ I/O
+        echo "Linking with ${dep} at ${link}..."
 
-    # TBI
+        # Open Space Toolkit ▸ Dep
 
-    # Open Space Toolkit ▸ Mathematics
+        project_name=$(echo ${dep} | cut -d "-" -f 4)
 
-    # TBI
+        if [ ${project_name} = "io" ]; then
+            project_name_capitalized="IO"
+        else
+            project_name_capitalized=${project_name^}
+        fi
 
-    # Output
+        options+=( "-v" )
+        options+=( "${link}:/mnt/${dep}:ro" )
 
-    command="${command} \
-    /bin/bash"
+        command="${command} \
+        rm -rf /usr/local/include/OpenSpaceToolkit/${project_name_capitalized}; \
+        rm -f /usr/local/lib/lib${dep}.so*; \
+        cp -as /mnt/${dep}/include/OpenSpaceToolkit/${project_name_capitalized} /usr/local/include/OpenSpaceToolkit/${project_name_capitalized}; \
+        cp -as /mnt/${dep}/src/OpenSpaceToolkit/${project_name_capitalized}/* /usr/local/include/OpenSpaceToolkit/${project_name_capitalized}/; \
+        ln -s /mnt/${dep}/lib/lib${dep}.so /usr/local/lib/; \
+        ln -s /mnt/${dep}/lib/lib${dep}.so.* /usr/local/lib/; \
+        cp -as /mnt/${dep}/build/bindings/python/dist/* /usr/local/share;"
+
+    done
+
+    command="${command} /bin/bash"
 
 fi
 
 # Run Docker container
 
 docker run \
--it \
---rm \
---privileged \
-${options} \
---volume="${project_directory}:/app:delegated" \
---volume="${project_directory}/tools/development/helpers:/app/build/helpers:ro,delegated" \
---workdir="/app/build" \
-${docker_development_image_repository}:${docker_image_version}-${target} \
-/bin/bash -c "${command}"
-
+    -it \
+    --rm \
+    --name=open-space-toolkit-${project_name}-dev \
+    "${options[@]}" \
+    --volume="${project_directory}:/app:delegated" \
+    --env="deps=${deps}" \
+    --workdir="/app/build" \
+    ${docker_development_image_repository}:${docker_image_version} \
+    /bin/bash -c "${command}"

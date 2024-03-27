@@ -9,13 +9,13 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::types::Shared;
-    using ostk::core::types::String;
-    using ostk::core::ctnr::Array;
+    using ostk::core::type::Shared;
+    using ostk::core::type::String;
+    using ostk::core::container::Array;
 
-    using ostk::math::geom::d3::trf::rot::Quaternion;
+    using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 
-    using ostk::physics::coord::Frame;
+    using ostk::physics::coordinate::Frame;
 
     using ostk::simulation::Simulator;
     using ostk::simulation::Entity;
@@ -24,7 +24,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
     using ostk::simulation::component::Geometry;
     using ostk::simulation::component::GeometryConfiguration;
     using ostk::simulation::component::State;
-    using ostk::simulation::utilities::ComponentHolder;
+    using ostk::simulation::utility::ComponentHolder;
 
     {
         class_<Component, Entity, ComponentHolder, Shared<Component>> component_class(aModule, "Component");
@@ -110,9 +110,6 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
 
     // Create python submodule
     auto component = aModule.def_submodule("component");
-
-    // Add __path__ attribute for submodule
-    component.attr("__path__") = "ostk.simulation.component";
 
     // Add objects to python submodule
     OpenSpaceToolkitSimulationPy_Component_Geometry(component);

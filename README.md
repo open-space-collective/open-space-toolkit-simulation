@@ -159,14 +159,14 @@ Or to run them manually:
 
 ## Dependencies
 
-| Name          | Version | License            | Link                                                                                                                                           |
-| ------------- | ------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pybind11      | 2.10.0  | BSD-3-Clause       | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)                                                                               |
-| Core          | main    | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)                   |
-| I/O           | main    | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                       |
-| Mathematics   | main    | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics)     |
-| Physics       | main    | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-physics](https://github.com/open-space-collective/open-space-toolkit-physics)             |
-| Astrodynamics | main    | Apache License 2.0 | [github.com/open-space-collective/open-space-toolkit-astrodynamics](https://github.com/open-space-collective/open-space-toolkit-astrodynamics) |
+| Name          | Version | License                | Link                                                                                                                                           |
+| ------------- | ------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pybind11      | 2.10.1  | BSD-3-Clause           | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)                                                                               |
+| Core          | main    | Apache License 2.0     | [github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)                   |
+| I/O           | main    | Apache License 2.0     | [github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)                       |
+| Mathematics   | main    | Apache License 2.0     | [github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics)     |
+| Physics       | main    | Apache License 2.0     | [github.com/open-space-collective/open-space-toolkit-physics](https://github.com/open-space-collective/open-space-toolkit-physics)             |
+| Astrodynamics | main    | Apache License 2.0     | [github.com/open-space-collective/open-space-toolkit-astrodynamics](https://github.com/open-space-collective/open-space-toolkit-astrodynamics) |
 
 ## Contribution
 

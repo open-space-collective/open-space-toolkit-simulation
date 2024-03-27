@@ -3,14 +3,14 @@
 #ifndef __OpenSpaceToolkit_Simulation_Entity__
 #define __OpenSpaceToolkit_Simulation_Entity__
 
-#include <OpenSpaceToolkit/Core/Types/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 namespace ostk
 {
 namespace simulation
 {
 
-using ostk::core::types::String;
+using ostk::core::type::String;
 
 /// @brief                      Entity
 
