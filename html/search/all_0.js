@@ -10,12 +10,13 @@ var searchData=
   ['accessenvironment_7',['accessEnvironment',['../classostk_1_1simulation_1_1_simulator.html#aa1c20421b7a2ad00954fea7bdfbd4edd',1,'ostk::simulation::Simulator']]],
   ['accessframe_8',['accessFrame',['../classostk_1_1simulation_1_1component_1_1_geometry.html#afed7aa31b6b37090e90a7723af33f346',1,'ostk::simulation::component::Geometry::accessFrame()'],['../classostk_1_1simulation_1_1_component.html#a3e7acecda5a9286bc4baf1d3b6bbd7d5',1,'ostk::simulation::Component::accessFrame()']]],
   ['accessgeometrywithname_9',['accessGeometryWithName',['../classostk_1_1simulation_1_1_component.html#afe2d126a21b7a96d0b3655ebcac3a6be',1,'ostk::simulation::Component']]],
-  ['accesssatellitemap_10',['accessSatelliteMap',['../classostk_1_1simulation_1_1_simulator.html#ace707d08b62eb3a233e268a9eb72ef31',1,'ostk::simulation::Simulator']]],
-  ['accesssatellitewithname_11',['accessSatelliteWithName',['../classostk_1_1simulation_1_1_simulator.html#ada54ce66cb47bb512f245f4ac1b33f95',1,'ostk::simulation::Simulator']]],
-  ['accesssimulator_12',['accessSimulator',['../classostk_1_1simulation_1_1_component.html#a0e119aa1a610b08b935789a7ecb19605',1,'ostk::simulation::Component']]],
-  ['actuator_13',['Actuator',['../classostk_1_1simulation_1_1_component.html#a1d2ded63a8ab0bd81e27f25921be1e20aa2ec2ef7ebb614cf7dd5d78b9bbf59b3',1,'ostk::simulation::Component']]],
-  ['addcomponent_14',['addComponent',['../classostk_1_1simulation_1_1_component.html#aeb00ae625a59168bde62bcbb3e1d6ed6',1,'ostk::simulation::Component::addComponent()'],['../classostk_1_1simulation_1_1utility_1_1_component_holder.html#a6012cd2e61416fe0cef0f9523e0121de',1,'ostk::simulation::utility::ComponentHolder::addComponent()']]],
-  ['addgeometry_15',['addGeometry',['../classostk_1_1simulation_1_1_component.html#ad3ef491ef73a9e01507c95541790bdf2',1,'ostk::simulation::Component']]],
-  ['addsatellite_16',['addSatellite',['../classostk_1_1simulation_1_1_simulator.html#a03e47de54e6db4942b77d24c46dcc940',1,'ostk::simulation::Simulator']]],
-  ['assembly_17',['Assembly',['../classostk_1_1simulation_1_1_component.html#a1d2ded63a8ab0bd81e27f25921be1e20ad75c45e11c8aeb13494dba59a388a164',1,'ostk::simulation::Component']]]
+  ['accessprofile_10',['accessProfile',['../classostk_1_1simulation_1_1_satellite.html#a165c0d2da9a36a1eaeaaba55a5752cfc',1,'ostk::simulation::Satellite']]],
+  ['accesssatellitemap_11',['accessSatelliteMap',['../classostk_1_1simulation_1_1_simulator.html#ace707d08b62eb3a233e268a9eb72ef31',1,'ostk::simulation::Simulator']]],
+  ['accesssatellitewithname_12',['accessSatelliteWithName',['../classostk_1_1simulation_1_1_simulator.html#ada54ce66cb47bb512f245f4ac1b33f95',1,'ostk::simulation::Simulator']]],
+  ['accesssimulator_13',['accessSimulator',['../classostk_1_1simulation_1_1_component.html#a0e119aa1a610b08b935789a7ecb19605',1,'ostk::simulation::Component']]],
+  ['actuator_14',['Actuator',['../classostk_1_1simulation_1_1_component.html#a1d2ded63a8ab0bd81e27f25921be1e20aa2ec2ef7ebb614cf7dd5d78b9bbf59b3',1,'ostk::simulation::Component']]],
+  ['addcomponent_15',['addComponent',['../classostk_1_1simulation_1_1_component.html#aeb00ae625a59168bde62bcbb3e1d6ed6',1,'ostk::simulation::Component::addComponent()'],['../classostk_1_1simulation_1_1utility_1_1_component_holder.html#a6012cd2e61416fe0cef0f9523e0121de',1,'ostk::simulation::utility::ComponentHolder::addComponent()']]],
+  ['addgeometry_16',['addGeometry',['../classostk_1_1simulation_1_1_component.html#ad3ef491ef73a9e01507c95541790bdf2',1,'ostk::simulation::Component']]],
+  ['addsatellite_17',['addSatellite',['../classostk_1_1simulation_1_1_simulator.html#a03e47de54e6db4942b77d24c46dcc940',1,'ostk::simulation::Simulator']]],
+  ['assembly_18',['Assembly',['../classostk_1_1simulation_1_1_component.html#a1d2ded63a8ab0bd81e27f25921be1e20ad75c45e11c8aeb13494dba59a388a164',1,'ostk::simulation::Component']]]
 ];

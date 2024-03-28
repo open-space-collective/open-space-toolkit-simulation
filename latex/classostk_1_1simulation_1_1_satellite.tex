@@ -18,7 +18,7 @@ Inheritance diagram for ostk\+::simulation\+::Satellite\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_afda29251d6d1bb5b6921248772b7d8c4}{Satellite}} (const String \&an\+Id, const String \&a\+Name, const Array$<$ String $>$ \&a\+Tag\+Array, const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} $>$$>$ \&a\+Geometry\+Array, const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$ \&a\+Component\+Array, const Shared$<$ const Frame $>$ \&a\+Frame\+S\+Ptr, const Shared$<$ Profile $>$ \&a\+Profile\+S\+Ptr, const Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} $>$ \&a\+Simulator\+S\+Ptr)
+\mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_aee8265886243e5c4cf71fa376fc1e984}{Satellite}} (const String \&an\+Id, const String \&a\+Name, const Array$<$ String $>$ \&a\+Tag\+Array, const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} $>$$>$ \&a\+Geometry\+Array, const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$ \&a\+Component\+Array, const Shared$<$ const Frame $>$ \&a\+Frame\+S\+Ptr, const Shared$<$ const Profile $>$ \&a\+Profile\+S\+Ptr, const Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} $>$ \&a\+Simulator\+S\+Ptr)
 \item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_adb01c7d30bfc51144067e5a92709c638}{Satellite}} (const \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} \&a\+Satellite)
 \item 
@@ -27,6 +27,8 @@ Inheritance diagram for ostk\+::simulation\+::Satellite\+:\begin{figure}[H]
 \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $\ast$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a9828fe3ec02b8f4d8b2faf8412826f00}{clone}} () const
 \item 
 bool \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a124ee57d73d12788466ba203b126fc57}{is\+Defined}} () const
+\item 
+const Shared$<$ const Profile $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a165c0d2da9a36a1eaeaaba55a5752cfc}{access\+Profile}} () const
 \item 
 void \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_ac7f5b5462deb081eb93115f0fb362acd}{print}} (std\+::ostream \&an\+Output\+Stream, bool display\+Decorators=true) const
 \begin{DoxyCompactList}\small\item\em Print satellite. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -51,11 +53,11 @@ std\+::ostream \& \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a4c904b
 \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}}. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1_satellite_afda29251d6d1bb5b6921248772b7d8c4}\label{classostk_1_1simulation_1_1_satellite_afda29251d6d1bb5b6921248772b7d8c4}} 
+\mbox{\Hypertarget{classostk_1_1simulation_1_1_satellite_aee8265886243e5c4cf71fa376fc1e984}\label{classostk_1_1simulation_1_1_satellite_aee8265886243e5c4cf71fa376fc1e984}} 
 \index{ostk::simulation::Satellite@{ostk::simulation::Satellite}!Satellite@{Satellite}}
 \index{Satellite@{Satellite}!ostk::simulation::Satellite@{ostk::simulation::Satellite}}
 \doxysubsubsection{\texorpdfstring{Satellite()}{Satellite()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily ostk\+::simulation\+::\+Satellite\+::\+Satellite (\begin{DoxyParamCaption}\item[{const String \&}]{an\+Id,  }\item[{const String \&}]{a\+Name,  }\item[{const Array$<$ String $>$ \&}]{a\+Tag\+Array,  }\item[{const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} $>$$>$ \&}]{a\+Geometry\+Array,  }\item[{const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$ \&}]{a\+Component\+Array,  }\item[{const Shared$<$ const Frame $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const Shared$<$ Profile $>$ \&}]{a\+Profile\+S\+Ptr,  }\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} $>$ \&}]{a\+Simulator\+S\+Ptr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ostk\+::simulation\+::\+Satellite\+::\+Satellite (\begin{DoxyParamCaption}\item[{const String \&}]{an\+Id,  }\item[{const String \&}]{a\+Name,  }\item[{const Array$<$ String $>$ \&}]{a\+Tag\+Array,  }\item[{const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} $>$$>$ \&}]{a\+Geometry\+Array,  }\item[{const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$ \&}]{a\+Component\+Array,  }\item[{const Shared$<$ const Frame $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const Shared$<$ const Profile $>$ \&}]{a\+Profile\+S\+Ptr,  }\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} $>$ \&}]{a\+Simulator\+S\+Ptr }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_satellite_adb01c7d30bfc51144067e5a92709c638}\label{classostk_1_1simulation_1_1_satellite_adb01c7d30bfc51144067e5a92709c638}} 
 \index{ostk::simulation::Satellite@{ostk::simulation::Satellite}!Satellite@{Satellite}}
@@ -72,6 +74,12 @@ std\+::ostream \& \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a4c904b
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classostk_1_1simulation_1_1_satellite_a165c0d2da9a36a1eaeaaba55a5752cfc}\label{classostk_1_1simulation_1_1_satellite_a165c0d2da9a36a1eaeaaba55a5752cfc}} 
+\index{ostk::simulation::Satellite@{ostk::simulation::Satellite}!accessProfile@{accessProfile}}
+\index{accessProfile@{accessProfile}!ostk::simulation::Satellite@{ostk::simulation::Satellite}}
+\doxysubsubsection{\texorpdfstring{accessProfile()}{accessProfile()}}
+{\footnotesize\ttfamily const Shared$<$ const Profile $>$ ostk\+::simulation\+::\+Satellite\+::access\+Profile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_satellite_a9828fe3ec02b8f4d8b2faf8412826f00}\label{classostk_1_1simulation_1_1_satellite_a9828fe3ec02b8f4d8b2faf8412826f00}} 
 \index{ostk::simulation::Satellite@{ostk::simulation::Satellite}!clone@{clone}}
 \index{clone@{clone}!ostk::simulation::Satellite@{ostk::simulation::Satellite}}
