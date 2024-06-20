@@ -64,6 +64,7 @@ var NAVTREE =
       ] ],
       [ "Code of Conduct", "md__c_o_n_t_r_i_b_u_t_i_n_g.html#CodeOfConduct", null ]
     ] ],
+    [ "index", "md_docs_index.html", null ],
     [ "Tutorial", "md_docs__tutorial.html", [
       [ "Setup", "md_docs__tutorial.html#Setup", null ],
       [ "Examples", "md_docs__tutorial.html#Examples", null ]

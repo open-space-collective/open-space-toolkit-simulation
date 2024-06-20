@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1simulation" kind="namespace" language="C++">
+    <compoundname>ostk::simulation</compoundname>
+    <innerclass refid="classostk_1_1simulation_1_1_component" prot="public">ostk::simulation::Component</innerclass>
+    <innerclass refid="structostk_1_1simulation_1_1_component_configuration" prot="public">ostk::simulation::ComponentConfiguration</innerclass>
+    <innerclass refid="classostk_1_1simulation_1_1_entity" prot="public">ostk::simulation::Entity</innerclass>
+    <innerclass refid="classostk_1_1simulation_1_1_satellite" prot="public">ostk::simulation::Satellite</innerclass>
+    <innerclass refid="structostk_1_1simulation_1_1_satellite_configuration" prot="public">ostk::simulation::SatelliteConfiguration</innerclass>
+    <innerclass refid="classostk_1_1simulation_1_1_simulator" prot="public">ostk::simulation::Simulator</innerclass>
+    <innerclass refid="structostk_1_1simulation_1_1_simulator_configuration" prot="public">ostk::simulation::SimulatorConfiguration</innerclass>
+    <innernamespace refid="namespaceostk_1_1simulation_1_1component">ostk::simulation::component</innernamespace>
+    <innernamespace refid="namespaceostk_1_1simulation_1_1utility">ostk::simulation::utility</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1simulation_1a2ef36242eeaedfc3f114fe819bc80e41" prot="public" static="no">
+        <type>ostk::physics::coordinate::frame::provider::Dynamic</type>
+        <definition>typedef ostk::physics::coordinate::frame::provider::Dynamic ostk::simulation::DynamicProvider</definition>
+        <argsstring></argsstring>
+        <name>DynamicProvider</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Simulation/Component.cpp" line="19" column="1" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1simulation_1af73818b9147e934ef1e008c0a731d0b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::simulation::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Component &amp;aComponent)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &amp;</type>
+          <declname>aComponent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Simulation/Component.cpp" line="65" column="1" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="65" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1simulation_1ae6f39d8d153b897714c1d305f2077a5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::simulation::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Satellite &amp;aSatellite)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref> &amp;</type>
+          <declname>aSatellite</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Simulation/Satellite.cpp" line="61" column="1" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="61" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1simulation_1ac688118495593f25aeed155ae2da4f2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::simulation::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Simulator &amp;aSimulator)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1simulation_1_1_simulator" kindref="compound">Simulator</ref> &amp;</type>
+          <declname>aSimulator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Simulation/Simulator.cpp" line="23" column="1" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="23" bodyend="28"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="17" column="1"/>
+  </compounddef>
+</doxygen>

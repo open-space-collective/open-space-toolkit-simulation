@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_ade627882e27031573474a66229ae354" kind="dir">
+    <compoundname>src/OpenSpaceToolkit/Simulation/Utility</compoundname>
+    <innerfile refid="_component_holder_8cpp">ComponentHolder.cpp</innerfile>
+    <innerfile refid="_identifier_8cpp">Identifier.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Simulation/Utility/"/>
+  </compounddef>
+</doxygen>

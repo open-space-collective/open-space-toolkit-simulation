@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structostk_1_1simulation_1_1_satellite_configuration" kind="struct" language="C++" prot="public">
+    <compoundname>ostk::simulation::SatelliteConfiguration</compoundname>
+    <includes refid="_satellite_8hpp" local="no">Satellite.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_satellite_configuration_1a908266db30927a86a162c7c8a73bdbe1" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::simulation::SatelliteConfiguration::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="91" column="18" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_satellite_configuration_1a5591546d238904643014391632e95073" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::simulation::SatelliteConfiguration::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="92" column="18" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_satellite_configuration_1ab2afb3f9823e69021f909495fb74ca3f" prot="public" static="no" mutable="no">
+        <type>const Profile</type>
+        <definition>const Profile ostk::simulation::SatelliteConfiguration::profile</definition>
+        <argsstring></argsstring>
+        <name>profile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="93" column="19" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_satellite_configuration_1a44d10b5d983f71491e0751a0c1ac5f80" prot="public" static="no" mutable="no">
+        <type>const Array&lt; <ref refid="structostk_1_1simulation_1_1_component_configuration" kindref="compound">ComponentConfiguration</ref> &gt;</type>
+        <definition>const Array&lt;ComponentConfiguration&gt; ostk::simulation::SatelliteConfiguration::components</definition>
+        <argsstring></argsstring>
+        <name>components</name>
+        <initializer>= <ref refid="_satellite_8hpp_1a4efe76b184101f122bb1be222cb65afc" kindref="member">DEFAULT_COMPONENTS</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="94" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_satellite_configuration_1a6db145a39cbb82053013b7ee92dcc326" prot="public" static="no" mutable="no">
+        <type>const Array&lt; String &gt;</type>
+        <definition>const Array&lt;String&gt; ostk::simulation::SatelliteConfiguration::tags</definition>
+        <argsstring></argsstring>
+        <name>tags</name>
+        <initializer>= <ref refid="_satellite_8hpp_1a7cabb8538f234177d4f95e681045bf94" kindref="member">DEFAULT_TAGS</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="95" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_satellite_configuration_1aea05ae6081923cf5c9502bd176b756b9" prot="public" static="no" mutable="no">
+        <type>const Array&lt; <ref refid="structostk_1_1simulation_1_1component_1_1_geometry_configuration" kindref="compound">GeometryConfiguration</ref> &gt;</type>
+        <definition>const Array&lt;GeometryConfiguration&gt; ostk::simulation::SatelliteConfiguration::geometries</definition>
+        <argsstring></argsstring>
+        <name>geometries</name>
+        <initializer>= <ref refid="_satellite_8hpp_1a4a68d11996a67b508045cdc894fac4ba" kindref="member">DEFAULT_GEOMETRIES</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="96" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>String</label>
+      </node>
+      <node id="5">
+        <label>Array&lt; String &gt;</label>
+      </node>
+      <node id="3">
+        <label>Array&lt; ostk::simulation::ComponentConfiguration &gt;</label>
+      </node>
+      <node id="2">
+        <label>Profile</label>
+      </node>
+      <node id="6">
+        <label>Array&lt; ostk::simulation::component::GeometryConfiguration &gt;</label>
+      </node>
+      <node id="1">
+        <label>ostk::simulation::SatelliteConfiguration</label>
+        <link refid="structostk_1_1simulation_1_1_satellite_configuration"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>profile</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>components</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>id</edgelabel>
+          <edgelabel>name</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>tags</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>geometries</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="90" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="89" bodyend="97"/>
+    <listofallmembers>
+      <member refid="structostk_1_1simulation_1_1_satellite_configuration_1a44d10b5d983f71491e0751a0c1ac5f80" prot="public" virt="non-virtual"><scope>ostk::simulation::SatelliteConfiguration</scope><name>components</name></member>
+      <member refid="structostk_1_1simulation_1_1_satellite_configuration_1aea05ae6081923cf5c9502bd176b756b9" prot="public" virt="non-virtual"><scope>ostk::simulation::SatelliteConfiguration</scope><name>geometries</name></member>
+      <member refid="structostk_1_1simulation_1_1_satellite_configuration_1a908266db30927a86a162c7c8a73bdbe1" prot="public" virt="non-virtual"><scope>ostk::simulation::SatelliteConfiguration</scope><name>id</name></member>
+      <member refid="structostk_1_1simulation_1_1_satellite_configuration_1a5591546d238904643014391632e95073" prot="public" virt="non-virtual"><scope>ostk::simulation::SatelliteConfiguration</scope><name>name</name></member>
+      <member refid="structostk_1_1simulation_1_1_satellite_configuration_1ab2afb3f9823e69021f909495fb74ca3f" prot="public" virt="non-virtual"><scope>ostk::simulation::SatelliteConfiguration</scope><name>profile</name></member>
+      <member refid="structostk_1_1simulation_1_1_satellite_configuration_1a6db145a39cbb82053013b7ee92dcc326" prot="public" virt="non-virtual"><scope>ostk::simulation::SatelliteConfiguration</scope><name>tags</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

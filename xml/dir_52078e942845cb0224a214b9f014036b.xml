@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_52078e942845cb0224a214b9f014036b" kind="dir">
+    <compoundname>src/OpenSpaceToolkit/Simulation</compoundname>
+    <innerdir refid="dir_6768742eeef6d085cc687d1b7f5d1de7">src/OpenSpaceToolkit/Simulation/Component</innerdir>
+    <innerdir refid="dir_ade627882e27031573474a66229ae354">src/OpenSpaceToolkit/Simulation/Utility</innerdir>
+    <innerfile refid="_component_8cpp">Component.cpp</innerfile>
+    <innerfile refid="_entity_8cpp">Entity.cpp</innerfile>
+    <innerfile refid="_satellite_8cpp">Satellite.cpp</innerfile>
+    <innerfile refid="_simulator_8cpp">Simulator.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Simulation/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,371 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1simulation_1_1_satellite" kind="class" language="C++" prot="public">
+    <compoundname>ostk::simulation::Satellite</compoundname>
+    <basecompoundref refid="classostk_1_1simulation_1_1_component" prot="public" virt="non-virtual">ostk::simulation::Component</basecompoundref>
+    <includes refid="_satellite_8hpp" local="no">Satellite.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1simulation_1_1_satellite_1ae6b61a87e72be8272ac8bf00baadba4c" prot="private" static="no" mutable="no">
+        <type>Shared&lt; const Profile &gt;</type>
+        <definition>Shared&lt;const Profile&gt; ostk::simulation::Satellite::profileSPtr_</definition>
+        <argsstring></argsstring>
+        <name>profileSPtr_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="86" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1aee8265886243e5c4cf71fa376fc1e984" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::simulation::Satellite::Satellite</definition>
+        <argsstring>(const String &amp;anId, const String &amp;aName, const Array&lt; String &gt; &amp;aTagArray, const Array&lt; Shared&lt; Geometry &gt;&gt; &amp;aGeometryArray, const Array&lt; Shared&lt; Component &gt;&gt; &amp;aComponentArray, const Shared&lt; const Frame &gt; &amp;aFrameSPtr, const Shared&lt; const Profile &gt; &amp;aProfileSPtr, const Shared&lt; const Simulator &gt; &amp;aSimulatorSPtr)</argsstring>
+        <name>Satellite</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>anId</declname>
+        </param>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aName</declname>
+        </param>
+        <param>
+          <type>const Array&lt; String &gt; &amp;</type>
+          <declname>aTagArray</declname>
+        </param>
+        <param>
+          <type>const Array&lt; Shared&lt; <ref refid="classostk_1_1simulation_1_1component_1_1_geometry" kindref="compound">Geometry</ref> &gt;&gt; &amp;</type>
+          <declname>aGeometryArray</declname>
+        </param>
+        <param>
+          <type>const Array&lt; Shared&lt; <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &gt;&gt; &amp;</type>
+          <declname>aComponentArray</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const Frame &gt; &amp;</type>
+          <declname>aFrameSPtr</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const Profile &gt; &amp;</type>
+          <declname>aProfileSPtr</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1simulation_1_1_simulator" kindref="compound">Simulator</ref> &gt; &amp;</type>
+          <declname>aSimulatorSPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="47" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="23" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1adb01c7d30bfc51144067e5a92709c638" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::simulation::Satellite::Satellite</definition>
+        <argsstring>(const Satellite &amp;aSatellite)</argsstring>
+        <name>Satellite</name>
+        <param>
+          <type>const <ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref> &amp;</type>
+          <declname>aSatellite</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="58" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="48" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1af6f1e69609eca81bda731d176a0f3786" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::simulation::Satellite::~Satellite</definition>
+        <argsstring>()</argsstring>
+        <name>~Satellite</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="60" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1a9828fe3ec02b8f4d8b2faf8412826f00" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref> *</type>
+        <definition>Satellite * ostk::simulation::Satellite::clone</definition>
+        <argsstring>() const</argsstring>
+        <name>clone</name>
+        <reimplements refid="classostk_1_1simulation_1_1_component_1a36cdd3498146b23e3ff67b95cd1c59cc">clone</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="62" column="15" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1a124ee57d73d12788466ba203b126fc57" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::simulation::Satellite::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="66" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="68" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1a165c0d2da9a36a1eaeaaba55a5752cfc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Shared&lt; const Profile &gt;</type>
+        <definition>const Shared&lt; const Profile &gt; ostk::simulation::Satellite::accessProfile</definition>
+        <argsstring>() const</argsstring>
+        <name>accessProfile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="68" column="18" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="73" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1ac7f5b5462deb081eb93115f0fb362acd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ostk::simulation::Satellite::print</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, bool displayDecorators=true) const</argsstring>
+        <name>print</name>
+        <reimplements refid="classostk_1_1simulation_1_1_component_1a9c102937dd6ca5fb9e3b726cc0fd5ed6">print</reimplements>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>displayDecorators</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Print satellite. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">(optional)</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>displayDecorators If true, display decorators </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="75" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="83" bodyend="90"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classostk_1_1simulation_1_1_satellite_1a4c904b132bff149960ba9d910ebbc3dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Satellite &amp;aSatellite)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref> &amp;</type>
+          <declname>aSatellite</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="64" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="61" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1a27b1931fa0cdd157ea5920060caf05fd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref></type>
+        <definition>Satellite ostk::simulation::Satellite::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="77" column="22" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="92" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1a8984ad4a21ba686cbae3bbfbb7d5ebb3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; <ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref> &gt;</type>
+        <definition>Shared&lt; Satellite &gt; ostk::simulation::Satellite::Configure</definition>
+        <argsstring>(const SatelliteConfiguration &amp;aSatelliteConfiguration, const Shared&lt; const Simulator &gt; &amp;aSimulatorSPtr)</argsstring>
+        <name>Configure</name>
+        <param>
+          <type>const <ref refid="structostk_1_1simulation_1_1_satellite_configuration" kindref="compound">SatelliteConfiguration</ref> &amp;</type>
+          <declname>aSatelliteConfiguration</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1simulation_1_1_simulator" kindref="compound">Simulator</ref> &gt; &amp;</type>
+          <declname>aSimulatorSPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="79" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="106" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1a39a4b79c04d242d85cb647abd23e9e61" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const Frame &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::simulation::Satellite::GenerateFrame</definition>
+        <argsstring>(const String &amp;aName, const Shared&lt; const Profile &gt; &amp;aProfile)</argsstring>
+        <name>GenerateFrame</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aName</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const Profile &gt; &amp;</type>
+          <declname>aProfile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="83" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="136" bodyend="170"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ostk::simulation::Satellite</label>
+        <link refid="classostk_1_1simulation_1_1_satellite"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::simulation::Component</label>
+        <link refid="classostk_1_1simulation_1_1_component"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ostk::simulation::utility::ComponentHolder</label>
+        <link refid="classostk_1_1simulation_1_1utility_1_1_component_holder"/>
+      </node>
+      <node id="5">
+        <label>std::enable_shared_from_this&lt; Component &gt;</label>
+      </node>
+      <node id="3">
+        <label>ostk::simulation::Entity</label>
+        <link refid="classostk_1_1simulation_1_1_entity"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ostk::simulation::Satellite</label>
+        <link refid="classostk_1_1simulation_1_1_satellite"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::simulation::Component</label>
+        <link refid="classostk_1_1simulation_1_1_component"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ostk::simulation::utility::ComponentHolder</label>
+        <link refid="classostk_1_1simulation_1_1utility_1_1_component_holder"/>
+      </node>
+      <node id="5">
+        <label>std::enable_shared_from_this&lt; Component &gt;</label>
+      </node>
+      <node id="3">
+        <label>ostk::simulation::Entity</label>
+        <link refid="classostk_1_1simulation_1_1_entity"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="45" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="44" bodyend="87"/>
+    <listofallmembers>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a83aefcdc6fea117a180edff14954f7a5" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>accessComponentAt</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1ab66566e91251de05a02198cec7ecc4b7" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>accessComponents</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a9f7c8444d12fcb0a8d4d1198c2181197" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>accessComponentsWithTag</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a05ee37d6949d90619788e62a1b1db47a" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>accessComponentWithId</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a245084a9899a44bb0c3298d643c2b44d" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>accessComponentWithName</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a3e7acecda5a9286bc4baf1d3b6bbd7d5" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>accessFrame</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1afe2d126a21b7a96d0b3655ebcac3a6be" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>accessGeometryWithName</name></member>
+      <member refid="classostk_1_1simulation_1_1_satellite_1a165c0d2da9a36a1eaeaaba55a5752cfc" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>accessProfile</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a0e119aa1a610b08b935789a7ecb19605" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>accessSimulator</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1aeb00ae625a59168bde62bcbb3e1d6ed6" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>addComponent</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1ad3ef491ef73a9e01507c95541790bdf2" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>addGeometry</name></member>
+      <member refid="classostk_1_1simulation_1_1_satellite_1a9828fe3ec02b8f4d8b2faf8412826f00" prot="public" virt="virtual"><scope>ostk::simulation::Satellite</scope><name>clone</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1ab3711f34980c3fdb746ff83b9511a25c" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>Component</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a5395700f491da619eb45b0148a5727d5" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>Component</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a7229211c50e568af740b831f8cde2d0b" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>ComponentHolder</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1abbc39c68bfd9922229cf2c70291395a1" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>ComponentHolder</name></member>
+      <member refid="classostk_1_1simulation_1_1_satellite_1a8984ad4a21ba686cbae3bbfbb7d5ebb3" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>Configure</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a635e3685019800ec343ec8474954ff0e" prot="public" virt="non-virtual" ambiguityscope="ostk::simulation::Component::"><scope>ostk::simulation::Satellite</scope><name>Configure</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1a929819736161db5935b29b84da8a97aa" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>Entity</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1ae4ee439011cfcb1811d31bdb8db871fa" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>Entity</name></member>
+      <member refid="classostk_1_1simulation_1_1_satellite_1a39a4b79c04d242d85cb647abd23e9e61" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>GenerateFrame</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a9b5f84be02c06a7b6576fcdb00640ede" prot="public" virt="non-virtual" ambiguityscope="ostk::simulation::Component::"><scope>ostk::simulation::Satellite</scope><name>GenerateFrame</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1aba0796b346cbd27323c2e5c1df8ffcf2" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>getGeometries</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1a33286b8807aacec430d105646c021a79" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>getId</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1a17050a1483e16e62ca10e3b1ecade1d5" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>getName</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1ab792e508c303ec679ea8b8cbcc2c4c8f" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>getTags</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a93375352059595b81e81569e445d4512" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>getType</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a2992fe305dcb2243a0f3f0b3a2965773" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>hasComponentAt</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1aca60bf690ae2d94e094760ef276fcfc6" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>hasComponentWithId</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a6a570d1c15601cacb1ad7a9fab443317" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>hasComponentWithName</name></member>
+      <member refid="classostk_1_1simulation_1_1_satellite_1a124ee57d73d12788466ba203b126fc57" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1simulation_1_1_satellite_1a4c904b132bff149960ba9d910ebbc3dc" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classostk_1_1simulation_1_1_satellite_1ac7f5b5462deb081eb93115f0fb362acd" prot="public" virt="virtual"><scope>ostk::simulation::Satellite</scope><name>print</name></member>
+      <member refid="classostk_1_1simulation_1_1_satellite_1ae6b61a87e72be8272ac8bf00baadba4c" prot="private" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>profileSPtr_</name></member>
+      <member refid="classostk_1_1simulation_1_1_satellite_1aee8265886243e5c4cf71fa376fc1e984" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>Satellite</name></member>
+      <member refid="classostk_1_1simulation_1_1_satellite_1adb01c7d30bfc51144067e5a92709c638" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>Satellite</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a266bf1a8b756f55ef24cc9fee3fd4fca" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>setParent</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a7f74a40eb3aae2f7e12af002ca9dbc89" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>StringFromType</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>Type</name></member>
+      <member refid="classostk_1_1simulation_1_1_satellite_1a27b1931fa0cdd157ea5920060caf05fd" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>Undefined</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a57f790fdbb03f777e59d73218d2899ef" prot="public" virt="virtual"><scope>ostk::simulation::Satellite</scope><name>~Component</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a2d189ed7b58dd7dbddd2e619cf197c86" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>~ComponentHolder</name></member>
+      <member refid="classostk_1_1simulation_1_1_satellite_1af6f1e69609eca81bda731d176a0f3786" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>~Satellite</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md__c_o_n_t_r_i_b_u_t_i_n_g" kind="page">
+    <compoundname>md_CONTRIBUTING</compoundname>
+    <title>Contributing</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><emphasis>⚠ This document is a work in progress.</emphasis></para>
+<sect1 id="md__c_o_n_t_r_i_b_u_t_i_n_g_1Introduction">
+<title>Introduction</title>
+<para><emphasis>To be completed...</emphasis></para>
+</sect1>
+<sect1 id="md__c_o_n_t_r_i_b_u_t_i_n_g_1Guidelines">
+<title>Guidelines</title>
+<sect2 id="md__c_o_n_t_r_i_b_u_t_i_n_g_1Codebase">
+<title>Codebase</title>
+<sect3 id="md__c_o_n_t_r_i_b_u_t_i_n_g_1C">
+<title>C++</title>
+<para>Include order from specific to generic:</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Simulation/Orbit.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Integer.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Utility.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight></codeline>
+</programlisting></para>
+<para>References:</para>
+<para><itemizedlist>
+<listitem><para><ulink url="https://stackoverflow.com/questions/2762568/c-c-include-file-order-best-practices">https://stackoverflow.com/questions/2762568/c-c-include-file-order-best-practices</ulink></para>
+</listitem><listitem><para><ulink url="https://blog.kowalczyk.info/article/qg/order-of-include-headers-in-cc.html">https://blog.kowalczyk.info/article/qg/order-of-include-headers-in-cc.html</ulink></para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md__c_o_n_t_r_i_b_u_t_i_n_g_1Python">
+<title>Python</title>
+<para><emphasis>To be completed...</emphasis></para>
+</sect3>
+</sect2>
+<sect2 id="md__c_o_n_t_r_i_b_u_t_i_n_g_1Version">
+<title>Version Control</title>
+<sect3 id="md__c_o_n_t_r_i_b_u_t_i_n_g_1Rules">
+<title>Rules</title>
+<para><emphasis>To be completed...</emphasis></para>
+</sect3>
+<sect3 id="md__c_o_n_t_r_i_b_u_t_i_n_g_1Commit">
+<title>Commit Messages</title>
+<para><ulink url="https://chris.beams.io/posts/git-commit/">How to Write a Git Commit Message</ulink></para>
+<para>Use active form (<computeroutput>Do something</computeroutput>).</para>
+<para>Prefix commit messages using the following tags:</para>
+<para><itemizedlist>
+<listitem><para>[feature]</para>
+</listitem><listitem><para>[fix]</para>
+</listitem><listitem><para>[misc]</para>
+</listitem></itemizedlist>
+</para>
+<para>Examples:</para>
+<para><programlisting filename=".txt"><codeline><highlight class="normal">[feature]<sp/>Implement<sp/>high<sp/>fidelity<sp/>orbit<sp/>propagator</highlight></codeline>
+</programlisting></para>
+<para><programlisting filename=".txt"><codeline><highlight class="normal">[fix]<sp/>Segmentation<sp/>fault<sp/>when<sp/>fetching<sp/>ephemeris<sp/>data</highlight></codeline>
+</programlisting></para>
+</sect3>
+</sect2>
+</sect1>
+<sect1 id="md__c_o_n_t_r_i_b_u_t_i_n_g_1CodeOfConduct">
+<title>Code of Conduct</title>
+<para><emphasis>To be completed...</emphasis> </para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

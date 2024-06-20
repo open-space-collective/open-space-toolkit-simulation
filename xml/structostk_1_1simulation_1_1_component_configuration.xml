@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structostk_1_1simulation_1_1_component_configuration" kind="struct" language="C++" prot="public">
+    <compoundname>ostk::simulation::ComponentConfiguration</compoundname>
+    <includes refid="_component_8hpp" local="no">Component.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1a7ef5e182de95028f8f50a45d2f36790a" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::simulation::ComponentConfiguration::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="138" column="18" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1ab78915c05378490b92166223f335b412" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::simulation::ComponentConfiguration::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="139" column="18" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1abd0e836f95e58db5c8e954469101a2c8" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref></type>
+        <definition>const Component::Type ostk::simulation::ComponentConfiguration::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <initializer>= <ref refid="_component_8hpp_1a0e5d3d0d9b45cdf8c94ed8df0d00c3e3" kindref="member">DEFAULT_COMPONENT_TYPE</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="140" column="27" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1a95b38d1660657a8d2ba6baf0f885bf13" prot="public" static="no" mutable="no">
+        <type>const Array&lt; String &gt;</type>
+        <definition>const Array&lt;String&gt; ostk::simulation::ComponentConfiguration::tags</definition>
+        <argsstring></argsstring>
+        <name>tags</name>
+        <initializer>= <ref refid="_satellite_8hpp_1a7cabb8538f234177d4f95e681045bf94" kindref="member">DEFAULT_TAGS</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="141" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1a85c06b983a2aeddc726310ac64a280b6" prot="public" static="no" mutable="no">
+        <type>const Quaternion</type>
+        <definition>const Quaternion ostk::simulation::ComponentConfiguration::orientation</definition>
+        <argsstring></argsstring>
+        <name>orientation</name>
+        <initializer>= <ref refid="_component_8hpp_1a5c684aeaeb24d197904b5a34839d2dd9" kindref="member">DEFAULT_ORIENTATION</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="142" column="22" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1a0b82a80f2def5a34efbb72697c6bc24e" prot="public" static="no" mutable="no">
+        <type>const Array&lt; <ref refid="structostk_1_1simulation_1_1component_1_1_geometry_configuration" kindref="compound">GeometryConfiguration</ref> &gt;</type>
+        <definition>const Array&lt;GeometryConfiguration&gt; ostk::simulation::ComponentConfiguration::geometries</definition>
+        <argsstring></argsstring>
+        <name>geometries</name>
+        <initializer>= <ref refid="_satellite_8hpp_1a4a68d11996a67b508045cdc894fac4ba" kindref="member">DEFAULT_GEOMETRIES</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="143" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1aa6be134c476783e16aab75dc4b9e7b3d" prot="public" static="no" mutable="no">
+        <type>const Array&lt; <ref refid="structostk_1_1simulation_1_1_component_configuration" kindref="compound">ComponentConfiguration</ref> &gt;</type>
+        <definition>const Array&lt;ComponentConfiguration&gt; ostk::simulation::ComponentConfiguration::components</definition>
+        <argsstring></argsstring>
+        <name>components</name>
+        <initializer>= <ref refid="_satellite_8hpp_1a4efe76b184101f122bb1be222cb65afc" kindref="member">DEFAULT_COMPONENTS</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="144" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>String</label>
+      </node>
+      <node id="1">
+        <label>ostk::simulation::ComponentConfiguration</label>
+        <link refid="structostk_1_1simulation_1_1_component_configuration"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>orientation</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>components</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>id</edgelabel>
+          <edgelabel>name</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>tags</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>geometries</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Array&lt; String &gt;</label>
+      </node>
+      <node id="3">
+        <label>Array&lt; ostk::simulation::ComponentConfiguration &gt;</label>
+      </node>
+      <node id="6">
+        <label>Array&lt; ostk::simulation::component::GeometryConfiguration &gt;</label>
+      </node>
+      <node id="2">
+        <label>Quaternion</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="137" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="136" bodyend="145"/>
+    <listofallmembers>
+      <member refid="structostk_1_1simulation_1_1_component_configuration_1aa6be134c476783e16aab75dc4b9e7b3d" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>components</name></member>
+      <member refid="structostk_1_1simulation_1_1_component_configuration_1a0b82a80f2def5a34efbb72697c6bc24e" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>geometries</name></member>
+      <member refid="structostk_1_1simulation_1_1_component_configuration_1a7ef5e182de95028f8f50a45d2f36790a" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>id</name></member>
+      <member refid="structostk_1_1simulation_1_1_component_configuration_1ab78915c05378490b92166223f335b412" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>name</name></member>
+      <member refid="structostk_1_1simulation_1_1_component_configuration_1a85c06b983a2aeddc726310ac64a280b6" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>orientation</name></member>
+      <member refid="structostk_1_1simulation_1_1_component_configuration_1a95b38d1660657a8d2ba6baf0f885bf13" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>tags</name></member>
+      <member refid="structostk_1_1simulation_1_1_component_configuration_1abd0e836f95e58db5c8e954469101a2c8" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,384 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_component_8hpp" kind="file" language="C++">
+    <compoundname>Component.hpp</compoundname>
+    <includes refid="_geometry_8hpp" local="no">OpenSpaceToolkit/Simulation/Component/Geometry.hpp</includes>
+    <includes refid="_state_8hpp" local="no">OpenSpaceToolkit/Simulation/Component/State.hpp</includes>
+    <includes refid="_entity_8hpp" local="no">OpenSpaceToolkit/Simulation/Entity.hpp</includes>
+    <includes refid="_component_holder_8hpp" local="no">OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Container/Array.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Container/Map.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Type/Shared.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Type/String.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Type/Weak.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp</includes>
+    <includedby refid="_satellite_8hpp" local="no">include/OpenSpaceToolkit/Simulation/Satellite.hpp</includedby>
+    <includedby refid="_geometry_8cpp" local="no">src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp</includedby>
+    <includedby refid="_component_8cpp" local="no">src/OpenSpaceToolkit/Simulation/Component.cpp</includedby>
+    <includedby refid="_component_holder_8cpp" local="no">src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp</includedby>
+    <incdepgraph>
+      <node id="16">
+        <label>OpenSpaceToolkit/Core/Type/Weak.hpp</label>
+      </node>
+      <node id="17">
+        <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp</label>
+      </node>
+      <node id="9">
+        <label>OpenSpaceToolkit/Simulation/Entity.hpp</label>
+        <link refid="_entity_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>OpenSpaceToolkit/Core/Container/Map.hpp</label>
+      </node>
+      <node id="8">
+        <label>OpenSpaceToolkit/Simulation/Component/State.hpp</label>
+        <link refid="_state_8hpp"/>
+      </node>
+      <node id="14">
+        <label>OpenSpaceToolkit/Core/Type/Shared.hpp</label>
+      </node>
+      <node id="10">
+        <label>OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp</label>
+        <link refid="_component_holder_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
+      </node>
+      <node id="15">
+        <label>OpenSpaceToolkit/Core/Type/Unique.hpp</label>
+      </node>
+      <node id="3">
+        <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
+      </node>
+      <node id="2">
+        <label>OpenSpaceToolkit/Simulation/Component/Geometry.hpp</label>
+        <link refid="_geometry_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/OpenSpaceToolkit/Simulation/Component.hpp</label>
+        <link refid="_component_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Composite.hpp</label>
+      </node>
+      <node id="7">
+        <label>OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp</label>
+      </node>
+      <node id="4">
+        <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Object.hpp</label>
+      </node>
+      <node id="11">
+        <label>OpenSpaceToolkit/Core/Container/Array.hpp</label>
+      </node>
+      <node id="6">
+        <label>OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7">
+        <label>src/OpenSpaceToolkit/Simulation/Component.cpp</label>
+        <link refid="_component_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp</label>
+        <link refid="_component_holder_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/OpenSpaceToolkit/Simulation/Satellite.cpp</label>
+        <link refid="_satellite_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/OpenSpaceToolkit/Simulation/Component.hpp</label>
+        <link refid="_component_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/OpenSpaceToolkit/Simulation/Simulator.cpp</label>
+        <link refid="_simulator_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/OpenSpaceToolkit/Simulation/Satellite.hpp</label>
+        <link refid="_satellite_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/OpenSpaceToolkit/Simulation/Simulator.hpp</label>
+        <link refid="_simulator_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp</label>
+        <link refid="_geometry_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classostk_1_1simulation_1_1_component" prot="public">ostk::simulation::Component</innerclass>
+    <innerclass refid="structostk_1_1simulation_1_1_component_configuration" prot="public">ostk::simulation::ComponentConfiguration</innerclass>
+    <innernamespace refid="namespaceostk">ostk</innernamespace>
+    <innernamespace refid="namespaceostk_1_1simulation">ostk::simulation</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_component_8hpp_1a0e5d3d0d9b45cdf8c94ed8df0d00c3e3" prot="public" static="no">
+        <name>DEFAULT_COMPONENT_TYPE</name>
+        <initializer>Component::Type::Undefined</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="40" column="9" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_component_8hpp_1a7cabb8538f234177d4f95e681045bf94" prot="public" static="no">
+        <name>DEFAULT_TAGS</name>
+        <initializer>Array&lt;String&gt;::Empty()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="41" column="9" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_component_8hpp_1a5c684aeaeb24d197904b5a34839d2dd9" prot="public" static="no">
+        <name>DEFAULT_ORIENTATION</name>
+        <initializer>Quaternion::Unit()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="42" column="9" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_component_8hpp_1a4a68d11996a67b508045cdc894fac4ba" prot="public" static="no">
+        <name>DEFAULT_GEOMETRIES</name>
+        <initializer>Array&lt;GeometryConfiguration&gt;::Empty()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="43" column="9" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_component_8hpp_1a4efe76b184101f122bb1be222cb65afc" prot="public" static="no">
+        <name>DEFAULT_COMPONENTS</name>
+        <initializer>Array&lt;ComponentConfiguration&gt;::Empty()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="44" column="9" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__OpenSpaceToolkit_Simulation_Component__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__OpenSpaceToolkit_Simulation_Component__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_geometry_8hpp" kindref="compound">OpenSpaceToolkit/Simulation/Component/Geometry.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_state_8hpp" kindref="compound">OpenSpaceToolkit/Simulation/Component/State.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_entity_8hpp" kindref="compound">OpenSpaceToolkit/Simulation/Entity.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_component_holder_8hpp" kindref="compound">OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Container/Array.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Container/Map.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Shared.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Weak.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">simulation</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Unique;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Shared;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Weak;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::container::Array;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::container::Map;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::physics::coordinate::Frame;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1utility_1_1_component_holder" kindref="compound">ostk::simulation::utility::ComponentHolder</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1component_1_1_state" kindref="compound">ostk::simulation::component::State</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1component_1_1_geometry" kindref="compound">ostk::simulation::component::Geometry</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1simulation_1_1component_1_1_geometry_configuration" kindref="compound">ostk::simulation::component::GeometryConfiguration</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="_component_8hpp_1a0e5d3d0d9b45cdf8c94ed8df0d00c3e3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_COMPONENT_TYPE<sp/>Component::Type::Undefined</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="_component_8hpp_1a7cabb8538f234177d4f95e681045bf94" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_TAGS<sp/>Array&lt;String&gt;::Empty()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="_component_8hpp_1a5c684aeaeb24d197904b5a34839d2dd9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_ORIENTATION<sp/>Quaternion::Unit()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="_component_8hpp_1a4a68d11996a67b508045cdc894fac4ba" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_GEOMETRIES<sp/>Array&lt;GeometryConfiguration&gt;::Empty()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="_component_8hpp_1a4efe76b184101f122bb1be222cb65afc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_COMPONENTS<sp/>Array&lt;ComponentConfiguration&gt;::Empty()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Simulator;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">ComponentConfiguration;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classostk_1_1simulation_1_1_component" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_entity" kindref="compound">Entity</ref>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1utility_1_1_component_holder" kindref="compound">ComponentHolder</ref>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::enable_shared_from_this&lt;Component&gt;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="54" refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Type</ref></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20aec0fc0100c4fc1ce4eea230c3dc10360" kindref="member">Undefined</ref>,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20ad75c45e11c8aeb13494dba59a388a164" kindref="member">Assembly</ref>,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20a9bbf373797bf7cf7ba62c80023682e25" kindref="member">Controller</ref>,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20a06b185256c71c1aec263c6e22bf8ef6b" kindref="member">Sensor</ref>,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20aa2ec2ef7ebb614cf7dd5d78b9bbf59b3" kindref="member">Actuator</ref>,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20a6311ae17c1ee52b36e68aaf4ad066387" kindref="member">Other</ref></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_component_1ab3711f34980c3fdb746ff83b9511a25c" kindref="member">Component</ref>(</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>anId,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aName,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref>&amp;<sp/>aType,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;String&gt;&amp;<sp/>aTagArray,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;Shared&lt;Geometry&gt;&gt;&amp;<sp/>aGeometryArray,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;Shared&lt;Component&gt;&gt;&amp;<sp/>aComponentArray,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;ComponentHolder&gt;&amp;<sp/>aParentComponentSPtr,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/>aFrameSPtr,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Simulator&gt;&amp;<sp/>aSimulatorSPtr</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_component_1ab3711f34980c3fdb746ff83b9511a25c" kindref="member">Component</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref>&amp;<sp/>aComponent);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component_1a57f790fdbb03f777e59d73218d2899ef" kindref="member">~Component</ref>();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref>*<sp/><ref refid="classostk_1_1simulation_1_1_component_1a36cdd3498146b23e3ff67b95cd1c59cc" kindref="member">clone</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/><ref refid="classostk_1_1simulation_1_1_component_1ae3c657f10ed74f15e3356a2ff54647f3" kindref="member">operator&lt;&lt;</ref>(std::ostream&amp;<sp/>anOutputStream,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref>&amp;<sp/>aComponent);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component_1a983ee8f3974fc2900f21d3bea12fb877" kindref="member">isDefined</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/><ref refid="classostk_1_1simulation_1_1_component_1a3e7acecda5a9286bc4baf1d3b6bbd7d5" kindref="member">accessFrame</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1component_1_1_geometry" kindref="compound">Geometry</ref>&amp;<sp/><ref refid="classostk_1_1simulation_1_1_component_1afe2d126a21b7a96d0b3655ebcac3a6be" kindref="member">accessGeometryWithName</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aName)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_simulator" kindref="compound">Simulator</ref>&amp;<sp/><ref refid="classostk_1_1simulation_1_1_component_1a0e119aa1a610b08b935789a7ecb19605" kindref="member">accessSimulator</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref><sp/><ref refid="classostk_1_1simulation_1_1_component_1a93375352059595b81e81569e445d4512" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;String&gt;<sp/><ref refid="classostk_1_1simulation_1_1_component_1ab792e508c303ec679ea8b8cbcc2c4c8f" kindref="member">getTags</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;Shared&lt;Geometry&gt;&gt;<sp/><ref refid="classostk_1_1simulation_1_1_component_1aba0796b346cbd27323c2e5c1df8ffcf2" kindref="member">getGeometries</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component_1a266bf1a8b756f55ef24cc9fee3fd4fca" kindref="member">setParent</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;Component&gt;&amp;<sp/>aComponentSPtr);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component_1ad3ef491ef73a9e01507c95541790bdf2" kindref="member">addGeometry</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;Geometry&gt;&amp;<sp/>aGeometrySPtr);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component_1aeb00ae625a59168bde62bcbb3e1d6ed6" kindref="member">addComponent</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;Component&gt;&amp;<sp/>aComponentSPtr);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref><sp/><ref refid="classostk_1_1simulation_1_1_component_1ad8849104db5f1e96a2de547bc1c11867" kindref="member">Undefined</ref>();</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Shared&lt;Component&gt;<sp/><ref refid="classostk_1_1simulation_1_1_component_1a635e3685019800ec343ec8474954ff0e" kindref="member">Configure</ref>(</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1simulation_1_1_component_configuration" kindref="compound">ComponentConfiguration</ref>&amp;<sp/>aComponentConfiguration,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;Component&gt;&amp;<sp/>aParentComponentSPtr</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classostk_1_1simulation_1_1_component_1a7f74a40eb3aae2f7e12af002ca9dbc89" kindref="member">StringFromType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref>&amp;<sp/>aType);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;<sp/><ref refid="classostk_1_1simulation_1_1_component_1a9b5f84be02c06a7b6576fcdb00640ede" kindref="member">GenerateFrame</ref>(</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aName,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Quaternion&amp;<sp/>aQuaternion,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/>aParentFrameSPtr</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component_1a9c102937dd6ca5fb9e3b726cc0fd5ed6" kindref="member">print</ref>(std::ostream&amp;<sp/>anOutputStream,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>displayDecorators<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref><sp/>type_;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;String&gt;<sp/>tags_;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;Shared&lt;Geometry&gt;&gt;<sp/>geometries_;<sp/><sp/></highlight><highlight class="comment">//<sp/>Array<sp/>of<sp/>Geometries<sp/>defined<sp/>in<sp/>Component<sp/>Frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>Weak&lt;const<sp/>ComponentHolder&gt;<sp/>parentWPtr_;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>Shared&lt;const<sp/>Frame&gt;<sp/>frameSPtr_;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>Shared&lt;const<sp/>Simulator&gt;<sp/>simulatorSPtr_;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="structostk_1_1simulation_1_1_component_configuration" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structostk_1_1simulation_1_1_component_configuration" kindref="compound">ComponentConfiguration</ref></highlight></codeline>
+<codeline lineno="137"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="138" refid="structostk_1_1simulation_1_1_component_configuration_1a7ef5e182de95028f8f50a45d2f36790a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/><ref refid="structostk_1_1simulation_1_1_component_configuration_1a7ef5e182de95028f8f50a45d2f36790a" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="139" refid="structostk_1_1simulation_1_1_component_configuration_1ab78915c05378490b92166223f335b412" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/><ref refid="structostk_1_1simulation_1_1_component_configuration_1ab78915c05378490b92166223f335b412" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="140" refid="structostk_1_1simulation_1_1_component_configuration_1abd0e836f95e58db5c8e954469101a2c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref><sp/><ref refid="structostk_1_1simulation_1_1_component_configuration_1abd0e836f95e58db5c8e954469101a2c8" kindref="member">type</ref><sp/>=<sp/><ref refid="_component_8hpp_1a0e5d3d0d9b45cdf8c94ed8df0d00c3e3" kindref="member">DEFAULT_COMPONENT_TYPE</ref>;</highlight></codeline>
+<codeline lineno="141" refid="structostk_1_1simulation_1_1_component_configuration_1a95b38d1660657a8d2ba6baf0f885bf13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;String&gt;<sp/><ref refid="structostk_1_1simulation_1_1_component_configuration_1a95b38d1660657a8d2ba6baf0f885bf13" kindref="member">tags</ref><sp/>=<sp/><ref refid="_component_8hpp_1a7cabb8538f234177d4f95e681045bf94" kindref="member">DEFAULT_TAGS</ref>;</highlight></codeline>
+<codeline lineno="142" refid="structostk_1_1simulation_1_1_component_configuration_1a85c06b983a2aeddc726310ac64a280b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Quaternion<sp/><ref refid="structostk_1_1simulation_1_1_component_configuration_1a85c06b983a2aeddc726310ac64a280b6" kindref="member">orientation</ref><sp/>=<sp/><ref refid="_component_8hpp_1a5c684aeaeb24d197904b5a34839d2dd9" kindref="member">DEFAULT_ORIENTATION</ref>;</highlight></codeline>
+<codeline lineno="143" refid="structostk_1_1simulation_1_1_component_configuration_1a0b82a80f2def5a34efbb72697c6bc24e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;GeometryConfiguration&gt;<sp/><ref refid="structostk_1_1simulation_1_1_component_configuration_1a0b82a80f2def5a34efbb72697c6bc24e" kindref="member">geometries</ref><sp/>=<sp/><ref refid="_component_8hpp_1a4a68d11996a67b508045cdc894fac4ba" kindref="member">DEFAULT_GEOMETRIES</ref>;</highlight></codeline>
+<codeline lineno="144" refid="structostk_1_1simulation_1_1_component_configuration_1aa6be134c476783e16aab75dc4b9e7b3d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;ComponentConfiguration&gt;<sp/><ref refid="structostk_1_1simulation_1_1_component_configuration_1aa6be134c476783e16aab75dc4b9e7b3d" kindref="member">components</ref><sp/>=<sp/><ref refid="_component_8hpp_1a4efe76b184101f122bb1be222cb65afc" kindref="member">DEFAULT_COMPONENTS</ref>;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>simulation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/OpenSpaceToolkit/Simulation/Component.hpp"/>
+  </compounddef>
+</doxygen>

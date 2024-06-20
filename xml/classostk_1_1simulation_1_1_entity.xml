@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1simulation_1_1_entity" kind="class" language="C++" prot="public">
+    <compoundname>ostk::simulation::Entity</compoundname>
+    <derivedcompoundref refid="classostk_1_1simulation_1_1_component" prot="public" virt="non-virtual">ostk::simulation::Component</derivedcompoundref>
+    <includes refid="_entity_8hpp" local="no">Entity.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1simulation_1_1_entity_1a9daef9cda073db38a9a29b2c7cfe01cc" prot="private" static="no" mutable="no">
+        <type>String</type>
+        <definition>String ostk::simulation::Entity::id_</definition>
+        <argsstring></argsstring>
+        <name>id_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="40" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Entity.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1simulation_1_1_entity_1a50230f16790bae32ca380fc671231693" prot="private" static="no" mutable="no">
+        <type>String</type>
+        <definition>String ostk::simulation::Entity::name_</definition>
+        <argsstring></argsstring>
+        <name>name_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="41" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Entity.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_entity_1a929819736161db5935b29b84da8a97aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::simulation::Entity::Entity</definition>
+        <argsstring>(const String &amp;aName)</argsstring>
+        <name>Entity</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="20" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="16" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_entity_1ae4ee439011cfcb1811d31bdb8db871fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::simulation::Entity::Entity</definition>
+        <argsstring>(const String &amp;anId, const String &amp;aName)</argsstring>
+        <name>Entity</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>anId</declname>
+        </param>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="22" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="22" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_entity_1ad3c1556400b02acdffde053348acda2f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::simulation::Entity::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="24" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_entity_1a33286b8807aacec430d105646c021a79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::simulation::Entity::getId</definition>
+        <argsstring>() const</argsstring>
+        <name>getId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="26" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="33" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_entity_1a17050a1483e16e62ca10e3b1ecade1d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::simulation::Entity::getName</definition>
+        <argsstring>() const</argsstring>
+        <name>getName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="28" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="43" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_entity_1aa2238f2fe07b5ddc4594293acdfa0c23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::simulation::Entity::print</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, bool displayDecorators=true) const</argsstring>
+        <name>print</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>displayDecorators</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Print entity. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">(optional)</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>displayDecorators If true, display decorators </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="35" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="58" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_entity_1aa42c610f1b96197f9fbf45711fe6a479" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1simulation_1_1_entity" kindref="compound">Entity</ref></type>
+        <definition>Entity ostk::simulation::Entity::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="37" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="53" bodyend="56"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1simulation_1_1_entity" kindref="compound">Entity</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>ostk::simulation::Satellite</label>
+        <link refid="classostk_1_1simulation_1_1_satellite"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::simulation::Component</label>
+        <link refid="classostk_1_1simulation_1_1_component"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ostk::simulation::Entity</label>
+        <link refid="classostk_1_1simulation_1_1_entity"/>
+      </node>
+    </inheritancegraph>
+    <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="18" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Entity.hpp" bodystart="17" bodyend="42"/>
+    <listofallmembers>
+      <member refid="classostk_1_1simulation_1_1_entity_1a929819736161db5935b29b84da8a97aa" prot="public" virt="non-virtual"><scope>ostk::simulation::Entity</scope><name>Entity</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1ae4ee439011cfcb1811d31bdb8db871fa" prot="public" virt="non-virtual"><scope>ostk::simulation::Entity</scope><name>Entity</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1a33286b8807aacec430d105646c021a79" prot="public" virt="non-virtual"><scope>ostk::simulation::Entity</scope><name>getId</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1a17050a1483e16e62ca10e3b1ecade1d5" prot="public" virt="non-virtual"><scope>ostk::simulation::Entity</scope><name>getName</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1a9daef9cda073db38a9a29b2c7cfe01cc" prot="private" virt="non-virtual"><scope>ostk::simulation::Entity</scope><name>id_</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1ad3c1556400b02acdffde053348acda2f" prot="public" virt="non-virtual"><scope>ostk::simulation::Entity</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1a50230f16790bae32ca380fc671231693" prot="private" virt="non-virtual"><scope>ostk::simulation::Entity</scope><name>name_</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1aa2238f2fe07b5ddc4594293acdfa0c23" prot="public" virt="non-virtual"><scope>ostk::simulation::Entity</scope><name>print</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1aa42c610f1b96197f9fbf45711fe6a479" prot="public" virt="non-virtual"><scope>ostk::simulation::Entity</scope><name>Undefined</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

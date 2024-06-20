@@ -1,0 +1,316 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_satellite_8hpp" kind="file" language="C++">
+    <compoundname>Satellite.hpp</compoundname>
+    <includes refid="_component_8hpp" local="no">OpenSpaceToolkit/Simulation/Component.hpp</includes>
+    <includes refid="_entity_8hpp" local="no">OpenSpaceToolkit/Simulation/Entity.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Container/Array.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Container/Map.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Type/Shared.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Type/String.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Physics/Coordinate/Frame.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp</includes>
+    <includedby refid="_simulator_8hpp" local="no">include/OpenSpaceToolkit/Simulation/Simulator.hpp</includedby>
+    <includedby refid="_satellite_8cpp" local="no">src/OpenSpaceToolkit/Simulation/Satellite.cpp</includedby>
+    <incdepgraph>
+      <node id="17">
+        <label>OpenSpaceToolkit/Core/Type/Weak.hpp</label>
+      </node>
+      <node id="19">
+        <label>OpenSpaceToolkit/Physics/Coordinate/Frame.hpp</label>
+      </node>
+      <node id="18">
+        <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp</label>
+      </node>
+      <node id="20">
+        <label>OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp</label>
+      </node>
+      <node id="10">
+        <label>OpenSpaceToolkit/Simulation/Entity.hpp</label>
+        <link refid="_entity_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>OpenSpaceToolkit/Core/Container/Map.hpp</label>
+      </node>
+      <node id="9">
+        <label>OpenSpaceToolkit/Simulation/Component/State.hpp</label>
+        <link refid="_state_8hpp"/>
+      </node>
+      <node id="15">
+        <label>OpenSpaceToolkit/Core/Type/Shared.hpp</label>
+      </node>
+      <node id="11">
+        <label>OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp</label>
+        <link refid="_component_holder_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
+      </node>
+      <node id="16">
+        <label>OpenSpaceToolkit/Core/Type/Unique.hpp</label>
+      </node>
+      <node id="4">
+        <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
+      </node>
+      <node id="3">
+        <label>OpenSpaceToolkit/Simulation/Component/Geometry.hpp</label>
+        <link refid="_geometry_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>OpenSpaceToolkit/Simulation/Component.hpp</label>
+        <link refid="_component_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Composite.hpp</label>
+      </node>
+      <node id="8">
+        <label>OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp</label>
+      </node>
+      <node id="5">
+        <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Object.hpp</label>
+      </node>
+      <node id="1">
+        <label>include/OpenSpaceToolkit/Simulation/Satellite.hpp</label>
+        <link refid="_satellite_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>OpenSpaceToolkit/Core/Container/Array.hpp</label>
+      </node>
+      <node id="7">
+        <label>OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>src/OpenSpaceToolkit/Simulation/Satellite.cpp</label>
+        <link refid="_satellite_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/OpenSpaceToolkit/Simulation/Simulator.cpp</label>
+        <link refid="_simulator_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/OpenSpaceToolkit/Simulation/Satellite.hpp</label>
+        <link refid="_satellite_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/OpenSpaceToolkit/Simulation/Simulator.hpp</label>
+        <link refid="_simulator_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp</label>
+        <link refid="_geometry_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classostk_1_1simulation_1_1_satellite" prot="public">ostk::simulation::Satellite</innerclass>
+    <innerclass refid="structostk_1_1simulation_1_1_satellite_configuration" prot="public">ostk::simulation::SatelliteConfiguration</innerclass>
+    <innernamespace refid="namespaceostk">ostk</innernamespace>
+    <innernamespace refid="namespaceostk_1_1simulation">ostk::simulation</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_satellite_8hpp_1a4efe76b184101f122bb1be222cb65afc" prot="public" static="no">
+        <name>DEFAULT_COMPONENTS</name>
+        <initializer>Array&lt;ComponentConfiguration&gt;::Empty()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="35" column="9" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_satellite_8hpp_1a7cabb8538f234177d4f95e681045bf94" prot="public" static="no">
+        <name>DEFAULT_TAGS</name>
+        <initializer>Array&lt;String&gt;::Empty()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="36" column="9" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_satellite_8hpp_1a4a68d11996a67b508045cdc894fac4ba" prot="public" static="no">
+        <name>DEFAULT_GEOMETRIES</name>
+        <initializer>Array&lt;GeometryConfiguration&gt;::Empty()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="37" column="9" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__OpenSpaceToolkit_Simulation_Satellite__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__OpenSpaceToolkit_Simulation_Satellite__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_component_8hpp" kindref="compound">OpenSpaceToolkit/Simulation/Component.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_entity_8hpp" kindref="compound">OpenSpaceToolkit/Simulation/Entity.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Container/Array.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Container/Map.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Shared.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Physics/Coordinate/Frame.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">simulation</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Shared;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::container::Map;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::container::Array;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::physics::coordinate::Frame;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::astrodynamics::flight::Profile;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component" kindref="compound">ostk::simulation::Component</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1simulation_1_1_component_configuration" kindref="compound">ostk::simulation::ComponentConfiguration</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="_satellite_8hpp_1a4efe76b184101f122bb1be222cb65afc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_COMPONENTS<sp/>Array&lt;ComponentConfiguration&gt;::Empty()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="_satellite_8hpp_1a7cabb8538f234177d4f95e681045bf94" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_TAGS<sp/>Array&lt;String&gt;::Empty()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="_satellite_8hpp_1a4a68d11996a67b508045cdc894fac4ba" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_GEOMETRIES<sp/>Array&lt;GeometryConfiguration&gt;::Empty()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Simulator;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">SatelliteConfiguration;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classostk_1_1simulation_1_1_satellite" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_satellite_1aee8265886243e5c4cf71fa376fc1e984" kindref="member">Satellite</ref>(</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>anId,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aName,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;String&gt;&amp;<sp/>aTagArray,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;Shared&lt;Geometry&gt;&gt;&amp;<sp/>aGeometryArray,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;Shared&lt;Component&gt;&gt;&amp;<sp/>aComponentArray,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/>aFrameSPtr,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Profile&gt;&amp;<sp/>aProfileSPtr,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Simulator&gt;&amp;<sp/>aSimulatorSPtr</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_satellite_1aee8265886243e5c4cf71fa376fc1e984" kindref="member">Satellite</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref>&amp;<sp/>aSatellite);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_satellite_1af6f1e69609eca81bda731d176a0f3786" kindref="member">~Satellite</ref>();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref>*<sp/><ref refid="classostk_1_1simulation_1_1_satellite_1a9828fe3ec02b8f4d8b2faf8412826f00" kindref="member">clone</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/><ref refid="classostk_1_1simulation_1_1_satellite_1a4c904b132bff149960ba9d910ebbc3dc" kindref="member">operator&lt;&lt;</ref>(std::ostream&amp;<sp/>anOutputStream,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref>&amp;<sp/>aSatellite);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_satellite_1a124ee57d73d12788466ba203b126fc57" kindref="member">isDefined</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Profile&gt;<sp/><ref refid="classostk_1_1simulation_1_1_satellite_1a165c0d2da9a36a1eaeaaba55a5752cfc" kindref="member">accessProfile</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_satellite_1ac7f5b5462deb081eb93115f0fb362acd" kindref="member">print</ref>(std::ostream&amp;<sp/>anOutputStream,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>displayDecorators<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref><sp/><ref refid="classostk_1_1simulation_1_1_satellite_1a27b1931fa0cdd157ea5920060caf05fd" kindref="member">Undefined</ref>();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Shared&lt;Satellite&gt;<sp/><ref refid="classostk_1_1simulation_1_1_satellite_1a8984ad4a21ba686cbae3bbfbb7d5ebb3" kindref="member">Configure</ref>(</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1simulation_1_1_satellite_configuration" kindref="compound">SatelliteConfiguration</ref>&amp;<sp/>aSatelliteConfiguration,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Simulator&gt;&amp;<sp/>aSimulatorSPtr</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;<sp/><ref refid="classostk_1_1simulation_1_1_satellite_1a39a4b79c04d242d85cb647abd23e9e61" kindref="member">GenerateFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aName,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Profile&gt;&amp;<sp/>aProfile);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>Shared&lt;const<sp/>Profile&gt;<sp/>profileSPtr_;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="structostk_1_1simulation_1_1_satellite_configuration" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structostk_1_1simulation_1_1_satellite_configuration" kindref="compound">SatelliteConfiguration</ref></highlight></codeline>
+<codeline lineno="90"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91" refid="structostk_1_1simulation_1_1_satellite_configuration_1a908266db30927a86a162c7c8a73bdbe1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/><ref refid="structostk_1_1simulation_1_1_satellite_configuration_1a908266db30927a86a162c7c8a73bdbe1" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="92" refid="structostk_1_1simulation_1_1_satellite_configuration_1a5591546d238904643014391632e95073" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/><ref refid="structostk_1_1simulation_1_1_satellite_configuration_1a5591546d238904643014391632e95073" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="93" refid="structostk_1_1simulation_1_1_satellite_configuration_1ab2afb3f9823e69021f909495fb74ca3f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Profile<sp/><ref refid="structostk_1_1simulation_1_1_satellite_configuration_1ab2afb3f9823e69021f909495fb74ca3f" kindref="member">profile</ref>;</highlight></codeline>
+<codeline lineno="94" refid="structostk_1_1simulation_1_1_satellite_configuration_1a44d10b5d983f71491e0751a0c1ac5f80" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;ComponentConfiguration&gt;<sp/><ref refid="structostk_1_1simulation_1_1_satellite_configuration_1a44d10b5d983f71491e0751a0c1ac5f80" kindref="member">components</ref><sp/>=<sp/><ref refid="_satellite_8hpp_1a4efe76b184101f122bb1be222cb65afc" kindref="member">DEFAULT_COMPONENTS</ref>;</highlight></codeline>
+<codeline lineno="95" refid="structostk_1_1simulation_1_1_satellite_configuration_1a6db145a39cbb82053013b7ee92dcc326" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;String&gt;<sp/><ref refid="structostk_1_1simulation_1_1_satellite_configuration_1a6db145a39cbb82053013b7ee92dcc326" kindref="member">tags</ref><sp/>=<sp/><ref refid="_satellite_8hpp_1a7cabb8538f234177d4f95e681045bf94" kindref="member">DEFAULT_TAGS</ref>;</highlight></codeline>
+<codeline lineno="96" refid="structostk_1_1simulation_1_1_satellite_configuration_1aea05ae6081923cf5c9502bd176b756b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;GeometryConfiguration&gt;<sp/><ref refid="structostk_1_1simulation_1_1_satellite_configuration_1aea05ae6081923cf5c9502bd176b756b9" kindref="member">geometries</ref><sp/>=<sp/><ref refid="_satellite_8hpp_1a4a68d11996a67b508045cdc894fac4ba" kindref="member">DEFAULT_GEOMETRIES</ref>;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>simulation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp"/>
+  </compounddef>
+</doxygen>

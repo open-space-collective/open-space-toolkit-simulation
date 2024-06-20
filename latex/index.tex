@@ -14,7 +14,7 @@ The following command will start an \href{https://ipython.org/}{\texttt{ i\+Pyth
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{docker run -\/it openspacecollective/open-\/space-\/toolkit-\/simulation-\/python}
+\DoxyCodeLine{docker run -\/it openspacecollective/open-\/space-\/toolkit-\/simulation-\/development python3.11 -\/m IPython}
 \end{DoxyCode}
 
 
@@ -119,7 +119,7 @@ From the {\ttfamily ./build} directory\+:
 \end{DoxyCode}
 
 
-{\itshape Tip\+: {\ttfamily helpers/build.\+sh} simplifies building from within the development environment.}\hypertarget{index_autotoc_md15}{}\doxysubsection{Test}\label{index_autotoc_md15}
+{\itshape Tip\+: {\ttfamily ostk-\/build} simplifies building from within the development environment.}\hypertarget{index_autotoc_md15}{}\doxysubsection{Test}\label{index_autotoc_md15}
 To start a container to build and run the tests\+:
 
 
@@ -136,7 +136,7 @@ Or to run them manually\+:
 \end{DoxyCode}
 
 
-{\itshape Tip\+: {\ttfamily helpers/test.\+sh} simplifies running tests from within the development environment.}\hypertarget{index_autotoc_md16}{}\doxysection{Dependencies}\label{index_autotoc_md16}
+{\itshape Tip\+: {\ttfamily ostk-\/test} simplifies running tests from within the development environment.}\hypertarget{index_autotoc_md16}{}\doxysection{Dependencies}\label{index_autotoc_md16}
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
 \hline
@@ -147,7 +147,7 @@ Or to run them manually\+:
 \hline
 \PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Version }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ License }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Link  }\\\cline{1-4}
 \endhead
-Pybind11 &2.\+10.\+1 &B\+S\+D-\/3-\/\+Clause &\href{https://github.com/pybind/pybind11}{\texttt{ github.\+com/pybind/pybind11}}  \\\cline{1-4}
+Pybind11 &2.\+12.\+0 &B\+S\+D-\/3-\/\+Clause &\href{https://github.com/pybind/pybind11}{\texttt{ github.\+com/pybind/pybind11}}  \\\cline{1-4}
 Core &main &Apache License 2.\+0 &\href{https://github.com/open-space-collective/open-space-toolkit-core}{\texttt{ github.\+com/open-\/space-\/collective/open-\/space-\/toolkit-\/core}}  \\\cline{1-4}
 I/O &main &Apache License 2.\+0 &\href{https://github.com/open-space-collective/open-space-toolkit-io}{\texttt{ github.\+com/open-\/space-\/collective/open-\/space-\/toolkit-\/io}}  \\\cline{1-4}
 Mathematics &main &Apache License 2.\+0 &\href{https://github.com/open-space-collective/open-space-toolkit-mathematics}{\texttt{ github.\+com/open-\/space-\/collective/open-\/space-\/toolkit-\/mathematics}}  \\\cline{1-4}

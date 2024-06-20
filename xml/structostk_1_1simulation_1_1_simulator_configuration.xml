@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structostk_1_1simulation_1_1_simulator_configuration" kind="struct" language="C++" prot="public">
+    <compoundname>ostk::simulation::SimulatorConfiguration</compoundname>
+    <includes refid="_simulator_8hpp" local="no">Simulator.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_simulator_configuration_1a002747f47ff422d4be5745eeb476e8ea" prot="public" static="no" mutable="no">
+        <type>const Environment</type>
+        <definition>const Environment ostk::simulation::SimulatorConfiguration::environment</definition>
+        <argsstring></argsstring>
+        <name>environment</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="82" column="23" bodyfile="include/OpenSpaceToolkit/Simulation/Simulator.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_simulator_configuration_1aa42414403bb4d50e000ed4a78bac78b5" prot="public" static="no" mutable="no">
+        <type>const Array&lt; <ref refid="structostk_1_1simulation_1_1_satellite_configuration" kindref="compound">SatelliteConfiguration</ref> &gt;</type>
+        <definition>const Array&lt;SatelliteConfiguration&gt; ostk::simulation::SimulatorConfiguration::satellites</definition>
+        <argsstring></argsstring>
+        <name>satellites</name>
+        <initializer>= <ref refid="_simulator_8hpp_1a233d40e3dd62e2ffb9f35a635f34fd36" kindref="member">DEFAULT_SATELLITES</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="83" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Simulator.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Environment</label>
+      </node>
+      <node id="1">
+        <label>ostk::simulation::SimulatorConfiguration</label>
+        <link refid="structostk_1_1simulation_1_1_simulator_configuration"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>environment</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>satellites</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Array&lt; ostk::simulation::SatelliteConfiguration &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="81" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Simulator.hpp" bodystart="80" bodyend="84"/>
+    <listofallmembers>
+      <member refid="structostk_1_1simulation_1_1_simulator_configuration_1a002747f47ff422d4be5745eeb476e8ea" prot="public" virt="non-virtual"><scope>ostk::simulation::SimulatorConfiguration</scope><name>environment</name></member>
+      <member refid="structostk_1_1simulation_1_1_simulator_configuration_1aa42414403bb4d50e000ed4a78bac78b5" prot="public" virt="non-virtual"><scope>ostk::simulation::SimulatorConfiguration</scope><name>satellites</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

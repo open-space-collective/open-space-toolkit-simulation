@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1simulation_1_1component" kind="namespace" language="C++">
+    <compoundname>ostk::simulation::component</compoundname>
+    <innerclass refid="classostk_1_1simulation_1_1component_1_1_geometry" prot="public">ostk::simulation::component::Geometry</innerclass>
+    <innerclass refid="structostk_1_1simulation_1_1component_1_1_geometry_configuration" prot="public">ostk::simulation::component::GeometryConfiguration</innerclass>
+    <innerclass refid="classostk_1_1simulation_1_1component_1_1_state" prot="public">ostk::simulation::component::State</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1simulation_1_1component_1a1b21648b0426cff0de1fe8bd25248ea5" prot="public" static="no">
+        <type>ostk::physics::environment::object::Geometry</type>
+        <definition>using ostk::simulation::component::ObjectGeometry = typedef ostk::physics::environment::object::Geometry</definition>
+        <argsstring></argsstring>
+        <name>ObjectGeometry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="30" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1simulation_1_1component_1a42b6057a6dd3cbb9a748c1d583ec31aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::simulation::component::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Geometry &amp;aGeometry)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1simulation_1_1component_1_1_geometry" kindref="compound">Geometry</ref> &amp;</type>
+          <declname>aGeometry</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aGeometry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A geometry </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to output stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" line="39" column="1" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="39" bodyend="46"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="22" column="1"/>
+  </compounddef>
+</doxygen>

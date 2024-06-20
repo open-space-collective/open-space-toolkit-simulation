@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1simulation_1_1utility" kind="namespace" language="C++">
+    <compoundname>ostk::simulation::utility</compoundname>
+    <innerclass refid="classostk_1_1simulation_1_1utility_1_1_component_holder" prot="public">ostk::simulation::utility::ComponentHolder</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1simulation_1_1utility_1a2084483160c51091dc6577f796001b55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Pair&lt; String, String &gt;</type>
+        <definition>Pair&lt; String, String &gt; ostk::simulation::utility::splitComponentPath</definition>
+        <argsstring>(const String &amp;aComponentPath)</argsstring>
+        <name>splitComponentPath</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aComponentPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" line="186" column="6" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="186" bodyend="211" declfile="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" declline="64" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1simulation_1_1utility_1ae47abdad099e16d373c2338be7daff13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::simulation::utility::generateId</definition>
+        <argsstring>()</argsstring>
+        <name>generateId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Simulation/Utility/Identifier.cpp" line="15" column="8" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/Identifier.cpp" bodystart="15" bodyend="19" declfile="include/OpenSpaceToolkit/Simulation/Utility/Identifier.hpp" declline="22" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="22" column="1"/>
+  </compounddef>
+</doxygen>

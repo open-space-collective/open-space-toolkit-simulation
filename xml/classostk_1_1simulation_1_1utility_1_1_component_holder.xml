@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1simulation_1_1utility_1_1_component_holder" kind="class" language="C++" prot="public">
+    <compoundname>ostk::simulation::utility::ComponentHolder</compoundname>
+    <derivedcompoundref refid="classostk_1_1simulation_1_1_component" prot="public" virt="non-virtual">ostk::simulation::Component</derivedcompoundref>
+    <includes refid="_component_holder_8hpp" local="no">ComponentHolder.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a495bdfe9aca52b6e29ecdaced69c7991" prot="private" static="no" mutable="no">
+        <type>Map&lt; String, Shared&lt; <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &gt; &gt;</type>
+        <definition>Map&lt;String, Shared&lt;Component&gt; &gt; ostk::simulation::utility::ComponentHolder::componentMap_</definition>
+        <argsstring></argsstring>
+        <name>componentMap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="61" column="9" bodyfile="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a7229211c50e568af740b831f8cde2d0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::simulation::utility::ComponentHolder::ComponentHolder</definition>
+        <argsstring>(const Array&lt; Shared&lt; Component &gt;&gt; &amp;aComponentArray=Array&lt; Shared&lt; Component &gt;&gt;::Empty())</argsstring>
+        <name>ComponentHolder</name>
+        <param>
+          <type>const Array&lt; Shared&lt; <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &gt;&gt; &amp;</type>
+          <declname>aComponentArray</declname>
+          <defval>Array&lt; Shared&lt; <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &gt;&gt;::Empty()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="36" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="17" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1abbc39c68bfd9922229cf2c70291395a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::simulation::utility::ComponentHolder::ComponentHolder</definition>
+        <argsstring>(const ComponentHolder &amp;aComponentHolder)</argsstring>
+        <name>ComponentHolder</name>
+        <param>
+          <type>const <ref refid="classostk_1_1simulation_1_1utility_1_1_component_holder" kindref="compound">ComponentHolder</ref> &amp;</type>
+          <declname>aComponentHolder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="38" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="26" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a2d189ed7b58dd7dbddd2e619cf197c86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::simulation::utility::ComponentHolder::~ComponentHolder</definition>
+        <argsstring>()</argsstring>
+        <name>~ComponentHolder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="40" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1aca60bf690ae2d94e094760ef276fcfc6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::simulation::utility::ComponentHolder::hasComponentWithId</definition>
+        <argsstring>(const String &amp;aComponentId) const</argsstring>
+        <name>hasComponentWithId</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aComponentId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="42" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="37" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a6a570d1c15601cacb1ad7a9fab443317" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::simulation::utility::ComponentHolder::hasComponentWithName</definition>
+        <argsstring>(const String &amp;aComponentName) const</argsstring>
+        <name>hasComponentWithName</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aComponentName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="44" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="55" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a2992fe305dcb2243a0f3f0b3a2965773" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::simulation::utility::ComponentHolder::hasComponentAt</definition>
+        <argsstring>(const String &amp;aComponentPath) const</argsstring>
+        <name>hasComponentAt</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aComponentPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="46" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="65" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1ab66566e91251de05a02198cec7ecc4b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; Shared&lt; <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &gt; &gt;</type>
+        <definition>Array&lt; Shared&lt; Component &gt; &gt; ostk::simulation::utility::ComponentHolder::accessComponents</definition>
+        <argsstring>() const</argsstring>
+        <name>accessComponents</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="48" column="11" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="93" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a05ee37d6949d90619788e62a1b1db47a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &amp;</type>
+        <definition>const Component &amp; ostk::simulation::utility::ComponentHolder::accessComponentWithId</definition>
+        <argsstring>(const String &amp;aComponentId) const</argsstring>
+        <name>accessComponentWithId</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aComponentId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="50" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="107" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a245084a9899a44bb0c3298d643c2b44d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &amp;</type>
+        <definition>const Component &amp; ostk::simulation::utility::ComponentHolder::accessComponentWithName</definition>
+        <argsstring>(const String &amp;aComponentName) const</argsstring>
+        <name>accessComponentWithName</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aComponentName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="52" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="125" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a9f7c8444d12fcb0a8d4d1198c2181197" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; Shared&lt; const <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &gt; &gt;</type>
+        <definition>Array&lt; Shared&lt; const Component &gt; &gt; ostk::simulation::utility::ComponentHolder::accessComponentsWithTag</definition>
+        <argsstring>(const String &amp;aComponentTag) const</argsstring>
+        <name>accessComponentsWithTag</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aComponentTag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="54" column="11" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="142" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a83aefcdc6fea117a180edff14954f7a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &amp;</type>
+        <definition>const Component &amp; ostk::simulation::utility::ComponentHolder::accessComponentAt</definition>
+        <argsstring>(const String &amp;aComponentPath) const</argsstring>
+        <name>accessComponentAt</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aComponentPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="56" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="167" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a6012cd2e61416fe0cef0f9523e0121de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::simulation::utility::ComponentHolder::addComponent</definition>
+        <argsstring>(const Shared&lt; Component &gt; &amp;aComponentSPtr)</argsstring>
+        <name>addComponent</name>
+        <param>
+          <type>const Shared&lt; <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &gt; &amp;</type>
+          <declname>aComponentSPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="58" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="83" bodyend="91"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Generic <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> holder. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>ostk::simulation::Satellite</label>
+        <link refid="classostk_1_1simulation_1_1_satellite"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::simulation::Component</label>
+        <link refid="classostk_1_1simulation_1_1_component"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ostk::simulation::utility::ComponentHolder</label>
+        <link refid="classostk_1_1simulation_1_1utility_1_1_component_holder"/>
+      </node>
+    </inheritancegraph>
+    <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="34" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" bodystart="33" bodyend="62"/>
+    <listofallmembers>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a83aefcdc6fea117a180edff14954f7a5" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>accessComponentAt</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1ab66566e91251de05a02198cec7ecc4b7" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>accessComponents</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a9f7c8444d12fcb0a8d4d1198c2181197" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>accessComponentsWithTag</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a05ee37d6949d90619788e62a1b1db47a" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>accessComponentWithId</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a245084a9899a44bb0c3298d643c2b44d" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>accessComponentWithName</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a6012cd2e61416fe0cef0f9523e0121de" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>addComponent</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a7229211c50e568af740b831f8cde2d0b" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>ComponentHolder</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1abbc39c68bfd9922229cf2c70291395a1" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>ComponentHolder</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a495bdfe9aca52b6e29ecdaced69c7991" prot="private" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>componentMap_</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a2992fe305dcb2243a0f3f0b3a2965773" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>hasComponentAt</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1aca60bf690ae2d94e094760ef276fcfc6" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>hasComponentWithId</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a6a570d1c15601cacb1ad7a9fab443317" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>hasComponentWithName</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a2d189ed7b58dd7dbddd2e619cf197c86" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>~ComponentHolder</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

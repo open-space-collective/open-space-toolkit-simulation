@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_c_o_n_t_r_i_b_u_t_i_n_g_8md" kind="file" language="Markdown">
+    <compoundname>CONTRIBUTING.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Contributing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*⚠<sp/>This<sp/>document<sp/>is<sp/>a<sp/>work<sp/>in<sp/>progress.*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[TOC]</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Introduction<sp/>{#Introduction}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*To<sp/>be<sp/>completed...*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Guidelines<sp/>{#Guidelines}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Codebase<sp/>{#Codebase}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>C++<sp/>{#C}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Include<sp/>order<sp/>from<sp/>specific<sp/>to<sp/>generic:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;OpenSpaceToolkit/Simulation/Orbit.hpp&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Integer.hpp&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;OpenSpaceToolkit/Core/Utility.hpp&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;map&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;string&gt;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">References:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>https://stackoverflow.com/questions/2762568/c-c-include-file-order-best-practices</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>https://blog.kowalczyk.info/article/qg/order-of-include-headers-in-cc.html</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Python<sp/>{#Python}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*To<sp/>be<sp/>completed...*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Version<sp/>Control<sp/>{#Version}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Rules<sp/>{#Rules}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*To<sp/>be<sp/>completed...*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Commit<sp/>Messages<sp/>{#Commit}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[How<sp/>to<sp/>Write<sp/>a<sp/>Git<sp/>Commit<sp/>Message](https://chris.beams.io/posts/git-commit/)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Use<sp/>active<sp/>form<sp/>(`Do<sp/>something`).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Prefix<sp/>commit<sp/>messages<sp/>using<sp/>the<sp/>following<sp/>tags:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>[feature]</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[fix]</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[misc]</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Examples:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```txt</highlight></codeline>
+<codeline><highlight class="normal">[feature]<sp/>Implement<sp/>high<sp/>fidelity<sp/>orbit<sp/>propagator</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```txt</highlight></codeline>
+<codeline><highlight class="normal">[fix]<sp/>Segmentation<sp/>fault<sp/>when<sp/>fetching<sp/>ephemeris<sp/>data</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Code<sp/>of<sp/>Conduct<sp/>{#CodeOfConduct}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*To<sp/>be<sp/>completed...*</highlight></codeline>
+    </programlisting>
+    <location file="CONTRIBUTING.md"/>
+  </compounddef>
+</doxygen>

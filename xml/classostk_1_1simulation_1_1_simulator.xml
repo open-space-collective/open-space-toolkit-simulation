@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1simulation_1_1_simulator" kind="class" language="C++" prot="public">
+    <compoundname>ostk::simulation::Simulator</compoundname>
+    <includes refid="_simulator_8hpp" local="no">Simulator.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1simulation_1_1_simulator_1a2eb84c6dd0d1a50faf512507668f980f" prot="private" static="no" mutable="no">
+        <type>Environment</type>
+        <definition>Environment ostk::simulation::Simulator::environment_</definition>
+        <argsstring></argsstring>
+        <name>environment_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="76" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Simulator.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1simulation_1_1_simulator_1aa7ba32e24b568c5d0078aa6eeaef814d" prot="private" static="no" mutable="no">
+        <type>Map&lt; String, Shared&lt; <ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref> &gt; &gt;</type>
+        <definition>Map&lt;String, Shared&lt;Satellite&gt; &gt; ostk::simulation::Simulator::satelliteMap_</definition>
+        <argsstring></argsstring>
+        <name>satelliteMap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="77" column="9" bodyfile="include/OpenSpaceToolkit/Simulation/Simulator.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_simulator_1a6c69bdb82f84e62d0e006755d501e05a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::simulation::Simulator::Simulator</definition>
+        <argsstring>(const Environment &amp;anEnvironment, const Array&lt; Shared&lt; Satellite &gt;&gt; &amp;aSatelliteArray)</argsstring>
+        <name>Simulator</name>
+        <param>
+          <type>const Environment &amp;</type>
+          <declname>anEnvironment</declname>
+        </param>
+        <param>
+          <type>const Array&lt; Shared&lt; <ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref> &gt;&gt; &amp;</type>
+          <declname>aSatelliteArray</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="42" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="13" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_simulator_1a666148ccdc39474edbe83e7ffc65bac1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::simulation::Simulator::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="46" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="30" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_simulator_1a055842428d08ac13305da1b3ad339568" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::simulation::Simulator::hasSatelliteWithName</definition>
+        <argsstring>(const String &amp;aSatelliteName) const</argsstring>
+        <name>hasSatelliteWithName</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aSatelliteName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="48" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="35" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_simulator_1aa1c20421b7a2ad00954fea7bdfbd4edd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Environment &amp;</type>
+        <definition>const Environment &amp; ostk::simulation::Simulator::accessEnvironment</definition>
+        <argsstring>() const</argsstring>
+        <name>accessEnvironment</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="50" column="23" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="50" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_simulator_1ace707d08b62eb3a233e268a9eb72ef31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Map&lt; String, Shared&lt; <ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref> &gt; &gt; &amp;</type>
+        <definition>const Map&lt; String, Shared&lt; Satellite &gt; &gt; &amp; ostk::simulation::Simulator::accessSatelliteMap</definition>
+        <argsstring>() const</argsstring>
+        <name>accessSatelliteMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="52" column="15" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="60" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_simulator_1ada54ce66cb47bb512f245f4ac1b33f95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref> &amp;</type>
+        <definition>const Satellite &amp; ostk::simulation::Simulator::accessSatelliteWithName</definition>
+        <argsstring>(const String &amp;aSatelliteName) const</argsstring>
+        <name>accessSatelliteWithName</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aSatelliteName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="54" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="70" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_simulator_1a64483af631b1f905850bb8b366f6fb0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Instant</type>
+        <definition>Instant ostk::simulation::Simulator::getInstant</definition>
+        <argsstring>() const</argsstring>
+        <name>getInstant</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="56" column="13" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="92" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_simulator_1a820c217ea08c035aa3b171112998b334" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::simulation::Simulator::print</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, bool displayDecorators=true) const</argsstring>
+        <name>print</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>displayDecorators</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Print simulator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">(optional)</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>displayDecorators If true, display decorators </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="63" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="102" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_simulator_1ab5fb0cb4864bbbbb35b3ab65d76d0a84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::simulation::Simulator::setInstant</definition>
+        <argsstring>(const Instant &amp;anInstant)</argsstring>
+        <name>setInstant</name>
+        <param>
+          <type>const Instant &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="65" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="111" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_simulator_1acb6015e28195acde22acc04ff2e8b8a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::simulation::Simulator::stepForward</definition>
+        <argsstring>(const Duration &amp;aDuration)</argsstring>
+        <name>stepForward</name>
+        <param>
+          <type>const Duration &amp;</type>
+          <declname>aDuration</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="67" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="121" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_simulator_1a03e47de54e6db4942b77d24c46dcc940" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::simulation::Simulator::addSatellite</definition>
+        <argsstring>(const Shared&lt; Satellite &gt; &amp;aSatelliteSPtr)</argsstring>
+        <name>addSatellite</name>
+        <param>
+          <type>const Shared&lt; <ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref> &gt; &amp;</type>
+          <declname>aSatelliteSPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="69" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="131" bodyend="144"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classostk_1_1simulation_1_1_simulator_1a69c38d700ebaa96e61bccca4bdbe717d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Simulator &amp;aSimulator)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1simulation_1_1_simulator" kindref="compound">Simulator</ref> &amp;</type>
+          <declname>aSimulator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="44" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="23" bodyend="28"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_simulator_1a99876309ee0abbb7fb47b232bb28e6db" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1simulation_1_1_simulator" kindref="compound">Simulator</ref></type>
+        <definition>Simulator ostk::simulation::Simulator::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="71" column="22" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="146" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_simulator_1ad95b067abdc0a5ddf348897161af46f1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; <ref refid="classostk_1_1simulation_1_1_simulator" kindref="compound">Simulator</ref> &gt;</type>
+        <definition>Shared&lt; Simulator &gt; ostk::simulation::Simulator::Configure</definition>
+        <argsstring>(const SimulatorConfiguration &amp;aSimulatorConfiguration)</argsstring>
+        <name>Configure</name>
+        <param>
+          <type>const <ref refid="structostk_1_1simulation_1_1_simulator_configuration" kindref="compound">SimulatorConfiguration</ref> &amp;</type>
+          <declname>aSimulatorConfiguration</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="73" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="151" bodyend="162"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1simulation_1_1_simulator" kindref="compound">Simulator</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Simulator.hpp" bodystart="39" bodyend="78"/>
+    <listofallmembers>
+      <member refid="classostk_1_1simulation_1_1_simulator_1aa1c20421b7a2ad00954fea7bdfbd4edd" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>accessEnvironment</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1ace707d08b62eb3a233e268a9eb72ef31" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>accessSatelliteMap</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1ada54ce66cb47bb512f245f4ac1b33f95" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>accessSatelliteWithName</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1a03e47de54e6db4942b77d24c46dcc940" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>addSatellite</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1ad95b067abdc0a5ddf348897161af46f1" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>Configure</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1a2eb84c6dd0d1a50faf512507668f980f" prot="private" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>environment_</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1a64483af631b1f905850bb8b366f6fb0a" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>getInstant</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1a055842428d08ac13305da1b3ad339568" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>hasSatelliteWithName</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1a666148ccdc39474edbe83e7ffc65bac1" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1a69c38d700ebaa96e61bccca4bdbe717d" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1a820c217ea08c035aa3b171112998b334" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>print</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1aa7ba32e24b568c5d0078aa6eeaef814d" prot="private" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>satelliteMap_</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1ab5fb0cb4864bbbbb35b3ab65d76d0a84" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>setInstant</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1a6c69bdb82f84e62d0e006755d501e05a" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>Simulator</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1acb6015e28195acde22acc04ff2e8b8a8" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>stepForward</name></member>
+      <member refid="classostk_1_1simulation_1_1_simulator_1a99876309ee0abbb7fb47b232bb28e6db" prot="public" virt="non-virtual"><scope>ostk::simulation::Simulator</scope><name>Undefined</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
