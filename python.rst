@@ -7,4 +7,4 @@ Python API Documentation
    :recursive:
 
    ostk.simulation
-   ostk.component
+   ostk.simulation.component
