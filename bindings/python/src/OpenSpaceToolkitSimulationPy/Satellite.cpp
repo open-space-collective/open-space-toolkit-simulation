@@ -6,21 +6,21 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
 {
     using namespace pybind11;
 
+    using ostk::core::container::Array;
     using ostk::core::type::Shared;
     using ostk::core::type::String;
-    using ostk::core::container::Array;
 
     using ostk::physics::coordinate::Frame;
 
     using ostk::astrodynamics::flight::Profile;
 
-    using ostk::simulation::Simulator;
-    using ostk::simulation::Satellite;
-    using ostk::simulation::SatelliteConfiguration;
     using ostk::simulation::Component;
-    using ostk::simulation::ComponentConfiguration;
     using ostk::simulation::component::Geometry;
     using ostk::simulation::component::GeometryConfiguration;
+    using ostk::simulation::ComponentConfiguration;
+    using ostk::simulation::Satellite;
+    using ostk::simulation::SatelliteConfiguration;
+    using ostk::simulation::Simulator;
 
     class_<Satellite, Component, Shared<Satellite>>(aModule, "Satellite")
 

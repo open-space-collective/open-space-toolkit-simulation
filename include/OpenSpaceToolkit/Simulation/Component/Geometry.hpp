@@ -8,8 +8,8 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Composite.hpp>
 
-#include <OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp>
 
 namespace ostk
 {
@@ -21,8 +21,8 @@ class Component;
 namespace component
 {
 
-using ostk::core::type::String;
 using ostk::core::type::Shared;
+using ostk::core::type::String;
 using ostk::mathematics::geometry::d3::Object;
 using ostk::mathematics::geometry::d3::object::Composite;
 
