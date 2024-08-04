@@ -21,21 +21,21 @@ namespace ostk
 namespace simulation
 {
 
-using ostk::core::type::String;
-using ostk::core::type::Unique;
-using ostk::core::type::Shared;
-using ostk::core::type::Weak;
 using ostk::core::container::Array;
 using ostk::core::container::Map;
+using ostk::core::type::Shared;
+using ostk::core::type::String;
+using ostk::core::type::Unique;
+using ostk::core::type::Weak;
 
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 
 using ostk::physics::coordinate::Frame;
 
-using ostk::simulation::utility::ComponentHolder;
-using ostk::simulation::component::State;
 using ostk::simulation::component::Geometry;
 using ostk::simulation::component::GeometryConfiguration;
+using ostk::simulation::component::State;
+using ostk::simulation::utility::ComponentHolder;
 
 #define DEFAULT_COMPONENT_TYPE Component::Type::Undefined
 #define DEFAULT_TAGS Array<String>::Empty()

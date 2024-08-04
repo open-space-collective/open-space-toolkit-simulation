@@ -11,10 +11,10 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
 
     using ostk::physics::Environment;
 
-    using ostk::simulation::Simulator;
-    using ostk::simulation::SimulatorConfiguration;
     using ostk::simulation::Satellite;
     using ostk::simulation::SatelliteConfiguration;
+    using ostk::simulation::Simulator;
+    using ostk::simulation::SimulatorConfiguration;
 
     class_<Simulator, Shared<Simulator>>(aModule, "Simulator")
 

@@ -17,37 +17,37 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::String;
-using ostk::core::type::Shared;
 using ostk::core::container::Array;
 using ostk::core::container::Map;
+using ostk::core::type::Shared;
+using ostk::core::type::String;
 
-using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
-using ostk::mathematics::geometry::d3::object::Point;
+using ostk::mathematics::geometry::d3::object::Composite;
 using ostk::mathematics::geometry::d3::object::LineString;
+using ostk::mathematics::geometry::d3::object::Point;
 using ostk::mathematics::geometry::d3::object::Polygon;
 using ostk::mathematics::geometry::d3::object::Pyramid;
-using ostk::mathematics::geometry::d3::object::Composite;
+using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 
+using ostk::physics::coordinate::Frame;
 using ostk::physics::Environment;
-using ostk::physics::unit::Length;
-using ostk::physics::time::Instant;
-using ostk::physics::time::Scale;
 using ostk::physics::time::DateTime;
 using ostk::physics::time::Duration;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
 using ostk::physics::time::Time;
-using ostk::physics::coordinate::Frame;
+using ostk::physics::unit::Length;
 
-using ostk::astrodynamics::trajectory::Orbit;
 using ostk::astrodynamics::flight::Profile;
+using ostk::astrodynamics::trajectory::Orbit;
 
-using ostk::simulation::Simulator;
-using ostk::simulation::SimulatorConfiguration;
+using ostk::simulation::Component;
+using ostk::simulation::component::Geometry;
+using ostk::simulation::component::State;
 using ostk::simulation::Satellite;
 using ostk::simulation::SatelliteConfiguration;
-using ostk::simulation::Component;
-using ostk::simulation::component::State;
-using ostk::simulation::component::Geometry;
+using ostk::simulation::Simulator;
+using ostk::simulation::SimulatorConfiguration;
 
 class OpenSpaceToolkit_Simulation_Simulator : public ::testing::Test
 {

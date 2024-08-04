@@ -14,22 +14,22 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::container::Array;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
-using ostk::core::container::Array;
 
-using ostk::physics::unit::Length;
-using ostk::physics::time::Time;
-using ostk::physics::time::Instant;
 using ostk::physics::environment::object::celestial::Earth;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Time;
+using ostk::physics::unit::Length;
 
 using ostk::astrodynamics::flight::Profile;
 using ostk::astrodynamics::trajectory::Orbit;
 
 using ostk::simulation::Component;
-using ostk::simulation::ComponentConfiguration;
 using ostk::simulation::component::Geometry;
 using ostk::simulation::component::GeometryConfiguration;
+using ostk::simulation::ComponentConfiguration;
 using ostk::simulation::Satellite;
 using ostk::simulation::SatelliteConfiguration;
 

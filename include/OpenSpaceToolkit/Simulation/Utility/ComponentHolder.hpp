@@ -21,12 +21,12 @@ class ComponentConfiguration;
 namespace utility
 {
 
-using ostk::core::type::String;
-using ostk::core::type::Unique;
-using ostk::core::type::Shared;
-using ostk::core::container::Pair;
 using ostk::core::container::Array;
 using ostk::core::container::Map;
+using ostk::core::container::Pair;
+using ostk::core::type::Shared;
+using ostk::core::type::String;
+using ostk::core::type::Unique;
 
 /// @brief                      Generic Component holder
 

@@ -20,10 +20,10 @@ namespace ostk
 namespace simulation
 {
 
-using ostk::core::type::String;
-using ostk::core::type::Shared;
-using ostk::core::container::Map;
 using ostk::core::container::Array;
+using ostk::core::container::Map;
+using ostk::core::type::Shared;
+using ostk::core::type::String;
 
 using ostk::physics::coordinate::Frame;
 
