@@ -286,9 +286,9 @@ IF (NOT OpenSpaceToolkitMathematics_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ Physics [8.x.y]
+### Open Space Toolkit ▸ Physics [9.x.y]
 
-FIND_PACKAGE ("OpenSpaceToolkitPhysics" "8" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitPhysics" "9" REQUIRED)
 
 IF (NOT OpenSpaceToolkitPhysics_FOUND)
 
@@ -296,9 +296,9 @@ IF (NOT OpenSpaceToolkitPhysics_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ Astrodynamics [10.x.y]
+### Open Space Toolkit ▸ Astrodynamics [11.x.y]
 
-FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "10" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "11" REQUIRED)
 
 IF (NOT OpenSpaceToolkitAstrodynamics_FOUND)
 
