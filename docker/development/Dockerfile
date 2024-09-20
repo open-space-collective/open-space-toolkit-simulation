@@ -124,7 +124,7 @@ RUN mkdir -p /tmp/open-space-toolkit-physics \
 ## Open Space Toolkit ▸ Astrodynamics
 
 ARG TARGETPLATFORM
-ARG OSTK_ASTRODYNAMICS_MAJOR="11"
+ARG OSTK_ASTRODYNAMICS_MAJOR="12"
 
 ## Force an image rebuild when new Astrodynamics minor or patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-astrodynamics/git/matching-refs/tags/${OSTK_ASTRODYNAMICS_MAJOR} /tmp/open-space-toolkit-astrodynamics/versions.json
