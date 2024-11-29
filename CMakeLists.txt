@@ -332,7 +332,7 @@ IF (NOT OpenSpaceToolkitPhysics_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ Astrodynamics [12.x.y]
+### Open Space Toolkit ▸ Astrodynamics [13.x.y]
 
 FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "13" REQUIRED)
 
