@@ -23,6 +23,8 @@ OPTION (BUILD_CODE_COVERAGE "Build code coverage" OFF)
 OPTION (BUILD_DOCUMENTATION "Build documentation" OFF)
 OPTION (BUILD_WITH_DEBUG_SYMBOLS "Build with debug symbols" ON)
 OPTION (BUILD_WITH_CXX_17 "Build with C++ 17 support." OFF)
+OPTION (BUILD_WITH_BOOST_STACKTRACE "Build with Boost Stacktrace instead of stacktrace basic" ON)
+OPTION (BUILD_WITH_BOOST_STATIC "Build with Boost Static lib" ON)
 
 ## Setup
 
@@ -32,7 +34,7 @@ CMAKE_MINIMUM_REQUIRED (VERSION "2.8.12" FATAL_ERROR)
 
 ### Paths
 
-SET (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake")
+LIST (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake")
 
 ### Policies
 
@@ -256,27 +258,43 @@ ENDFOREACH ()
 
 ### Boost [1.82.0]
 
-SET (Boost_USE_STATIC_LIBS ON)
+IF (BUILD_WITH_BOOST_STATIC)
+    SET (Boost_USE_STATIC_LIBS ON)
+ELSE ()
+    SET (Boost_USE_STATIC_LIBS OFF)
+ENDIF ()
+
 SET (Boost_USE_MULTITHREADED ON)
 
-FIND_PACKAGE ("Boost" "1.82" REQUIRED COMPONENTS)
+IF (BUILD_WITH_BOOST_STACKTRACE)
 
-## Stacktrace definitions
-# Detect system architecture
-if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
-    # Architecture-specific include for x86_64
-    set(BACKTRACE_INCLUDE "/usr/lib/gcc/x86_64-linux-gnu/9/include/backtrace.h")
-elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
-    # Example path adjustment for aarch64, adjust the path as needed
-    set(BACKTRACE_INCLUDE "/usr/lib/gcc/aarch64-linux-gnu/9/include/backtrace.h")
-else()
-    message(FATAL_ERROR "Unsupported architecture: ${CMAKE_SYSTEM_PROCESSOR}")
-endif()
+    FIND_PACKAGE ("Boost" "1.82" REQUIRED COMPONENTS)
 
-# Add definitions with architecture-specific path
-ADD_DEFINITIONS(-DBOOST_THREAD_DYN_LINK)
-ADD_DEFINITIONS(-DBOOST_STACKTRACE_USE_BACKTRACE)
-ADD_DEFINITIONS(-DBOOST_STACKTRACE_BACKTRACE_INCLUDE_FILE=<${BACKTRACE_INCLUDE}>)
+    # Stacktrace definitions
+
+    # Detect system architecture
+
+    IF (CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
+
+        # Architecture-specific include for x86_64
+        SET (BACKTRACE_INCLUDE "/usr/lib/gcc/x86_64-linux-gnu/9/include/backtrace.h")
+
+    ELSEIF (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
+
+        # Example path adjustment for aarch64, adjust the path as needed
+        SET (BACKTRACE_INCLUDE "/usr/lib/gcc/aarch64-linux-gnu/9/include/backtrace.h")
+
+    ELSE ()
+        MESSAGE (FATAL_ERROR "Unsupported architecture: ${CMAKE_SYSTEM_PROCESSOR}")
+    ENDIF ()
+
+    # Add definitions with architecture-specific path
+    ADD_DEFINITIONS (-DBOOST_STACKTRACE_USE_BACKTRACE)
+    ADD_DEFINITIONS (-DBOOST_STACKTRACE_BACKTRACE_INCLUDE_FILE=<${BACKTRACE_INCLUDE}>)
+
+ELSE ()
+    FIND_PACKAGE ("Boost" "1.82" REQUIRED COMPONENTS)
+ENDIF()
 
 IF (NOT Boost_FOUND)
     MESSAGE (SEND_ERROR "[Boost] not found.")
@@ -502,22 +520,22 @@ ENDIF ()
 ### Configuration
 
 CONFIGURE_FILE (
-    "${CMAKE_MODULE_PATH}/${PROJECT_NAME}Config.cmake.in"
+    "${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake/${PROJECT_NAME}Config.cmake.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
     @ONLY)
 
 CONFIGURE_FILE (
-    "${CMAKE_MODULE_PATH}/${PROJECT_NAME}ConfigVersion.cmake.in"
+    "${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake/${PROJECT_NAME}ConfigVersion.cmake.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
     @ONLY)
 
-INSTALL (FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake" DESTINATION "${INSTALL_LIB}/${PROJECT_NAME}" COMPONENT "libraries")
-INSTALL (FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake" DESTINATION "${INSTALL_LIB}/${PROJECT_NAME}" COMPONENT "libraries")
+INSTALL (FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake" DESTINATION "${INSTALL_LIB}/cmake/${PROJECT_NAME}" COMPONENT "libraries")
+INSTALL (FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake" DESTINATION "${INSTALL_LIB}/cmake/${PROJECT_NAME}" COMPONENT "libraries")
 
 ### Uninstall
 
 CONFIGURE_FILE (
-    "${CMAKE_MODULE_PATH}/UninstallTarget.cmake.in"
+    "${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake/UninstallTarget.cmake.in"
     "${CMAKE_CURRENT_BINARY_DIR}/UninstallTarget.cmake"
     IMMEDIATE @ONLY)
 
