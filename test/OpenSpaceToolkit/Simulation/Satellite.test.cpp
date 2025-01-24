@@ -42,7 +42,7 @@ class OpenSpaceToolkit_Simulation_Satellite : public ::testing::Test
             Instant::J2000(), Length::Kilometers(7000.0), Time::Noon(), std::make_shared<Earth>(Earth::Default())
         );
 
-        profile_ = Profile::NadirPointing(orbit, Orbit::FrameType::VVLH);
+        profile_ = Profile::LocalOrbitalFramePointing(orbit, Orbit::FrameType::VVLH);
 
         this->satellite_ = Satellite(
             "87da0b5f-9f65-4c5c-a660-bd254742960b",

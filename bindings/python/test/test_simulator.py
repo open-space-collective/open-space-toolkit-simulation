@@ -62,7 +62,7 @@ def satellite_configuration(
         id="9ea22c07-6977-48a7-8f68-dff758971d57",
         name=satellite_name,
         tags=["a", "b"],
-        profile=Profile.nadir_pointing(
+        profile=Profile.local_orbital_frame_pointing(
             orbit=orbit,
             orbital_frame_type=Orbit.FrameType.VVLH,
         ),
