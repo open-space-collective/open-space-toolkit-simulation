@@ -256,7 +256,7 @@ ENDFOREACH ()
 
 ## Dependencies
 
-### Boost [1.82.0]
+### Boost [1.87.0]
 
 IF (BUILD_WITH_BOOST_STATIC)
     SET (Boost_USE_STATIC_LIBS ON)
@@ -268,7 +268,7 @@ SET (Boost_USE_MULTITHREADED ON)
 
 IF (BUILD_WITH_BOOST_STACKTRACE)
 
-    FIND_PACKAGE ("Boost" "1.82" REQUIRED COMPONENTS)
+    FIND_PACKAGE ("Boost" "1.87" REQUIRED COMPONENTS)
 
     # Stacktrace definitions
 
@@ -293,7 +293,7 @@ IF (BUILD_WITH_BOOST_STACKTRACE)
     ADD_DEFINITIONS (-DBOOST_STACKTRACE_BACKTRACE_INCLUDE_FILE=<${BACKTRACE_INCLUDE}>)
 
 ELSE ()
-    FIND_PACKAGE ("Boost" "1.82" REQUIRED COMPONENTS)
+    FIND_PACKAGE ("Boost" "1.87" REQUIRED COMPONENTS)
 ENDIF()
 
 IF (NOT Boost_FOUND)
@@ -310,9 +310,9 @@ ELSE ()
     MESSAGE (SEND_ERROR "[Eigen 3] not found.")
 ENDIF ()
 
-### Open Space Toolkit ▸ Core [4.x.y]
+### Open Space Toolkit ▸ Core [5.x.y]
 
-FIND_PACKAGE ("OpenSpaceToolkitCore" "4" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitCore" "5" REQUIRED)
 
 IF (NOT OpenSpaceToolkitCore_FOUND)
 
@@ -350,9 +350,9 @@ IF (NOT OpenSpaceToolkitPhysics_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ Astrodynamics [13.x.y]
+### Open Space Toolkit ▸ Astrodynamics [14.x.y]
 
-FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "13" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "14" REQUIRED)
 
 IF (NOT OpenSpaceToolkitAstrodynamics_FOUND)
 

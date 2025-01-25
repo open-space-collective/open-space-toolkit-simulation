@@ -4,7 +4,7 @@ ARG BASE_IMAGE_VERSION="latest"
 
 # General purpose development image (root user)
 
-FROM openspacecollective/open-space-toolkit-base-development:${BASE_IMAGE_VERSION} as root-user
+FROM openspacecollective/open-space-toolkit-base-development:${BASE_IMAGE_VERSION} AS root-user
 
 LABEL maintainer="lucas@loftorbital.com"
 
@@ -56,7 +56,7 @@ RUN mkdir /tmp/eigen \
 ## Open Space Toolkit ▸ Core
 
 ARG TARGETPLATFORM
-ARG OSTK_CORE_MAJOR="4"
+ARG OSTK_CORE_MAJOR="5"
 
 ## Force an image rebuild when new Core minor or patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-core/git/matching-refs/tags/${OSTK_CORE_MAJOR} /tmp/open-space-toolkit-core/versions.json
@@ -124,7 +124,7 @@ RUN mkdir -p /tmp/open-space-toolkit-physics \
 ## Open Space Toolkit ▸ Astrodynamics
 
 ARG TARGETPLATFORM
-ARG OSTK_ASTRODYNAMICS_MAJOR="13"
+ARG OSTK_ASTRODYNAMICS_MAJOR="14"
 
 ## Force an image rebuild when new Astrodynamics minor or patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-astrodynamics/git/matching-refs/tags/${OSTK_ASTRODYNAMICS_MAJOR} /tmp/open-space-toolkit-astrodynamics/versions.json
@@ -154,7 +154,7 @@ LABEL VERSION="${VERSION}"
 
 # Development image for humans (non-root user)
 
-FROM root-user as non-root-user
+FROM root-user AS non-root-user
 
 # Install dev utilities
 
