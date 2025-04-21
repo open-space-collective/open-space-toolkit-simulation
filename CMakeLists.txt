@@ -350,9 +350,9 @@ IF (NOT OpenSpaceToolkitPhysics_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ Astrodynamics [15.x.y]
+### Open Space Toolkit ▸ Astrodynamics [16.x.y]
 
-FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "15" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "16" REQUIRED)
 
 IF (NOT OpenSpaceToolkitAstrodynamics_FOUND)
 
