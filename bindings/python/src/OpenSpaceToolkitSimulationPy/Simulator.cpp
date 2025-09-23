@@ -32,6 +32,8 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
         .def("set_instant", &Simulator::setInstant, arg("instant"))
         .def("step_forward", &Simulator::stepForward, arg("duration"))
         .def("add_satellite", &Simulator::addSatellite, arg("satellite"))
+        .def("remove_satellite_with_name", &Simulator::removeSatelliteWithName, arg("name"))
+        .def("clear_satellites", &Simulator::clearSatellites)
 
         .def_static("undefined", &Simulator::Undefined)
         .def_static("configure", &Simulator::Configure, arg("configuration"))

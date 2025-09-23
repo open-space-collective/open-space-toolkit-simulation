@@ -1,14 +1,25 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkit/Simulation/Component.hpp>
+#include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
 #include <OpenSpaceToolkit/Simulation/Simulator.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+
 namespace ostk
 {
 namespace simulation
 {
+
+using ostk::core::container::Array;
+using ostk::core::container::Map;
+using ostk::core::type::Shared;
+using ostk::core::type::String;
+
+using ostk::physics::coordinate::Frame;
 
 Simulator::Simulator(const Environment& anEnvironment, const Array<Shared<Satellite>>& aSatelliteArray)
     : environment_(anEnvironment),
@@ -141,6 +152,36 @@ void Simulator::addSatellite(const Shared<Satellite>& aSatelliteSPtr)
     }
 
     this->satelliteMap_.insert({aSatelliteSPtr->getName(), aSatelliteSPtr});
+}
+
+void Simulator::removeSatelliteWithName(const String& aSatelliteName)
+{
+    if (aSatelliteName.isEmpty())
+    {
+        throw ostk::core::error::runtime::Undefined("Satellite name");
+    }
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Simulator");
+    }
+
+    if (!this->hasSatelliteWithName(aSatelliteName))
+    {
+        throw ostk::core::error::RuntimeError("No Satellite found with name [{}].", aSatelliteName);
+    }
+
+    this->satelliteMap_.erase(aSatelliteName);
+}
+
+void Simulator::clearSatellites()
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Simulator");
+    }
+
+    this->satelliteMap_.clear();
 }
 
 Simulator Simulator::Undefined()

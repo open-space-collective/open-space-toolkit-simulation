@@ -242,6 +242,50 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, Undefined)
     }
 }
 
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, RemoveSatelliteWithName)
+{
+    {
+        EXPECT_THROW(
+            Simulator::Undefined().removeSatelliteWithName("TestSatellite"), ostk::core::error::runtime::Undefined
+        );
+    }
+
+    {
+        EXPECT_THROW(simulatorSPtr_->removeSatelliteWithName(""), ostk::core::error::runtime::Undefined);
+    }
+
+    {
+        EXPECT_THROW(simulatorSPtr_->removeSatelliteWithName("NonExistentSatellite"), ostk::core::error::RuntimeError);
+    }
+
+    {
+        EXPECT_TRUE(simulatorSPtr_->hasSatelliteWithName(satelliteName_));
+        EXPECT_EQ(simulatorSPtr_->accessSatelliteMap().size(), 1);
+
+        simulatorSPtr_->removeSatelliteWithName(satelliteName_);
+
+        EXPECT_FALSE(simulatorSPtr_->hasSatelliteWithName(satelliteName_));
+        EXPECT_EQ(simulatorSPtr_->accessSatelliteMap().size(), 0);
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, ClearSatellites)
+{
+    {
+        EXPECT_THROW(Simulator::Undefined().clearSatellites(), ostk::core::error::runtime::Undefined);
+    }
+
+    {
+        EXPECT_TRUE(simulatorSPtr_->hasSatelliteWithName(satelliteName_));
+        EXPECT_EQ(simulatorSPtr_->accessSatelliteMap().size(), 1);
+
+        simulatorSPtr_->clearSatellites();
+
+        EXPECT_FALSE(simulatorSPtr_->hasSatelliteWithName(satelliteName_));
+        EXPECT_EQ(simulatorSPtr_->accessSatelliteMap().size(), 0);
+    }
+}
+
 TEST_F(OpenSpaceToolkit_Simulation_Simulator, Configure)
 {
     {

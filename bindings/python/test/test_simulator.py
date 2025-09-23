@@ -180,6 +180,46 @@ class TestSimulator:
 
         assert simulator.is_defined()
 
+    def test_remove_satellite_with_name(
+        self,
+        simulator: Simulator,
+        satellite_name: str,
+    ):
+        # Test removing existing satellite
+        assert simulator.has_satellite_with_name(satellite_name)
+        assert len(simulator.access_satellite_map()) == 1
+
+        simulator.remove_satellite_with_name(satellite_name)
+
+        assert not simulator.has_satellite_with_name(satellite_name)
+        assert len(simulator.access_satellite_map()) == 0
+
+    def test_remove_satellite_with_name_errors(
+        self,
+        simulator: Simulator,
+    ):
+        # Test removing non-existent satellite
+        with pytest.raises(Exception):  # RuntimeError
+            simulator.remove_satellite_with_name("NonExistentSatellite")
+
+        # Test removing with empty name
+        with pytest.raises(Exception):  # Undefined error
+            simulator.remove_satellite_with_name("")
+
+    def test_clear_satellites(
+        self,
+        simulator: Simulator,
+        satellite_name: str,
+    ):
+        # Test clearing all satellites
+        assert simulator.has_satellite_with_name(satellite_name)
+        assert len(simulator.access_satellite_map()) == 1
+
+        simulator.clear_satellites()
+
+        assert not simulator.has_satellite_with_name(satellite_name)
+        assert len(simulator.access_satellite_map()) == 0
+
     def test_end_to_end(self, simulator: Simulator):
         camera: Component = simulator.access_satellite_with_name(
             "LoftSat-1"
