@@ -68,6 +68,10 @@ class Simulator
 
     void addSatellite(const Shared<Satellite>& aSatelliteSPtr);
 
+    void removeSatelliteWithName(const String& aSatelliteName);
+
+    void clearSatellites();
+
     static Simulator Undefined();
 
     static Shared<Simulator> Configure(const SimulatorConfiguration& aSimulatorConfiguration);
