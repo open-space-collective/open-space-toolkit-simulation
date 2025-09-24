@@ -156,11 +156,6 @@ void Simulator::addSatellite(const Shared<Satellite>& aSatelliteSPtr)
 
 void Simulator::removeSatelliteWithName(const String& aSatelliteName)
 {
-    if (aSatelliteName.isEmpty())
-    {
-        throw ostk::core::error::runtime::Undefined("Satellite name");
-    }
-
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Simulator");
