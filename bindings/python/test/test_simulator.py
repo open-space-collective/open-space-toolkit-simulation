@@ -210,7 +210,6 @@ class TestSimulator:
         simulator: Simulator,
         satellite_name: str,
     ):
-        # Test clearing all satellites
         assert simulator.has_satellite_with_name(satellite_name)
         assert len(simulator.access_satellite_map()) == 1
 
