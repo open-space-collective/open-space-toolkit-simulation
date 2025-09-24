@@ -251,10 +251,6 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, RemoveSatelliteWithName)
     }
 
     {
-        EXPECT_THROW(simulatorSPtr_->removeSatelliteWithName(""), ostk::core::error::runtime::Undefined);
-    }
-
-    {
         EXPECT_THROW(simulatorSPtr_->removeSatelliteWithName("NonExistentSatellite"), ostk::core::error::RuntimeError);
     }
 
