@@ -133,6 +133,8 @@
     <member refid="classostk_1_1simulation_1_1_simulator_1ab5fb0cb4864bbbbb35b3ab65d76d0a84" kind="function"><name>setInstant</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1acb6015e28195acde22acc04ff2e8b8a8" kind="function"><name>stepForward</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1a03e47de54e6db4942b77d24c46dcc940" kind="function"><name>addSatellite</name></member>
+    <member refid="classostk_1_1simulation_1_1_simulator_1af04b9110b4067b784f16855925950ccc" kind="function"><name>removeSatelliteWithName</name></member>
+    <member refid="classostk_1_1simulation_1_1_simulator_1adfa9360de21a1abdaeff636b4fa3d477" kind="function"><name>clearSatellites</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1a69c38d700ebaa96e61bccca4bdbe717d" kind="friend"><name>operator&lt;&lt;</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1a99876309ee0abbb7fb47b232bb28e6db" kind="function"><name>Undefined</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1ad95b067abdc0a5ddf348897161af46f1" kind="function"><name>Configure</name></member>

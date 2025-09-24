@@ -273,25 +273,29 @@
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_simulator_1a03e47de54e6db4942b77d24c46dcc940" kindref="member">addSatellite</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;Satellite&gt;&amp;<sp/>aSatelliteSPtr);</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_simulator" kindref="compound">Simulator</ref><sp/><ref refid="classostk_1_1simulation_1_1_simulator_1a99876309ee0abbb7fb47b232bb28e6db" kindref="member">Undefined</ref>();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_simulator_1af04b9110b4067b784f16855925950ccc" kindref="member">removeSatelliteWithName</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aSatelliteName);</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Shared&lt;Simulator&gt;<sp/><ref refid="classostk_1_1simulation_1_1_simulator_1ad95b067abdc0a5ddf348897161af46f1" kindref="member">Configure</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1simulation_1_1_simulator_configuration" kindref="compound">SimulatorConfiguration</ref>&amp;<sp/>aSimulatorConfiguration);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_simulator_1adfa9360de21a1abdaeff636b4fa3d477" kindref="member">clearSatellites</ref>();</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>Environment<sp/>environment_;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>Map&lt;String,<sp/>Shared&lt;Satellite&gt;&gt;<sp/>satelliteMap_;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80" refid="structostk_1_1simulation_1_1_simulator_configuration" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structostk_1_1simulation_1_1_simulator_configuration" kindref="compound">SimulatorConfiguration</ref></highlight></codeline>
-<codeline lineno="81"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="82" refid="structostk_1_1simulation_1_1_simulator_configuration_1a002747f47ff422d4be5745eeb476e8ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Environment<sp/><ref refid="structostk_1_1simulation_1_1_simulator_configuration_1a002747f47ff422d4be5745eeb476e8ea" kindref="member">environment</ref>;</highlight></codeline>
-<codeline lineno="83" refid="structostk_1_1simulation_1_1_simulator_configuration_1aa42414403bb4d50e000ed4a78bac78b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;SatelliteConfiguration&gt;<sp/><ref refid="structostk_1_1simulation_1_1_simulator_configuration_1aa42414403bb4d50e000ed4a78bac78b5" kindref="member">satellites</ref><sp/>=<sp/><ref refid="_simulator_8hpp_1a233d40e3dd62e2ffb9f35a635f34fd36" kindref="member">DEFAULT_SATELLITES</ref>;</highlight></codeline>
-<codeline lineno="84"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>simulation</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_simulator" kindref="compound">Simulator</ref><sp/><ref refid="classostk_1_1simulation_1_1_simulator_1a99876309ee0abbb7fb47b232bb28e6db" kindref="member">Undefined</ref>();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Shared&lt;Simulator&gt;<sp/><ref refid="classostk_1_1simulation_1_1_simulator_1ad95b067abdc0a5ddf348897161af46f1" kindref="member">Configure</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1simulation_1_1_simulator_configuration" kindref="compound">SimulatorConfiguration</ref>&amp;<sp/>aSimulatorConfiguration);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>Environment<sp/>environment_;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>Map&lt;String,<sp/>Shared&lt;Satellite&gt;&gt;<sp/>satelliteMap_;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="structostk_1_1simulation_1_1_simulator_configuration" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structostk_1_1simulation_1_1_simulator_configuration" kindref="compound">SimulatorConfiguration</ref></highlight></codeline>
+<codeline lineno="85"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86" refid="structostk_1_1simulation_1_1_simulator_configuration_1a002747f47ff422d4be5745eeb476e8ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Environment<sp/><ref refid="structostk_1_1simulation_1_1_simulator_configuration_1a002747f47ff422d4be5745eeb476e8ea" kindref="member">environment</ref>;</highlight></codeline>
+<codeline lineno="87" refid="structostk_1_1simulation_1_1_simulator_configuration_1aa42414403bb4d50e000ed4a78bac78b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;SatelliteConfiguration&gt;<sp/><ref refid="structostk_1_1simulation_1_1_simulator_configuration_1aa42414403bb4d50e000ed4a78bac78b5" kindref="member">satellites</ref><sp/>=<sp/><ref refid="_simulator_8hpp_1a233d40e3dd62e2ffb9f35a635f34fd36" kindref="member">DEFAULT_SATELLITES</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>simulation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp"/>
   </compounddef>

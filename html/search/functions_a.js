@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['_7ecomponent_212',['~Component',['../classostk_1_1simulation_1_1_component.html#a57f790fdbb03f777e59d73218d2899ef',1,'ostk::simulation::Component']]],
-  ['_7ecomponentholder_213',['~ComponentHolder',['../classostk_1_1simulation_1_1utility_1_1_component_holder.html#a2d189ed7b58dd7dbddd2e619cf197c86',1,'ostk::simulation::utility::ComponentHolder']]],
-  ['_7esatellite_214',['~Satellite',['../classostk_1_1simulation_1_1_satellite.html#af6f1e69609eca81bda731d176a0f3786',1,'ostk::simulation::Satellite']]],
-  ['_7estate_215',['~State',['../classostk_1_1simulation_1_1component_1_1_state.html#a57c4cf4d8c50c2482402e3740483c29e',1,'ostk::simulation::component::State']]]
+  ['undefined_215',['Undefined',['../classostk_1_1simulation_1_1component_1_1_geometry.html#aea7bd504788b09119889a7cc70c88703',1,'ostk::simulation::component::Geometry::Undefined()'],['../classostk_1_1simulation_1_1component_1_1_state.html#a21a79240817592992c4791699b2d623f',1,'ostk::simulation::component::State::Undefined()'],['../classostk_1_1simulation_1_1_component.html#ad8849104db5f1e96a2de547bc1c11867',1,'ostk::simulation::Component::Undefined()'],['../classostk_1_1simulation_1_1_entity.html#aa42c610f1b96197f9fbf45711fe6a479',1,'ostk::simulation::Entity::Undefined()'],['../classostk_1_1simulation_1_1_satellite.html#a27b1931fa0cdd157ea5920060caf05fd',1,'ostk::simulation::Satellite::Undefined()'],['../classostk_1_1simulation_1_1_simulator.html#a99876309ee0abbb7fb47b232bb28e6db',1,'ostk::simulation::Simulator::Undefined()']]]
 ];

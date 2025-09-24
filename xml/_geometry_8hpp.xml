@@ -9,6 +9,7 @@
     <includes local="no">OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp</includes>
     <includedby refid="_component_8hpp" local="no">include/OpenSpaceToolkit/Simulation/Component.hpp</includedby>
     <includedby refid="_geometry_8cpp" local="no">src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp</includedby>
+    <includedby refid="_simulator_8cpp" local="no">src/OpenSpaceToolkit/Simulation/Simulator.cpp</includedby>
     <incdepgraph>
       <node id="2">
         <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
@@ -60,6 +61,8 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>include/OpenSpaceToolkit/Simulation/Component.hpp</label>
@@ -69,6 +72,8 @@
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>

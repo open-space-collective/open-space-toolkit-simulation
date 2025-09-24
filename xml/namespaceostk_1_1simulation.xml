@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Simulation/Simulator.cpp" line="23" column="1" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="23" bodyend="28"/>
+        <location file="src/OpenSpaceToolkit/Simulation/Simulator.cpp" line="34" column="1" bodyfile="src/OpenSpaceToolkit/Simulation/Simulator.cpp" bodystart="34" bodyend="39"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
