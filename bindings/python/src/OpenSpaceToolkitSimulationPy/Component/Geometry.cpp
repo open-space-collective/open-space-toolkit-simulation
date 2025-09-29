@@ -166,12 +166,12 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
         .def(
             "contains",
             overload_cast<const Celestial&>(&Geometry::contains, const_),
-            arg("geometry"),
+            arg("celestial"),
             R"doc(
                 Check if this geometry contains a celestial object.
 
                 Args:
-                    geometry (Celestial): The celestial object.
+                    celestial (Celestial): The celestial object.
 
                 Returns:
                     bool: True if this geometry contains the celestial object, False otherwise.

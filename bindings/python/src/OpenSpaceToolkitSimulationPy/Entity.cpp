@@ -32,7 +32,6 @@ inline void OpenSpaceToolkitSimulationPy_Entity(pybind11::module& aModule)
                         bool: True if the entity is defined, False otherwise.
 
                     Example:
-                        >>> entity = Entity("my-entity", "My Entity")
                         >>> entity.is_defined()
                         True
                 )doc"
