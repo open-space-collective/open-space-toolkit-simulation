@@ -406,10 +406,10 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                     id (str): The unique component identifier.
                     name (str): The component name.
                     type (Component.Type): The component type (optional).
-                    tags (list): Array of classification tags (optional).
+                    tags (list[str]): Array of classification tags (optional).
                     orientation (Quaternion): Orientation relative to parent (optional).
-                    geometries (list): Array of geometry configurations (optional).
-                    components (list): Array of child component configurations (optional).
+                    geometries (list[GeometryConfiguration]): Array of geometry configurations (optional).
+                    components (list[ComponentConfiguration]): Array of child component configurations (optional).
 
                 Returns:
                     ComponentConfiguration: The configuration instance.
