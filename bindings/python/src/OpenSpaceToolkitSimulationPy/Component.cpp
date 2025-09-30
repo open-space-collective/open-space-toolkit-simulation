@@ -67,9 +67,9 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                         id (str): The unique component identifier.
                         name (str): The component name.
                         type (Component.Type): The component type (Assembly, Sensor, etc.).
-                        tags (list): Array of classification tags.
-                        geometries (list): Array of geometry objects.
-                        components (list): Array of child components.
+                        tags (list[str]): Array of classification tags.
+                        geometries (list[Geometry]): Array of geometry objects.
+                        components (list[Component]): Array of child components.
                         parent (ComponentHolder): The parent component holder.
                         frame (Frame): The component reference frame.
                         simulator (Simulator): Reference to the parent simulator.
