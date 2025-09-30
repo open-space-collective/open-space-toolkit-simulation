@@ -282,7 +282,7 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
 
                 Args:
                     environment (Environment): The physics environment.
-                    satellites (list): Array of satellite configurations (optional).
+                    satellites (list[SatelliteConfiguration]): Array of satellite configurations (optional).
 
                 Returns:
                     SimulatorConfiguration: The configuration instance.
