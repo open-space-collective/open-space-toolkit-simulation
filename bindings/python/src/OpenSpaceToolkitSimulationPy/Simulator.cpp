@@ -37,7 +37,7 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
 
                 Args:
                     environment (Environment): The physics environment (celestial bodies, gravity, etc.).
-                    satellites (list): Array of satellite objects to simulate.
+                    satellites (list[Satellite]): Array of satellite objects to simulate.
 
                 Returns:
                     Simulator: The simulator instance.
