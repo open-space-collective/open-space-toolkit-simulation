@@ -186,9 +186,9 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
                     id (str): The unique satellite identifier.
                     name (str): The satellite name.
                     profile (Profile): The astrodynamics profile (trajectory).
-                    components (list): Array of component configurations (optional).
-                    tags (list): Array of classification tags (optional).
-                    geometries (list): Array of geometry configurations (optional).
+                    components (list[ComponentConfiguration]): Array of component configurations (optional).
+                    tags (list[str]): Array of classification tags (optional).
+                    geometries (list[GeometryConfiguration]): Array of geometry configurations (optional).
 
                 Returns:
                     SatelliteConfiguration: The configuration instance.
