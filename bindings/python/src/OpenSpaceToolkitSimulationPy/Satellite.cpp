@@ -59,7 +59,7 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
                     name (str): The satellite name.
                     tags (list[str]): Array of classification tags.
                     geometries (list[Geometry]): Array of geometry objects.
-                    components (list[Components]): Array of child components.
+                    components (list[Component]): Array of child components.
                     frame (Frame): The satellite reference frame.
                     profile (Profile): The astrodynamics profile (trajectory).
                     simulator (Simulator): Reference to the parent simulator.
