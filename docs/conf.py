@@ -34,7 +34,7 @@ extensions = [
 
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ["templates"]
+templates_path = ["_templates"]
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -182,23 +182,11 @@ intersphinx_mapping = {
         "https://open-space-collective.github.io/open-space-toolkit-physics/_build/html/",
         None,
     ),
-    "ostk.simulation": (
-        "https://open-space-collective.github.io/open-space-toolkit-simulation/_build/html/",
+    "ostk.astrodynamics": (
+        "https://open-space-collective.github.io/open-space-toolkit-astrodynamics/_build/html/",
         None,
     ),
 }
-
-
-def autodoc_process_docstring(app, what, name, obj, options, lines):
-    for i in range(len(lines)):
-        lines[i] = lines[i].replace("np.", "numpy.")
-        # lines[i] = lines[i].replace("np.", "~numpy.")  # For shorter links
-        lines[i] = lines[i].replace("F.", "torch.nn.functional.")
-        lines[i] = lines[i].replace("List[", "~typing.List[")
-
-
-def setup(app):
-    app.connect("autodoc-process-docstring", autodoc_process_docstring)
 
 
 # -- Breathe configuration -------------------------------------------------
