@@ -2,8 +2,62 @@
 
 SET (OpenSpaceToolkitSimulation_ROOT_DIR ${OpenSpaceToolkitSimulation_ROOT_DIR} @CMAKE_INSTALL_PREFIX@)
 
-FIND_PATH (OpenSpaceToolkitSimulation_INCLUDE_DIR "OpenSpaceToolkit/Simulation/Satellite.hpp" PATHS ${OpenSpaceToolkitSimulation_ROOT_DIR} PATH_SUFFIXES "include" NO_DEFAULT_PATH)
-FIND_LIBRARY (OpenSpaceToolkitSimulation_LIBRARY NAMES "libopen-space-toolkit-simulation.so" PATHS ${OpenSpaceToolkitSimulation_ROOT_DIR} PATH_SUFFIXES "lib" NO_DEFAULT_PATH)
+FIND_PATH (
+    OpenSpaceToolkitSimulation_INCLUDE_DIR
+    NAMES
+        "OpenSpaceToolkit/Simulation/Satellite.hpp"
+        "Satellite.hpp"
+    PATHS
+        ${OpenSpaceToolkitSimulation_ROOT_DIR}
+    PATH_SUFFIXES
+        "include"
+        "include/OpenSpaceToolkit/Simulation"
+    NO_DEFAULT_PATH
+)
+
+IF (WIN32)
+
+    # Link-time library (.lib)
+    FIND_LIBRARY (
+        OpenSpaceToolkitSimulation_LIBRARY
+        NAMES
+            "open-space-toolkit-simulation"
+            "libopen-space-toolkit-simulation"
+        PATHS
+            ${OpenSpaceToolkitSimulation_ROOT_DIR}
+        PATH_SUFFIXES
+            "lib"
+        NO_DEFAULT_PATH
+    )
+
+    # Runtime library (.dll), optional for deployment tooling
+    FIND_FILE (
+        OpenSpaceToolkitSimulation_RUNTIME_LIBRARY
+        NAMES
+            "open-space-toolkit-simulation.dll"
+        PATHS
+            ${OpenSpaceToolkitSimulation_ROOT_DIR}
+        PATH_SUFFIXES
+            "bin"
+            "lib"
+        NO_DEFAULT_PATH
+    )
+
+ELSE ()
+
+    FIND_LIBRARY (
+        OpenSpaceToolkitSimulation_LIBRARY
+        NAMES
+            "libopen-space-toolkit-simulation.so"
+            "open-space-toolkit-simulation"
+        PATHS
+            ${OpenSpaceToolkitSimulation_ROOT_DIR}
+        PATH_SUFFIXES
+            "lib"
+        NO_DEFAULT_PATH
+    )
+
+ENDIF ()
 
 # MESSAGE (STATUS "OpenSpaceToolkitSimulation_ROOT_DIR = ${OpenSpaceToolkitSimulation_ROOT_DIR}")
 # MESSAGE (STATUS "OpenSpaceToolkitSimulation_INCLUDE_DIR = ${OpenSpaceToolkitSimulation_INCLUDE_DIR}")
@@ -12,8 +66,19 @@ FIND_LIBRARY (OpenSpaceToolkitSimulation_LIBRARY NAMES "libopen-space-toolkit-si
 
 IF (OpenSpaceToolkitSimulation_INCLUDE_DIR)
 
-    SET (OpenSpaceToolkitSimulation_INCLUDE_DIRS ${OpenSpaceToolkitSimulation_INCLUDE_DIR} ${OpenSpaceToolkitSimulation_INCLUDE_DIR}/OpenSpaceToolkit/Simulation)
+    IF (EXISTS "${OpenSpaceToolkitSimulation_INCLUDE_DIR}/OpenSpaceToolkit/Simulation/Satellite.hpp")
+        SET (
+            OpenSpaceToolkitSimulation_INCLUDE_DIRS
+            ${OpenSpaceToolkitSimulation_INCLUDE_DIR}
+            ${OpenSpaceToolkitSimulation_INCLUDE_DIR}/OpenSpaceToolkit/Simulation
+        )
+    ELSE ()
+        # Fallback for legacy flat install layout where Satellite.hpp is directly under include.
+        SET (OpenSpaceToolkitSimulation_INCLUDE_DIRS ${OpenSpaceToolkitSimulation_INCLUDE_DIR})
+    ENDIF ()
+
     SET (OpenSpaceToolkitSimulation_LIBRARIES ${OpenSpaceToolkitSimulation_LIBRARY})
+    SET (OpenSpaceToolkitSimulation_RUNTIME_LIBRARIES ${OpenSpaceToolkitSimulation_RUNTIME_LIBRARY})
 
     SET (OpenSpaceToolkitSimulation_FOUND TRUE)
 

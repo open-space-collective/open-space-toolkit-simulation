@@ -18,11 +18,7 @@ SET (PROJECT_VENDOR_URL "lucas.bremond.info")
 
 ### Compatibility Check
 
-CMAKE_MINIMUM_REQUIRED (VERSION "2.8.12" FATAL_ERROR)
-
-### Paths
-
-SET (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake")
+CMAKE_MINIMUM_REQUIRED (VERSION "3.15" FATAL_ERROR)
 
 ### Policies
 
@@ -30,177 +26,35 @@ CMAKE_POLICY (SET "CMP0048" NEW)
 
 ### Options
 
-OPTION (BUILD_WHEELS_IN_CMAKE "Build python wheels with cmake." ON)
-
+OPTION (BUILD_WHEELS_IN_CMAKE "Build python wheels with CMake." OFF)
 
 ## Project Configuration
 
 PROJECT (${PROJECT_NAME} VERSION ${PROJECT_VERSION_STRING} LANGUAGES "C" "CXX")
 
-## Helper Functions
-
-### Improved FIND_PYTHON macro
-
-MACRO (FIND_PYTHON version)
-    FIND_PROGRAM (PYTHON_CONFIG_${version} python${version}-config)
-    IF (EXISTS ${PYTHON_CONFIG_${version}})
-        EXECUTE_PROCESS (COMMAND ${PYTHON_CONFIG_${version}} --includes OUTPUT_VARIABLE _python_include_args)
-        SEPARATE_ARGUMENTS (_python_includes UNIX_COMMAND "${_python_include_args}")
-        STRING (REPLACE "-I" "" _python_includes "${_python_includes}")
-        ADD_LIBRARY (python${version}::headers INTERFACE IMPORTED GLOBAL)
-        SET_TARGET_PROPERTIES (python${version}::headers PROPERTIES
-            INTERFACE_INCLUDE_DIRECTORIES "${_python_includes}"
-        )
-        EXECUTE_PROCESS (COMMAND ${PYTHON_CONFIG_${version}} --prefix OUTPUT_VARIABLE _python_prefix)
-        STRING (STRIP "${_python_prefix}" _python_prefix)
-        SET (PYTHON_${version}_EXECUTABLE "${_python_prefix}/bin/python${version}" CACHE PATH "")
-    ENDIF ()
-ENDMACRO ()
-
-### Function to grab python extension and use for target
-
-FUNCTION (PY_EXTENSION name version)
-    SET (_python_module_extension)
-    EXECUTE_PROCESS (COMMAND ${PYTHON_CONFIG_${version}} --extension-suffix OUTPUT_VARIABLE _python_module_extension)
-    STRING (STRIP "${_python_module_extension}" _python_module_extension)
-    SET_TARGET_PROPERTIES (${name} PROPERTIES PREFIX "" SUFFIX "${_python_module_extension}")
-ENDFUNCTION ()
-
-### Function to add python module using python::headers directly
-
-FUNCTION (PY_ADD_MODULE NAME)
-    SET (options)
-    SET (oneValueArgs PYTHON_VERSION)
-    SET (multiValueArgs)
-
-    CMAKE_PARSE_ARGUMENTS (PARSE "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
-    SET (PYTHON_VERSION ${PARSE_PYTHON_VERSION})
-
-    ADD_LIBRARY (${NAME} MODULE ${PARSE_UNPARSED_ARGUMENTS})
-    PYBIND11_STRIP (${NAME})
-    PY_EXTENSION (${NAME} ${PYTHON_VERSION})
-
-    # Source Code
-    TARGET_INCLUDE_DIRECTORIES (${NAME} PUBLIC "${CMAKE_SOURCE_DIR}/include")
-    TARGET_INCLUDE_DIRECTORIES (${NAME} PUBLIC "${CMAKE_SOURCE_DIR}/src")
-    TARGET_INCLUDE_DIRECTORIES (${NAME} PUBLIC "${PROJECT_SOURCE_DIR}/include")
-    TARGET_INCLUDE_DIRECTORIES (${NAME} PUBLIC "${PROJECT_SOURCE_DIR}/src")
-
-    # Pybind11/Python Headers
-    TARGET_LINK_LIBRARIES (${NAME} PRIVATE pybind11::module pybind11::lto python${PYTHON_VERSION}::headers)
-
-    TARGET_LINK_LIBRARIES (${NAME} PRIVATE ${SHARED_LIBRARY_TARGET})
-
-    # Target Properties
-    SET_TARGET_PROPERTIES (${NAME} PROPERTIES
-                          VERSION ${PROJECT_VERSION_STRING}
-                          SOVERSION ${PROJECT_VERSION_MAJOR}
-                          OUTPUT_NAME ${PROJECT_PACKAGE_NAME}
-                          CLEAN_DIRECT_OUTPUT 1
-                          PREFIX ""
-                          BUILD_WITH_INSTALL_RPATH TRUE
-                          INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/"
-                          C_VISIBILITY_PRESET hidden
-                          CXX_VISIBILITY_PRESET hidden
-    )
-ENDFUNCTION ()
-
-### Function preparing python package directory/build wheel for each python version
-
-FUNCTION (PY_ADD_PACKAGE_DIRECTORY NAME)
-    SET (options)
-    SET (oneValueArgs PYTHON_VERSION)
-
-    CMAKE_PARSE_ARGUMENTS (PARSE "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
-    SET (PYTHON_VERSION ${PARSE_PYTHON_VERSION})
-
-    SET (DEPS "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py")
-    SET (OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/build/timestamp_${PYTHON_VERSION}")
-
-    # Package directory name
-    SET (PACKAGE_DIRECTORY_NAME ${NAME})
-
-    # Set platforme name for wheel
-    if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
-        SET (PLATFORM "manylinux2014_x86_64")
-    ELSEIF(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
-        SET (PLATFORM "manylinux2014_aarch64")
-    ELSE()
-        MESSAGE (FATAL_ERROR "Unsupported platform")
-    ENDIF()
-
-    # Get python extension for relevant shared library spotting
-    STRING (REPLACE "." "" EXTENSION "${PYTHON_VERSION}")
-
-    # Configure setup.cfg file
-    SET (SETUP_CFG_IN "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/setup.cfg.in")
-    SET (SETUP_CFG "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/setup.cfg")
-    CONFIGURE_FILE (${SETUP_CFG_IN} ${SETUP_CFG})
-
-    # Configure pyproject.toml file
-    SET (PYPROJECT_TOML_IN "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/pyproject.toml.in")
-    SET (PYPROJECT_TOML "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/pyproject.toml")
-    CONFIGURE_FILE (${PYPROJECT_TOML_IN} ${PYPROJECT_TOML})
-
-    IF (BUILD_WHEELS_IN_CMAKE)
-
-        # Build wheels with cmake
-        ADD_CUSTOM_COMMAND (OUTPUT ${OUTPUT}
-                            COMMAND mkdir -p "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}"
-                            COMMAND rm -rf "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/test"
-                            COMMAND cp -r "${CMAKE_CURRENT_SOURCE_DIR}/test" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/test"
-                            COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_GROUP}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_GROUP}/__init__.py"
-                            COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/__init__.py"
-                            COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${SHARED_LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/${SHARED_LIBRARY_TARGET}.${PROJECT_VERSION_MAJOR}"
-                            COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${LIBRARY_TARGET}.*${EXTENSION}*.so" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/"
-                            COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/requirements.txt" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/requirements.txt"
-                            COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/README.md" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/README.md"
-                            COMMAND cd "${CMAKE_CURRENT_BINARY_DIR}/${NAME}" && python${PYTHON_VERSION} -m pip install .
-                            COMMAND python${PYTHON_VERSION} -m "pybind11_stubgen" -o "${CMAKE_CURRENT_BINARY_DIR}/${NAME}" "${PROJECT_GROUP}.${PROJECT_SUBGROUP}" # generate stubs in same dir as binaries
-                            COMMAND find "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_GROUP}" -type f -name "*.pyi" -exec sed -i "s/: \\\\.\\\\.\\\\./: typing.Any/g" {} + # crudely fix stubs with invalid syntax
-                            COMMAND cd "${CMAKE_CURRENT_BINARY_DIR}/${NAME}" && python${PYTHON_VERSION} -m build --no-isolation -w
-                            COMMAND mkdir -p "${CMAKE_CURRENT_BINARY_DIR}/dist"
-                            COMMAND cp "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/dist/*" "${CMAKE_CURRENT_BINARY_DIR}/dist"
-                            DEPENDS ${DEPS})
-
-        ELSE()
-        # Build package directories only to integrate with a ci build wheel process
-        ADD_CUSTOM_COMMAND (OUTPUT ${OUTPUT}
-                            COMMAND mkdir -p "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}"
-                            COMMAND rm -rf "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/test"
-                            COMMAND cp -r "${CMAKE_CURRENT_SOURCE_DIR}/test" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/test"
-                            COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_GROUP}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_GROUP}/__init__.py"
-                            COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/__init__.py"
-                            COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${SHARED_LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/libopen-space-toolkit-simulation.so.0"
-                            COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${LIBRARY_TARGET}.*${EXTENSION}*.so" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/"
-                            DEPENDS ${DEPS})
-    ENDIF ()
-    ADD_CUSTOM_TARGET (${NAME} ALL DEPENDS ${OUTPUT})
-    ADD_DEPENDENCIES (${NAME} "${LIBRARY_TARGET}_${PYTHON_VERSION}")
-ENDFUNCTION ()
-
 ## Dependencies
 
 ### Pybind11
 
-SET (PYBIND11_NOPYTHON ON)
-FIND_PACKAGE (pybind11 2.12.0 REQUIRED)
+SET (PYBIND11_FINDPYTHON ON)
+FIND_PACKAGE (Python REQUIRED COMPONENTS Interpreter Development.Module)
 
-### Python
+FIND_PACKAGE (pybind11 2.12.0 QUIET)
 
-# Decide on the versions to build for and support
-SET (PYTHON_SEARCH_VERSIONS 3.9 3.10 3.11 3.12 3.13 CACHE STRING "Versions of Python bindings to build.")
-
-MESSAGE (STATUS "Looking for available python versions...")
-FOREACH (PYTHON_VERSION ${PYTHON_SEARCH_VERSIONS})
-    FIND_PYTHON (${PYTHON_VERSION})
-    IF (TARGET python${PYTHON_VERSION}::headers)
-        MESSAGE (STATUS "Python ${PYTHON_VERSION} found.")
-        LIST (APPEND PYTHON_VERSIONS ${PYTHON_VERSION})
+IF (NOT pybind11_FOUND)
+    SET (LOCAL_PYBIND11_DIR "${CMAKE_SOURCE_DIR}/../pybind11-master")
+    IF (EXISTS "${LOCAL_PYBIND11_DIR}/CMakeLists.txt")
+        ADD_SUBDIRECTORY ("${LOCAL_PYBIND11_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/pybind11-local" EXCLUDE_FROM_ALL)
     ELSE ()
-        MESSAGE (STATUS "Python ${PYTHON_VERSION} not found.")
+        INCLUDE (FetchContent)
+        FetchContent_Declare (
+            pybind11
+            URL https://github.com/pybind/pybind11/archive/refs/tags/v2.12.0.zip
+            DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+        )
+        FetchContent_MakeAvailable (pybind11)
     ENDIF ()
-ENDFOREACH ()
+ENDIF ()
 
 ## Target
 
@@ -209,29 +63,101 @@ SET (LIBRARY_TARGET "${LIBRARY_NAME}")
 
 FILE (GLOB_RECURSE PROJECT_SRCS "${PROJECT_SOURCE_DIR}/src/*.cxx")
 
-# Global library target
-ADD_CUSTOM_TARGET (${LIBRARY_TARGET})
+pybind11_add_module (${LIBRARY_TARGET} MODULE ${PROJECT_SRCS})
 
-# Build python-specific shared library targets (.so)
-FOREACH (PYTHON_VERSION ${PYTHON_VERSIONS})
-    MESSAGE (STATUS "Building shared library for python ${PYTHON_VERSION}...")
-    PY_ADD_MODULE ("${LIBRARY_TARGET}_${PYTHON_VERSION}" ${PROJECT_SRCS} PYTHON_VERSION ${PYTHON_VERSION})
-    ADD_DEPENDENCIES (${LIBRARY_TARGET} "${LIBRARY_TARGET}_${PYTHON_VERSION}")
+TARGET_INCLUDE_DIRECTORIES (${LIBRARY_TARGET} PUBLIC "${CMAKE_SOURCE_DIR}/include")
+TARGET_INCLUDE_DIRECTORIES (${LIBRARY_TARGET} PUBLIC "${CMAKE_SOURCE_DIR}/src")
+TARGET_INCLUDE_DIRECTORIES (${LIBRARY_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/include")
+TARGET_INCLUDE_DIRECTORIES (${LIBRARY_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/src")
 
-    # Install make commands for each python version
-    INSTALL (TARGETS ${LIBRARY_TARGET}_${PYTHON_VERSION} DESTINATION "${INSTALL_LIB}/${PROJECT_PATH}" COMPONENT "python")
-    INSTALL (FILES "${PROJECT_SOURCE_DIR}/tools/python/${PROJECT_GROUP}/__init__.py" DESTINATION "${INSTALL_LIB}/${PROJECT_GROUP}" COMPONENT "python")
-    INSTALL (FILES "${PROJECT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" DESTINATION "${INSTALL_LIB}/${PROJECT_PATH}" COMPONENT "python")
-ENDFOREACH ()
+TARGET_LINK_LIBRARIES (${LIBRARY_TARGET} PRIVATE pybind11::module)
+TARGET_LINK_LIBRARIES (${LIBRARY_TARGET} PRIVATE ${SHARED_LIBRARY_TARGET})
 
-## Generate python package directory/wheels
+TARGET_COMPILE_DEFINITIONS (${LIBRARY_TARGET} PRIVATE VERSION_INFO="${PROJECT_VERSION_STRING}")
 
-# Generate a python-package target for each of the python versions that are considered here
+IF (MSVC)
+    # Work around intermittent MSVC optimizer internal errors when compiling pybind wrappers in Release.
+    TARGET_COMPILE_OPTIONS (${LIBRARY_TARGET} PRIVATE $<$<CONFIG:Release>:/Od> $<$<CONFIG:Release>:/Ob0>)
+ENDIF ()
+
+SET_TARGET_PROPERTIES (
+    ${LIBRARY_TARGET}
+    PROPERTIES
+        VERSION ${PROJECT_VERSION_STRING}
+        SOVERSION ${PROJECT_VERSION_MAJOR}
+        OUTPUT_NAME ${PROJECT_PACKAGE_NAME}
+        CLEAN_DIRECT_OUTPUT 1
+        PREFIX ""
+        C_VISIBILITY_PRESET hidden
+        CXX_VISIBILITY_PRESET hidden
+)
+
+IF (UNIX)
+    SET_TARGET_PROPERTIES (
+        ${LIBRARY_TARGET}
+        PROPERTIES
+            BUILD_WITH_INSTALL_RPATH TRUE
+            INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/"
+    )
+ENDIF ()
+
+INSTALL (TARGETS ${LIBRARY_TARGET} DESTINATION "${INSTALL_LIB}/${PROJECT_PATH}" COMPONENT "python")
+INSTALL (FILES "${PROJECT_SOURCE_DIR}/tools/python/${PROJECT_GROUP}/__init__.py" DESTINATION "${INSTALL_LIB}/${PROJECT_GROUP}" COMPONENT "python")
+INSTALL (FILES "${PROJECT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" DESTINATION "${INSTALL_LIB}/${PROJECT_PATH}" COMPONENT "python")
+
+## Optional package directory / wheel flow (cross-platform file commands)
+
 SET (PACKAGE_NAME ${PROJECT_PACKAGE_NAME})
 SET (PACKAGE_TARGET "${PACKAGE_NAME}-python-package")
+SET (PACKAGE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${PACKAGE_TARGET}")
+SET (PACKAGE_STAMP "${PACKAGE_DIRECTORY}/.stamp")
 
-# Build python-specific directory to build wheels
-FOREACH (PYTHON_VERSION ${PYTHON_VERSIONS})
-    MESSAGE (STATUS "Building package directory for python ${PYTHON_VERSION}...")
-    PY_ADD_PACKAGE_DIRECTORY ("${PACKAGE_TARGET}-${PYTHON_VERSION}" PYTHON_VERSION ${PYTHON_VERSION})
-ENDFOREACH ()
+IF (WIN32)
+    SET (PLATFORM "win_amd64")
+ELSEIF (CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
+    SET (PLATFORM "manylinux2014_x86_64")
+ELSEIF (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
+    SET (PLATFORM "manylinux2014_aarch64")
+ELSE ()
+    SET (PLATFORM "any")
+ENDIF ()
+
+SET (EXTENSION "${Python_VERSION_MAJOR}${Python_VERSION_MINOR}")
+
+SET (SETUP_CFG_IN "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/setup.cfg.in")
+SET (SETUP_CFG "${CMAKE_CURRENT_BINARY_DIR}/setup.cfg")
+CONFIGURE_FILE (${SETUP_CFG_IN} ${SETUP_CFG} @ONLY)
+
+SET (PYPROJECT_TOML_IN "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/pyproject.toml.in")
+SET (PYPROJECT_TOML "${CMAKE_CURRENT_BINARY_DIR}/pyproject.toml")
+CONFIGURE_FILE (${PYPROJECT_TOML_IN} ${PYPROJECT_TOML} @ONLY)
+
+ADD_CUSTOM_COMMAND (
+    OUTPUT ${PACKAGE_STAMP}
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${PACKAGE_DIRECTORY}/${PROJECT_PATH}"
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${PACKAGE_DIRECTORY}/${PROJECT_GROUP}"
+    COMMAND ${CMAKE_COMMAND} -E remove_directory "${PACKAGE_DIRECTORY}/${PROJECT_PATH}/test"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/test" "${PACKAGE_DIRECTORY}/${PROJECT_PATH}/test"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_GROUP}/__init__.py" "${PACKAGE_DIRECTORY}/${PROJECT_GROUP}/__init__.py"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/tools/python/${PROJECT_PATH}/__init__.py" "${PACKAGE_DIRECTORY}/${PROJECT_PATH}/__init__.py"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/requirements.txt" "${PACKAGE_DIRECTORY}/requirements.txt"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/README.md" "${PACKAGE_DIRECTORY}/README.md"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${SETUP_CFG}" "${PACKAGE_DIRECTORY}/setup.cfg"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${PYPROJECT_TOML}" "${PACKAGE_DIRECTORY}/pyproject.toml"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "$<TARGET_FILE:${LIBRARY_TARGET}>" "${PACKAGE_DIRECTORY}/${PROJECT_PATH}/"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "$<TARGET_FILE:${SHARED_LIBRARY_TARGET}>" "${PACKAGE_DIRECTORY}/${PROJECT_PATH}/"
+    COMMAND ${CMAKE_COMMAND} -E touch ${PACKAGE_STAMP}
+    DEPENDS ${LIBRARY_TARGET}
+    VERBATIM
+)
+
+ADD_CUSTOM_TARGET (${PACKAGE_TARGET} DEPENDS ${PACKAGE_STAMP})
+
+IF (BUILD_WHEELS_IN_CMAKE)
+    ADD_CUSTOM_TARGET (
+        "${PACKAGE_TARGET}-wheel"
+        COMMAND ${CMAKE_COMMAND} -E chdir "${PACKAGE_DIRECTORY}" ${Python_EXECUTABLE} -m pip install . --no-deps
+        COMMAND ${CMAKE_COMMAND} -E chdir "${PACKAGE_DIRECTORY}" ${Python_EXECUTABLE} -m build --no-isolation -w
+        DEPENDS ${PACKAGE_TARGET}
+    )
+ENDIF ()
