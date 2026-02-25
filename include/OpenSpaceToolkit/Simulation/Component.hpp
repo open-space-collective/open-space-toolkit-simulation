@@ -296,13 +296,13 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
 /// @brief Configuration for constructing a Component.
 struct ComponentConfiguration
 {
-    const String id;                                                            ///< The identifier.
-    const String name;                                                          ///< The name.
-    const Component::Type type = DEFAULT_COMPONENT_TYPE;                        ///< The component type.
-    const Array<String> tags = DEFAULT_TAGS;                                     ///< The tags.
-    const Quaternion orientation = DEFAULT_ORIENTATION;                          ///< The orientation quaternion.
-    const Array<GeometryConfiguration> geometries = DEFAULT_GEOMETRIES;          ///< The geometry configurations.
-    const Array<ComponentConfiguration> components = DEFAULT_COMPONENTS;          ///< The child component configurations.
+    const String id;                                                      ///< The identifier.
+    const String name;                                                    ///< The name.
+    const Component::Type type = DEFAULT_COMPONENT_TYPE;                  ///< The component type.
+    const Array<String> tags = DEFAULT_TAGS;                              ///< The tags.
+    const Quaternion orientation = DEFAULT_ORIENTATION;                   ///< The orientation quaternion.
+    const Array<GeometryConfiguration> geometries = DEFAULT_GEOMETRIES;   ///< The geometry configurations.
+    const Array<ComponentConfiguration> components = DEFAULT_COMPONENTS;  ///< The child component configurations.
 };
 
 }  // namespace simulation

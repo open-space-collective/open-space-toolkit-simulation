@@ -204,8 +204,8 @@ class Simulator
 /// @brief Configuration for constructing a Simulator.
 struct SimulatorConfiguration
 {
-    const Environment environment;                                          ///< The environment.
-    const Array<SatelliteConfiguration> satellites = DEFAULT_SATELLITES;    ///< The satellite configurations.
+    const Environment environment;                                        ///< The environment.
+    const Array<SatelliteConfiguration> satellites = DEFAULT_SATELLITES;  ///< The satellite configurations.
 };
 
 }  // namespace simulation

@@ -178,12 +178,12 @@ class Satellite : public Component
 /// @brief Configuration for constructing a Satellite.
 struct SatelliteConfiguration
 {
-    const String id;                                                            ///< The identifier.
-    const String name;                                                          ///< The name.
-    const Profile profile;                                                      ///< The flight profile.
-    const Array<ComponentConfiguration> components = DEFAULT_COMPONENTS;         ///< The child component configurations.
-    const Array<String> tags = DEFAULT_TAGS;                                     ///< The tags.
-    const Array<GeometryConfiguration> geometries = DEFAULT_GEOMETRIES;          ///< The geometry configurations.
+    const String id;                                                      ///< The identifier.
+    const String name;                                                    ///< The name.
+    const Profile profile;                                                ///< The flight profile.
+    const Array<ComponentConfiguration> components = DEFAULT_COMPONENTS;  ///< The child component configurations.
+    const Array<String> tags = DEFAULT_TAGS;                              ///< The tags.
+    const Array<GeometryConfiguration> geometries = DEFAULT_GEOMETRIES;   ///< The geometry configurations.
 };
 
 }  // namespace simulation

@@ -233,8 +233,8 @@ class Geometry
 /// @brief Configuration for constructing a Geometry.
 struct GeometryConfiguration
 {
-    const String name;              ///< The geometry name.
-    const Composite composite;      ///< The 3D composite object.
+    const String name;          ///< The geometry name.
+    const Composite composite;  ///< The 3D composite object.
 };
 
 }  // namespace component
