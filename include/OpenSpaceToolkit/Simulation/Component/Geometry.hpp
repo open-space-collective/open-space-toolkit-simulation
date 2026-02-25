@@ -32,116 +32,194 @@ using ostk::physics::environment::object::Celestial;
 
 struct GeometryConfiguration;
 
-/// @brief                      Component geometry
-
+/// @brief A geometry associated with a component.
+/// @details Represents a 3D geometric shape (Composite) attached to a Component, enabling
+///          spatial queries such as intersection and containment checks against other geometries
+///          and celestial objects.
+///
+/// @code{.cpp}
+///     Geometry geometry("fov", composite, componentSPtr);
+///     bool defined = geometry.isDefined();
+///     bool doesIntersect = geometry.intersects(otherGeometry);
+/// @endcode
 class Geometry
 {
    public:
+    /// @brief Construct a geometry.
+    ///
+    /// @code{.cpp}
+    ///     Geometry geometry("fov", composite, componentSPtr);
+    /// @endcode
+    ///
+    /// @param [in] aName A name.
+    /// @param [in] aComposite A composite 3D object.
+    /// @param [in] aComponentSPtr A shared pointer to the owning component.
     Geometry(const String& aName, const Composite& aComposite, const Shared<const Component>& aComponentSPtr);
 
-    /// @brief              Copy assignment operator
+    /// @brief Equal to operator.
     ///
-    /// @param              [in] aGeometry A geometry
-    /// @return             Reference to geometry
-
-    /// @brief              Equal to operator
+    /// @code{.cpp}
+    ///     bool isEqual = (firstGeometry == secondGeometry);
+    /// @endcode
     ///
-    /// @param              [in] aGeometry A geometry
-    /// @return             True if geometries are equal
-
+    /// @param [in] aGeometry A geometry.
+    /// @return True if geometries are equal.
     bool operator==(const Geometry& aGeometry) const;
 
-    /// @brief              Not equal to operator
+    /// @brief Not equal to operator.
     ///
-    /// @param              [in] aGeometry A geometry
-    /// @return             True if geometries are not equal
-
+    /// @code{.cpp}
+    ///     bool isNotEqual = (firstGeometry != secondGeometry);
+    /// @endcode
+    ///
+    /// @param [in] aGeometry A geometry.
+    /// @return True if geometries are not equal.
     bool operator!=(const Geometry& aGeometry) const;
 
-    /// @brief              Output stream operator
+    /// @brief Output stream operator.
     ///
-    /// @param              [in] anOutputStream An output stream
-    /// @param              [in] aGeometry A geometry
-    /// @return             A reference to output stream
-
+    /// @code{.cpp}
+    ///     std::cout << geometry;
+    /// @endcode
+    ///
+    /// @param [in] anOutputStream An output stream.
+    /// @param [in] aGeometry A geometry.
+    /// @return A reference to the output stream.
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Geometry& aGeometry);
 
-    /// @brief              Check if geometry is defined
+    /// @brief Check if the geometry is defined.
     ///
-    /// @return             True if geometry is defined
-
+    /// @code{.cpp}
+    ///     bool defined = geometry.isDefined();
+    /// @endcode
+    ///
+    /// @return True if the geometry is defined.
     bool isDefined() const;
 
-    ///                     TBI
-
+    /// @brief Access the owning component.
+    ///
+    /// @code{.cpp}
+    ///     const Component& component = geometry.accessComponent();
+    /// @endcode
+    ///
+    /// @return A reference to the owning component.
     const Component& accessComponent() const;
 
-    ///                     TBI
-
+    /// @brief Get the name of the geometry.
+    ///
+    /// @code{.cpp}
+    ///     String name = geometry.getName();
+    /// @endcode
+    ///
+    /// @return The name.
     String getName() const;
 
-    /// @brief              Check if geometry intersects another geometry
+    /// @brief Check if the geometry intersects another geometry.
     ///
-    /// @param              [in] aGeometry A geometry
-    /// @return             True if geometry intersects another geometry
-
+    /// @code{.cpp}
+    ///     bool doesIntersect = geometry.intersects(otherGeometry);
+    /// @endcode
+    ///
+    /// @param [in] aGeometry A geometry.
+    /// @return True if the geometries intersect.
     bool intersects(const ObjectGeometry& aGeometry) const;
 
-    /// @brief              Check if geometry intersects a celestial object
+    /// @brief Check if the geometry intersects a celestial object.
     ///
-    /// @param              [in] aCelestialObject A celestial object
-    /// @return             True if geometry intersects a celestial object
-
+    /// @code{.cpp}
+    ///     bool doesIntersect = geometry.intersects(celestialObject);
+    /// @endcode
+    ///
+    /// @param [in] aCelestialObject A celestial object.
+    /// @return True if the geometry intersects the celestial object.
     bool intersects(const Celestial& aCelestialObject) const;
 
-    /// @brief              Check if geometry contains another geometry
+    /// @brief Check if the geometry contains another geometry.
     ///
-    /// @param              [in] aGeometry A geometry
-    /// @return             True if geometry contains another geometry
-
+    /// @code{.cpp}
+    ///     bool doesContain = geometry.contains(otherGeometry);
+    /// @endcode
+    ///
+    /// @param [in] aGeometry A geometry.
+    /// @return True if this geometry contains the other geometry.
     bool contains(const ObjectGeometry& aGeometry) const;
 
-    /// @brief              Check if geometry contains a celestial object
+    /// @brief Check if the geometry contains a celestial object.
     ///
-    /// @param              [in] aCelestialObject A celestial object
-    /// @return             True if geometry contains a celestial object
-
+    /// @code{.cpp}
+    ///     bool doesContain = geometry.contains(celestialObject);
+    /// @endcode
+    ///
+    /// @param [in] aCelestialObject A celestial object.
+    /// @return True if the geometry contains the celestial object.
     bool contains(const Celestial& aCelestialObject) const;
 
-    /// @brief              Access composite
+    /// @brief Access the composite 3D object.
     ///
-    /// @return             Reference to composite
-
+    /// @code{.cpp}
+    ///     const Composite& composite = geometry.accessComposite();
+    /// @endcode
+    ///
+    /// @return A reference to the composite.
     const Composite& accessComposite() const;
 
-    /// @brief              Access frame
+    /// @brief Access the reference frame.
     ///
-    /// @return             Shared pointer to frame
-
+    /// @code{.cpp}
+    ///     Shared<const Frame> frame = geometry.accessFrame();
+    /// @endcode
+    ///
+    /// @return A shared pointer to the frame.
     Shared<const Frame> accessFrame() const;
 
-    /// @brief              Get geometry in frame
+    /// @brief Get the geometry expressed in a given frame.
     ///
-    /// @return             Geometry
-
+    /// @code{.cpp}
+    ///     ObjectGeometry geom = geometry.getGeometryIn(frameSPtr);
+    /// @endcode
+    ///
+    /// @param [in] aFrameSPtr A shared pointer to the target frame.
+    /// @return The geometry in the target frame.
     ObjectGeometry getGeometryIn(const Shared<const Frame>& aFrameSPtr) const;
 
-    /// @brief              Compute intersection of geometry with another geometry
+    /// @brief Compute the intersection with another geometry.
     ///
-    /// @param              [in] aGeometry A geometry
-    /// @return             Intersection of geometry with another geometry
-
+    /// @code{.cpp}
+    ///     ObjectGeometry intersection = geometry.intersectionWith(otherGeometry);
+    /// @endcode
+    ///
+    /// @param [in] aGeometry A geometry.
+    /// @return The intersection geometry.
     ObjectGeometry intersectionWith(const ObjectGeometry& aGeometry) const;
 
-    /// @brief              Compute intersection of geometry with a celestial object
+    /// @brief Compute the intersection with a celestial object.
     ///
-    /// @param              [in] aCelestialObject A celestial object
-    /// @return             Intersection of geometry with a celestial object
-
+    /// @code{.cpp}
+    ///     ObjectGeometry intersection = geometry.intersectionWith(celestialObject);
+    /// @endcode
+    ///
+    /// @param [in] aCelestialObject A celestial object.
+    /// @return The intersection geometry.
     ObjectGeometry intersectionWith(const Celestial& aCelestialObject) const;
 
+    /// @brief Construct an undefined geometry.
+    ///
+    /// @code{.cpp}
+    ///     Geometry geometry = Geometry::Undefined();
+    /// @endcode
+    ///
+    /// @return An undefined geometry.
     static Geometry Undefined();
 
+    /// @brief Configure a geometry from a configuration.
+    ///
+    /// @code{.cpp}
+    ///     Shared<Geometry> geometry = Geometry::Configure(geometryConfiguration, componentSPtr);
+    /// @endcode
+    ///
+    /// @param [in] aGeometryConfiguration A geometry configuration.
+    /// @param [in] aComponentSPtr A shared pointer to the owning component.
+    /// @return A shared pointer to the configured geometry.
     static Shared<Geometry> Configure(
         const GeometryConfiguration& aGeometryConfiguration, const Shared<const Component>& aComponentSPtr
     );
@@ -152,10 +230,11 @@ class Geometry
     Shared<const Component> componentPtr_;
 };
 
+/// @brief Configuration for constructing a Geometry.
 struct GeometryConfiguration
 {
-    const String name;
-    const Composite composite;
+    const String name;              ///< The geometry name.
+    const Composite composite;      ///< The 3D composite object.
 };
 
 }  // namespace component

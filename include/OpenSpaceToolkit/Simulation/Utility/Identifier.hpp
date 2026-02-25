@@ -19,6 +19,13 @@ namespace utility
 
 using ostk::core::type::String;
 
+/// @brief Generate a unique identifier string.
+///
+/// @code{.cpp}
+///     String id = generateId();
+/// @endcode
+///
+/// @return A unique identifier string.
 String generateId();
 
 }  // namespace utility
