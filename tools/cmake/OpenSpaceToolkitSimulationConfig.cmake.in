@@ -6,12 +6,10 @@ FIND_PATH (
     OpenSpaceToolkitSimulation_INCLUDE_DIR
     NAMES
         "OpenSpaceToolkit/Simulation/Satellite.hpp"
-        "Satellite.hpp"
     PATHS
         ${OpenSpaceToolkitSimulation_ROOT_DIR}
     PATH_SUFFIXES
         "include"
-        "include/OpenSpaceToolkit/Simulation"
     NO_DEFAULT_PATH
 )
 
@@ -78,7 +76,9 @@ IF (OpenSpaceToolkitSimulation_INCLUDE_DIR)
     ENDIF ()
 
     SET (OpenSpaceToolkitSimulation_LIBRARIES ${OpenSpaceToolkitSimulation_LIBRARY})
-    SET (OpenSpaceToolkitSimulation_RUNTIME_LIBRARIES ${OpenSpaceToolkitSimulation_RUNTIME_LIBRARY})
+    IF (WIN32 AND OpenSpaceToolkitSimulation_RUNTIME_LIBRARY)
+        SET (OpenSpaceToolkitSimulation_RUNTIME_LIBRARIES ${OpenSpaceToolkitSimulation_RUNTIME_LIBRARY})
+    ENDIF ()
 
     SET (OpenSpaceToolkitSimulation_FOUND TRUE)
 
