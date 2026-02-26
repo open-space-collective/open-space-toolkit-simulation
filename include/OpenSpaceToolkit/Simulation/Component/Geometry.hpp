@@ -114,6 +114,16 @@ class Geometry
     /// @return The name.
     String getName() const;
 
+    /// @brief Print the geometry to an output stream.
+    ///
+    /// @code{.cpp}
+    ///     geometry.print(std::cout, true);
+    /// @endcode
+    ///
+    /// @param [in] anOutputStream An output stream.
+    /// @param [in] displayDecorators If true, display decorators.
+    void print(std::ostream& anOutputStream, bool displayDecorators = true) const;
+
     /// @brief Check if the geometry intersects another geometry.
     ///
     /// @code{.cpp}

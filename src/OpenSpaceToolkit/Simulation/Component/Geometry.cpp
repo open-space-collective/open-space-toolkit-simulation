@@ -38,9 +38,7 @@ bool Geometry::operator==(const Geometry& aGeometry) const
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Geometry& aGeometry)
 {
-    // TBI
-
-    (void)aGeometry;
+    aGeometry.print(anOutputStream, true);
 
     return anOutputStream;
 }
@@ -68,6 +66,15 @@ String Geometry::getName() const
     }
 
     return name_;
+}
+
+void Geometry::print(std::ostream& anOutputStream, bool displayDecorators) const
+{
+    displayDecorators ? ostk::core::utils::Print::Header(anOutputStream, "Geometry") : void();
+
+    ostk::core::utils::Print::Line(anOutputStream) << "Name:" << this->getName();
+    ostk::core::utils::Print::Line(anOutputStream) << "Geometry:" << geometry_;
+    ostk::core::utils::Print::Line(anOutputStream) << "Component:" << this->accessComponent();
 }
 
 bool Geometry::intersects(const ObjectGeometry& aGeometry) const

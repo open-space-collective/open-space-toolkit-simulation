@@ -5,6 +5,7 @@
 #include <OpenSpaceToolkit/Simulation/Component/State.hpp>
 #include <OpenSpaceToolkit/Simulation/Satellite.hpp>
 
+#include <OpenSpaceToolkit/Physics/Environment.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
@@ -18,8 +19,10 @@ using ostk::core::container::Array;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
+using ostk::physics::Environment;
 using ostk::physics::environment::object::celestial::Earth;
 using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
 using ostk::physics::time::Time;
 using ostk::physics::unit::Length;
 
@@ -38,8 +41,12 @@ class OpenSpaceToolkit_Simulation_Satellite : public ::testing::Test
    protected:
     void SetUp() override
     {
+        const Environment environment = Environment::Default();
         const Orbit orbit = Orbit::SunSynchronous(
-            Instant::J2000(), Length::Kilometers(7000.0), Time::Noon(), std::make_shared<Earth>(Earth::Default())
+            Instant::J2000(),
+            Length::Kilometers(500.0),
+            Time::Noon(),
+            environment.accessCelestialObjectWithName("Earth")
         );
 
         profile_ = Profile::LocalOrbitalFramePointing(orbit, Orbit::FrameType::VVLH);
