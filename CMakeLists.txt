@@ -30,7 +30,7 @@ OPTION (BUILD_WITHOUT_DEPRECATED_DECLARATION_WARNINGS "Build without deprecated 
 
 ### Compatibility Check
 
-CMAKE_MINIMUM_REQUIRED (VERSION "2.8.12" FATAL_ERROR)
+CMAKE_MINIMUM_REQUIRED (VERSION "3.15" FATAL_ERROR)
 
 ### Paths
 
@@ -39,6 +39,16 @@ LIST (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake")
 ### Policies
 
 CMAKE_POLICY (SET "CMP0048" NEW)
+IF (POLICY CMP0167)
+    CMAKE_POLICY (SET "CMP0167" NEW)
+ENDIF ()
+
+### Platform-specific defaults
+
+IF (WIN32)
+    # Windows platform defaults
+    SET (BUILD_WITH_BOOST_STACKTRACE OFF CACHE BOOL "Build with Boost Stacktrace instead of stacktrace basic" FORCE)
+ENDIF ()
 
 
 ## Version
@@ -165,6 +175,23 @@ IF (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 
     SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wshadow -Wno-deprecated")
 
+ELSEIF (MSVC)
+
+    # MSVC compiler configuration
+    SET (CMAKE_CXX_STANDARD 17)
+    SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /utf-8 /FS")
+
+    # Windows compatibility macros
+    ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS)
+    ADD_DEFINITIONS(-DNOMINMAX)
+    ADD_DEFINITIONS(-DWIN32_LEAN_AND_MEAN)
+    ADD_DEFINITIONS(-D_USE_MATH_DEFINES)
+
+    # Export all symbols for DLL
+    SET (CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
+    MESSAGE (STATUS "MSVC compiler configuration applied")
+
 ELSE ()
 
     SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wshadow")
@@ -177,8 +204,11 @@ SET (CMAKE_CXX_EXTENSIONS OFF)
 ### Debug Symbols
 
 IF (BUILD_WITH_DEBUG_SYMBOLS)
-
-    SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+    IF (MSVC)
+        SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Z7")
+    ELSE ()
+        SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+    ENDIF ()
 
 ENDIF ()
 
@@ -215,7 +245,7 @@ IF (WIN32)
     SET (INSTALL_DATA "bin")                            # C:\Programme\<project>
     SET (INSTALL_BIN "bin")                             # C:\Programme\<project>
     SET (INSTALL_LIB "lib")                             # C:\Programme\<project>\lib
-    SET (INSTALL_INCLUDE "include")                     # C:\Programme\<project>\include
+    SET (INSTALL_INCLUDE "include/${PROJECT_PATH}")     # C:\Programme\<project>\include\<project>
     SET (INSTALL_DOC "doc")                             # C:\Programme\<project>\doc
     SET (INSTALL_SHORTCUTS ".")                         # Not available under Windows
     SET (INSTALL_ICONS ".")                             # Not available under Windows
@@ -312,15 +342,29 @@ ENDIF ()
 
 FIND_PACKAGE ("Eigen3" REQUIRED)
 
-IF (EIGEN3_FOUND)
-    INCLUDE_DIRECTORIES (${EIGEN3_INCLUDE_DIR})
+IF (Eigen3_FOUND OR EIGEN3_FOUND)
+    IF (Eigen3_FOUND)
+        # Modern CMake config
+        INCLUDE_DIRECTORIES (${EIGEN3_INCLUDE_DIR})
+    ELSE ()
+        # Legacy FindEigen3
+        INCLUDE_DIRECTORIES (${EIGEN3_INCLUDE_DIR})
+    ENDIF ()
 ELSE ()
     MESSAGE (SEND_ERROR "[Eigen 3] not found.")
 ENDIF ()
 
-### Open Space Toolkit ▸ Core [5.x.y]
+### fmt
 
-FIND_PACKAGE ("OpenSpaceToolkitCore" "5" REQUIRED)
+FIND_PACKAGE ("fmt" CONFIG REQUIRED)
+
+IF (NOT fmt_FOUND)
+    MESSAGE (SEND_ERROR "[fmt] not found.")
+ENDIF ()
+
+### Open Space Toolkit ▸ Core
+
+FIND_PACKAGE ("OpenSpaceToolkitCore" REQUIRED)
 
 IF (NOT OpenSpaceToolkitCore_FOUND)
 
@@ -328,9 +372,9 @@ IF (NOT OpenSpaceToolkitCore_FOUND)
 
 ENDIF ()
 
-## Open Space Toolkit ▸ I/O [4.x.y]
+## Open Space Toolkit ▸ I/O
 
-FIND_PACKAGE ("OpenSpaceToolkitIO" "4" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitIO" REQUIRED)
 
 IF (NOT OpenSpaceToolkitIO_FOUND)
 
@@ -338,9 +382,9 @@ IF (NOT OpenSpaceToolkitIO_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ Mathematics [4.x.y]
+### Open Space Toolkit ▸ Mathematics
 
-FIND_PACKAGE ("OpenSpaceToolkitMathematics" "4" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitMathematics" REQUIRED)
 
 IF (NOT OpenSpaceToolkitMathematics_FOUND)
 
@@ -348,9 +392,9 @@ IF (NOT OpenSpaceToolkitMathematics_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ Physics [13.x.y]
+### Open Space Toolkit ▸ Physics
 
-FIND_PACKAGE ("OpenSpaceToolkitPhysics" "13" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitPhysics" REQUIRED)
 
 IF (NOT OpenSpaceToolkitPhysics_FOUND)
 
@@ -358,9 +402,9 @@ IF (NOT OpenSpaceToolkitPhysics_FOUND)
 
 ENDIF ()
 
-### Open Space Toolkit ▸ Astrodynamics [17.x.y]
+### Open Space Toolkit ▸ Astrodynamics
 
-FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" "17" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitAstrodynamics" REQUIRED)
 
 IF (NOT OpenSpaceToolkitAstrodynamics_FOUND)
 
@@ -395,16 +439,25 @@ IF (BUILD_SHARED_LIBRARY)
 
     ADD_LIBRARY (${SHARED_LIBRARY_TARGET} SHARED ${SHARED_LIBRARY_SRCS})
 
+    IF (MSVC)
+        TARGET_COMPILE_OPTIONS (${SHARED_LIBRARY_TARGET} PRIVATE /bigobj)
+    ENDIF ()
+
     TARGET_INCLUDE_DIRECTORIES (${SHARED_LIBRARY_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/include/")
     TARGET_INCLUDE_DIRECTORIES (${SHARED_LIBRARY_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/src/")
+    TARGET_INCLUDE_DIRECTORIES (${SHARED_LIBRARY_TARGET} PUBLIC "${CMAKE_INSTALL_PREFIX}/include")
 
-    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "pthread")
-    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "dl")
+    IF (UNIX)
+        TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "pthread")
+        TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "dl")
+    ENDIF ()
+
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitCore_LIBRARIES})
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitIO_LIBRARIES})
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitMathematics_LIBRARIES})
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitPhysics_LIBRARIES})
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitAstrodynamics_LIBRARIES})
+    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} fmt::fmt)
 
     SET_TARGET_PROPERTIES (${SHARED_LIBRARY_TARGET} PROPERTIES VERSION ${PROJECT_VERSION_STRING} SOVERSION ${PROJECT_VERSION_MAJOR} OUTPUT_NAME ${SHARED_LIBRARY_NAME} CLEAN_DIRECT_OUTPUT 1 INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/")
 
@@ -428,8 +481,10 @@ IF (BUILD_STATIC_LIBRARY)
 
     TARGET_INCLUDE_DIRECTORIES (${STATIC_LIBRARY_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/include/")
 
-    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "pthread")
-    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "dl")
+    IF (UNIX)
+        TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "pthread")
+        TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "dl")
+    ENDIF ()
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${OpenSpaceToolkitCore_LIBRARIES})
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${OpenSpaceToolkitIO_LIBRARIES})
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${OpenSpaceToolkitMathematics_LIBRARIES})
