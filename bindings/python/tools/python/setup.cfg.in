@@ -19,7 +19,7 @@ classifiers =
     Development Status :: 3 - Alpha
     Programming Language :: Python :: 3
     License :: OSI Approved :: Apache Software License
-    Operating System :: POSIX :: Linux
+    Operating System :: OS Independent
 
 [options]
 zip_safe = True
@@ -27,5 +27,5 @@ include_package_data = True
 install_requires = file: requirements.txt
 
 [options.package_data]
-ostk.simulation=${SHARED_LIBRARY_TARGET}.${PROJECT_VERSION_MAJOR}, ${LIBRARY_TARGET}.*${EXTENSION}*.so
+ostk.simulation=*.so, *.pyd, *.dll, *.dylib, *.lib
 *=*/data/*
