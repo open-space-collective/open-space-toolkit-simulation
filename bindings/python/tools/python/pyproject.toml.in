@@ -3,3 +3,52 @@
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "open-space-toolkit-simulation"
+version = "${PROJECT_VERSION_STRING}"
+description = "Spacecraft simulation."
+authors = [
+    {name = "Open Space Collective", email = "contact@open-space-collective.org"}
+]
+readme = "README.md"
+license = "Apache-2.0"
+keywords = ["open-space-collective", "open-space-toolkit", "simulation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+]
+requires-python = "~=${PYTHON_VERSION}.0"
+
+dependencies = [
+    "open-space-toolkit-core~=5.0",
+    "open-space-toolkit-io~=4.0",
+    "open-space-toolkit-mathematics~=4.3",
+    "open-space-toolkit-physics~=13.0",
+    "open-space-toolkit-astrodynamics~=17.0,!=17.10.0",  # 17.10.0 has a bug introduced by #688
+] 
+
+[project.optional-dependencies]
+prebuild = [
+    "pybind11-stubgen"
+]
+test = [
+    "pytest"
+]
+
+[tool.setuptools]
+zip-safe = true
+include-package-data = true
+# Declare a dummy extension module to force platform-specific wheel tags.
+# The actual .so files are pre-compiled and included via package-data.
+ext-modules = [
+    {name = "ostk.simulation._platform", sources = []}
+]
+
+[tool.setuptools.packages.find]
+include = ["ostk.simulation"]
+
+[tool.setuptools.package-data]
+"ostk.simulation" = ["${SHARED_LIBRARY_TARGET}.${PROJECT_VERSION_MAJOR}", "${LIBRARY_TARGET}.*${EXTENSION}*.so"]
+"*" = ["*/data/*"]

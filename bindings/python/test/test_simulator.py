@@ -223,9 +223,7 @@ class TestSimulator:
             "LoftSat-1"
         ).access_component_with_name("Camera")
         camera_geometry: Geometry = camera.access_geometry_with_name("FOV")
-        earth = simulator.access_environment().access_celestial_object_with_name(
-            "Earth"
-        )
+        earth = simulator.access_environment().access_celestial_object_with_name("Earth")
 
         assert camera_geometry.intersects(earth) is True
 
@@ -235,9 +233,7 @@ class TestSimulator:
         assert camera_geometry.get_geometry_in(Frame.ITRF()) is not None
 
         assert (
-            camera_geometry.intersection_with(earth)
-            .access_composite()
-            .get_object_count()
+            camera_geometry.intersection_with(earth).access_composite().get_object_count()
             == 2
         )
         assert (

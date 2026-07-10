@@ -10,19 +10,8 @@
 
 ## Visual Studio Code
 
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
-!.vscode/c_cpp_properties.json
-
-### Local History for Visual Studio Code
-.history/
-
-### Built Visual Studio Code Extensions
-*.vsix
+.vscode/
+*.code-workspace
 
 ## Sublime Text
 
@@ -40,6 +29,7 @@
 
 bin/*
 lib/*
+share/*
 build/
 *.so*
 *.a
@@ -63,4 +53,7 @@ docs/cpp_rst
 tmp/
 __pycache__
 .ipynb_checkpoints
+.pytest_cache/
 .open-space-toolkit
+scripts
+*.egg-info/
