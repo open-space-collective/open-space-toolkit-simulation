@@ -26,7 +26,7 @@ dependencies = [
     "open-space-toolkit-io~=4.0",
     "open-space-toolkit-mathematics~=4.3",
     "open-space-toolkit-physics~=13.0",
-    "open-space-toolkit-astrodynamics~=17.0,!=17.10.0",  # 17.10.0 has a bug introduced by #688
+    "open-space-toolkit-astrodynamics~=17.0",
 ] 
 
 [project.optional-dependencies]
