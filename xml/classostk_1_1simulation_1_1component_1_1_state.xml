@@ -43,12 +43,13 @@
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para><ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> status enumeration. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="22" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component/State.hpp" bodystart="21" bodyend="30"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component/State.hpp" bodystart="27" bodyend="36"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -63,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="62" column="19" bodyfile="include/OpenSpaceToolkit/Simulation/Component/State.hpp" bodystart="62" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="125" column="19" bodyfile="include/OpenSpaceToolkit/Simulation/Component/State.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1simulation_1_1component_1_1_state_1a61f280878f38c563a876b2786174d360" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -76,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="63" column="10" bodyfile="include/OpenSpaceToolkit/Simulation/Component/State.hpp" bodystart="63" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="126" column="10" bodyfile="include/OpenSpaceToolkit/Simulation/Component/State.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -96,12 +97,33 @@
           <defval><ref refid="_state_8hpp_1a4ad8faebfc1723fec1090b84ec0f680e" kindref="member">DEFAULT_VERBOSE</ref></defval>
         </param>
         <briefdescription>
+<para>Construct a state. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1aef1526b3513a2165970420e7ac8b6dae" kindref="member">State</ref><sp/>state(<ref refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c" kindref="member">State::Status::Idle</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aStatus</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A status (default: Disabled). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">isVerbose</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, enable verbose mode (default: false). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="32" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="15" bodyend="19"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="46" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="15" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_state_1a36adbe9bccb78bec881e2c3f267724ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -113,12 +135,26 @@
           <declname>aState</declname>
         </param>
         <briefdescription>
+<para>Copy constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1aef1526b3513a2165970420e7ac8b6dae" kindref="member">State</ref><sp/>original(<ref refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c" kindref="member">State::Status::Idle</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1aef1526b3513a2165970420e7ac8b6dae" kindref="member">State</ref><sp/>copy(original);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aState</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="34" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="21" bodyend="25"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="56" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="21" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_state_1a57c4cf4d8c50c2482402e3740483c29e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -126,12 +162,13 @@
         <argsstring>()</argsstring>
         <name>~State</name>
         <briefdescription>
+<para>Destructor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="36" column="13" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="27" bodyend="27"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="59" column="13" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="27" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_state_1a32e9b1349918070f114cb38e61828897" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1simulation_1_1component_1_1_state" kindref="compound">State</ref> *</type>
@@ -139,12 +176,19 @@
         <argsstring>() const</argsstring>
         <name>clone</name>
         <briefdescription>
+<para>Clone the state. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1aef1526b3513a2165970420e7ac8b6dae" kindref="member">State</ref><sp/>state(<ref refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c" kindref="member">State::Status::Idle</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1aef1526b3513a2165970420e7ac8b6dae" kindref="member">State</ref>*<sp/>cloned<sp/>=<sp/>state.clone();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A pointer to a cloned state. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="38" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="29" bodyend="32"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="69" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="29" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_state_1ac8aaea99357f670afab3c087de08446f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1simulation_1_1component_1_1_state" kindref="compound">State</ref> &amp;</type>
@@ -156,12 +200,28 @@
           <declname>aState</declname>
         </param>
         <briefdescription>
+<para>Copy assignment operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1aef1526b3513a2165970420e7ac8b6dae" kindref="member">State</ref><sp/>first(<ref refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c" kindref="member">State::Status::Idle</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1aef1526b3513a2165970420e7ac8b6dae" kindref="member">State</ref><sp/>second<sp/>=<sp/>first;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aState</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Reference to the assigned state. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="40" column="11" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="34" bodyend="43"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="80" column="11" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="34" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_state_1ad4440388904bac640dc57ffbc5b77019" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -176,26 +236,26 @@
 <para>Equal to operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">State<sp/>firstState<sp/>=<sp/>...<sp/>;</highlight></codeline>
-<codeline><highlight class="normal">State<sp/>secondState<sp/>=<sp/>...<sp/>;</highlight></codeline>
-<codeline><highlight class="normal">firstState<sp/>==<sp/>secondState<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1aef1526b3513a2165970420e7ac8b6dae" kindref="member">State</ref><sp/>firstState(<ref refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c" kindref="member">State::Status::Idle</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1aef1526b3513a2165970420e7ac8b6dae" kindref="member">State</ref><sp/>secondState(<ref refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c" kindref="member">State::Status::Idle</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isEqual<sp/>=<sp/>(firstState<sp/>==<sp/>secondState);<sp/></highlight><highlight class="comment">//<sp/>true</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aState</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A state </para>
+<para>A state. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>True if states are equal </para>
+<simplesect kind="return"><para>True if states are equal. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="53" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="45" bodyend="53"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="92" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="45" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_state_1abfb0349ee570125276b52aa2c3b1156d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -203,12 +263,19 @@
         <argsstring>() const</argsstring>
         <name>isDefined</name>
         <briefdescription>
+<para>Check if the state is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1aef1526b3513a2165970420e7ac8b6dae" kindref="member">State</ref><sp/>state(<ref refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c" kindref="member">State::Status::Idle</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>defined<sp/>=<sp/>state.isDefined();<sp/></highlight><highlight class="comment">//<sp/>true</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if the state is defined. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="55" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="55" bodyend="58"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="102" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="55" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_state_1a5ff60e1d912483effdb53b2b5c555cf9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58" kindref="member">State::Status</ref></type>
@@ -216,12 +283,19 @@
         <argsstring>() const</argsstring>
         <name>getStatus</name>
         <briefdescription>
+<para>Get the status. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1aef1526b3513a2165970420e7ac8b6dae" kindref="member">State</ref><sp/>state(<ref refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c" kindref="member">State::Status::Idle</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58" kindref="member">State::Status</ref><sp/>status<sp/>=<sp/>state.getStatus();<sp/></highlight><highlight class="comment">//<sp/>State::Status::Idle</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The status. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="57" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="60" bodyend="68"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="112" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="60" bodyend="68"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -231,20 +305,31 @@
         <argsstring>()</argsstring>
         <name>Undefined</name>
         <briefdescription>
+<para>Construct an undefined state. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1aef1526b3513a2165970420e7ac8b6dae" kindref="member">State</ref><sp/>state<sp/>=<sp/><ref refid="classostk_1_1simulation_1_1component_1_1_state_1a21a79240817592992c4791699b2d623f" kindref="member">State::Undefined</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>defined<sp/>=<sp/>state.isDefined();<sp/></highlight><highlight class="comment">//<sp/>false</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>An undefined state. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="59" column="18" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="70" bodyend="73"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="122" column="18" bodyfile="src/OpenSpaceToolkit/Simulation/Component/State.cpp" bodystart="70" bodyend="73"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> state. </para>
+<para>Represents the state of a component. </para>
     </briefdescription>
     <detaileddescription>
+<para>A <ref refid="classostk_1_1simulation_1_1component_1_1_state" kindref="compound">State</ref> holds a Status (Undefined, Disabled, Idle, Busy, Error) and a verbosity flag.</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1aef1526b3513a2165970420e7ac8b6dae" kindref="member">State</ref><sp/>state(<ref refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c" kindref="member">State::Status::Idle</ref>,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58" kindref="member">State::Status</ref><sp/>status<sp/>=<sp/>state.getStatus();</highlight></codeline>
+</programlisting> </para>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="19" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component/State.hpp" bodystart="18" bodyend="64"/>
+    <location file="include/OpenSpaceToolkit/Simulation/Component/State.hpp" line="24" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component/State.hpp" bodystart="23" bodyend="127"/>
     <listofallmembers>
       <member refid="classostk_1_1simulation_1_1component_1_1_state_1a32e9b1349918070f114cb38e61828897" prot="public" virt="virtual"><scope>ostk::simulation::component::State</scope><name>clone</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_state_1a5ff60e1d912483effdb53b2b5c555cf9" prot="public" virt="non-virtual"><scope>ostk::simulation::component::State</scope><name>getStatus</name></member>

@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('classostk_1_1simulation_1_1_entity.htm
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classostk_1_1simulation_1_1_entity.html" title="Entity.">Entity</a>.  
+<p>A base class representing a named entity in the simulation.  
  <a href="classostk_1_1simulation_1_1_entity.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_entity_8hpp_source.html">Entity.hpp</a>&gt;</code></p>
@@ -99,35 +99,45 @@ Inheritance diagram for ostk::simulation::Entity:</div>
  <div class="center">
   <img src="classostk_1_1simulation_1_1_entity.png" usemap="#ostk::simulation::Entity_map" alt=""/>
   <map id="ostk::simulation::Entity_map" name="ostk::simulation::Entity_map">
-<area href="classostk_1_1simulation_1_1_component.html" title="Component." alt="ostk::simulation::Component" shape="rect" coords="0,56,164,80"/>
-<area href="classostk_1_1simulation_1_1_satellite.html" title="Satellite." alt="ostk::simulation::Satellite" shape="rect" coords="0,112,164,136"/>
+<area href="classostk_1_1simulation_1_1_component.html" title="A component within the simulation hierarchy." alt="ostk::simulation::Component" shape="rect" coords="0,56,164,80"/>
+<area href="classostk_1_1simulation_1_1_satellite.html" title="A satellite in the simulation." alt="ostk::simulation::Satellite" shape="rect" coords="0,112,164,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a929819736161db5935b29b84da8a97aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">Entity</a> (const String &amp;aName)</td></tr>
+<tr class="memdesc:a929819736161db5935b29b84da8a97aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an entity with a name.  <a href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">More...</a><br /></td></tr>
 <tr class="separator:a929819736161db5935b29b84da8a97aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4ee439011cfcb1811d31bdb8db871fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1_entity.html#ae4ee439011cfcb1811d31bdb8db871fa">Entity</a> (const String &amp;anId, const String &amp;aName)</td></tr>
+<tr class="memdesc:ae4ee439011cfcb1811d31bdb8db871fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an entity with an identifier and a name.  <a href="classostk_1_1simulation_1_1_entity.html#ae4ee439011cfcb1811d31bdb8db871fa">More...</a><br /></td></tr>
 <tr class="separator:ae4ee439011cfcb1811d31bdb8db871fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3c1556400b02acdffde053348acda2f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1_entity.html#ad3c1556400b02acdffde053348acda2f">isDefined</a> () const</td></tr>
+<tr class="memdesc:ad3c1556400b02acdffde053348acda2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the entity is defined.  <a href="classostk_1_1simulation_1_1_entity.html#ad3c1556400b02acdffde053348acda2f">More...</a><br /></td></tr>
 <tr class="separator:ad3c1556400b02acdffde053348acda2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33286b8807aacec430d105646c021a79"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1_entity.html#a33286b8807aacec430d105646c021a79">getId</a> () const</td></tr>
+<tr class="memdesc:a33286b8807aacec430d105646c021a79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the identifier of the entity.  <a href="classostk_1_1simulation_1_1_entity.html#a33286b8807aacec430d105646c021a79">More...</a><br /></td></tr>
 <tr class="separator:a33286b8807aacec430d105646c021a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17050a1483e16e62ca10e3b1ecade1d5"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1_entity.html#a17050a1483e16e62ca10e3b1ecade1d5">getName</a> () const</td></tr>
+<tr class="memdesc:a17050a1483e16e62ca10e3b1ecade1d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of the entity.  <a href="classostk_1_1simulation_1_1_entity.html#a17050a1483e16e62ca10e3b1ecade1d5">More...</a><br /></td></tr>
 <tr class="separator:a17050a1483e16e62ca10e3b1ecade1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2238f2fe07b5ddc4594293acdfa0c23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1_entity.html#aa2238f2fe07b5ddc4594293acdfa0c23">print</a> (std::ostream &amp;anOutputStream, bool displayDecorators=true) const</td></tr>
-<tr class="memdesc:aa2238f2fe07b5ddc4594293acdfa0c23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print entity.  <a href="classostk_1_1simulation_1_1_entity.html#aa2238f2fe07b5ddc4594293acdfa0c23">More...</a><br /></td></tr>
+<tr class="memdesc:aa2238f2fe07b5ddc4594293acdfa0c23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the entity to an output stream.  <a href="classostk_1_1simulation_1_1_entity.html#aa2238f2fe07b5ddc4594293acdfa0c23">More...</a><br /></td></tr>
 <tr class="separator:aa2238f2fe07b5ddc4594293acdfa0c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aa42c610f1b96197f9fbf45711fe6a479"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classostk_1_1simulation_1_1_entity.html">Entity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1_entity.html#aa42c610f1b96197f9fbf45711fe6a479">Undefined</a> ()</td></tr>
+<tr class="memdesc:aa42c610f1b96197f9fbf45711fe6a479"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an undefined entity.  <a href="classostk_1_1simulation_1_1_entity.html#aa42c610f1b96197f9fbf45711fe6a479">More...</a><br /></td></tr>
 <tr class="separator:aa42c610f1b96197f9fbf45711fe6a479"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classostk_1_1simulation_1_1_entity.html" title="Entity.">Entity</a>. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<div class="textblock"><p>A base class representing a named entity in the simulation. </p>
+<p>An <a class="el" href="classostk_1_1simulation_1_1_entity.html" title="A base class representing a named entity in the simulation.">Entity</a> has an identifier and a name. It serves as the base class for Components and other simulation objects.</p>
+<div class="fragment"><div class="line"><a class="code" href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">Entity</a> entity(<span class="stringliteral">&quot;my-entity&quot;</span>);</div>
+<div class="line">String name = entity.getName();</div>
+<div class="line">String <span class="keywordtype">id</span> = entity.getId();</div>
+</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a929819736161db5935b29b84da8a97aa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a929819736161db5935b29b84da8a97aa">&#9670;&nbsp;</a></span>Entity() <span class="overload">[1/2]</span></h2>
 
@@ -143,6 +153,16 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Construct an entity with a name. </p>
+<p>An identifier is automatically generated.</p>
+<div class="fragment"><div class="line"><a class="code" href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">Entity</a> entity(<span class="stringliteral">&quot;my-entity&quot;</span>);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">aName</td><td>A name for the entity. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -172,6 +192,16 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Construct an entity with an identifier and a name. </p>
+<div class="fragment"><div class="line"><a class="code" href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">Entity</a> entity(<span class="stringliteral">&quot;entity-id&quot;</span>, <span class="stringliteral">&quot;my-entity&quot;</span>);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">anId</td><td>An identifier. </td></tr>
+    <tr><td class="paramname">aName</td><td>A name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -190,6 +220,11 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get the identifier of the entity. </p>
+<div class="fragment"><div class="line"><a class="code" href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">Entity</a> entity(<span class="stringliteral">&quot;entity-id&quot;</span>, <span class="stringliteral">&quot;my-entity&quot;</span>);</div>
+<div class="line">String <span class="keywordtype">id</span> = entity.getId(); <span class="comment">// &quot;entity-id&quot;</span></div>
+</div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>The identifier. </dd></dl>
+
 </div>
 </div>
 <a id="a17050a1483e16e62ca10e3b1ecade1d5"></a>
@@ -207,6 +242,11 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get the name of the entity. </p>
+<div class="fragment"><div class="line"><a class="code" href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">Entity</a> entity(<span class="stringliteral">&quot;my-entity&quot;</span>);</div>
+<div class="line">String name = entity.getName(); <span class="comment">// &quot;my-entity&quot;</span></div>
+</div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>The name. </dd></dl>
+
 </div>
 </div>
 <a id="ad3c1556400b02acdffde053348acda2f"></a>
@@ -223,6 +263,11 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Check if the entity is defined. </p>
+<div class="fragment"><div class="line"><a class="code" href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">Entity</a> entity(<span class="stringliteral">&quot;my-entity&quot;</span>);</div>
+<div class="line"><span class="keywordtype">bool</span> defined = entity.isDefined(); <span class="comment">// true</span></div>
+</div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>True if the entity is defined. </dd></dl>
 
 </div>
 </div>
@@ -252,11 +297,13 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Print entity. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Print the entity to an output stream. </p>
+<div class="fragment"><div class="line"><a class="code" href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">Entity</a> entity(<span class="stringliteral">&quot;my-entity&quot;</span>);</div>
+<div class="line">entity.print(std::cout, <span class="keyword">true</span>);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">anOutputStream</td><td>An output stream </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">(optional)</td><td>displayDecorators If true, display decorators </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">anOutputStream</td><td>An output stream. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">displayDecorators</td><td>If true, display decorators. </td></tr>
   </table>
   </dd>
 </dl>
@@ -286,6 +333,11 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Construct an undefined entity. </p>
+<div class="fragment"><div class="line"><a class="code" href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">Entity</a> entity = <a class="code" href="classostk_1_1simulation_1_1_entity.html#aa42c610f1b96197f9fbf45711fe6a479">Entity::Undefined</a>();</div>
+<div class="line"><span class="keywordtype">bool</span> defined = entity.isDefined(); <span class="comment">// false</span></div>
+</div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>An undefined entity. </dd></dl>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -294,6 +346,8 @@ Static Public Member Functions</h2></td></tr>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_aa42c610f1b96197f9fbf45711fe6a479"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#aa42c610f1b96197f9fbf45711fe6a479">ostk::simulation::Entity::Undefined</a></div><div class="ttdeci">static Entity Undefined()</div><div class="ttdoc">Construct an undefined entity.</div><div class="ttdef"><b>Definition:</b> Entity.cpp:53</div></div>
+<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_a929819736161db5935b29b84da8a97aa"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">ostk::simulation::Entity::Entity</a></div><div class="ttdeci">Entity(const String &amp;aName)</div><div class="ttdoc">Construct an entity with a name.</div><div class="ttdef"><b>Definition:</b> Entity.cpp:16</div></div>
 <!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

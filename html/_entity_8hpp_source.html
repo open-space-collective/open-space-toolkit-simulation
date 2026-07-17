@@ -97,44 +97,42 @@ $(document).ready(function(){initNavTree('_entity_8hpp_source.html',''); initRes
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using</span> ostk::core::type::String;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classostk_1_1simulation_1_1_entity.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classostk_1_1simulation_1_1_entity.html">Entity</a></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">Entity</a>(<span class="keyword">const</span> String&amp; aName);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">Entity</a>(<span class="keyword">const</span> String&amp; anId, <span class="keyword">const</span> String&amp; aName);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classostk_1_1simulation_1_1_entity.html#ad3c1556400b02acdffde053348acda2f">isDefined</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    String <a class="code" href="classostk_1_1simulation_1_1_entity.html#a33286b8807aacec430d105646c021a79">getId</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    String <a class="code" href="classostk_1_1simulation_1_1_entity.html#a17050a1483e16e62ca10e3b1ecade1d5">getName</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classostk_1_1simulation_1_1_entity.html#aa2238f2fe07b5ddc4594293acdfa0c23">print</a>(std::ostream&amp; anOutputStream, <span class="keywordtype">bool</span> displayDecorators = <span class="keyword">true</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classostk_1_1simulation_1_1_entity.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="classostk_1_1simulation_1_1_entity.html">Entity</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">Entity</a>(<span class="keyword">const</span> String&amp; aName);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">static</span> <a class="code" href="classostk_1_1simulation_1_1_entity.html">Entity</a> <a class="code" href="classostk_1_1simulation_1_1_entity.html#aa42c610f1b96197f9fbf45711fe6a479">Undefined</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    String id_;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    String name_;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}  <span class="comment">// namespace simulation</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}  <span class="comment">// namespace ostk</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">Entity</a>(<span class="keyword">const</span> String&amp; anId, <span class="keyword">const</span> String&amp; aName);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classostk_1_1simulation_1_1_entity.html#ad3c1556400b02acdffde053348acda2f">isDefined</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    String <a class="code" href="classostk_1_1simulation_1_1_entity.html#a33286b8807aacec430d105646c021a79">getId</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    String <a class="code" href="classostk_1_1simulation_1_1_entity.html#a17050a1483e16e62ca10e3b1ecade1d5">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classostk_1_1simulation_1_1_entity.html#aa2238f2fe07b5ddc4594293acdfa0c23">print</a>(std::ostream&amp; anOutputStream, <span class="keywordtype">bool</span> displayDecorators = <span class="keyword">true</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">static</span> <a class="code" href="classostk_1_1simulation_1_1_entity.html">Entity</a> <a class="code" href="classostk_1_1simulation_1_1_entity.html#aa42c610f1b96197f9fbf45711fe6a479">Undefined</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    String id_;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    String name_;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}  <span class="comment">// namespace simulation</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}  <span class="comment">// namespace ostk</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_a33286b8807aacec430d105646c021a79"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#a33286b8807aacec430d105646c021a79">ostk::simulation::Entity::getId</a></div><div class="ttdeci">String getId() const</div><div class="ttdef"><b>Definition:</b> Entity.cpp:33</div></div>
-<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html">ostk::simulation::Entity</a></div><div class="ttdoc">Entity.</div><div class="ttdef"><b>Definition:</b> Entity.hpp:17</div></div>
-<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_aa2238f2fe07b5ddc4594293acdfa0c23"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#aa2238f2fe07b5ddc4594293acdfa0c23">ostk::simulation::Entity::print</a></div><div class="ttdeci">void print(std::ostream &amp;anOutputStream, bool displayDecorators=true) const</div><div class="ttdoc">Print entity.</div><div class="ttdef"><b>Definition:</b> Entity.cpp:58</div></div>
-<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_ad3c1556400b02acdffde053348acda2f"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#ad3c1556400b02acdffde053348acda2f">ostk::simulation::Entity::isDefined</a></div><div class="ttdeci">bool isDefined() const</div><div class="ttdef"><b>Definition:</b> Entity.cpp:28</div></div>
-<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_aa42c610f1b96197f9fbf45711fe6a479"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#aa42c610f1b96197f9fbf45711fe6a479">ostk::simulation::Entity::Undefined</a></div><div class="ttdeci">static Entity Undefined()</div><div class="ttdef"><b>Definition:</b> Entity.cpp:53</div></div>
+<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_a33286b8807aacec430d105646c021a79"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#a33286b8807aacec430d105646c021a79">ostk::simulation::Entity::getId</a></div><div class="ttdeci">String getId() const</div><div class="ttdoc">Get the identifier of the entity.</div><div class="ttdef"><b>Definition:</b> Entity.cpp:33</div></div>
+<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html">ostk::simulation::Entity</a></div><div class="ttdoc">A base class representing a named entity in the simulation.</div><div class="ttdef"><b>Definition:</b> Entity.hpp:24</div></div>
+<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_aa2238f2fe07b5ddc4594293acdfa0c23"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#aa2238f2fe07b5ddc4594293acdfa0c23">ostk::simulation::Entity::print</a></div><div class="ttdeci">void print(std::ostream &amp;anOutputStream, bool displayDecorators=true) const</div><div class="ttdoc">Print the entity to an output stream.</div><div class="ttdef"><b>Definition:</b> Entity.cpp:58</div></div>
+<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_ad3c1556400b02acdffde053348acda2f"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#ad3c1556400b02acdffde053348acda2f">ostk::simulation::Entity::isDefined</a></div><div class="ttdeci">bool isDefined() const</div><div class="ttdoc">Check if the entity is defined.</div><div class="ttdef"><b>Definition:</b> Entity.cpp:28</div></div>
+<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_aa42c610f1b96197f9fbf45711fe6a479"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#aa42c610f1b96197f9fbf45711fe6a479">ostk::simulation::Entity::Undefined</a></div><div class="ttdeci">static Entity Undefined()</div><div class="ttdoc">Construct an undefined entity.</div><div class="ttdef"><b>Definition:</b> Entity.cpp:53</div></div>
 <div class="ttc" id="anamespaceostk_html"><div class="ttname"><a href="namespaceostk.html">ostk</a></div><div class="ttdoc">Apache License 2.0.</div><div class="ttdef"><b>Definition:</b> Geometry.hpp:14</div></div>
-<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_a17050a1483e16e62ca10e3b1ecade1d5"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#a17050a1483e16e62ca10e3b1ecade1d5">ostk::simulation::Entity::getName</a></div><div class="ttdeci">String getName() const</div><div class="ttdef"><b>Definition:</b> Entity.cpp:43</div></div>
-<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_a929819736161db5935b29b84da8a97aa"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">ostk::simulation::Entity::Entity</a></div><div class="ttdeci">Entity(const String &amp;aName)</div><div class="ttdef"><b>Definition:</b> Entity.cpp:16</div></div>
+<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_a17050a1483e16e62ca10e3b1ecade1d5"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#a17050a1483e16e62ca10e3b1ecade1d5">ostk::simulation::Entity::getName</a></div><div class="ttdeci">String getName() const</div><div class="ttdoc">Get the name of the entity.</div><div class="ttdef"><b>Definition:</b> Entity.cpp:43</div></div>
+<div class="ttc" id="aclassostk_1_1simulation_1_1_entity_html_a929819736161db5935b29b84da8a97aa"><div class="ttname"><a href="classostk_1_1simulation_1_1_entity.html#a929819736161db5935b29b84da8a97aa">ostk::simulation::Entity::Entity</a></div><div class="ttdeci">Entity(const String &amp;aName)</div><div class="ttdoc">Construct an entity with a name.</div><div class="ttdef"><b>Definition:</b> Entity.cpp:16</div></div>
 <!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

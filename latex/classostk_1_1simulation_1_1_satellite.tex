@@ -2,7 +2,7 @@
 \label{classostk_1_1simulation_1_1_satellite}\index{ostk::simulation::Satellite@{ostk::simulation::Satellite}}
 
 
-\mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}}.  
+A satellite in the simulation.  
 
 
 
@@ -19,38 +19,47 @@ Inheritance diagram for ostk\+::simulation\+::Satellite\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_aee8265886243e5c4cf71fa376fc1e984}{Satellite}} (const String \&an\+Id, const String \&a\+Name, const Array$<$ String $>$ \&a\+Tag\+Array, const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} $>$$>$ \&a\+Geometry\+Array, const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$ \&a\+Component\+Array, const Shared$<$ const Frame $>$ \&a\+Frame\+S\+Ptr, const Shared$<$ const Profile $>$ \&a\+Profile\+S\+Ptr, const Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} $>$ \&a\+Simulator\+S\+Ptr)
-\item 
+\begin{DoxyCompactList}\small\item\em Construct a satellite. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_adb01c7d30bfc51144067e5a92709c638}{Satellite}} (const \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} \&a\+Satellite)
-\item 
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_af6f1e69609eca81bda731d176a0f3786}{$\sim$\+Satellite}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $\ast$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a9828fe3ec02b8f4d8b2faf8412826f00}{clone}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Clone the satellite. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a124ee57d73d12788466ba203b126fc57}{is\+Defined}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Check if the satellite is defined. \end{DoxyCompactList}\item 
 const Shared$<$ const Profile $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a165c0d2da9a36a1eaeaaba55a5752cfc}{access\+Profile}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Access the flight profile. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_ac7f5b5462deb081eb93115f0fb362acd}{print}} (std\+::ostream \&an\+Output\+Stream, bool display\+Decorators=true) const
-\begin{DoxyCompactList}\small\item\em Print satellite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Print the satellite to an output stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a27b1931fa0cdd157ea5920060caf05fd}{Undefined}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Construct an undefined satellite. \end{DoxyCompactList}\item 
 static Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a8984ad4a21ba686cbae3bbfbb7d5ebb3}{Configure}} (const \mbox{\hyperlink{structostk_1_1simulation_1_1_satellite_configuration}{Satellite\+Configuration}} \&a\+Satellite\+Configuration, const Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} $>$ \&a\+Simulator\+S\+Ptr)
-\item 
+\begin{DoxyCompactList}\small\item\em Configure a satellite from a configuration. \end{DoxyCompactList}\item 
 static Shared$<$ const Frame $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a39a4b79c04d242d85cb647abd23e9e61}{Generate\+Frame}} (const String \&a\+Name, const Shared$<$ const Profile $>$ \&a\+Profile)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generate a reference frame for the satellite from a flight profile. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
 std\+::ostream \& \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a4c904b132bff149960ba9d910ebbc3dc}{operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} \&a\+Satellite)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Output stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
-\mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}}. 
+A satellite in the simulation. 
+
+A \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} is a specialized \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} that has an associated flight Profile and a dedicated reference frame derived from that profile.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_aee8265886243e5c4cf71fa376fc1e984}{Satellite}}\& satellite = simulator.accessSatelliteWithName(\textcolor{stringliteral}{"sat-\/1"});}
+\DoxyCodeLine{\textcolor{keyword}{const} Shared<const Profile> profile = satellite.accessProfile();}
+\end{DoxyCode}
+ 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_satellite_aee8265886243e5c4cf71fa376fc1e984}\label{classostk_1_1simulation_1_1_satellite_aee8265886243e5c4cf71fa376fc1e984}} 
@@ -59,17 +68,68 @@ std\+::ostream \& \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a4c904b
 \doxysubsubsection{\texorpdfstring{Satellite()}{Satellite()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily ostk\+::simulation\+::\+Satellite\+::\+Satellite (\begin{DoxyParamCaption}\item[{const String \&}]{an\+Id,  }\item[{const String \&}]{a\+Name,  }\item[{const Array$<$ String $>$ \&}]{a\+Tag\+Array,  }\item[{const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} $>$$>$ \&}]{a\+Geometry\+Array,  }\item[{const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$ \&}]{a\+Component\+Array,  }\item[{const Shared$<$ const Frame $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const Shared$<$ const Profile $>$ \&}]{a\+Profile\+S\+Ptr,  }\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} $>$ \&}]{a\+Simulator\+S\+Ptr }\end{DoxyParamCaption})}
 
+
+
+Construct a satellite. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_aee8265886243e5c4cf71fa376fc1e984}{Satellite}} satellite(}
+\DoxyCodeLine{    \textcolor{stringliteral}{"id"}, \textcolor{stringliteral}{"sat-\/1"}, tagArray, geometryArray,}
+\DoxyCodeLine{    componentArray, frameSPtr, profileSPtr, simulatorSPtr}
+\DoxyCodeLine{);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Id} & An identifier. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Name} & A name. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Tag\+Array} & An array of tags. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Geometry\+Array} & An array of geometries. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Component\+Array} & An array of child components. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Frame\+S\+Ptr} & A shared pointer to the reference frame. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Profile\+S\+Ptr} & A shared pointer to the flight profile. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Simulator\+S\+Ptr} & A shared pointer to the simulator. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_satellite_adb01c7d30bfc51144067e5a92709c638}\label{classostk_1_1simulation_1_1_satellite_adb01c7d30bfc51144067e5a92709c638}} 
 \index{ostk::simulation::Satellite@{ostk::simulation::Satellite}!Satellite@{Satellite}}
 \index{Satellite@{Satellite}!ostk::simulation::Satellite@{ostk::simulation::Satellite}}
 \doxysubsubsection{\texorpdfstring{Satellite()}{Satellite()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily ostk\+::simulation\+::\+Satellite\+::\+Satellite (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} \&}]{a\+Satellite }\end{DoxyParamCaption})}
 
+
+
+Copy constructor. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_aee8265886243e5c4cf71fa376fc1e984}{Satellite}} copy(satellite);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Satellite} & A satellite. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_satellite_af6f1e69609eca81bda731d176a0f3786}\label{classostk_1_1simulation_1_1_satellite_af6f1e69609eca81bda731d176a0f3786}} 
 \index{ostk::simulation::Satellite@{ostk::simulation::Satellite}!````~Satellite@{$\sim$Satellite}}
 \index{````~Satellite@{$\sim$Satellite}!ostk::simulation::Satellite@{ostk::simulation::Satellite}}
 \doxysubsubsection{\texorpdfstring{$\sim$Satellite()}{~Satellite()}}
 {\footnotesize\ttfamily ostk\+::simulation\+::\+Satellite\+::$\sim$\+Satellite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
 
 
 
@@ -80,12 +140,38 @@ std\+::ostream \& \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a4c904b
 \doxysubsubsection{\texorpdfstring{accessProfile()}{accessProfile()}}
 {\footnotesize\ttfamily const Shared$<$ const Profile $>$ ostk\+::simulation\+::\+Satellite\+::access\+Profile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Access the flight profile. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} Shared<const Profile> profile = satellite.accessProfile();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+A shared pointer to the flight profile. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_satellite_a9828fe3ec02b8f4d8b2faf8412826f00}\label{classostk_1_1simulation_1_1_satellite_a9828fe3ec02b8f4d8b2faf8412826f00}} 
 \index{ostk::simulation::Satellite@{ostk::simulation::Satellite}!clone@{clone}}
 \index{clone@{clone}!ostk::simulation::Satellite@{ostk::simulation::Satellite}}
 \doxysubsubsection{\texorpdfstring{clone()}{clone()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $\ast$ ostk\+::simulation\+::\+Satellite\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
+
+
+Clone the satellite. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_aee8265886243e5c4cf71fa376fc1e984}{Satellite}}* cloned = satellite.clone();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+A pointer to a cloned satellite. 
+\end{DoxyReturn}
 
 
 Reimplemented from \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a36cdd3498146b23e3ff67b95cd1c59cc}{ostk\+::simulation\+::\+Component}}.
@@ -96,18 +182,71 @@ Reimplemented from \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a36cdd
 \doxysubsubsection{\texorpdfstring{Configure()}{Configure()}}
 {\footnotesize\ttfamily Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $>$ ostk\+::simulation\+::\+Satellite\+::\+Configure (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structostk_1_1simulation_1_1_satellite_configuration}{Satellite\+Configuration}} \&}]{a\+Satellite\+Configuration,  }\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} $>$ \&}]{a\+Simulator\+S\+Ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Configure a satellite from a configuration. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Shared<Satellite> satellite = \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a8984ad4a21ba686cbae3bbfbb7d5ebb3}{Satellite::Configure}}(satelliteConfiguration, simulatorSPtr);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Satellite\+Configuration} & A satellite configuration. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Simulator\+S\+Ptr} & A shared pointer to the simulator. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A shared pointer to the configured satellite. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_satellite_a39a4b79c04d242d85cb647abd23e9e61}\label{classostk_1_1simulation_1_1_satellite_a39a4b79c04d242d85cb647abd23e9e61}} 
 \index{ostk::simulation::Satellite@{ostk::simulation::Satellite}!GenerateFrame@{GenerateFrame}}
 \index{GenerateFrame@{GenerateFrame}!ostk::simulation::Satellite@{ostk::simulation::Satellite}}
 \doxysubsubsection{\texorpdfstring{GenerateFrame()}{GenerateFrame()}}
 {\footnotesize\ttfamily Shared$<$ const Frame $>$ ostk\+::simulation\+::\+Satellite\+::\+Generate\+Frame (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{const Shared$<$ const Profile $>$ \&}]{a\+Profile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Generate a reference frame for the satellite from a flight profile. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Shared<const Frame> frame = \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a39a4b79c04d242d85cb647abd23e9e61}{Satellite::GenerateFrame}}(\textcolor{stringliteral}{"sat-\/1"}, profileSPtr);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Name} & A name for the frame. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Profile} & A shared pointer to the flight profile. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A shared pointer to the generated frame. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_satellite_a124ee57d73d12788466ba203b126fc57}\label{classostk_1_1simulation_1_1_satellite_a124ee57d73d12788466ba203b126fc57}} 
 \index{ostk::simulation::Satellite@{ostk::simulation::Satellite}!isDefined@{isDefined}}
 \index{isDefined@{isDefined}!ostk::simulation::Satellite@{ostk::simulation::Satellite}}
 \doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
 {\footnotesize\ttfamily bool ostk\+::simulation\+::\+Satellite\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Check if the satellite is defined. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} defined = satellite.isDefined();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+True if the satellite is defined. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_satellite_ac7f5b5462deb081eb93115f0fb362acd}\label{classostk_1_1simulation_1_1_satellite_ac7f5b5462deb081eb93115f0fb362acd}} 
 \index{ostk::simulation::Satellite@{ostk::simulation::Satellite}!print@{print}}
 \index{print@{print}!ostk::simulation::Satellite@{ostk::simulation::Satellite}}
@@ -116,13 +255,19 @@ Reimplemented from \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a36cdd
 
 
 
-Print satellite. 
+Print the satellite to an output stream. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{satellite.print(std::cout, \textcolor{keyword}{true});}
+\end{DoxyCode}
+
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em an\+Output\+Stream} & An output stream \\
+\mbox{\texttt{ in}}  & {\em an\+Output\+Stream} & An output stream. \\
 \hline
-\mbox{\texttt{ in}}  & {\em (optional)} & display\+Decorators If true, display decorators \\
+\mbox{\texttt{ in}}  & {\em display\+Decorators} & If true, display decorators. \\
 \hline
 \end{DoxyParams}
 
@@ -137,6 +282,19 @@ Reimplemented from \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a9c102
 
 
 
+Construct an undefined satellite. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_aee8265886243e5c4cf71fa376fc1e984}{Satellite}} satellite = \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a27b1931fa0cdd157ea5920060caf05fd}{Satellite::Undefined}}();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+An undefined satellite. 
+\end{DoxyReturn}
+
+
 \doxysubsection{Friends And Related Function Documentation}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_satellite_a4c904b132bff149960ba9d910ebbc3dc}\label{classostk_1_1simulation_1_1_satellite_a4c904b132bff149960ba9d910ebbc3dc}} 
 \index{ostk::simulation::Satellite@{ostk::simulation::Satellite}!operator$<$$<$@{operator$<$$<$}}
@@ -144,6 +302,26 @@ Reimplemented from \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a9c102
 \doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
 {\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} \&}]{a\+Satellite }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
 
+
+
+Output stream operator. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::cout << satellite;}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Output\+Stream} & An output stream. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Satellite} & A satellite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the output stream. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

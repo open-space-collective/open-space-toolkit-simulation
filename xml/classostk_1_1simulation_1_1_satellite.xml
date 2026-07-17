@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="86" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="86" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="175" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="175" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -58,12 +58,84 @@
           <declname>aSimulatorSPtr</declname>
         </param>
         <briefdescription>
+<para>Construct a satellite. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_satellite_1aee8265886243e5c4cf71fa376fc1e984" kindref="member">Satellite</ref><sp/>satellite(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;sat-1&quot;</highlight><highlight class="normal">,<sp/>tagArray,<sp/>geometryArray,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>componentArray,<sp/>frameSPtr,<sp/>profileSPtr,<sp/>simulatorSPtr</highlight></codeline>
+<codeline><highlight class="normal">);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A name. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aTagArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of tags. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aGeometryArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of geometries. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aComponentArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of child components. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aFrameSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the reference frame. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aProfileSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the flight profile. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aSimulatorSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the simulator. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="47" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="23" bodyend="46"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="70" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="23" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1adb01c7d30bfc51144067e5a92709c638" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -75,12 +147,25 @@
           <declname>aSatellite</declname>
         </param>
         <briefdescription>
+<para>Copy constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_satellite_1aee8265886243e5c4cf71fa376fc1e984" kindref="member">Satellite</ref><sp/>copy(satellite);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aSatellite</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A satellite. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="58" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="48" bodyend="52"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="88" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="48" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1af6f1e69609eca81bda731d176a0f3786" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -88,12 +173,13 @@
         <argsstring>()</argsstring>
         <name>~Satellite</name>
         <briefdescription>
+<para>Destructor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="60" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="54" bodyend="54"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="91" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1a9828fe3ec02b8f4d8b2faf8412826f00" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref> *</type>
@@ -102,12 +188,18 @@
         <name>clone</name>
         <reimplements refid="classostk_1_1simulation_1_1_component_1a36cdd3498146b23e3ff67b95cd1c59cc">clone</reimplements>
         <briefdescription>
+<para>Clone the satellite. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_satellite_1aee8265886243e5c4cf71fa376fc1e984" kindref="member">Satellite</ref>*<sp/>cloned<sp/>=<sp/>satellite.clone();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A pointer to a cloned satellite. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="62" column="15" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="56" bodyend="59"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="100" column="15" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="56" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1a124ee57d73d12788466ba203b126fc57" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -115,12 +207,18 @@
         <argsstring>() const</argsstring>
         <name>isDefined</name>
         <briefdescription>
+<para>Check if the satellite is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>defined<sp/>=<sp/>satellite.isDefined();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if the satellite is defined. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="66" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="68" bodyend="71"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="120" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="68" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1a165c0d2da9a36a1eaeaaba55a5752cfc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Shared&lt; const Profile &gt;</type>
@@ -128,12 +226,18 @@
         <argsstring>() const</argsstring>
         <name>accessProfile</name>
         <briefdescription>
+<para>Access the flight profile. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Profile&gt;<sp/>profile<sp/>=<sp/>satellite.accessProfile();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A shared pointer to the flight profile. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="68" column="18" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="73" bodyend="81"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="129" column="18" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="73" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1ac7f5b5462deb081eb93115f0fb362acd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -151,23 +255,25 @@
           <defval>true</defval>
         </param>
         <briefdescription>
-<para>Print satellite. </para>
+<para>Print the satellite to an output stream. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">satellite.print(std::cout,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anOutputStream</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>An output stream </para>
+<para>An output stream. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">(optional)</parametername>
+<parametername direction="in">displayDecorators</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>displayDecorators If true, display decorators </para>
+<para>If true, display decorators. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -175,7 +281,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="75" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="83" bodyend="90"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="139" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="83" bodyend="90"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -193,12 +299,35 @@
           <declname>aSatellite</declname>
         </param>
         <briefdescription>
+<para>Output stream operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>satellite;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aSatellite</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A satellite. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the output stream. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="64" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="61" bodyend="66"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="111" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="61" bodyend="66"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -208,12 +337,18 @@
         <argsstring>()</argsstring>
         <name>Undefined</name>
         <briefdescription>
+<para>Construct an undefined satellite. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_satellite_1aee8265886243e5c4cf71fa376fc1e984" kindref="member">Satellite</ref><sp/>satellite<sp/>=<sp/><ref refid="classostk_1_1simulation_1_1_satellite_1a27b1931fa0cdd157ea5920060caf05fd" kindref="member">Satellite::Undefined</ref>();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>An undefined satellite. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="77" column="22" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="92" bodyend="104"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="148" column="22" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="92" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1a8984ad4a21ba686cbae3bbfbb7d5ebb3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Shared&lt; <ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref> &gt;</type>
@@ -229,12 +364,35 @@
           <declname>aSimulatorSPtr</declname>
         </param>
         <briefdescription>
+<para>Configure a satellite from a configuration. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">Shared&lt;Satellite&gt;<sp/>satellite<sp/>=<sp/><ref refid="classostk_1_1simulation_1_1_satellite_1a8984ad4a21ba686cbae3bbfbb7d5ebb3" kindref="member">Satellite::Configure</ref>(satelliteConfiguration,<sp/>simulatorSPtr);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aSatelliteConfiguration</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A satellite configuration. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aSimulatorSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the simulator. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A shared pointer to the configured satellite. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="79" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="106" bodyend="134"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="159" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="106" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_satellite_1a39a4b79c04d242d85cb647abd23e9e61" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Shared&lt; const Frame &gt;</type>
@@ -250,18 +408,45 @@
           <declname>aProfile</declname>
         </param>
         <briefdescription>
+<para>Generate a reference frame for the satellite from a flight profile. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">Shared&lt;const<sp/>Frame&gt;<sp/>frame<sp/>=<sp/><ref refid="classostk_1_1simulation_1_1_satellite_1a39a4b79c04d242d85cb647abd23e9e61" kindref="member">Satellite::GenerateFrame</ref>(</highlight><highlight class="stringliteral">&quot;sat-1&quot;</highlight><highlight class="normal">,<sp/>profileSPtr);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A name for the frame. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aProfile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the flight profile. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A shared pointer to the generated frame. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="83" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="136" bodyend="170"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="172" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Satellite.cpp" bodystart="136" bodyend="170"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref>. </para>
+<para>A satellite in the simulation. </para>
     </briefdescription>
     <detaileddescription>
+<para>A <ref refid="classostk_1_1simulation_1_1_satellite" kindref="compound">Satellite</ref> is a specialized <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> that has an associated flight Profile and a dedicated reference frame derived from that profile.</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_satellite_1aee8265886243e5c4cf71fa376fc1e984" kindref="member">Satellite</ref>&amp;<sp/>satellite<sp/>=<sp/>simulator.accessSatelliteWithName(</highlight><highlight class="stringliteral">&quot;sat-1&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Profile&gt;<sp/>profile<sp/>=<sp/>satellite.accessProfile();</highlight></codeline>
+</programlisting> </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1">
@@ -321,7 +506,7 @@
         <link refid="classostk_1_1simulation_1_1_entity"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="45" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="44" bodyend="87"/>
+    <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="51" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="50" bodyend="176"/>
     <listofallmembers>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a83aefcdc6fea117a180edff14954f7a5" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>accessComponentAt</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1ab66566e91251de05a02198cec7ecc4b7" prot="public" virt="non-virtual"><scope>ostk::simulation::Satellite</scope><name>accessComponents</name></member>

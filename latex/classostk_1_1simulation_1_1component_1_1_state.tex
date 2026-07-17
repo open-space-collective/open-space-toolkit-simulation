@@ -2,7 +2,7 @@
 \label{classostk_1_1simulation_1_1component_1_1_state}\index{ostk::simulation::component::State@{ostk::simulation::component::State}}
 
 
-\mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} state.  
+Represents the state of a component.  
 
 
 
@@ -20,35 +20,44 @@ enum \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa
 \newline
 \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58a902b0d55fddef6f8d651fe1035b7d4bd}{Status\+::\+Error}}
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} status enumeration. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} (const \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{State\+::\+Status}} \&a\+Status=\mbox{\hyperlink{_state_8hpp_a188ce67e515b427589d4c363d1132018}{D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+T\+A\+T\+US}}, const bool \&is\+Verbose=\mbox{\hyperlink{_state_8hpp_a4ad8faebfc1723fec1090b84ec0f680e}{D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+E\+R\+B\+O\+SE}})
-\item 
+\begin{DoxyCompactList}\small\item\em Construct a state. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_a36adbe9bccb78bec881e2c3f267724ed}{State}} (const \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} \&a\+State)
-\item 
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_a57c4cf4d8c50c2482402e3740483c29e}{$\sim$\+State}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} $\ast$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_a32e9b1349918070f114cb38e61828897}{clone}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Clone the state. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_ac8aaea99357f670afab3c087de08446f}{operator=}} (const \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} \&a\+State)
-\item 
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_ad4440388904bac640dc57ffbc5b77019}{operator==}} (const \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} \&a\+State) const
 \begin{DoxyCompactList}\small\item\em Equal to operator. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_abfb0349ee570125276b52aa2c3b1156d}{is\+Defined}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Check if the state is defined. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{State\+::\+Status}} \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_a5ff60e1d912483effdb53b2b5c555cf9}{get\+Status}} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get the status. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_a21a79240817592992c4791699b2d623f}{Undefined}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Construct an undefined state. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} state. 
+Represents the state of a component. 
+
+A \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} holds a Status (Undefined, Disabled, Idle, Busy, Error) and a verbosity flag.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} state(\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}{State::Status::Idle}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{State::Status}} status = state.getStatus();}
+\end{DoxyCode}
+ 
 
 \doxysubsection{Member Enumeration Documentation}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}\label{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}} 
@@ -56,6 +65,10 @@ static \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} 
 \index{Status@{Status}!ostk::simulation::component::State@{ostk::simulation::component::State}}
 \doxysubsubsection{\texorpdfstring{Status}{Status}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{ostk\+::simulation\+::component\+::\+State\+::\+Status}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+\mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} status enumeration. 
 
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!ostk::simulation::component::State@{ostk::simulation::component::State}}\index{ostk::simulation::component::State@{ostk::simulation::component::State}!Undefined@{Undefined}}}\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58aec0fc0100c4fc1ce4eea230c3dc10360}\label{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58aec0fc0100c4fc1ce4eea230c3dc10360}} 
@@ -88,17 +101,54 @@ Error&\\
 \doxysubsubsection{\texorpdfstring{State()}{State()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily ostk\+::simulation\+::component\+::\+State\+::\+State (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{State\+::\+Status}} \&}]{a\+Status = {\ttfamily \mbox{\hyperlink{_state_8hpp_a188ce67e515b427589d4c363d1132018}{D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+T\+A\+T\+US}}},  }\item[{const bool \&}]{is\+Verbose = {\ttfamily \mbox{\hyperlink{_state_8hpp_a4ad8faebfc1723fec1090b84ec0f680e}{D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+E\+R\+B\+O\+SE}}} }\end{DoxyParamCaption})}
 
+
+
+Construct a state. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} state(\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}{State::Status::Idle}}, \textcolor{keyword}{true});}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Status} & A status (default\+: Disabled). \\
+\hline
+\mbox{\texttt{ in}}  & {\em is\+Verbose} & If true, enable verbose mode (default\+: false). \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_a36adbe9bccb78bec881e2c3f267724ed}\label{classostk_1_1simulation_1_1component_1_1_state_a36adbe9bccb78bec881e2c3f267724ed}} 
 \index{ostk::simulation::component::State@{ostk::simulation::component::State}!State@{State}}
 \index{State@{State}!ostk::simulation::component::State@{ostk::simulation::component::State}}
 \doxysubsubsection{\texorpdfstring{State()}{State()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily ostk\+::simulation\+::component\+::\+State\+::\+State (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} \&}]{a\+State }\end{DoxyParamCaption})}
 
+
+
+Copy constructor. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} original(\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}{State::Status::Idle}});}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} copy(original);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+State} & A state. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_a57c4cf4d8c50c2482402e3740483c29e}\label{classostk_1_1simulation_1_1component_1_1_state_a57c4cf4d8c50c2482402e3740483c29e}} 
 \index{ostk::simulation::component::State@{ostk::simulation::component::State}!````~State@{$\sim$State}}
 \index{````~State@{$\sim$State}!ostk::simulation::component::State@{ostk::simulation::component::State}}
 \doxysubsubsection{\texorpdfstring{$\sim$State()}{~State()}}
 {\footnotesize\ttfamily ostk\+::simulation\+::component\+::\+State\+::$\sim$\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
 
 
 
@@ -109,24 +159,85 @@ Error&\\
 \doxysubsubsection{\texorpdfstring{clone()}{clone()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} $\ast$ ostk\+::simulation\+::component\+::\+State\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
+
+
+Clone the state. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} state(\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}{State::Status::Idle}});}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}}* cloned = state.clone();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+A pointer to a cloned state. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_a5ff60e1d912483effdb53b2b5c555cf9}\label{classostk_1_1simulation_1_1component_1_1_state_a5ff60e1d912483effdb53b2b5c555cf9}} 
 \index{ostk::simulation::component::State@{ostk::simulation::component::State}!getStatus@{getStatus}}
 \index{getStatus@{getStatus}!ostk::simulation::component::State@{ostk::simulation::component::State}}
 \doxysubsubsection{\texorpdfstring{getStatus()}{getStatus()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{State\+::\+Status}} ostk\+::simulation\+::component\+::\+State\+::get\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Get the status. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} state(\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}{State::Status::Idle}});}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{State::Status}} status = state.getStatus(); \textcolor{comment}{// State::Status::Idle}}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+The status. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_abfb0349ee570125276b52aa2c3b1156d}\label{classostk_1_1simulation_1_1component_1_1_state_abfb0349ee570125276b52aa2c3b1156d}} 
 \index{ostk::simulation::component::State@{ostk::simulation::component::State}!isDefined@{isDefined}}
 \index{isDefined@{isDefined}!ostk::simulation::component::State@{ostk::simulation::component::State}}
 \doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
 {\footnotesize\ttfamily bool ostk\+::simulation\+::component\+::\+State\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Check if the state is defined. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} state(\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}{State::Status::Idle}});}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} defined = state.isDefined(); \textcolor{comment}{// true}}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+True if the state is defined. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_ac8aaea99357f670afab3c087de08446f}\label{classostk_1_1simulation_1_1component_1_1_state_ac8aaea99357f670afab3c087de08446f}} 
 \index{ostk::simulation::component::State@{ostk::simulation::component::State}!operator=@{operator=}}
 \index{operator=@{operator=}!ostk::simulation::component::State@{ostk::simulation::component::State}}
 \doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} \& ostk\+::simulation\+::component\+::\+State\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} \&}]{a\+State }\end{DoxyParamCaption})}
 
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} first(\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}{State::Status::Idle}});}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} second = first;}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+State} & A state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the assigned state. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_ad4440388904bac640dc57ffbc5b77019}\label{classostk_1_1simulation_1_1component_1_1_state_ad4440388904bac640dc57ffbc5b77019}} 
 \index{ostk::simulation::component::State@{ostk::simulation::component::State}!operator==@{operator==}}
 \index{operator==@{operator==}!ostk::simulation::component::State@{ostk::simulation::component::State}}
@@ -139,19 +250,19 @@ Equal to operator.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} firstState = ... ;}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} secondState = ... ;}
-\DoxyCodeLine{firstState == secondState ; \textcolor{comment}{// True}}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} firstState(\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}{State::Status::Idle}});}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} secondState(\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}{State::Status::Idle}});}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} isEqual = (firstState == secondState); \textcolor{comment}{// true}}
 \end{DoxyCode}
 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+State} & A state \\
+\mbox{\texttt{ in}}  & {\em a\+State} & A state. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if states are equal 
+True if states are equal. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_a21a79240817592992c4791699b2d623f}\label{classostk_1_1simulation_1_1component_1_1_state_a21a79240817592992c4791699b2d623f}} 
 \index{ostk::simulation::component::State@{ostk::simulation::component::State}!Undefined@{Undefined}}
@@ -159,6 +270,20 @@ True if states are equal
 \doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} ostk\+::simulation\+::component\+::\+State\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Construct an undefined state. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} state = \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_a21a79240817592992c4791699b2d623f}{State::Undefined}}();}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} defined = state.isDefined(); \textcolor{comment}{// false}}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+An undefined state. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

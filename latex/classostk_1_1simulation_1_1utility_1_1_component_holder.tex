@@ -2,7 +2,7 @@
 \label{classostk_1_1simulation_1_1utility_1_1_component_holder}\index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
 
 
-Generic \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} holder.  
+A container that holds and manages a collection of components.  
 
 
 
@@ -19,33 +19,43 @@ Inheritance diagram for ostk\+::simulation\+::utility\+::Component\+Holder\+:\be
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a7229211c50e568af740b831f8cde2d0b}{Component\+Holder}} (const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$ \&a\+Component\+Array=Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$\+::Empty())
-\item 
+\begin{DoxyCompactList}\small\item\em Construct a component holder. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_abbc39c68bfd9922229cf2c70291395a1}{Component\+Holder}} (const \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder}{Component\+Holder}} \&a\+Component\+Holder)
-\item 
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a2d189ed7b58dd7dbddd2e619cf197c86}{$\sim$\+Component\+Holder}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_aca60bf690ae2d94e094760ef276fcfc6}{has\+Component\+With\+Id}} (const String \&a\+Component\+Id) const
-\item 
+\begin{DoxyCompactList}\small\item\em Check if a component with the given identifier exists. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a6a570d1c15601cacb1ad7a9fab443317}{has\+Component\+With\+Name}} (const String \&a\+Component\+Name) const
-\item 
+\begin{DoxyCompactList}\small\item\em Check if a component with the given name exists. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a2992fe305dcb2243a0f3f0b3a2965773}{has\+Component\+At}} (const String \&a\+Component\+Path) const
-\item 
+\begin{DoxyCompactList}\small\item\em Check if a component exists at the given hierarchical path. \end{DoxyCompactList}\item 
 Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_ab66566e91251de05a02198cec7ecc4b7}{access\+Components}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Access all components. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a05ee37d6949d90619788e62a1b1db47a}{access\+Component\+With\+Id}} (const String \&a\+Component\+Id) const
-\item 
+\begin{DoxyCompactList}\small\item\em Access a component by identifier. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a245084a9899a44bb0c3298d643c2b44d}{access\+Component\+With\+Name}} (const String \&a\+Component\+Name) const
-\item 
+\begin{DoxyCompactList}\small\item\em Access a component by name. \end{DoxyCompactList}\item 
 Array$<$ Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a9f7c8444d12fcb0a8d4d1198c2181197}{access\+Components\+With\+Tag}} (const String \&a\+Component\+Tag) const
-\item 
+\begin{DoxyCompactList}\small\item\em Access all components matching a tag. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a83aefcdc6fea117a180edff14954f7a5}{access\+Component\+At}} (const String \&a\+Component\+Path) const
-\item 
+\begin{DoxyCompactList}\small\item\em Access a component at a hierarchical path. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a6012cd2e61416fe0cef0f9523e0121de}{add\+Component}} (const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ \&a\+Component\+S\+Ptr)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Add a component. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Generic \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} holder. 
+A container that holds and manages a collection of components. 
+
+Provides lookup by identifier, name, tag, and hierarchical path.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a7229211c50e568af740b831f8cde2d0b}{ComponentHolder}} holder(componentArray);}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} exists = holder.hasComponentWithName(\textcolor{stringliteral}{"sensor"});}
+\DoxyCodeLine{\textcolor{keyword}{const} Component\& sensor = holder.accessComponentWithName(\textcolor{stringliteral}{"sensor"});}
+\end{DoxyCode}
+ 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a7229211c50e568af740b831f8cde2d0b}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a7229211c50e568af740b831f8cde2d0b}} 
@@ -54,17 +64,51 @@ Generic \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} hold
 \doxysubsubsection{\texorpdfstring{ComponentHolder()}{ComponentHolder()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily ostk\+::simulation\+::utility\+::\+Component\+Holder\+::\+Component\+Holder (\begin{DoxyParamCaption}\item[{const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$ \&}]{a\+Component\+Array = {\ttfamily Array$<$Shared$<$\mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}}$>$$>$\+:\+:Empty()} }\end{DoxyParamCaption})}
 
+
+
+Construct a component holder. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a7229211c50e568af740b831f8cde2d0b}{ComponentHolder}} holder(componentArray);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+Array} & An array of components (default\+: empty). \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_abbc39c68bfd9922229cf2c70291395a1}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_abbc39c68bfd9922229cf2c70291395a1}} 
 \index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!ComponentHolder@{ComponentHolder}}
 \index{ComponentHolder@{ComponentHolder}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
 \doxysubsubsection{\texorpdfstring{ComponentHolder()}{ComponentHolder()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily ostk\+::simulation\+::utility\+::\+Component\+Holder\+::\+Component\+Holder (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder}{Component\+Holder}} \&}]{a\+Component\+Holder }\end{DoxyParamCaption})}
 
+
+
+Copy constructor. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder_a7229211c50e568af740b831f8cde2d0b}{ComponentHolder}} copy(holder);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+Holder} & A component holder. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a2d189ed7b58dd7dbddd2e619cf197c86}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a2d189ed7b58dd7dbddd2e619cf197c86}} 
 \index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!````~ComponentHolder@{$\sim$ComponentHolder}}
 \index{````~ComponentHolder@{$\sim$ComponentHolder}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
 \doxysubsubsection{\texorpdfstring{$\sim$ComponentHolder()}{~ComponentHolder()}}
 {\footnotesize\ttfamily ostk\+::simulation\+::utility\+::\+Component\+Holder\+::$\sim$\+Component\+Holder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
 
 
 
@@ -75,54 +119,208 @@ Generic \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} hold
 \doxysubsubsection{\texorpdfstring{accessComponentAt()}{accessComponentAt()}}
 {\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& ostk\+::simulation\+::utility\+::\+Component\+Holder\+::access\+Component\+At (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Path }\end{DoxyParamCaption}) const}
 
+
+
+Access a component at a hierarchical path. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} Component\& sensor = holder.accessComponentAt(\textcolor{stringliteral}{"assembly.sensor"});}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+Path} & A dot-\/separated component path (e.\+g., \char`\"{}assembly.\+sensor\char`\"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the component. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_ab66566e91251de05a02198cec7ecc4b7}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_ab66566e91251de05a02198cec7ecc4b7}} 
 \index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!accessComponents@{accessComponents}}
 \index{accessComponents@{accessComponents}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
 \doxysubsubsection{\texorpdfstring{accessComponents()}{accessComponents()}}
 {\footnotesize\ttfamily Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ $>$ ostk\+::simulation\+::utility\+::\+Component\+Holder\+::access\+Components (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Access all components. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Array<Shared<Component>> components = holder.accessComponents();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+An array of shared pointers to the components. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a9f7c8444d12fcb0a8d4d1198c2181197}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a9f7c8444d12fcb0a8d4d1198c2181197}} 
 \index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!accessComponentsWithTag@{accessComponentsWithTag}}
 \index{accessComponentsWithTag@{accessComponentsWithTag}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
 \doxysubsubsection{\texorpdfstring{accessComponentsWithTag()}{accessComponentsWithTag()}}
 {\footnotesize\ttfamily Array$<$ Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ $>$ ostk\+::simulation\+::utility\+::\+Component\+Holder\+::access\+Components\+With\+Tag (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Tag }\end{DoxyParamCaption}) const}
 
+
+
+Access all components matching a tag. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Array<Shared<const Component>> sensors = holder.accessComponentsWithTag(\textcolor{stringliteral}{"sensor"});}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+Tag} & A tag. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array of shared pointers to the matching components. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a05ee37d6949d90619788e62a1b1db47a}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a05ee37d6949d90619788e62a1b1db47a}} 
 \index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!accessComponentWithId@{accessComponentWithId}}
 \index{accessComponentWithId@{accessComponentWithId}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
 \doxysubsubsection{\texorpdfstring{accessComponentWithId()}{accessComponentWithId()}}
 {\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& ostk\+::simulation\+::utility\+::\+Component\+Holder\+::access\+Component\+With\+Id (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Id }\end{DoxyParamCaption}) const}
 
+
+
+Access a component by identifier. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} Component\& component = holder.accessComponentWithId(\textcolor{stringliteral}{"component-\/id"});}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+Id} & A component identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the component. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a245084a9899a44bb0c3298d643c2b44d}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a245084a9899a44bb0c3298d643c2b44d}} 
 \index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!accessComponentWithName@{accessComponentWithName}}
 \index{accessComponentWithName@{accessComponentWithName}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
 \doxysubsubsection{\texorpdfstring{accessComponentWithName()}{accessComponentWithName()}}
 {\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& ostk\+::simulation\+::utility\+::\+Component\+Holder\+::access\+Component\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Name }\end{DoxyParamCaption}) const}
 
+
+
+Access a component by name. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} Component\& sensor = holder.accessComponentWithName(\textcolor{stringliteral}{"sensor"});}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+Name} & A component name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the component. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a6012cd2e61416fe0cef0f9523e0121de}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a6012cd2e61416fe0cef0f9523e0121de}} 
 \index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!addComponent@{addComponent}}
 \index{addComponent@{addComponent}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
 \doxysubsubsection{\texorpdfstring{addComponent()}{addComponent()}}
 {\footnotesize\ttfamily void ostk\+::simulation\+::utility\+::\+Component\+Holder\+::add\+Component (\begin{DoxyParamCaption}\item[{const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ \&}]{a\+Component\+S\+Ptr }\end{DoxyParamCaption})}
 
+
+
+Add a component. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{holder.addComponent(componentSPtr);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+S\+Ptr} & A shared pointer to a component. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a2992fe305dcb2243a0f3f0b3a2965773}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a2992fe305dcb2243a0f3f0b3a2965773}} 
 \index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!hasComponentAt@{hasComponentAt}}
 \index{hasComponentAt@{hasComponentAt}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
 \doxysubsubsection{\texorpdfstring{hasComponentAt()}{hasComponentAt()}}
 {\footnotesize\ttfamily bool ostk\+::simulation\+::utility\+::\+Component\+Holder\+::has\+Component\+At (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Path }\end{DoxyParamCaption}) const}
 
+
+
+Check if a component exists at the given hierarchical path. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} exists = holder.hasComponentAt(\textcolor{stringliteral}{"assembly.sensor"});}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+Path} & A dot-\/separated component path (e.\+g., \char`\"{}assembly.\+sensor\char`\"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if a component exists at the path. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_aca60bf690ae2d94e094760ef276fcfc6}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_aca60bf690ae2d94e094760ef276fcfc6}} 
 \index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!hasComponentWithId@{hasComponentWithId}}
 \index{hasComponentWithId@{hasComponentWithId}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
 \doxysubsubsection{\texorpdfstring{hasComponentWithId()}{hasComponentWithId()}}
 {\footnotesize\ttfamily bool ostk\+::simulation\+::utility\+::\+Component\+Holder\+::has\+Component\+With\+Id (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Id }\end{DoxyParamCaption}) const}
 
+
+
+Check if a component with the given identifier exists. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} exists = holder.hasComponentWithId(\textcolor{stringliteral}{"component-\/id"});}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+Id} & A component identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if a component with the identifier exists. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1utility_1_1_component_holder_a6a570d1c15601cacb1ad7a9fab443317}\label{classostk_1_1simulation_1_1utility_1_1_component_holder_a6a570d1c15601cacb1ad7a9fab443317}} 
 \index{ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}!hasComponentWithName@{hasComponentWithName}}
 \index{hasComponentWithName@{hasComponentWithName}!ostk::simulation::utility::ComponentHolder@{ostk::simulation::utility::ComponentHolder}}
 \doxysubsubsection{\texorpdfstring{hasComponentWithName()}{hasComponentWithName()}}
 {\footnotesize\ttfamily bool ostk\+::simulation\+::utility\+::\+Component\+Holder\+::has\+Component\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Name }\end{DoxyParamCaption}) const}
 
+
+
+Check if a component with the given name exists. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} exists = holder.hasComponentWithName(\textcolor{stringliteral}{"sensor"});}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+Name} & A component name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if a component with the name exists. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

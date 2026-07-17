@@ -4,14 +4,14 @@
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder}{Component\+Holder}}
-\begin{DoxyCompactList}\small\item\em Generic \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} holder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A container that holds and manages a collection of components. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 Pair$<$ String, String $>$ \mbox{\hyperlink{namespaceostk_1_1simulation_1_1utility_a2084483160c51091dc6577f796001b55}{split\+Component\+Path}} (const String \&a\+Component\+Path)
-\item 
+\begin{DoxyCompactList}\small\item\em Split a hierarchical component path into its first segment and the remainder. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{namespaceostk_1_1simulation_1_1utility_ae47abdad099e16d373c2338be7daff13}{generate\+Id}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generate a unique identifier string. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -21,9 +21,41 @@ String \mbox{\hyperlink{namespaceostk_1_1simulation_1_1utility_ae47abdad099e16d3
 \doxysubsubsection{\texorpdfstring{generateId()}{generateId()}}
 {\footnotesize\ttfamily String ostk\+::simulation\+::utility\+::generate\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Generate a unique identifier string. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{String \textcolor{keywordtype}{id} = \mbox{\hyperlink{namespaceostk_1_1simulation_1_1utility_ae47abdad099e16d373c2338be7daff13}{generateId}}();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+A unique identifier string. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{namespaceostk_1_1simulation_1_1utility_a2084483160c51091dc6577f796001b55}\label{namespaceostk_1_1simulation_1_1utility_a2084483160c51091dc6577f796001b55}} 
 \index{ostk::simulation::utility@{ostk::simulation::utility}!splitComponentPath@{splitComponentPath}}
 \index{splitComponentPath@{splitComponentPath}!ostk::simulation::utility@{ostk::simulation::utility}}
 \doxysubsubsection{\texorpdfstring{splitComponentPath()}{splitComponentPath()}}
 {\footnotesize\ttfamily Pair$<$ String, String $>$ ostk\+::simulation\+::utility\+::split\+Component\+Path (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Component\+Path }\end{DoxyParamCaption})}
 
+
+
+Split a hierarchical component path into its first segment and the remainder. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Pair<String, String> result = \mbox{\hyperlink{namespaceostk_1_1simulation_1_1utility_a2084483160c51091dc6577f796001b55}{splitComponentPath}}(\textcolor{stringliteral}{"assembly.sensor"});}
+\DoxyCodeLine{\textcolor{comment}{// result.first == "assembly", result.second == "sensor"}}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+Path} & A dot-\/separated component path (e.\+g., \char`\"{}assembly.\+sensor\char`\"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair containing the first segment and the remaining path. 
+\end{DoxyReturn}

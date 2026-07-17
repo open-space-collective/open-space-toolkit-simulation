@@ -80,6 +80,7 @@
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a74a72f8e07513ba52a41a006c2e7687c" kind="function"><name>isDefined</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1aaf42fdfd3bccb180db7efe9db8eeaf4b" kind="function"><name>accessComponent</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a2f13ab1988d7d64407f63100fd547fd0" kind="function"><name>getName</name></member>
+    <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1ae805e0cb40ad4f03e4208adae6ad4fc4" kind="function"><name>print</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1aeec7b3694e1ca2552b65c56de9acc315" kind="function"><name>intersects</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a954a8a7af85cde7d9407b98ac9dd23c5" kind="function"><name>intersects</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1af39e2376a527720e37e46dc57f3eb6a5" kind="function"><name>contains</name></member>

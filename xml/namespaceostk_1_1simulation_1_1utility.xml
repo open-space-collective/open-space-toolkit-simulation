@@ -14,12 +14,28 @@
           <declname>aComponentPath</declname>
         </param>
         <briefdescription>
+<para>Split a hierarchical component path into its first segment and the remainder. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">Pair&lt;String,<sp/>String&gt;<sp/>result<sp/>=<sp/><ref refid="namespaceostk_1_1simulation_1_1utility_1a2084483160c51091dc6577f796001b55" kindref="member">splitComponentPath</ref>(</highlight><highlight class="stringliteral">&quot;assembly.sensor&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>result.first<sp/>==<sp/>&quot;assembly&quot;,<sp/>result.second<sp/>==<sp/>&quot;sensor&quot;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aComponentPath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A dot-separated component path (e.g., &quot;assembly.sensor&quot;). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A pair containing the first segment and the remaining path. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" line="186" column="6" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="186" bodyend="211" declfile="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" declline="64" declcolumn="6"/>
+        <location file="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" line="186" column="6" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="186" bodyend="211" declfile="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" declline="164" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1simulation_1_1utility_1ae47abdad099e16d373c2338be7daff13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -27,12 +43,18 @@
         <argsstring>()</argsstring>
         <name>generateId</name>
         <briefdescription>
+<para>Generate a unique identifier string. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">String<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/><ref refid="namespaceostk_1_1simulation_1_1utility_1ae47abdad099e16d373c2338be7daff13" kindref="member">generateId</ref>();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A unique identifier string. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Simulation/Utility/Identifier.cpp" line="15" column="8" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/Identifier.cpp" bodystart="15" bodyend="19" declfile="include/OpenSpaceToolkit/Simulation/Utility/Identifier.hpp" declline="22" declcolumn="8"/>
+        <location file="src/OpenSpaceToolkit/Simulation/Utility/Identifier.cpp" line="15" column="8" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/Identifier.cpp" bodystart="15" bodyend="19" declfile="include/OpenSpaceToolkit/Simulation/Utility/Identifier.hpp" declline="29" declcolumn="8"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

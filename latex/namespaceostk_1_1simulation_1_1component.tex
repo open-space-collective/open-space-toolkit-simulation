@@ -4,11 +4,11 @@
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} geometry. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em A geometry associated with a component. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structostk_1_1simulation_1_1component_1_1_geometry_configuration}{Geometry\+Configuration}}
-\item 
+\begin{DoxyCompactList}\small\item\em Configuration for constructing a \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}}. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Represents the state of a component. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,12 +38,18 @@ std\+::ostream \& \mbox{\hyperlink{namespaceostk_1_1simulation_1_1component_a42b
 {\footnotesize\ttfamily std\+::ostream\& ostk\+::simulation\+::component\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} \&}]{a\+Geometry }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::cout << geometry;}
+\end{DoxyCode}
+
+
+
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em an\+Output\+Stream} & An output stream \\
+\mbox{\texttt{ in}}  & {\em an\+Output\+Stream} & An output stream. \\
 \hline
-\mbox{\texttt{ in}}  & {\em a\+Geometry} & A geometry \\
+\mbox{\texttt{ in}}  & {\em a\+Geometry} & A geometry. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A reference to output stream 
+A reference to the output stream. 
 \end{DoxyReturn}

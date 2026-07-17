@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="40" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Entity.hpp" bodystart="40" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="99" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Entity.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1simulation_1_1_entity_1a50230f16790bae32ca380fc671231693" prot="private" static="no" mutable="no">
         <type>String</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="41" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Entity.hpp" bodystart="41" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="100" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Entity.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -43,12 +43,26 @@
           <declname>aName</declname>
         </param>
         <briefdescription>
+<para>Construct an entity with a name. </para>
         </briefdescription>
         <detaileddescription>
+<para>An identifier is automatically generated.</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_entity_1a929819736161db5935b29b84da8a97aa" kindref="member">Entity</ref><sp/>entity(</highlight><highlight class="stringliteral">&quot;my-entity&quot;</highlight><highlight class="normal">);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>aName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A name for the entity. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="20" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="16" bodyend="20"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="35" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="16" bodyend="20"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_entity_1ae4ee439011cfcb1811d31bdb8db871fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -64,12 +78,33 @@
           <declname>aName</declname>
         </param>
         <briefdescription>
+<para>Construct an entity with an identifier and a name. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_entity_1a929819736161db5935b29b84da8a97aa" kindref="member">Entity</ref><sp/>entity(</highlight><highlight class="stringliteral">&quot;entity-id&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;my-entity&quot;</highlight><highlight class="normal">);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>anId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>aName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A name. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="22" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="22" bodyend="26"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="45" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="22" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_entity_1ad3c1556400b02acdffde053348acda2f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -77,12 +112,19 @@
         <argsstring>() const</argsstring>
         <name>isDefined</name>
         <briefdescription>
+<para>Check if the entity is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_entity_1a929819736161db5935b29b84da8a97aa" kindref="member">Entity</ref><sp/>entity(</highlight><highlight class="stringliteral">&quot;my-entity&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>defined<sp/>=<sp/>entity.isDefined();<sp/></highlight><highlight class="comment">//<sp/>true</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if the entity is defined. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="24" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="28" bodyend="31"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="55" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="28" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_entity_1a33286b8807aacec430d105646c021a79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -90,12 +132,19 @@
         <argsstring>() const</argsstring>
         <name>getId</name>
         <briefdescription>
+<para>Get the identifier of the entity. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_entity_1a929819736161db5935b29b84da8a97aa" kindref="member">Entity</ref><sp/>entity(</highlight><highlight class="stringliteral">&quot;entity-id&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;my-entity&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">String<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/>entity.getId();<sp/></highlight><highlight class="comment">//<sp/>&quot;entity-id&quot;</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The identifier. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="26" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="33" bodyend="41"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="65" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="33" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_entity_1a17050a1483e16e62ca10e3b1ecade1d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -103,12 +152,19 @@
         <argsstring>() const</argsstring>
         <name>getName</name>
         <briefdescription>
+<para>Get the name of the entity. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_entity_1a929819736161db5935b29b84da8a97aa" kindref="member">Entity</ref><sp/>entity(</highlight><highlight class="stringliteral">&quot;my-entity&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">String<sp/>name<sp/>=<sp/>entity.getName();<sp/></highlight><highlight class="comment">//<sp/>&quot;my-entity&quot;</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The name. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="28" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="43" bodyend="51"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="75" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="43" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_entity_1aa2238f2fe07b5ddc4594293acdfa0c23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -125,23 +181,26 @@
           <defval>true</defval>
         </param>
         <briefdescription>
-<para>Print entity. </para>
+<para>Print the entity to an output stream. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_entity_1a929819736161db5935b29b84da8a97aa" kindref="member">Entity</ref><sp/>entity(</highlight><highlight class="stringliteral">&quot;my-entity&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">entity.print(std::cout,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anOutputStream</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>An output stream </para>
+<para>An output stream. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">(optional)</parametername>
+<parametername direction="in">displayDecorators</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>displayDecorators If true, display decorators </para>
+<para>If true, display decorators. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -149,7 +208,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="35" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="58" bodyend="66"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="86" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="58" bodyend="66"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -159,18 +218,30 @@
         <argsstring>()</argsstring>
         <name>Undefined</name>
         <briefdescription>
+<para>Construct an undefined entity. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_entity_1a929819736161db5935b29b84da8a97aa" kindref="member">Entity</ref><sp/>entity<sp/>=<sp/><ref refid="classostk_1_1simulation_1_1_entity_1aa42c610f1b96197f9fbf45711fe6a479" kindref="member">Entity::Undefined</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>defined<sp/>=<sp/>entity.isDefined();<sp/></highlight><highlight class="comment">//<sp/>false</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>An undefined entity. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="37" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="53" bodyend="56"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="96" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Entity.cpp" bodystart="53" bodyend="56"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="classostk_1_1simulation_1_1_entity" kindref="compound">Entity</ref>. </para>
+<para>A base class representing a named entity in the simulation. </para>
     </briefdescription>
     <detaileddescription>
+<para>An <ref refid="classostk_1_1simulation_1_1_entity" kindref="compound">Entity</ref> has an identifier and a name. It serves as the base class for Components and other simulation objects.</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_entity_1a929819736161db5935b29b84da8a97aa" kindref="member">Entity</ref><sp/>entity(</highlight><highlight class="stringliteral">&quot;my-entity&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">String<sp/>name<sp/>=<sp/>entity.getName();</highlight></codeline>
+<codeline><highlight class="normal">String<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/>entity.getId();</highlight></codeline>
+</programlisting> </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="3">
@@ -190,7 +261,7 @@
         <link refid="classostk_1_1simulation_1_1_entity"/>
       </node>
     </inheritancegraph>
-    <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="18" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Entity.hpp" bodystart="17" bodyend="42"/>
+    <location file="include/OpenSpaceToolkit/Simulation/Entity.hpp" line="25" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Entity.hpp" bodystart="24" bodyend="101"/>
     <listofallmembers>
       <member refid="classostk_1_1simulation_1_1_entity_1a929819736161db5935b29b84da8a97aa" prot="public" virt="non-virtual"><scope>ostk::simulation::Entity</scope><name>Entity</name></member>
       <member refid="classostk_1_1simulation_1_1_entity_1ae4ee439011cfcb1811d31bdb8db871fa" prot="public" virt="non-virtual"><scope>ostk::simulation::Entity</scope><name>Entity</name></member>

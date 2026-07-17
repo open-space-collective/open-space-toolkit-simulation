@@ -2,7 +2,7 @@
 \label{classostk_1_1simulation_1_1_component}\index{ostk::simulation::Component@{ostk::simulation::Component}}
 
 
-\mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}}.  
+A component within the simulation hierarchy.  
 
 
 
@@ -27,63 +27,73 @@ enum \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e2
 \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20aa2ec2ef7ebb614cf7dd5d78b9bbf59b3}{Type\+::\+Actuator}}, 
 \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20a6311ae17c1ee52b36e68aaf4ad066387}{Type\+::\+Other}}
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} type enumeration. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1_component_ab3711f34980c3fdb746ff83b9511a25c}{Component}} (const String \&an\+Id, const String \&a\+Name, const \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20}{Component\+::\+Type}} \&a\+Type, const Array$<$ String $>$ \&a\+Tag\+Array, const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} $>$$>$ \&a\+Geometry\+Array, const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$ \&a\+Component\+Array, const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder}{Component\+Holder}} $>$ \&a\+Parent\+Component\+S\+Ptr, const Shared$<$ const Frame $>$ \&a\+Frame\+S\+Ptr, const Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} $>$ \&a\+Simulator\+S\+Ptr)
-\item 
+\begin{DoxyCompactList}\small\item\em Construct a component. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a5395700f491da619eb45b0148a5727d5}{Component}} (const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \&a\+Component)
-\item 
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a57f790fdbb03f777e59d73218d2899ef}{$\sim$\+Component}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $\ast$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a36cdd3498146b23e3ff67b95cd1c59cc}{clone}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Clone the component. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a983ee8f3974fc2900f21d3bea12fb877}{is\+Defined}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Check if the component is defined. \end{DoxyCompactList}\item 
 const Shared$<$ const Frame $>$ \& \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a3e7acecda5a9286bc4baf1d3b6bbd7d5}{access\+Frame}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Access the reference frame. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1_component_afe2d126a21b7a96d0b3655ebcac3a6be}{access\+Geometry\+With\+Name}} (const String \&a\+Name) const
-\item 
+\begin{DoxyCompactList}\small\item\em Access a geometry by name. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a0e119aa1a610b08b935789a7ecb19605}{access\+Simulator}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Access the simulator. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20}{Component\+::\+Type}} \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a93375352059595b81e81569e445d4512}{get\+Type}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Get the component type. \end{DoxyCompactList}\item 
 Array$<$ String $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component_ab792e508c303ec679ea8b8cbcc2c4c8f}{get\+Tags}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Get the tags. \end{DoxyCompactList}\item 
 Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} $>$ $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component_aba0796b346cbd27323c2e5c1df8ffcf2}{get\+Geometries}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Get the geometries. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a266bf1a8b756f55ef24cc9fee3fd4fca}{set\+Parent}} (const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ \&a\+Component\+S\+Ptr)
-\item 
+\begin{DoxyCompactList}\small\item\em Set the parent component. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1simulation_1_1_component_ad3ef491ef73a9e01507c95541790bdf2}{add\+Geometry}} (const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} $>$ \&a\+Geometry\+S\+Ptr)
-\item 
+\begin{DoxyCompactList}\small\item\em Add a geometry to the component. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1simulation_1_1_component_aeb00ae625a59168bde62bcbb3e1d6ed6}{add\+Component}} (const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ \&a\+Component\+S\+Ptr)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Add a child component. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \mbox{\hyperlink{classostk_1_1simulation_1_1_component_ad8849104db5f1e96a2de547bc1c11867}{Undefined}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Construct an undefined component. \end{DoxyCompactList}\item 
 static Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a635e3685019800ec343ec8474954ff0e}{Configure}} (const \mbox{\hyperlink{structostk_1_1simulation_1_1_component_configuration}{Component\+Configuration}} \&a\+Component\+Configuration, const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ \&a\+Parent\+Component\+S\+Ptr)
-\item 
+\begin{DoxyCompactList}\small\item\em Configure a component from a configuration. \end{DoxyCompactList}\item 
 static String \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a7f74a40eb3aae2f7e12af002ca9dbc89}{String\+From\+Type}} (const \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20}{Component\+::\+Type}} \&a\+Type)
-\item 
+\begin{DoxyCompactList}\small\item\em Convert a component type to a string. \end{DoxyCompactList}\item 
 static Shared$<$ const Frame $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a9b5f84be02c06a7b6576fcdb00640ede}{Generate\+Frame}} (const String \&a\+Name, const Quaternion \&a\+Quaternion, const Shared$<$ const Frame $>$ \&a\+Parent\+Frame\+S\+Ptr)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generate a reference frame for a component. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 virtual void \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a9c102937dd6ca5fb9e3b726cc0fd5ed6}{print}} (std\+::ostream \&an\+Output\+Stream, bool display\+Decorators=true) const
-\begin{DoxyCompactList}\small\item\em Print component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Print the component to an output stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
 std\+::ostream \& \mbox{\hyperlink{classostk_1_1simulation_1_1_component_ae3c657f10ed74f15e3356a2ff54647f3}{operator$<$$<$}} (std\+::ostream \&an\+Output\+Stream, const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \&a\+Component)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Output stream operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}}. 
+A component within the simulation hierarchy. 
+
+A \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} extends \mbox{\hyperlink{classostk_1_1simulation_1_1_entity}{Entity}} with a type, tags, geometries, child components, and a reference frame. Components form a tree structure where each component can hold sub-\/components and geometries.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} \mbox{\hyperlink{classostk_1_1simulation_1_1_component_ab3711f34980c3fdb746ff83b9511a25c}{Component}}\& sensor = satellite.accessComponentWithName(\textcolor{stringliteral}{"camera"});}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20}{Component::Type}} type = sensor.getType();}
+\DoxyCodeLine{Array<String> tags = sensor.getTags();}
+\end{DoxyCode}
+ 
 
 \doxysubsection{Member Enumeration Documentation}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20}\label{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20}} 
@@ -91,6 +101,10 @@ std\+::ostream \& \mbox{\hyperlink{classostk_1_1simulation_1_1_component_ae3c657
 \index{Type@{Type}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{Type}{Type}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20}{ostk\+::simulation\+::\+Component\+::\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+\mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} type enumeration. 
 
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!ostk::simulation::Component@{ostk::simulation::Component}}\index{ostk::simulation::Component@{ostk::simulation::Component}!Undefined@{Undefined}}}\mbox{\Hypertarget{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20aec0fc0100c4fc1ce4eea230c3dc10360}\label{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20aec0fc0100c4fc1ce4eea230c3dc10360}} 
@@ -127,17 +141,71 @@ Other&\\
 \doxysubsubsection{\texorpdfstring{Component()}{Component()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily ostk\+::simulation\+::\+Component\+::\+Component (\begin{DoxyParamCaption}\item[{const String \&}]{an\+Id,  }\item[{const String \&}]{a\+Name,  }\item[{const \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20}{Component\+::\+Type}} \&}]{a\+Type,  }\item[{const Array$<$ String $>$ \&}]{a\+Tag\+Array,  }\item[{const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} $>$$>$ \&}]{a\+Geometry\+Array,  }\item[{const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$$>$ \&}]{a\+Component\+Array,  }\item[{const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1utility_1_1_component_holder}{Component\+Holder}} $>$ \&}]{a\+Parent\+Component\+S\+Ptr,  }\item[{const Shared$<$ const Frame $>$ \&}]{a\+Frame\+S\+Ptr,  }\item[{const Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} $>$ \&}]{a\+Simulator\+S\+Ptr }\end{DoxyParamCaption})}
 
+
+
+Construct a component. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_component_ab3711f34980c3fdb746ff83b9511a25c}{Component}} component(}
+\DoxyCodeLine{    \textcolor{stringliteral}{"id"}, \textcolor{stringliteral}{"name"}, \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20a06b185256c71c1aec263c6e22bf8ef6b}{Component::Type::Sensor}},}
+\DoxyCodeLine{    tagArray, geometryArray, componentArray,}
+\DoxyCodeLine{    parentSPtr, frameSPtr, simulatorSPtr}
+\DoxyCodeLine{);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Id} & An identifier. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Name} & A name. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Type} & A component type. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Tag\+Array} & An array of tags. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Geometry\+Array} & An array of geometries. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Component\+Array} & An array of child components. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Parent\+Component\+S\+Ptr} & A shared pointer to the parent component holder. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Frame\+S\+Ptr} & A shared pointer to the reference frame. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Simulator\+S\+Ptr} & A shared pointer to the simulator. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_a5395700f491da619eb45b0148a5727d5}\label{classostk_1_1simulation_1_1_component_a5395700f491da619eb45b0148a5727d5}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!Component@{Component}}
 \index{Component@{Component}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{Component()}{Component()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily ostk\+::simulation\+::\+Component\+::\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \&}]{a\+Component }\end{DoxyParamCaption})}
 
+
+
+Copy constructor. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_component_ab3711f34980c3fdb746ff83b9511a25c}{Component}} copy(component);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component} & A component. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_a57f790fdbb03f777e59d73218d2899ef}\label{classostk_1_1simulation_1_1_component_a57f790fdbb03f777e59d73218d2899ef}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!````~Component@{$\sim$Component}}
 \index{````~Component@{$\sim$Component}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{$\sim$Component()}{~Component()}}
 {\footnotesize\ttfamily ostk\+::simulation\+::\+Component\+::$\sim$\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
 
 
 
@@ -148,36 +216,123 @@ Other&\\
 \doxysubsubsection{\texorpdfstring{accessFrame()}{accessFrame()}}
 {\footnotesize\ttfamily const Shared$<$ const Frame $>$ \& ostk\+::simulation\+::\+Component\+::access\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Access the reference frame. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} Shared<const Frame>\& frame = component.accessFrame();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+A reference to the shared pointer to the frame. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_afe2d126a21b7a96d0b3655ebcac3a6be}\label{classostk_1_1simulation_1_1_component_afe2d126a21b7a96d0b3655ebcac3a6be}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!accessGeometryWithName@{accessGeometryWithName}}
 \index{accessGeometryWithName@{accessGeometryWithName}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{accessGeometryWithName()}{accessGeometryWithName()}}
 {\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} \& ostk\+::simulation\+::\+Component\+::access\+Geometry\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name }\end{DoxyParamCaption}) const}
 
+
+
+Access a geometry by name. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} Geometry\& fov = component.accessGeometryWithName(\textcolor{stringliteral}{"fov"});}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Name} & A geometry name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the geometry. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_a0e119aa1a610b08b935789a7ecb19605}\label{classostk_1_1simulation_1_1_component_a0e119aa1a610b08b935789a7ecb19605}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!accessSimulator@{accessSimulator}}
 \index{accessSimulator@{accessSimulator}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{accessSimulator()}{accessSimulator()}}
 {\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} \& ostk\+::simulation\+::\+Component\+::access\+Simulator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Access the simulator. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} Simulator\& simulator = component.accessSimulator();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+A reference to the simulator. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_aeb00ae625a59168bde62bcbb3e1d6ed6}\label{classostk_1_1simulation_1_1_component_aeb00ae625a59168bde62bcbb3e1d6ed6}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!addComponent@{addComponent}}
 \index{addComponent@{addComponent}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{addComponent()}{addComponent()}}
 {\footnotesize\ttfamily void ostk\+::simulation\+::\+Component\+::add\+Component (\begin{DoxyParamCaption}\item[{const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ \&}]{a\+Component\+S\+Ptr }\end{DoxyParamCaption})}
 
+
+
+Add a child component. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{component.addComponent(childComponentSPtr);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+S\+Ptr} & A shared pointer to a component. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_ad3ef491ef73a9e01507c95541790bdf2}\label{classostk_1_1simulation_1_1_component_ad3ef491ef73a9e01507c95541790bdf2}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!addGeometry@{addGeometry}}
 \index{addGeometry@{addGeometry}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{addGeometry()}{addGeometry()}}
 {\footnotesize\ttfamily void ostk\+::simulation\+::\+Component\+::add\+Geometry (\begin{DoxyParamCaption}\item[{const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} $>$ \&}]{a\+Geometry\+S\+Ptr }\end{DoxyParamCaption})}
 
+
+
+Add a geometry to the component. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{component.addGeometry(geometrySPtr);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Geometry\+S\+Ptr} & A shared pointer to a geometry. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_a36cdd3498146b23e3ff67b95cd1c59cc}\label{classostk_1_1simulation_1_1_component_a36cdd3498146b23e3ff67b95cd1c59cc}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!clone@{clone}}
 \index{clone@{clone}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{clone()}{clone()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $\ast$ ostk\+::simulation\+::\+Component\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
+
+
+Clone the component. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_component_ab3711f34980c3fdb746ff83b9511a25c}{Component}}* cloned = component.clone();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+A pointer to a cloned component. 
+\end{DoxyReturn}
 
 
 Reimplemented in \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a9828fe3ec02b8f4d8b2faf8412826f00}{ostk\+::simulation\+::\+Satellite}}.
@@ -188,36 +343,130 @@ Reimplemented in \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a9828fe3
 \doxysubsubsection{\texorpdfstring{Configure()}{Configure()}}
 {\footnotesize\ttfamily Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ ostk\+::simulation\+::\+Component\+::\+Configure (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structostk_1_1simulation_1_1_component_configuration}{Component\+Configuration}} \&}]{a\+Component\+Configuration,  }\item[{const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ \&}]{a\+Parent\+Component\+S\+Ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Configure a component from a configuration. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Shared<Component> component = \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a635e3685019800ec343ec8474954ff0e}{Component::Configure}}(componentConfiguration, parentComponentSPtr);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+Configuration} & A component configuration. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Parent\+Component\+S\+Ptr} & A shared pointer to the parent component. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A shared pointer to the configured component. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_a9b5f84be02c06a7b6576fcdb00640ede}\label{classostk_1_1simulation_1_1_component_a9b5f84be02c06a7b6576fcdb00640ede}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!GenerateFrame@{GenerateFrame}}
 \index{GenerateFrame@{GenerateFrame}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{GenerateFrame()}{GenerateFrame()}}
 {\footnotesize\ttfamily Shared$<$ const Frame $>$ ostk\+::simulation\+::\+Component\+::\+Generate\+Frame (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Name,  }\item[{const Quaternion \&}]{a\+Quaternion,  }\item[{const Shared$<$ const Frame $>$ \&}]{a\+Parent\+Frame\+S\+Ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Generate a reference frame for a component. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Shared<const Frame> frame = \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a9b5f84be02c06a7b6576fcdb00640ede}{Component::GenerateFrame}}(\textcolor{stringliteral}{"sensor"}, quaternion, parentFrameSPtr);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Name} & A name for the frame. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Quaternion} & An orientation quaternion relative to the parent frame. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Parent\+Frame\+S\+Ptr} & A shared pointer to the parent frame. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A shared pointer to the generated frame. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_aba0796b346cbd27323c2e5c1df8ffcf2}\label{classostk_1_1simulation_1_1_component_aba0796b346cbd27323c2e5c1df8ffcf2}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!getGeometries@{getGeometries}}
 \index{getGeometries@{getGeometries}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{getGeometries()}{getGeometries()}}
 {\footnotesize\ttfamily Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} $>$ $>$ ostk\+::simulation\+::\+Component\+::get\+Geometries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Get the geometries. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Array<Shared<Geometry>> geometries = component.getGeometries();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+An array of shared pointers to the geometries. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_ab792e508c303ec679ea8b8cbcc2c4c8f}\label{classostk_1_1simulation_1_1_component_ab792e508c303ec679ea8b8cbcc2c4c8f}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!getTags@{getTags}}
 \index{getTags@{getTags}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{getTags()}{getTags()}}
 {\footnotesize\ttfamily Array$<$ String $>$ ostk\+::simulation\+::\+Component\+::get\+Tags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Get the tags. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Array<String> tags = component.getTags();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+An array of tags. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_a93375352059595b81e81569e445d4512}\label{classostk_1_1simulation_1_1_component_a93375352059595b81e81569e445d4512}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!getType@{getType}}
 \index{getType@{getType}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{getType()}{getType()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20}{Component\+::\+Type}} ostk\+::simulation\+::\+Component\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Get the component type. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20}{Component::Type}} type = component.getType();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+The component type. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_a983ee8f3974fc2900f21d3bea12fb877}\label{classostk_1_1simulation_1_1_component_a983ee8f3974fc2900f21d3bea12fb877}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!isDefined@{isDefined}}
 \index{isDefined@{isDefined}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
 {\footnotesize\ttfamily bool ostk\+::simulation\+::\+Component\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Check if the component is defined. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} defined = component.isDefined();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+True if the component is defined. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_a9c102937dd6ca5fb9e3b726cc0fd5ed6}\label{classostk_1_1simulation_1_1_component_a9c102937dd6ca5fb9e3b726cc0fd5ed6}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!print@{print}}
 \index{print@{print}!ostk::simulation::Component@{ostk::simulation::Component}}
@@ -226,13 +475,19 @@ Reimplemented in \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_a9828fe3
 
 
 
-Print component. 
+Print the component to an output stream. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{component.print(std::cout, \textcolor{keyword}{true});}
+\end{DoxyCode}
+
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em an\+Output\+Stream} & An output stream \\
+\mbox{\texttt{ in}}  & {\em an\+Output\+Stream} & An output stream. \\
 \hline
-\mbox{\texttt{ in}}  & {\em (optional)} & display\+Decorators If true, display decorators \\
+\mbox{\texttt{ in}}  & {\em display\+Decorators} & If true, display decorators. \\
 \hline
 \end{DoxyParams}
 
@@ -245,18 +500,64 @@ Reimplemented in \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_ac7f5b54
 \doxysubsubsection{\texorpdfstring{setParent()}{setParent()}}
 {\footnotesize\ttfamily void ostk\+::simulation\+::\+Component\+::set\+Parent (\begin{DoxyParamCaption}\item[{const Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ \&}]{a\+Component\+S\+Ptr }\end{DoxyParamCaption})}
 
+
+
+Set the parent component. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{component.setParent(parentComponentSPtr);}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Component\+S\+Ptr} & A shared pointer to the parent component. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_a7f74a40eb3aae2f7e12af002ca9dbc89}\label{classostk_1_1simulation_1_1_component_a7f74a40eb3aae2f7e12af002ca9dbc89}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!StringFromType@{StringFromType}}
 \index{StringFromType@{StringFromType}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{StringFromType()}{StringFromType()}}
 {\footnotesize\ttfamily String ostk\+::simulation\+::\+Component\+::\+String\+From\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20}{Component\+::\+Type}} \&}]{a\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Convert a component type to a string. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{String typeString = \mbox{\hyperlink{classostk_1_1simulation_1_1_component_a7f74a40eb3aae2f7e12af002ca9dbc89}{Component::StringFromType}}(\mbox{\hyperlink{classostk_1_1simulation_1_1_component_a1d2ded63a8ab0bd81e27f25921be1e20a06b185256c71c1aec263c6e22bf8ef6b}{Component::Type::Sensor}}); \textcolor{comment}{// "Sensor"}}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Type} & A component type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string representation of the type. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_component_ad8849104db5f1e96a2de547bc1c11867}\label{classostk_1_1simulation_1_1_component_ad8849104db5f1e96a2de547bc1c11867}} 
 \index{ostk::simulation::Component@{ostk::simulation::Component}!Undefined@{Undefined}}
 \index{Undefined@{Undefined}!ostk::simulation::Component@{ostk::simulation::Component}}
 \doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} ostk\+::simulation\+::\+Component\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Construct an undefined component. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_component_ab3711f34980c3fdb746ff83b9511a25c}{Component}} component = \mbox{\hyperlink{classostk_1_1simulation_1_1_component_ad8849104db5f1e96a2de547bc1c11867}{Component::Undefined}}();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+An undefined component. 
+\end{DoxyReturn}
 
 
 \doxysubsection{Friends And Related Function Documentation}
@@ -266,6 +567,26 @@ Reimplemented in \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite_ac7f5b54
 \doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
 {\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{an\+Output\+Stream,  }\item[{const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \&}]{a\+Component }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
 
+
+
+Output stream operator. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::cout << component;}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Output\+Stream} & An output stream. \\
+\hline
+\mbox{\texttt{ in}}  & {\em a\+Component} & A component. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the output stream. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

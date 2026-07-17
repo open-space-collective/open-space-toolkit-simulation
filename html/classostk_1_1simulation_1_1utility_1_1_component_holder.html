@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('classostk_1_1simulation_1_1utility_1_1
 </div><!--header-->
 <div class="contents">
 
-<p>Generic <a class="el" href="classostk_1_1simulation_1_1_component.html" title="Component.">Component</a> holder.  
+<p>A container that holds and manages a collection of components.  
  <a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_component_holder_8hpp_source.html">ComponentHolder.hpp</a>&gt;</code></p>
@@ -98,41 +98,57 @@ Inheritance diagram for ostk::simulation::utility::ComponentHolder:</div>
  <div class="center">
   <img src="classostk_1_1simulation_1_1utility_1_1_component_holder.png" usemap="#ostk::simulation::utility::ComponentHolder_map" alt=""/>
   <map id="ostk::simulation::utility::ComponentHolder_map" name="ostk::simulation::utility::ComponentHolder_map">
-<area href="classostk_1_1simulation_1_1_component.html" title="Component." alt="ostk::simulation::Component" shape="rect" coords="0,56,237,80"/>
-<area href="classostk_1_1simulation_1_1_satellite.html" title="Satellite." alt="ostk::simulation::Satellite" shape="rect" coords="0,112,237,136"/>
+<area href="classostk_1_1simulation_1_1_component.html" title="A component within the simulation hierarchy." alt="ostk::simulation::Component" shape="rect" coords="0,56,237,80"/>
+<area href="classostk_1_1simulation_1_1_satellite.html" title="A satellite in the simulation." alt="ostk::simulation::Satellite" shape="rect" coords="0,112,237,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7229211c50e568af740b831f8cde2d0b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a7229211c50e568af740b831f8cde2d0b">ComponentHolder</a> (const Array&lt; Shared&lt; <a class="el" href="classostk_1_1simulation_1_1_component.html">Component</a> &gt;&gt; &amp;aComponentArray=Array&lt; Shared&lt; <a class="el" href="classostk_1_1simulation_1_1_component.html">Component</a> &gt;&gt;::Empty())</td></tr>
+<tr class="memdesc:a7229211c50e568af740b831f8cde2d0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a component holder.  <a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a7229211c50e568af740b831f8cde2d0b">More...</a><br /></td></tr>
 <tr class="separator:a7229211c50e568af740b831f8cde2d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbc39c68bfd9922229cf2c70291395a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#abbc39c68bfd9922229cf2c70291395a1">ComponentHolder</a> (const <a class="el" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html">ComponentHolder</a> &amp;aComponentHolder)</td></tr>
+<tr class="memdesc:abbc39c68bfd9922229cf2c70291395a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#abbc39c68bfd9922229cf2c70291395a1">More...</a><br /></td></tr>
 <tr class="separator:abbc39c68bfd9922229cf2c70291395a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d189ed7b58dd7dbddd2e619cf197c86"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a2d189ed7b58dd7dbddd2e619cf197c86">~ComponentHolder</a> ()</td></tr>
+<tr class="memdesc:a2d189ed7b58dd7dbddd2e619cf197c86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a2d189ed7b58dd7dbddd2e619cf197c86">More...</a><br /></td></tr>
 <tr class="separator:a2d189ed7b58dd7dbddd2e619cf197c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca60bf690ae2d94e094760ef276fcfc6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#aca60bf690ae2d94e094760ef276fcfc6">hasComponentWithId</a> (const String &amp;aComponentId) const</td></tr>
+<tr class="memdesc:aca60bf690ae2d94e094760ef276fcfc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a component with the given identifier exists.  <a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#aca60bf690ae2d94e094760ef276fcfc6">More...</a><br /></td></tr>
 <tr class="separator:aca60bf690ae2d94e094760ef276fcfc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a570d1c15601cacb1ad7a9fab443317"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a6a570d1c15601cacb1ad7a9fab443317">hasComponentWithName</a> (const String &amp;aComponentName) const</td></tr>
+<tr class="memdesc:a6a570d1c15601cacb1ad7a9fab443317"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a component with the given name exists.  <a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a6a570d1c15601cacb1ad7a9fab443317">More...</a><br /></td></tr>
 <tr class="separator:a6a570d1c15601cacb1ad7a9fab443317"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2992fe305dcb2243a0f3f0b3a2965773"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a2992fe305dcb2243a0f3f0b3a2965773">hasComponentAt</a> (const String &amp;aComponentPath) const</td></tr>
+<tr class="memdesc:a2992fe305dcb2243a0f3f0b3a2965773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a component exists at the given hierarchical path.  <a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a2992fe305dcb2243a0f3f0b3a2965773">More...</a><br /></td></tr>
 <tr class="separator:a2992fe305dcb2243a0f3f0b3a2965773"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab66566e91251de05a02198cec7ecc4b7"><td class="memItemLeft" align="right" valign="top">Array&lt; Shared&lt; <a class="el" href="classostk_1_1simulation_1_1_component.html">Component</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#ab66566e91251de05a02198cec7ecc4b7">accessComponents</a> () const</td></tr>
+<tr class="memdesc:ab66566e91251de05a02198cec7ecc4b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access all components.  <a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#ab66566e91251de05a02198cec7ecc4b7">More...</a><br /></td></tr>
 <tr class="separator:ab66566e91251de05a02198cec7ecc4b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05ee37d6949d90619788e62a1b1db47a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classostk_1_1simulation_1_1_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a05ee37d6949d90619788e62a1b1db47a">accessComponentWithId</a> (const String &amp;aComponentId) const</td></tr>
+<tr class="memdesc:a05ee37d6949d90619788e62a1b1db47a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access a component by identifier.  <a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a05ee37d6949d90619788e62a1b1db47a">More...</a><br /></td></tr>
 <tr class="separator:a05ee37d6949d90619788e62a1b1db47a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a245084a9899a44bb0c3298d643c2b44d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classostk_1_1simulation_1_1_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a245084a9899a44bb0c3298d643c2b44d">accessComponentWithName</a> (const String &amp;aComponentName) const</td></tr>
+<tr class="memdesc:a245084a9899a44bb0c3298d643c2b44d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access a component by name.  <a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a245084a9899a44bb0c3298d643c2b44d">More...</a><br /></td></tr>
 <tr class="separator:a245084a9899a44bb0c3298d643c2b44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f7c8444d12fcb0a8d4d1198c2181197"><td class="memItemLeft" align="right" valign="top">Array&lt; Shared&lt; const <a class="el" href="classostk_1_1simulation_1_1_component.html">Component</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a9f7c8444d12fcb0a8d4d1198c2181197">accessComponentsWithTag</a> (const String &amp;aComponentTag) const</td></tr>
+<tr class="memdesc:a9f7c8444d12fcb0a8d4d1198c2181197"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access all components matching a tag.  <a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a9f7c8444d12fcb0a8d4d1198c2181197">More...</a><br /></td></tr>
 <tr class="separator:a9f7c8444d12fcb0a8d4d1198c2181197"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83aefcdc6fea117a180edff14954f7a5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classostk_1_1simulation_1_1_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a83aefcdc6fea117a180edff14954f7a5">accessComponentAt</a> (const String &amp;aComponentPath) const</td></tr>
+<tr class="memdesc:a83aefcdc6fea117a180edff14954f7a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access a component at a hierarchical path.  <a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a83aefcdc6fea117a180edff14954f7a5">More...</a><br /></td></tr>
 <tr class="separator:a83aefcdc6fea117a180edff14954f7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6012cd2e61416fe0cef0f9523e0121de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a6012cd2e61416fe0cef0f9523e0121de">addComponent</a> (const Shared&lt; <a class="el" href="classostk_1_1simulation_1_1_component.html">Component</a> &gt; &amp;aComponentSPtr)</td></tr>
+<tr class="memdesc:a6012cd2e61416fe0cef0f9523e0121de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a component.  <a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a6012cd2e61416fe0cef0f9523e0121de">More...</a><br /></td></tr>
 <tr class="separator:a6012cd2e61416fe0cef0f9523e0121de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Generic <a class="el" href="classostk_1_1simulation_1_1_component.html" title="Component.">Component</a> holder. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<div class="textblock"><p>A container that holds and manages a collection of components. </p>
+<p>Provides lookup by identifier, name, tag, and hierarchical path.</p>
+<div class="fragment"><div class="line"><a class="code" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a7229211c50e568af740b831f8cde2d0b">ComponentHolder</a> holder(componentArray);</div>
+<div class="line"><span class="keywordtype">bool</span> exists = holder.hasComponentWithName(<span class="stringliteral">&quot;sensor&quot;</span>);</div>
+<div class="line"><span class="keyword">const</span> Component&amp; sensor = holder.accessComponentWithName(<span class="stringliteral">&quot;sensor&quot;</span>);</div>
+</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7229211c50e568af740b831f8cde2d0b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7229211c50e568af740b831f8cde2d0b">&#9670;&nbsp;</a></span>ComponentHolder() <span class="overload">[1/2]</span></h2>
 
@@ -148,6 +164,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Construct a component holder. </p>
+<div class="fragment"><div class="line"><a class="code" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a7229211c50e568af740b831f8cde2d0b">ComponentHolder</a> holder(componentArray);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aComponentArray</td><td>An array of components (default: empty). </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -167,6 +192,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Copy constructor. </p>
+<div class="fragment"><div class="line"><a class="code" href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a7229211c50e568af740b831f8cde2d0b">ComponentHolder</a> copy(holder);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aComponentHolder</td><td>A component holder. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a2d189ed7b58dd7dbddd2e619cf197c86"></a>
@@ -183,6 +217,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destructor. </p>
 
 </div>
 </div>
@@ -203,6 +239,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Access a component at a hierarchical path. </p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> Component&amp; sensor = holder.accessComponentAt(<span class="stringliteral">&quot;assembly.sensor&quot;</span>);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aComponentPath</td><td>A dot-separated component path (e.g., "assembly.sensor"). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the component. </dd></dl>
+
 </div>
 </div>
 <a id="ab66566e91251de05a02198cec7ecc4b7"></a>
@@ -219,6 +265,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Access all components. </p>
+<div class="fragment"><div class="line">Array&lt;Shared&lt;Component&gt;&gt; components = holder.accessComponents();</div>
+</div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>An array of shared pointers to the components. </dd></dl>
 
 </div>
 </div>
@@ -238,6 +288,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Access all components matching a tag. </p>
+<div class="fragment"><div class="line">Array&lt;Shared&lt;const Component&gt;&gt; sensors = holder.accessComponentsWithTag(<span class="stringliteral">&quot;sensor&quot;</span>);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aComponentTag</td><td>A tag. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An array of shared pointers to the matching components. </dd></dl>
+
 </div>
 </div>
 <a id="a05ee37d6949d90619788e62a1b1db47a"></a>
@@ -255,6 +315,16 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Access a component by identifier. </p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> Component&amp; component = holder.accessComponentWithId(<span class="stringliteral">&quot;component-id&quot;</span>);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aComponentId</td><td>A component identifier. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the component. </dd></dl>
 
 </div>
 </div>
@@ -274,6 +344,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Access a component by name. </p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> Component&amp; sensor = holder.accessComponentWithName(<span class="stringliteral">&quot;sensor&quot;</span>);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aComponentName</td><td>A component name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the component. </dd></dl>
+
 </div>
 </div>
 <a id="a6012cd2e61416fe0cef0f9523e0121de"></a>
@@ -291,6 +371,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Add a component. </p>
+<div class="fragment"><div class="line">holder.addComponent(componentSPtr);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aComponentSPtr</td><td>A shared pointer to a component. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -310,6 +399,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Check if a component exists at the given hierarchical path. </p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> exists = holder.hasComponentAt(<span class="stringliteral">&quot;assembly.sensor&quot;</span>);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aComponentPath</td><td>A dot-separated component path (e.g., "assembly.sensor"). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if a component exists at the path. </dd></dl>
+
 </div>
 </div>
 <a id="aca60bf690ae2d94e094760ef276fcfc6"></a>
@@ -327,6 +426,16 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Check if a component with the given identifier exists. </p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> exists = holder.hasComponentWithId(<span class="stringliteral">&quot;component-id&quot;</span>);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aComponentId</td><td>A component identifier. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if a component with the identifier exists. </dd></dl>
 
 </div>
 </div>
@@ -346,6 +455,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Check if a component with the given name exists. </p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> exists = holder.hasComponentWithName(<span class="stringliteral">&quot;sensor&quot;</span>);</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">aComponentName</td><td>A component name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if a component with the name exists. </dd></dl>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -354,6 +473,7 @@ Public Member Functions</h2></td></tr>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclassostk_1_1simulation_1_1utility_1_1_component_holder_html_a7229211c50e568af740b831f8cde2d0b"><div class="ttname"><a href="classostk_1_1simulation_1_1utility_1_1_component_holder.html#a7229211c50e568af740b831f8cde2d0b">ostk::simulation::utility::ComponentHolder::ComponentHolder</a></div><div class="ttdeci">ComponentHolder(const Array&lt; Shared&lt; Component &gt;&gt; &amp;aComponentArray=Array&lt; Shared&lt; Component &gt;&gt;::Empty())</div><div class="ttdoc">Construct a component holder.</div><div class="ttdef"><b>Definition:</b> ComponentHolder.cpp:17</div></div>
 <!-- HTML footer for doxygen 1.8.7-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

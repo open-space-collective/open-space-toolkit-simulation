@@ -15,5 +15,6 @@ var classostk_1_1simulation_1_1component_1_1_geometry =
     [ "isDefined", "classostk_1_1simulation_1_1component_1_1_geometry.html#a74a72f8e07513ba52a41a006c2e7687c", null ],
     [ "operator!=", "classostk_1_1simulation_1_1component_1_1_geometry.html#adf01650ac1c43b91e91ae364f79000b2", null ],
     [ "operator==", "classostk_1_1simulation_1_1component_1_1_geometry.html#a1ec1b13d99e4c8df7f601f9f1ccb5458", null ],
+    [ "print", "classostk_1_1simulation_1_1component_1_1_geometry.html#ae805e0cb40ad4f03e4208adae6ad4fc4", null ],
     [ "operator<<", "classostk_1_1simulation_1_1component_1_1_geometry.html#aebfe5b9b5d8cd3dd8a2cfd140a1df583", null ]
 ];
