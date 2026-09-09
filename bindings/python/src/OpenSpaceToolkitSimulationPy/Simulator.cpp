@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Simulation/Simulator.hpp>
 
-inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
+inline void OpenSpaceToolkitSimulationPy_Simulator(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::container::Array;
     using ostk::core::type::Shared;
@@ -16,7 +16,7 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
     using ostk::simulation::Simulator;
     using ostk::simulation::SimulatorConfiguration;
 
-    class_<Simulator, Shared<Simulator>>(
+    class_<Simulator>(
         aModule,
         "Simulator",
         R"doc(

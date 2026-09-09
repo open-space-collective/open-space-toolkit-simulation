@@ -1,13 +1,14 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Simulation/Component.hpp>
+#include <OpenSpaceToolkitSimulationPy/Utility/ComponentHolderMixin.hpp>
 
 #include <OpenSpaceToolkitSimulationPy/Component/Geometry.cpp>
 #include <OpenSpaceToolkitSimulationPy/Component/State.cpp>
 
-inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
+inline void OpenSpaceToolkitSimulationPy_Component(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::container::Array;
     using ostk::core::type::Shared;
@@ -27,7 +28,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
     using ostk::simulation::utility::ComponentHolder;
 
     {
-        class_<Component, Entity, ComponentHolder, Shared<Component>> component_class(
+        class_<Component, Entity> component_class(
             aModule,
             "Component",
             R"doc(
@@ -38,6 +39,9 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                 and reference frame management.
             )doc"
         );
+
+        // nanobind supports single inheritance only, so the ComponentHolder mixin is folded in.
+        OpenSpaceToolkitSimulationPy_Utility_ComponentHolder_AddMethods(component_class);
 
         component_class
             .def(

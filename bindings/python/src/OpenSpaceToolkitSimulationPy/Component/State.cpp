@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Simulation/Component/State.hpp>
 
-inline void OpenSpaceToolkitSimulationPy_Component_State(pybind11::module& aModule)
+inline void OpenSpaceToolkitSimulationPy_Component_State(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::simulation::component::State;
 

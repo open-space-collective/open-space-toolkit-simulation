@@ -1,12 +1,24 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkitSimulationPy/Utility/ArrayCasting.hpp>
+#include <OpenSpaceToolkitSimulationPy/Utility/EigenSequenceCasting.hpp>
 #include <OpenSpaceToolkitSimulationPy/Utility/ShiftToString.hpp>
-#include <pybind11/eigen.h>
-#include <pybind11/numpy.h>
-#include <pybind11/operators.h>
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
+#include <nanobind/eigen/dense.h>
+#include <nanobind/nanobind.h>
+#include <nanobind/ndarray.h>
+#include <nanobind/stl/array.h>
+#include <nanobind/stl/complex.h>
+#include <nanobind/stl/map.h>
+#include <nanobind/stl/optional.h>
+#include <nanobind/stl/pair.h>
+#include <nanobind/stl/set.h>
+#include <nanobind/stl/shared_ptr.h>
+#include <nanobind/stl/string.h>
+#include <nanobind/stl/tuple.h>
+#include <nanobind/stl/unique_ptr.h>
+#include <nanobind/stl/unordered_map.h>
+#include <nanobind/stl/unordered_set.h>
+#include <nanobind/stl/vector.h>
 
 #include <OpenSpaceToolkitSimulationPy/Component.cpp>
 #include <OpenSpaceToolkitSimulationPy/Entity.cpp>
@@ -14,7 +26,7 @@
 #include <OpenSpaceToolkitSimulationPy/Simulator.cpp>
 #include <OpenSpaceToolkitSimulationPy/Utility/ComponentHolder.cpp>
 
-PYBIND11_MODULE(OpenSpaceToolkitSimulationPy, m)
+NB_MODULE(OpenSpaceToolkitSimulationPy, m)
 {
     // Add optional docstring for package OpenSpaceToolkitSimulationPy
     m.doc() = "Elementary space systems blocks for Simulation in Open Space Toolkit.";

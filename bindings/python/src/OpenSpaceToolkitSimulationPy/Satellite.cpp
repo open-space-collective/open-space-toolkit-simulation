@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Simulation/Satellite.hpp>
 
-inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
+inline void OpenSpaceToolkitSimulationPy_Satellite(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::container::Array;
     using ostk::core::type::Shared;
@@ -22,7 +22,7 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
     using ostk::simulation::SatelliteConfiguration;
     using ostk::simulation::Simulator;
 
-    class_<Satellite, Component, Shared<Satellite>>(
+    class_<Satellite, Component>(
         aModule,
         "Satellite",
         R"doc(
