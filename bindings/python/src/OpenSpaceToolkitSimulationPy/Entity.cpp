@@ -2,16 +2,16 @@
 
 #include <OpenSpaceToolkit/Simulation/Entity.hpp>
 
-inline void OpenSpaceToolkitSimulationPy_Entity(pybind11::module& aModule)
+inline void OpenSpaceToolkitSimulationPy_Entity(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
     using ostk::simulation::Entity;
 
     {
-        class_<Entity, Shared<Entity>>(
+        class_<Entity>(
             aModule,
             "Entity",
             R"doc(

@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
 
-inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aModule)
+inline void OpenSpaceToolkitSimulationPy_Component_Geometry(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::container::Array;
     using ostk::core::type::Shared;
@@ -21,7 +21,7 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
     using ostk::simulation::component::Geometry;
     using ostk::simulation::component::GeometryConfiguration;
 
-    class_<Geometry, Shared<Geometry>>(
+    class_<Geometry>(
         aModule,
         "Geometry",
         R"doc(
@@ -185,7 +185,7 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
         .def(
             "access_composite",
             &Geometry::accessComposite,
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
                 Access the underlying composite geometry.
 
