@@ -64,13 +64,16 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
                 Check if a component exists at the given path.
 
                 Args:
-                    path (str): The component path (e.g., "parent/child").
+                    path (str): The component path, with segments separated by "/" or "."
+                        (e.g., "parent/child" or "parent.child").
 
                 Returns:
                     bool: True if a component exists at the path, False otherwise.
 
                 Example:
                     >>> holder.has_component_at("payload/sensor-1")
+                    True
+                    >>> holder.has_component_at("payload.sensor-1")
                     True
             )doc"
         )
@@ -151,13 +154,15 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
                 Access a component at a given path.
 
                 Args:
-                    path (str): The component path (e.g., "parent/child").
+                    path (str): The component path, with segments separated by "/" or "."
+                        (e.g., "parent/child" or "parent.child").
 
                 Returns:
                     Component: The component at the specified path.
 
                 Example:
                     >>> component = holder.access_component_at("payload/sensor-1")
+                    >>> component = holder.access_component_at("payload.sensor-1")
             )doc"
         )
 

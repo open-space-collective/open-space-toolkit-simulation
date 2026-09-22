@@ -187,12 +187,19 @@ Pair<String, String> splitComponentPath(const String& aComponentPath)
 {
     using ostk::core::type::Index;
 
-    if (aComponentPath.getFirst() == '/')
+    static const String componentPathDelimiters = "/.";
+
+    if (aComponentPath.isEmpty())
+    {
+        return {"", ""};
+    }
+
+    if (componentPathDelimiters.find(aComponentPath.getFirst()) != std::string::npos)
     {
         return splitComponentPath(aComponentPath.getTail(aComponentPath.getLength() - 1));
     }
 
-    const Index tokenPosition = aComponentPath.find('/');
+    const Index tokenPosition = aComponentPath.find_first_of(componentPathDelimiters);
 
     if (tokenPosition == std::string::npos)
     {
