@@ -117,14 +117,6 @@ class TestGeometry:
         assert geometry.access_composite().get_object_count() == 1
 
     def test_access_composite_outlives_temporary_parent(self, camera: Component):
-        """`access_composite` must keep its parent geometry alive.
-
-        `access_geometry_with_name` hands back a *copy* of the geometry, so binding
-        `access_composite` with a bare `return_value_policy::reference` leaves the
-        returned composite pointing into an object Python is free to collect as soon as
-        the expression ends. A regression shows up here as garbage data or a segfault.
-        """
-
         composite = camera.access_geometry_with_name("FOV").access_composite()
 
         gc.collect()
