@@ -185,9 +185,16 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
         .def(
             "access_composite",
             &Geometry::accessComposite,
-            return_value_policy::reference,
+            // `reference_internal` (rather than `reference`) ties the lifetime of the
+            // returned composite to that of its parent geometry. With a bare `reference`,
+            // `component.access_geometry_with_name("fov").access_composite()` hands back a
+            // reference into a geometry that Python is free to collect straight away.
+            return_value_policy::reference_internal,
             R"doc(
                 Access the underlying composite geometry.
+
+                The returned composite is a view into this geometry: it keeps its parent
+                alive, and is invalidated if the parent geometry is mutated.
 
                 Returns:
                     Composite: The 3D composite geometry object.
