@@ -86,7 +86,8 @@ class ComponentHolder
     ///     bool exists = holder.hasComponentAt("assembly.sensor");
     /// @endcode
     ///
-    /// @param [in] aComponentPath A dot-separated component path (e.g., "assembly.sensor").
+    /// @param [in] aComponentPath A component path, with segments separated by '/' or '.'
+    ///                            (e.g., "assembly/sensor" or "assembly.sensor").
     /// @return True if a component exists at the path.
     bool hasComponentAt(const String& aComponentPath) const;
 
@@ -135,7 +136,8 @@ class ComponentHolder
     ///     const Component& sensor = holder.accessComponentAt("assembly.sensor");
     /// @endcode
     ///
-    /// @param [in] aComponentPath A dot-separated component path (e.g., "assembly.sensor").
+    /// @param [in] aComponentPath A component path, with segments separated by '/' or '.'
+    ///                            (e.g., "assembly/sensor" or "assembly.sensor").
     /// @return A reference to the component.
     const Component& accessComponentAt(const String& aComponentPath) const;
 
@@ -157,9 +159,12 @@ class ComponentHolder
 /// @code{.cpp}
 ///     Pair<String, String> result = splitComponentPath("assembly.sensor");
 ///     // result.first == "assembly", result.second == "sensor"
+///     result = splitComponentPath("assembly/sensor/detector");
+///     // result.first == "assembly", result.second == "sensor/detector"
 /// @endcode
 ///
-/// @param [in] aComponentPath A dot-separated component path (e.g., "assembly.sensor").
+/// @param [in] aComponentPath A component path, with segments separated by '/' or '.'
+///                            (e.g., "assembly/sensor" or "assembly.sensor").
 /// @return A pair containing the first segment and the remaining path.
 Pair<String, String> splitComponentPath(const String& aComponentPath);
 
