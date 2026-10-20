@@ -165,8 +165,7 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder_AddMethods(Clas
         .def(
             "add_component",
             // `self` is taken as a Shared<> so that `Component::addComponent`'s
-            // `shared_from_this()` has an owner under nanobind, which does not hold bound
-            // instances in a shared_ptr the way pybind11 did.
+            // `shared_from_this()` has an owner.
             [](const ostk::core::type::Shared<typename ClassType::Type>& aHolderSPtr,
                const ostk::core::type::Shared<ostk::simulation::Component>& aComponentSPtr)
             {
