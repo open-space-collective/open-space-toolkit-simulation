@@ -6,6 +6,9 @@ from ostk.physics.coordinate import Frame
 
 from ostk.simulation import Component
 from ostk.simulation import ComponentConfiguration
+from ostk.simulation import ComponentHolder
+from ostk.simulation import Entity
+from ostk.simulation import Satellite
 
 
 @pytest.fixture
@@ -18,6 +21,21 @@ def parent_component() -> Component:
         geometries=[],
         components=[],
         parent=None,
+        frame=Frame.GCRF(),
+        simulator=None,
+    )
+
+
+@pytest.fixture
+def child_component(parent_component: Component) -> Component:
+    return Component(
+        id="child-id",
+        name="Child",
+        type=Component.Type.Sensor,
+        tags=["optical"],
+        geometries=[],
+        components=[],
+        parent=parent_component,
         frame=Frame.GCRF(),
         simulator=None,
     )
@@ -131,3 +149,63 @@ class TestComponent:
     def test_type_has_no_undefined(self):
         assert not hasattr(Component.Type, "Undefined")
         assert Component.string_from_type(Component.Type.Sensor) == "Sensor"
+
+    def test_entity_methods(self, parent_component: Component):
+        assert parent_component.get_id() == "parent-id"
+        assert parent_component.get_name() == "Parent"
+
+    def test_add_component_on_python_created_component(
+        self,
+        parent_component: Component,
+        child_component: Component,
+    ):
+        parent_component.add_component(child_component)
+
+        assert parent_component.has_component_with_id("child-id")
+        assert parent_component.has_component_with_name("Child")
+        assert parent_component.has_component_at("Child")
+        assert parent_component.get_component_with_id("child-id").get_name() == "Child"
+        assert parent_component.get_component_with_name("Child").get_id() == "child-id"
+        assert parent_component.get_component_at("Child").get_id() == "child-id"
+        assert [
+            component.get_id() for component in parent_component.get_components()
+        ] == ["child-id"]
+        assert [
+            component.get_id()
+            for component in parent_component.get_components_with_tag("optical")
+        ] == ["child-id"]
+
+    def test_set_parent(self, parent_component: Component, child_component: Component):
+        child_component.set_parent(parent_component)
+        child_component.set_parent(None)
+
+    def test_python_base_classes(self):
+        # nanobind binds a single base class, so Component has no Python base class and
+        # binds the Entity and ComponentHolder methods itself.
+        assert issubclass(Satellite, Component)
+        assert not issubclass(Component, Entity)
+        assert not issubclass(Component, ComponentHolder)
+
+        for name in ("get_id", "get_name"):
+            assert hasattr(Entity, name)
+            assert hasattr(Component, name)
+
+        for name in (
+            "has_component_with_id",
+            "has_component_with_name",
+            "has_component_at",
+            "get_components",
+            "get_component_with_id",
+            "get_component_with_name",
+            "get_components_with_tag",
+            "get_component_at",
+            "add_component",
+        ):
+            assert hasattr(ComponentHolder, name)
+            assert hasattr(Component, name)
+
+    def test_type_is_a_python_enum(self):
+        assert Component.Type.Sensor.name == "Sensor"
+
+        with pytest.raises(TypeError):
+            int(Component.Type.Sensor)

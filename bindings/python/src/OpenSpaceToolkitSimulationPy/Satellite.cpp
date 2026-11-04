@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Simulation/Satellite.hpp>
 
-inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
+inline void OpenSpaceToolkitSimulationPy_Satellite(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::container::Array;
     using ostk::core::type::Shared;
@@ -22,7 +22,7 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
     using ostk::simulation::SatelliteConfiguration;
     using ostk::simulation::Simulator;
 
-    class_<Satellite, Component, Shared<Satellite>>(
+    class_<Satellite, Component>(
         aModule,
         "Satellite",
         R"doc(
@@ -48,9 +48,9 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
             arg("tags"),
             arg("geometries"),
             arg("components"),
-            arg("frame"),
-            arg("profile"),
-            arg("simulator"),
+            arg("frame").none(),
+            arg("profile").none(),
+            arg("simulator").none(),
             R"doc(
                 Create a Satellite instance.
 
@@ -60,9 +60,9 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
                     tags (list[str]): Array of classification tags.
                     geometries (list[Geometry]): Array of geometry objects.
                     components (list[Component]): Array of child components.
-                    frame (Frame): The satellite reference frame. None if the satellite has no frame.
-                    profile (Profile): The astrodynamics profile (trajectory).
-                    simulator (Simulator): Reference to the parent simulator.
+                    frame (Frame | None): The satellite reference frame. None if the satellite has no frame.
+                    profile (Profile | None): The astrodynamics profile (trajectory).
+                    simulator (Simulator | None): Reference to the parent simulator.
 
                 Returns:
                     Satellite: The satellite instance.
@@ -103,13 +103,13 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
             "configure",
             &Satellite::Configure,
             arg("configuration"),
-            arg("simulator") = nullptr,
+            arg("simulator").none() = none(),
             R"doc(
                 Create a satellite from configuration.
 
                 Args:
                     configuration (SatelliteConfiguration): The satellite configuration.
-                    simulator (Simulator): Optional reference to the parent simulator.
+                    simulator (Simulator | None): Optional reference to the parent simulator.
 
                 Returns:
                     Satellite: The configured satellite.

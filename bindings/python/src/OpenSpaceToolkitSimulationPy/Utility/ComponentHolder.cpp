@@ -2,28 +2,32 @@
 
 #include <OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp>
 
-inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::module& aModule)
+/// @brief Bind the ComponentHolder lookup methods (everything but `add_component`) on a class whose C++ type derives
+///        from ComponentHolder.
+///
+/// nanobind supports a single base class per bound type, and passes an instance to a base class method without
+/// adjusting the pointer. `Component` derives from both Entity and ComponentHolder, and neither sits at offset zero
+/// in it, so it cannot list ComponentHolder as its Python base. The methods are bound on it directly, through member
+/// pointers of the derived type, which apply the base class adjustment in C++.
+template <typename Class>
+inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder_Methods(Class& aClass)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
+    using ostk::core::container::Array;
     using ostk::core::type::Shared;
+    using ostk::core::type::String;
 
+    using ostk::simulation::Component;
     using ostk::simulation::utility::ComponentHolder;
 
-    class_<ComponentHolder, Shared<ComponentHolder>>(
-        aModule,
-        "ComponentHolder",
-        R"doc(
-            Mixin class providing component management functionality for hierarchical component structures.
+    using T = typename Class::Type;
 
-            ComponentHolder enables storage and retrieval of child components, supporting both flat
-            and hierarchical component organization with path-based access.
-        )doc"
-    )
+    aClass
 
         .def(
             "has_component_with_id",
-            &ComponentHolder::hasComponentWithId,
+            static_cast<bool (T::*)(const String&) const>(&ComponentHolder::hasComponentWithId),
             R"doc(
                 Check if a component with the given ID exists.
 
@@ -41,7 +45,7 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
 
         .def(
             "has_component_with_name",
-            &ComponentHolder::hasComponentWithName,
+            static_cast<bool (T::*)(const String&) const>(&ComponentHolder::hasComponentWithName),
             R"doc(
                 Check if a component with the given name exists.
 
@@ -59,7 +63,7 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
 
         .def(
             "has_component_at",
-            &ComponentHolder::hasComponentAt,
+            static_cast<bool (T::*)(const String&) const>(&ComponentHolder::hasComponentAt),
             R"doc(
                 Check if a component exists at the given path.
 
@@ -80,7 +84,7 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
 
         .def(
             "get_components",
-            &ComponentHolder::getComponents,
+            static_cast<Array<Shared<Component>> (T::*)() const>(&ComponentHolder::getComponents),
             R"doc(
                 Get all child components.
 
@@ -96,7 +100,7 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
 
         .def(
             "get_component_with_id",
-            &ComponentHolder::getComponentWithId,
+            static_cast<const Component& (T::*)(const String&) const>(&ComponentHolder::getComponentWithId),
             R"doc(
                 Get a component by its ID.
 
@@ -113,7 +117,7 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
 
         .def(
             "get_component_with_name",
-            &ComponentHolder::getComponentWithName,
+            static_cast<const Component& (T::*)(const String&) const>(&ComponentHolder::getComponentWithName),
             R"doc(
                 Get a component by its name.
 
@@ -130,7 +134,9 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
 
         .def(
             "get_components_with_tag",
-            &ComponentHolder::getComponentsWithTag,
+            static_cast<Array<Shared<const Component>> (T::*)(const String&) const>(
+                &ComponentHolder::getComponentsWithTag
+            ),
             R"doc(
                 Get all components with a specific tag.
 
@@ -149,7 +155,7 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
 
         .def(
             "get_component_at",
-            &ComponentHolder::getComponentAt,
+            static_cast<const Component& (T::*)(const String&) const>(&ComponentHolder::getComponentAt),
             R"doc(
                 Get a component at a given path.
 
@@ -164,7 +170,29 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
                     >>> component = holder.get_component_at("payload/sensor-1")
                     >>> component = holder.get_component_at("payload.sensor-1")
             )doc"
-        )
+        );
+}
+
+inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(nanobind::module_& aModule)
+{
+    using namespace nanobind;
+
+    using ostk::simulation::utility::ComponentHolder;
+
+    class_<ComponentHolder> component_holder_class(
+        aModule,
+        "ComponentHolder",
+        R"doc(
+            Mixin class providing component management functionality for hierarchical component structures.
+
+            ComponentHolder enables storage and retrieval of child components, supporting both flat
+            and hierarchical component organization with path-based access.
+        )doc"
+    );
+
+    OpenSpaceToolkitSimulationPy_Utility_ComponentHolder_Methods(component_holder_class);
+
+    component_holder_class
 
         .def(
             "add_component",

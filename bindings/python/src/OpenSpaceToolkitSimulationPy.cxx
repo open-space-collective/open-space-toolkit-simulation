@@ -2,19 +2,13 @@
 
 #include <OpenSpaceToolkitSimulationPy/Utility/ArrayCasting.hpp>
 #include <OpenSpaceToolkitSimulationPy/Utility/ShiftToString.hpp>
-#include <pybind11/eigen.h>
-#include <pybind11/numpy.h>
-#include <pybind11/operators.h>
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
+#include <nanobind/nanobind.h>
 
 #include <OpenSpaceToolkitSimulationPy/Component.cpp>
-#include <OpenSpaceToolkitSimulationPy/Entity.cpp>
 #include <OpenSpaceToolkitSimulationPy/Satellite.cpp>
 #include <OpenSpaceToolkitSimulationPy/Simulator.cpp>
-#include <OpenSpaceToolkitSimulationPy/Utility/ComponentHolder.cpp>
 
-PYBIND11_MODULE(OpenSpaceToolkitSimulationPy, m)
+NB_MODULE(OpenSpaceToolkitSimulationPy, m)
 {
     // Add optional docstring for package OpenSpaceToolkitSimulationPy
     m.doc() = "Elementary space systems blocks for Simulation in Open Space Toolkit.";

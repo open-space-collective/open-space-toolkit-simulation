@@ -4,10 +4,12 @@
 
 #include <OpenSpaceToolkitSimulationPy/Component/Geometry.cpp>
 #include <OpenSpaceToolkitSimulationPy/Component/State.cpp>
+#include <OpenSpaceToolkitSimulationPy/Entity.cpp>
+#include <OpenSpaceToolkitSimulationPy/Utility/ComponentHolder.cpp>
 
-inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
+inline void OpenSpaceToolkitSimulationPy_Component(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::container::Array;
     using ostk::core::type::Shared;
@@ -22,12 +24,13 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
     using ostk::simulation::component::GeometryConfiguration;
     using ostk::simulation::component::State;
     using ostk::simulation::ComponentConfiguration;
-    using ostk::simulation::Entity;
     using ostk::simulation::Simulator;
-    using ostk::simulation::utility::ComponentHolder;
 
     {
-        class_<Component, Entity, ComponentHolder, Shared<Component>> component_class(
+        // nanobind binds a single base class, and only one that sits at offset zero in the derived class. Neither
+        // Entity nor ComponentHolder does in Component, so Component has no Python base class, and the Entity and
+        // ComponentHolder methods are bound on it below.
+        class_<Component> component_class(
             aModule,
             "Component",
             R"doc(
@@ -41,25 +44,41 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
 
         component_class
             .def(
-                init<
-                    const String&,
-                    const String&,
-                    const std::optional<Component::Type>&,
-                    const Array<String>&,
-                    const Array<Shared<Geometry>>&,
-                    const Array<Shared<Component>>&,
-                    const Shared<ComponentHolder>&,
-                    const Shared<const Frame>&,
-                    const Shared<const Simulator>&>(),
+                // The parent is taken as a Component, the only ComponentHolder that Python can create, and
+                // converted to a ComponentHolder in C++ (see above).
+                "__init__",
+                [](Component* self,
+                   const String& anId,
+                   const String& aName,
+                   const std::optional<Component::Type>& aType,
+                   const Array<String>& aTagArray,
+                   const Array<Shared<Geometry>>& aGeometryArray,
+                   const Array<Shared<Component>>& aComponentArray,
+                   const Shared<Component>& aParentComponentSPtr,
+                   const Shared<const Frame>& aFrameSPtr,
+                   const Shared<const Simulator>& aSimulatorSPtr)
+                {
+                    new (self) Component(
+                        anId,
+                        aName,
+                        aType,
+                        aTagArray,
+                        aGeometryArray,
+                        aComponentArray,
+                        aParentComponentSPtr,
+                        aFrameSPtr,
+                        aSimulatorSPtr
+                    );
+                },
                 arg("id"),
                 arg("name"),
                 arg("type"),
                 arg("tags"),
                 arg("geometries"),
                 arg("components"),
-                arg("parent"),
-                arg("frame"),
-                arg("simulator"),
+                arg("parent").none(),
+                arg("frame").none(),
+                arg("simulator").none(),
                 R"doc(
                     Create a Component instance.
 
@@ -70,9 +89,9 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                         tags (list[str]): Array of classification tags.
                         geometries (list[Geometry]): Array of geometry objects.
                         components (list[Component]): Array of child components.
-                        parent (ComponentHolder): The parent component holder.
-                        frame (Frame): The component reference frame. None if the component has no frame.
-                        simulator (Simulator): Reference to the parent simulator.
+                        parent (Component | None): The parent component.
+                        frame (Frame | None): The component reference frame. None if the component has no frame.
+                        simulator (Simulator | None): Reference to the parent simulator.
 
                     Returns:
                         Component: The component instance.
@@ -200,7 +219,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
             .def(
                 "set_parent",
                 &Component::setParent,
-                arg("component"),
+                arg("component").none(),
                 R"doc(
                     Set the parent component.
 
@@ -229,7 +248,12 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
 
             .def(
                 "add_component",
-                &Component::addComponent,
+                // Component::addComponent calls shared_from_this(), so self is taken as a shared pointer: nanobind
+                // gives a Python-created instance a shared owner only when it is converted to one.
+                [](const Shared<Component>& self, const Shared<Component>& aComponentSPtr)
+                {
+                    self->addComponent(aComponentSPtr);
+                },
                 arg("component"),
                 R"doc(
                     Add a child component.
@@ -240,7 +264,12 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                     Example:
                         >>> component.add_component(subsensor)
                 )doc"
-            )
+            );
+
+        OpenSpaceToolkitSimulationPy_Entity_Methods(component_class);
+        OpenSpaceToolkitSimulationPy_Utility_ComponentHolder_Methods(component_class);
+
+        component_class
 
             .def_static(
                 "configure",
