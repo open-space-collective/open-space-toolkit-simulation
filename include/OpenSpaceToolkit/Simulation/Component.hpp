@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Simulation_Component__
 #define __OpenSpaceToolkit_Simulation_Component__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
 #include <OpenSpaceToolkit/Simulation/Component/State.hpp>
 #include <OpenSpaceToolkit/Simulation/Entity.hpp>
@@ -37,7 +39,7 @@ using ostk::simulation::component::GeometryConfiguration;
 using ostk::simulation::component::State;
 using ostk::simulation::utility::ComponentHolder;
 
-#define DEFAULT_COMPONENT_TYPE Component::Type::Undefined
+#define DEFAULT_COMPONENT_TYPE std::nullopt
 #define DEFAULT_TAGS Array<String>::Empty()
 #define DEFAULT_ORIENTATION Quaternion::Unit()
 #define DEFAULT_GEOMETRIES Array<GeometryConfiguration>::Empty()
@@ -53,7 +55,7 @@ struct ComponentConfiguration;
 ///
 /// @code{.cpp}
 ///     const Component& sensor = satellite.accessComponentWithName("camera");
-///     Component::Type type = sensor.getType();
+///     std::optional<Component::Type> type = sensor.getType();
 ///     Array<String> tags = sensor.getTags();
 /// @endcode
 class Component : public Entity, public ComponentHolder, public std::enable_shared_from_this<Component>
@@ -63,7 +65,6 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     enum class Type
     {
 
-        Undefined,
         Assembly,
         Controller,
         Sensor,
@@ -84,7 +85,7 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     ///
     /// @param [in] anId An identifier.
     /// @param [in] aName A name.
-    /// @param [in] aType A component type.
+    /// @param [in] aType A component type (std::nullopt if the type is unspecified).
     /// @param [in] aTagArray An array of tags.
     /// @param [in] aGeometryArray An array of geometries.
     /// @param [in] aComponentArray An array of child components.
@@ -94,7 +95,7 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     Component(
         const String& anId,
         const String& aName,
-        const Component::Type& aType,
+        const std::optional<Component::Type>& aType,
         const Array<String>& aTagArray,
         const Array<Shared<Geometry>>& aGeometryArray,
         const Array<Shared<Component>>& aComponentArray,
@@ -175,11 +176,11 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     /// @brief Get the component type.
     ///
     /// @code{.cpp}
-    ///     Component::Type type = component.getType();
+    ///     std::optional<Component::Type> type = component.getType();
     /// @endcode
     ///
-    /// @return The component type.
-    Component::Type getType() const;
+    /// @return The component type, or std::nullopt if the type is unspecified.
+    std::optional<Component::Type> getType() const;
 
     /// @brief Get the tags.
     ///
@@ -284,7 +285,7 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     virtual void print(std::ostream& anOutputStream, bool displayDecorators = true) const;
 
    private:
-    Component::Type type_;
+    std::optional<Component::Type> type_;
     Array<String> tags_;
     Array<Shared<Geometry>> geometries_;  // Array of Geometries defined in Component Frame
 
@@ -298,7 +299,7 @@ struct ComponentConfiguration
 {
     const String id;                                                      ///< The identifier.
     const String name;                                                    ///< The name.
-    const Component::Type type = DEFAULT_COMPONENT_TYPE;                  ///< The component type.
+    const std::optional<Component::Type> type = DEFAULT_COMPONENT_TYPE;   ///< The component type (if any).
     const Array<String> tags = DEFAULT_TAGS;                              ///< The tags.
     const Quaternion orientation = DEFAULT_ORIENTATION;                   ///< The orientation quaternion.
     const Array<GeometryConfiguration> geometries = DEFAULT_GEOMETRIES;   ///< The geometry configurations.

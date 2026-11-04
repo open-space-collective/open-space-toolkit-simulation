@@ -44,7 +44,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                 init<
                     const String&,
                     const String&,
-                    const Component::Type&,
+                    const std::optional<Component::Type>&,
                     const Array<String>&,
                     const Array<Shared<Geometry>>&,
                     const Array<Shared<Component>>&,
@@ -66,7 +66,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                     Args:
                         id (str): The unique component identifier.
                         name (str): The component name.
-                        type (Component.Type): The component type (Assembly, Sensor, etc.).
+                        type (Component.Type | None): The component type (Assembly, Sensor, etc.). None if the type is unspecified.
                         tags (list[str]): Array of classification tags.
                         geometries (list[Geometry]): Array of geometry objects.
                         components (list[Component]): Array of child components.
@@ -165,7 +165,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                     Get the component type.
 
                     Returns:
-                        Component.Type: The component type.
+                        Component.Type | None: The component type, or None if the type is unspecified.
 
                     Example:
                         >>> comp_type = component.get_type()
@@ -324,14 +324,6 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
         )
 
             .value(
-                "Undefined",
-                Component::Type::Undefined,
-                R"doc(
-                    Undefined type.
-                )doc"
-            )
-
-            .value(
                 "Assembly",
                 Component::Type::Assembly,
                 R"doc(
@@ -387,14 +379,14 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
             init<
                 const String&,
                 const String&,
-                const Component::Type&,
+                const std::optional<Component::Type>&,
                 const Array<String>&,
                 const Quaternion&,
                 const Array<GeometryConfiguration>&,
                 const Array<ComponentConfiguration>&>(),
             arg("id"),
             arg("name"),
-            arg("type") = DEFAULT_COMPONENT_TYPE,
+            arg("type") = none(),
             arg("tags") = DEFAULT_TAGS,
             arg("orientation") = DEFAULT_ORIENTATION,
             arg("geometries") = DEFAULT_GEOMETRIES,
@@ -405,7 +397,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                 Args:
                     id (str): The unique component identifier.
                     name (str): The component name.
-                    type (Component.Type): The component type (optional).
+                    type (Component.Type | None): The component type (default: None, which leaves the type unspecified).
                     tags (list[str]): Array of classification tags (optional).
                     orientation (Quaternion): Orientation relative to parent (optional).
                     geometries (list[GeometryConfiguration]): Array of geometry configurations (optional).

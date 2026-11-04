@@ -23,7 +23,7 @@ using namespace ostk::simulation::utility;
 Component::Component(
     const String& anId,
     const String& aName,
-    const Component::Type& aType,
+    const std::optional<Component::Type>& aType,
     const Array<String>& aTagArray,
     const Array<Shared<Geometry>>& aGeometryArray,
     const Array<Shared<Component>>& aComponentArray,
@@ -117,7 +117,7 @@ const Simulator& Component::accessSimulator() const
     return *(this->simulatorSPtr_);
 }
 
-Component::Type Component::getType() const
+std::optional<Component::Type> Component::getType() const
 {
     if (!this->isDefined())
     {
@@ -179,7 +179,7 @@ Component Component::Undefined()
     return {
         String::Empty(),
         String::Empty(),
-        Component::Type::Undefined,
+        std::nullopt,
         Array<String>::Empty(),
         Array<Shared<Geometry>>::Empty(),
         Array<Shared<Component>>::Empty(),
@@ -230,7 +230,6 @@ Shared<Component> Component::Configure(
 String Component::StringFromType(const Component::Type& aType)
 {
     static const Map<Component::Type, String> typeStringMap = {
-        {Component::Type::Undefined, "Undefined"},
         {Component::Type::Assembly, "Assembly"},
         {Component::Type::Controller, "Controller"},
         {Component::Type::Sensor, "Sensor"},
@@ -282,7 +281,8 @@ void Component::print(std::ostream& anOutputStream, bool displayDecorators) cons
 
     Entity::print(anOutputStream, false);
 
-    ostk::core::utils::Print::Line(anOutputStream) << "Type:" << Component::StringFromType(type_);
+    ostk::core::utils::Print::Line(anOutputStream)
+        << "Type:" << (type_.has_value() ? Component::StringFromType(type_.value()) : "Undefined");
 
     displayDecorators ? ostk::core::utils::Print::Footer(anOutputStream) : void();
 }
