@@ -19,7 +19,7 @@ Include order from specific to generic:
 ```cpp
 #include <OpenSpaceToolkit/Simulation/Orbit.hpp>
 
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
+#include <OpenSpaceToolkit/Core/Type/String.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <map>
