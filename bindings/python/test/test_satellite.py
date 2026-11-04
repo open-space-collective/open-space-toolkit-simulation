@@ -30,13 +30,13 @@ def orbit(environment: Environment) -> Orbit:
         epoch=Instant.date_time(datetime(2020, 1, 1, 0, 0, 0), Scale.UTC),
         altitude=Length.kilometers(500.0),
         local_time_at_descending_node=Time(14, 0, 0),
-        celestial_object=environment.access_celestial_object_with_name("Earth"),
+        celestial_object=environment.get_celestial_object_with_name("Earth"),
     )
 
 
 @pytest.fixture
 def profile(orbit: Orbit) -> Profile:
-    return Profile.local_orbital_frame_pointing(
+    return Profile.constant_local_orbital_frame_pointing(
         orbit=orbit,
         orbital_frame_type=Orbit.FrameType.VVLH,
     )

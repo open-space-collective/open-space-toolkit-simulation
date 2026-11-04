@@ -100,7 +100,7 @@ const Satellite& Simulator::getSatelliteWithName(const String& aSatelliteName) c
     return *(satelliteIt->second);
 }
 
-Instant Simulator::getInstant() const
+const Instant& Simulator::getInstant() const
 {
     if (!this->isDefined())
     {

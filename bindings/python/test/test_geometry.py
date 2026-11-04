@@ -43,7 +43,7 @@ def orbit(environment: Environment) -> Orbit:
         epoch=Instant.date_time(datetime(2020, 1, 1, 0, 0, 0), Scale.UTC),
         altitude=Length.kilometers(500.0),
         local_time_at_descending_node=Time(14, 0, 0),
-        celestial_object=environment.access_celestial_object_with_name("Earth"),
+        celestial_object=environment.get_celestial_object_with_name("Earth"),
     )
 
 
@@ -80,7 +80,7 @@ def simulator(
                 SatelliteConfiguration(
                     id="9ea22c07-6977-48a7-8f68-dff758971d57",
                     name="LoftSat-1",
-                    profile=Profile.local_orbital_frame_pointing(
+                    profile=Profile.constant_local_orbital_frame_pointing(
                         orbit=orbit,
                         orbital_frame_type=Orbit.FrameType.VVLH,
                     ),
@@ -126,4 +126,4 @@ class TestGeometry:
         del ballast
 
         assert composite.get_object_count() == 1
-        assert composite.access_object_at(0).is_pyramid()
+        assert composite.get_object_at(0).is_pyramid()

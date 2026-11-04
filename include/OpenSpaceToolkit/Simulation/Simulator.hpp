@@ -118,11 +118,11 @@ class Simulator
     /// @brief Get the current simulation instant.
     ///
     /// @code{.cpp}
-    ///     Instant instant = simulator.getInstant();
+    ///     const Instant& instant = simulator.getInstant();
     /// @endcode
     ///
-    /// @return The current instant.
-    Instant getInstant() const;
+    /// @return A const reference to the current instant.
+    const Instant& getInstant() const;
 
     /// @brief Print the simulator to an output stream.
     ///

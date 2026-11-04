@@ -176,11 +176,11 @@ class Geometry
     /// @brief Get the reference frame.
     ///
     /// @code{.cpp}
-    ///     Shared<const Frame> frame = geometry.getFrame();
+    ///     const Shared<const Frame>& frame = geometry.getFrame();
     /// @endcode
     ///
-    /// @return A shared pointer to the frame.
-    Shared<const Frame> getFrame() const;
+    /// @return A const reference to the shared pointer to the frame.
+    const Shared<const Frame>& getFrame() const;
 
     /// @brief Get the geometry expressed in a given frame.
     ///

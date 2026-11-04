@@ -95,7 +95,7 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
 
                 Example:
                     >>> environment = simulator.get_environment()
-                    >>> earth = environment.access_celestial_object_with_name("Earth")
+                    >>> earth = environment.get_celestial_object_with_name("Earth")
             )doc"
         )
 

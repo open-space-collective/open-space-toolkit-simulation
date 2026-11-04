@@ -14,6 +14,7 @@
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
 #include <OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp>
+#include <OpenSpaceToolkit/Astrodynamics/Flight/Profile/Model/Transform.hpp>
 
 #include <Global.test.hpp>
 
@@ -29,6 +30,7 @@ using ostk::physics::time::Time;
 using ostk::physics::unit::Length;
 
 using ostk::astrodynamics::flight::Profile;
+using ostk::astrodynamics::flight::profile::model::Transform;
 using ostk::astrodynamics::trajectory::Orbit;
 
 using ostk::simulation::Component;
@@ -45,13 +47,10 @@ class OpenSpaceToolkit_Simulation_Satellite : public ::testing::Test
     {
         const Environment environment = Environment::Default();
         const Orbit orbit = Orbit::SunSynchronous(
-            Instant::J2000(),
-            Length::Kilometers(500.0),
-            Time::Noon(),
-            environment.accessCelestialObjectWithName("Earth")
+            Instant::J2000(), Length::Kilometers(500.0), Time::Noon(), environment.getCelestialObjectWithName("Earth")
         );
 
-        profile_ = Profile::LocalOrbitalFramePointing(orbit, Orbit::FrameType::VVLH);
+        profile_ = Profile::ConstantLocalOrbitalFramePointing(orbit, Orbit::FrameType::VVLH);
 
         this->satellite_.emplace(
             "87da0b5f-9f65-4c5c-a660-bd254742960b",
@@ -65,7 +64,7 @@ class OpenSpaceToolkit_Simulation_Satellite : public ::testing::Test
         );
     }
 
-    Profile profile_ = Profile::Undefined();
+    Profile profile_ = Profile(Transform::Undefined());
     std::optional<Satellite> satellite_;
 };
 

@@ -7,6 +7,8 @@
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Point.hpp>
+
 namespace ostk
 {
 namespace simulation
@@ -94,7 +96,7 @@ bool Geometry::intersects(const ObjectGeometry& aGeometry) const
 
 bool Geometry::intersects(const Celestial& aCelestialObject) const
 {
-    return this->intersects(aCelestialObject.accessGeometry());
+    return this->intersects(aCelestialObject.getGeometry());
 }
 
 bool Geometry::contains(const ObjectGeometry& aGeometry) const
@@ -114,17 +116,17 @@ bool Geometry::contains(const ObjectGeometry& aGeometry) const
 
 bool Geometry::contains(const Celestial& aCelestialObject) const
 {
-    return this->contains(aCelestialObject.accessGeometry());
+    return this->contains(aCelestialObject.getGeometry());
 }
 
 const Composite& Geometry::getComposite() const
 {
-    return this->geometry_.accessComposite();
+    return this->geometry_.getComposite();
 }
 
-Shared<const Frame> Geometry::getFrame() const
+const Shared<const Frame>& Geometry::getFrame() const
 {
-    return this->geometry_.accessFrame();
+    return this->geometry_.getFrame();
 }
 
 ObjectGeometry Geometry::getGeometryIn(const Shared<const Frame>& aFrameSPtr) const
@@ -154,12 +156,14 @@ ObjectGeometry Geometry::intersectionWith(const ObjectGeometry& aGeometry) const
 
 ObjectGeometry Geometry::intersectionWith(const Celestial& aCelestialObject) const
 {
-    return this->intersectionWith(aCelestialObject.accessGeometry());
+    return this->intersectionWith(aCelestialObject.getGeometry());
 }
 
 Geometry Geometry::Undefined()
 {
-    return {String::Empty(), Composite::Undefined(), nullptr};
+    using ostk::mathematics::geometry::d3::object::Point;
+
+    return {String::Empty(), Composite(Point::Undefined()), nullptr};
 }
 
 Shared<Geometry> Geometry::Configure(
