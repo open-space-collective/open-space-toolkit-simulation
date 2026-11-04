@@ -99,10 +99,10 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
             .def("__repr__", &(shiftToString<Component>))
 
             .def(
-                "access_frame",
-                &Component::accessFrame,
+                "get_frame",
+                &Component::getFrame,
                 R"doc(
-                    Access the component's reference frame.
+                    Get the component's reference frame.
 
                     Returns:
                         Frame: The component frame.
@@ -111,17 +111,17 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                         RuntimeError: If the component has no frame.
 
                     Example:
-                        >>> frame = component.access_frame()
+                        >>> frame = component.get_frame()
                         >>> position = frame.get_origin_in(gcrf)
                 )doc"
             )
 
             .def(
-                "access_geometry_with_name",
-                &Component::accessGeometryWithName,
+                "get_geometry_with_name",
+                &Component::getGeometryWithName,
                 arg("name"),
                 R"doc(
-                    Access a geometry object by name.
+                    Get a geometry object by name.
 
                     Args:
                         name (str): The geometry name.
@@ -130,21 +130,21 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                         Geometry: The geometry with the specified name.
 
                     Example:
-                        >>> geometry = component.access_geometry_with_name("solar-panel")
+                        >>> geometry = component.get_geometry_with_name("solar-panel")
                 )doc"
             )
 
             .def(
-                "access_simulator",
-                &Component::accessSimulator,
+                "get_simulator",
+                &Component::getSimulator,
                 R"doc(
-                    Access the parent simulator.
+                    Get the parent simulator.
 
                     Returns:
                         Simulator: The parent simulator.
 
                     Example:
-                        >>> simulator = component.access_simulator()
+                        >>> simulator = component.get_simulator()
                         >>> instant = simulator.get_instant()
                 )doc"
             )

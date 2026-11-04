@@ -77,16 +77,16 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
         )
 
         .def(
-            "access_component",
-            &Geometry::accessComponent,
+            "get_component",
+            &Geometry::getComponent,
             R"doc(
-                Access the parent component.
+                Get the parent component.
 
                 Returns:
                     Component: The parent component.
 
                 Example:
-                    >>> component = geometry.access_component()
+                    >>> component = geometry.get_component()
             )doc"
         )
 
@@ -183,15 +183,15 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
         )
 
         .def(
-            "access_composite",
-            &Geometry::accessComposite,
+            "get_composite",
+            &Geometry::getComposite,
             // `reference_internal` (rather than `reference`) ties the lifetime of the
             // returned composite to that of its parent geometry. With a bare `reference`,
-            // `component.access_geometry_with_name("fov").access_composite()` hands back a
+            // `component.get_geometry_with_name("fov").get_composite()` hands back a
             // reference into a geometry that Python is free to collect straight away.
             return_value_policy::reference_internal,
             R"doc(
-                Access the underlying composite geometry.
+                Get the underlying composite geometry.
 
                 The returned composite is a view into this geometry: it keeps its parent
                 alive, and is invalidated if the parent geometry is mutated.
@@ -200,21 +200,21 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
                     Composite: The 3D composite geometry object.
 
                 Example:
-                    >>> composite = geometry.access_composite()
+                    >>> composite = geometry.get_composite()
             )doc"
         )
 
         .def(
-            "access_frame",
-            &Geometry::accessFrame,
+            "get_frame",
+            &Geometry::getFrame,
             R"doc(
-                Access the geometry's reference frame.
+                Get the geometry's reference frame.
 
                 Returns:
                     Frame: The geometry frame.
 
                 Example:
-                    >>> frame = geometry.access_frame()
+                    >>> frame = geometry.get_frame()
             )doc"
         )
 

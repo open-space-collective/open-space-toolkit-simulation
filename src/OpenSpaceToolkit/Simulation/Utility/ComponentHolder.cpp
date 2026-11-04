@@ -77,7 +77,7 @@ bool ComponentHolder::hasComponentAt(const String& aComponentPath) const
     }
 
     return subComponentPath.isEmpty() ? true
-                                      : this->accessComponentWithName(componentName).hasComponentAt(subComponentPath);
+                                      : this->getComponentWithName(componentName).hasComponentAt(subComponentPath);
 }
 
 void ComponentHolder::addComponent(const Shared<Component>& aComponentSPtr)
@@ -90,7 +90,7 @@ void ComponentHolder::addComponent(const Shared<Component>& aComponentSPtr)
     componentMap_.insert({aComponentSPtr->getName(), aComponentSPtr});
 }
 
-Array<Shared<Component>> ComponentHolder::accessComponents() const
+Array<Shared<Component>> ComponentHolder::getComponents() const
 {
     // TBM: Return iterator instead, to avoid computing the Array.
 
@@ -104,7 +104,7 @@ Array<Shared<Component>> ComponentHolder::accessComponents() const
     return components;
 }
 
-const Component& ComponentHolder::accessComponentWithId(const String& aComponentId) const
+const Component& ComponentHolder::getComponentWithId(const String& aComponentId) const
 {
     if (aComponentId.isEmpty())
     {
@@ -122,7 +122,7 @@ const Component& ComponentHolder::accessComponentWithId(const String& aComponent
     throw ostk::core::error::RuntimeError("No Component found with ID [{}].", aComponentId);
 }
 
-const Component& ComponentHolder::accessComponentWithName(const String& aComponentName) const
+const Component& ComponentHolder::getComponentWithName(const String& aComponentName) const
 {
     if (aComponentName.isEmpty())
     {
@@ -139,7 +139,7 @@ const Component& ComponentHolder::accessComponentWithName(const String& aCompone
     return *(componentIt->second);
 }
 
-Array<Shared<const Component>> ComponentHolder::accessComponentsWithTag(const String& aComponentTag) const
+Array<Shared<const Component>> ComponentHolder::getComponentsWithTag(const String& aComponentTag) const
 {
     if (aComponentTag.isEmpty())
     {
@@ -164,7 +164,7 @@ Array<Shared<const Component>> ComponentHolder::accessComponentsWithTag(const St
     return components;
 }
 
-const Component& ComponentHolder::accessComponentAt(const String& aComponentPath) const
+const Component& ComponentHolder::getComponentAt(const String& aComponentPath) const
 {
     if (aComponentPath.isEmpty())
     {
@@ -178,9 +178,9 @@ const Component& ComponentHolder::accessComponentAt(const String& aComponentPath
 
     const auto [componentName, subComponentPath] = splitComponentPath(aComponentPath);
 
-    const Component& component = accessComponentWithName(componentName);
+    const Component& component = getComponentWithName(componentName);
 
-    return subComponentPath.isEmpty() ? component : component.accessComponentAt(subComponentPath);
+    return subComponentPath.isEmpty() ? component : component.getComponentAt(subComponentPath);
 }
 
 Pair<String, String> splitComponentPath(const String& aComponentPath)

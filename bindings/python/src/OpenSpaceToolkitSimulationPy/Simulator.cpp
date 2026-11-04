@@ -85,42 +85,42 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
         )
 
         .def(
-            "access_environment",
-            &Simulator::accessEnvironment,
+            "get_environment",
+            &Simulator::getEnvironment,
             R"doc(
-                Access the physics environment.
+                Get the physics environment.
 
                 Returns:
                     Environment: The simulation environment.
 
                 Example:
-                    >>> environment = simulator.access_environment()
+                    >>> environment = simulator.get_environment()
                     >>> earth = environment.access_celestial_object_with_name("Earth")
             )doc"
         )
 
         .def(
-            "access_satellite_map",
-            &Simulator::accessSatelliteMap,
+            "get_satellite_map",
+            &Simulator::getSatelliteMap,
             R"doc(
-                Access the satellite map (name to satellite mapping).
+                Get the satellite map (name to satellite mapping).
 
                 Returns:
                     dict: Map of satellite names to satellite objects.
 
                 Example:
-                    >>> satellite_map = simulator.access_satellite_map()
+                    >>> satellite_map = simulator.get_satellite_map()
                     >>> len(satellite_map)
                     2
             )doc"
         )
 
         .def(
-            "access_satellite_with_name",
-            &Simulator::accessSatelliteWithName,
+            "get_satellite_with_name",
+            &Simulator::getSatelliteWithName,
             arg("name"),
             R"doc(
-                Access a satellite by name.
+                Get a satellite by name.
 
                 Args:
                     name (str): The satellite name.
@@ -129,7 +129,7 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
                     Satellite: The satellite with the specified name.
 
                 Example:
-                    >>> satellite = simulator.access_satellite_with_name("sat-1")
+                    >>> satellite = simulator.get_satellite_with_name("sat-1")
             )doc"
         )
 
@@ -217,7 +217,7 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(pybind11::module& aModule)
 
                 Example:
                     >>> simulator.clear_satellites()
-                    >>> len(simulator.access_satellite_map())
+                    >>> len(simulator.get_satellite_map())
                     0
             )doc"
         )

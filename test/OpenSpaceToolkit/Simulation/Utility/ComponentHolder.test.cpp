@@ -86,34 +86,35 @@ TEST_F(OpenSpaceToolkit_Simulation_Utility_ComponentHolder, HasComponentAt)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Simulation_Utility_ComponentHolder, AccessComponentAt)
+TEST_F(OpenSpaceToolkit_Simulation_Utility_ComponentHolder, GetComponentAt)
 {
     {
-        EXPECT_EQ(componentHolder_.accessComponentAt("Camera").getName(), "Camera");
+        EXPECT_EQ(componentHolder_.getComponentAt("Camera").getName(), "Camera");
+        EXPECT_EQ(&componentHolder_.getComponentAt("Camera"), &componentHolder_.getComponentWithName("Camera"));
     }
 
     {
-        EXPECT_EQ(componentHolder_.accessComponentAt("Camera/Lens").getName(), "Lens");
-        EXPECT_EQ(componentHolder_.accessComponentAt("Camera/Lens/Detector").getName(), "Detector");
-        EXPECT_EQ(componentHolder_.accessComponentAt("/Camera/Lens/Detector/").getName(), "Detector");
+        EXPECT_EQ(componentHolder_.getComponentAt("Camera/Lens").getName(), "Lens");
+        EXPECT_EQ(componentHolder_.getComponentAt("Camera/Lens/Detector").getName(), "Detector");
+        EXPECT_EQ(componentHolder_.getComponentAt("/Camera/Lens/Detector/").getName(), "Detector");
     }
 
     {
-        EXPECT_EQ(componentHolder_.accessComponentAt("Camera.Lens").getName(), "Lens");
-        EXPECT_EQ(componentHolder_.accessComponentAt("Camera.Lens.Detector").getName(), "Detector");
-        EXPECT_EQ(componentHolder_.accessComponentAt(".Camera.Lens.Detector.").getName(), "Detector");
+        EXPECT_EQ(componentHolder_.getComponentAt("Camera.Lens").getName(), "Lens");
+        EXPECT_EQ(componentHolder_.getComponentAt("Camera.Lens.Detector").getName(), "Detector");
+        EXPECT_EQ(componentHolder_.getComponentAt(".Camera.Lens.Detector.").getName(), "Detector");
     }
 
     {
-        EXPECT_EQ(componentHolder_.accessComponentAt("Camera/Lens.Detector").getName(), "Detector");
-        EXPECT_EQ(componentHolder_.accessComponentAt("Camera.Lens/Detector").getName(), "Detector");
+        EXPECT_EQ(componentHolder_.getComponentAt("Camera/Lens.Detector").getName(), "Detector");
+        EXPECT_EQ(componentHolder_.getComponentAt("Camera.Lens/Detector").getName(), "Detector");
     }
 
     {
-        EXPECT_ANY_THROW(componentHolder_.accessComponentAt(""));
-        EXPECT_ANY_THROW(componentHolder_.accessComponentAt("Lens"));
-        EXPECT_ANY_THROW(componentHolder_.accessComponentAt("Camera/Detector"));
-        EXPECT_ANY_THROW(componentHolder_.accessComponentAt("Camera.Detector"));
+        EXPECT_ANY_THROW(componentHolder_.getComponentAt(""));
+        EXPECT_ANY_THROW(componentHolder_.getComponentAt("Lens"));
+        EXPECT_ANY_THROW(componentHolder_.getComponentAt("Camera/Detector"));
+        EXPECT_ANY_THROW(componentHolder_.getComponentAt("Camera.Detector"));
     }
 }
 

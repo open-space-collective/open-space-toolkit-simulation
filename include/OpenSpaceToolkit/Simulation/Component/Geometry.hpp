@@ -96,23 +96,23 @@ class Geometry
     /// @return True if the geometry is defined.
     bool isDefined() const;
 
-    /// @brief Access the owning component.
+    /// @brief Get the owning component.
     ///
     /// @code{.cpp}
-    ///     const Component& component = geometry.accessComponent();
+    ///     const Component& component = geometry.getComponent();
     /// @endcode
     ///
-    /// @return A reference to the owning component.
-    const Component& accessComponent() const;
+    /// @return A const reference to the owning component.
+    const Component& getComponent() const;
 
     /// @brief Get the name of the geometry.
     ///
     /// @code{.cpp}
-    ///     String name = geometry.getName();
+    ///     const String& name = geometry.getName();
     /// @endcode
     ///
-    /// @return The name.
-    String getName() const;
+    /// @return A const reference to the name.
+    const String& getName() const;
 
     /// @brief Print the geometry to an output stream.
     ///
@@ -164,23 +164,23 @@ class Geometry
     /// @return True if the geometry contains the celestial object.
     bool contains(const Celestial& aCelestialObject) const;
 
-    /// @brief Access the composite 3D object.
+    /// @brief Get the composite 3D object.
     ///
     /// @code{.cpp}
-    ///     const Composite& composite = geometry.accessComposite();
+    ///     const Composite& composite = geometry.getComposite();
     /// @endcode
     ///
-    /// @return A reference to the composite.
-    const Composite& accessComposite() const;
+    /// @return A const reference to the composite.
+    const Composite& getComposite() const;
 
-    /// @brief Access the reference frame.
+    /// @brief Get the reference frame.
     ///
     /// @code{.cpp}
-    ///     Shared<const Frame> frame = geometry.accessFrame();
+    ///     Shared<const Frame> frame = geometry.getFrame();
     /// @endcode
     ///
     /// @return A shared pointer to the frame.
-    Shared<const Frame> accessFrame() const;
+    Shared<const Frame> getFrame() const;
 
     /// @brief Get the geometry expressed in a given frame.
     ///

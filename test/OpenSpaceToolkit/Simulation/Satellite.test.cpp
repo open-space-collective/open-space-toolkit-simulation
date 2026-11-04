@@ -108,6 +108,7 @@ TEST_F(OpenSpaceToolkit_Simulation_Satellite, getId)
 {
     {
         EXPECT_EQ(satellite_->getId(), "87da0b5f-9f65-4c5c-a660-bd254742960b");
+        EXPECT_EQ(&satellite_->getId(), &satellite_->getId());
     }
 }
 
@@ -115,6 +116,7 @@ TEST_F(OpenSpaceToolkit_Simulation_Satellite, getName)
 {
     {
         EXPECT_EQ(satellite_->getName(), "LoftSat-1");
+        EXPECT_EQ(&satellite_->getName(), &satellite_->getName());
     }
 }
 
@@ -126,11 +128,11 @@ TEST_F(OpenSpaceToolkit_Simulation_Satellite, WithoutFrame)
         EXPECT_EQ(satellite_->getType(), Component::Type::Assembly);
         EXPECT_EQ(satellite_->getTags(), Array<String>({"a", "b"}));
         EXPECT_TRUE(satellite_->getGeometries().isEmpty());
-        EXPECT_NE(satellite_->accessProfile(), nullptr);
+        EXPECT_NE(satellite_->getProfile(), nullptr);
     }
 
     {
-        EXPECT_THROW(satellite_->accessFrame(), ostk::core::error::runtime::Undefined);
+        EXPECT_THROW(satellite_->getFrame(), ostk::core::error::runtime::Undefined);
     }
 
     {
@@ -156,13 +158,14 @@ TEST_F(OpenSpaceToolkit_Simulation_Satellite, Configure)
     const Shared<Satellite> satellite = Satellite::Configure(satelliteConfiguration, nullptr);
 
     EXPECT_EQ(satellite->getName(), "LoftSat-1");
-    EXPECT_NE(satellite->accessFrame(), nullptr);
+    EXPECT_NE(satellite->getFrame(), nullptr);
 }
 
-TEST_F(OpenSpaceToolkit_Simulation_Satellite, AccessProfile)
+TEST_F(OpenSpaceToolkit_Simulation_Satellite, GetProfile)
 {
     {
-        EXPECT_NO_THROW(satellite_->accessProfile()->isDefined());
+        EXPECT_NO_THROW(satellite_->getProfile()->isDefined());
+        EXPECT_EQ(&satellite_->getProfile(), &satellite_->getProfile());
     }
 }
 

@@ -18,8 +18,8 @@ using ostk::core::type::String;
 ///
 /// @code{.cpp}
 ///     Entity entity("my-entity");
-///     String name = entity.getName();
-///     String id = entity.getId();
+///     const String& name = entity.getName();
+///     const String& id = entity.getId();
 /// @endcode
 class Entity
 {
@@ -50,21 +50,21 @@ class Entity
     ///
     /// @code{.cpp}
     ///     Entity entity("entity-id", "my-entity");
-    ///     String id = entity.getId(); // "entity-id"
+    ///     const String& id = entity.getId(); // "entity-id"
     /// @endcode
     ///
-    /// @return The identifier.
-    String getId() const;
+    /// @return A const reference to the identifier.
+    const String& getId() const;
 
     /// @brief Get the name of the entity.
     ///
     /// @code{.cpp}
     ///     Entity entity("my-entity");
-    ///     String name = entity.getName(); // "my-entity"
+    ///     const String& name = entity.getName(); // "my-entity"
     /// @endcode
     ///
-    /// @return The name.
-    String getName() const;
+    /// @return A const reference to the name.
+    const String& getName() const;
 
     /// @brief Print the entity to an output stream.
     ///

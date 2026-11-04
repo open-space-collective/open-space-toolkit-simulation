@@ -77,7 +77,7 @@ class TestComponent:
         assert frameless_component.get_geometries() == []
 
         with pytest.raises(RuntimeError):
-            frameless_component.access_frame()
+            frameless_component.get_frame()
 
         parent_component.add_component(frameless_component)
 

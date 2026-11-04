@@ -105,19 +105,19 @@ def simulator(
 
 @pytest.fixture
 def camera(simulator: Simulator) -> Component:
-    return simulator.access_satellite_with_name("LoftSat-1").access_component_with_name(
+    return simulator.get_satellite_with_name("LoftSat-1").get_component_with_name(
         "Camera"
     )
 
 
 class TestGeometry:
-    def test_access_composite(self, camera: Component):
-        geometry: Geometry = camera.access_geometry_with_name("FOV")
+    def test_get_composite(self, camera: Component):
+        geometry: Geometry = camera.get_geometry_with_name("FOV")
 
-        assert geometry.access_composite().get_object_count() == 1
+        assert geometry.get_composite().get_object_count() == 1
 
-    def test_access_composite_outlives_temporary_parent(self, camera: Component):
-        composite = camera.access_geometry_with_name("FOV").access_composite()
+    def test_get_composite_outlives_temporary_parent(self, camera: Component):
+        composite = camera.get_geometry_with_name("FOV").get_composite()
 
         gc.collect()
 

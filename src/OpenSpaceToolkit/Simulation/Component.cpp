@@ -69,7 +69,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Component& aCompone
     return anOutputStream;
 }
 
-const Shared<const Frame>& Component::accessFrame() const
+const Shared<const Frame>& Component::getFrame() const
 {
     if (!this->frameSPtr_)
     {
@@ -79,7 +79,7 @@ const Shared<const Frame>& Component::accessFrame() const
     return this->frameSPtr_;
 }
 
-const Geometry& Component::accessGeometryWithName(const String& aName) const
+const Geometry& Component::getGeometryWithName(const String& aName) const
 {
     for (const auto& geometryStr : this->geometries_)
     {
@@ -92,7 +92,7 @@ const Geometry& Component::accessGeometryWithName(const String& aName) const
     throw ostk::core::error::RuntimeError("No Geometry found with name [{}].", aName);
 }
 
-const Simulator& Component::accessSimulator() const
+const Simulator& Component::getSimulator() const
 {
     if (!simulatorSPtr_)
     {
@@ -102,17 +102,17 @@ const Simulator& Component::accessSimulator() const
     return *(this->simulatorSPtr_);
 }
 
-std::optional<Component::Type> Component::getType() const
+const std::optional<Component::Type>& Component::getType() const
 {
     return this->type_;
 }
 
-Array<String> Component::getTags() const
+const Array<String>& Component::getTags() const
 {
     return this->tags_;
 }
 
-Array<Shared<Geometry>> Component::getGeometries() const
+const Array<Shared<Geometry>>& Component::getGeometries() const
 {
     return this->geometries_;
 }
@@ -159,7 +159,7 @@ Shared<Component> Component::Configure(
         Component::GenerateFrame(
             String::Format("Component [{}]", aComponentConfiguration.id),
             aComponentConfiguration.orientation,
-            aParentComponentSPtr->accessFrame()
+            aParentComponentSPtr->getFrame()
         ),
         aParentComponentSPtr->simulatorSPtr_
     );

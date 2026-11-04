@@ -29,6 +29,7 @@ from ostk.simulation import Satellite
 from ostk.simulation import SatelliteConfiguration
 from ostk.simulation import Component
 from ostk.simulation import ComponentConfiguration
+from ostk.simulation import ComponentHolder
 from ostk.simulation.component import Geometry
 from ostk.simulation.component import GeometryConfiguration
 
@@ -124,18 +125,39 @@ class TestSimulator:
     def test_is_defined(self, simulator: Simulator):
         assert simulator.is_defined()
 
-    def test_access_environment(self, simulator: Simulator):
-        assert simulator.access_environment() is not None
+    def test_get_environment(self, simulator: Simulator):
+        assert simulator.get_environment() is not None
 
-    def test_access_satellite_map(self, simulator: Simulator):
-        assert simulator.access_satellite_map() is not None
+    def test_access_getters_are_removed(self):
+        for cls, names in (
+            (Simulator, ("environment", "satellite_map", "satellite_with_name")),
+            (Satellite, ("profile",)),
+            (Component, ("frame", "geometry_with_name", "simulator")),
+            (Geometry, ("component", "composite", "frame")),
+            (
+                ComponentHolder,
+                (
+                    "components",
+                    "component_with_id",
+                    "component_with_name",
+                    "components_with_tag",
+                    "component_at",
+                ),
+            ),
+        ):
+            for name in names:
+                assert not hasattr(cls, f"access_{name}")
+                assert hasattr(cls, f"get_{name}")
 
-    def test_access_satellite_with_name(
+    def test_get_satellite_map(self, simulator: Simulator):
+        assert simulator.get_satellite_map() is not None
+
+    def test_get_satellite_with_name(
         self,
         simulator: Simulator,
         satellite_name: str,
     ):
-        assert simulator.access_satellite_with_name(satellite_name) is not None
+        assert simulator.get_satellite_with_name(satellite_name) is not None
 
     def test_get_instant(self, simulator: Simulator):
         assert simulator.get_instant() is not None
@@ -163,11 +185,11 @@ class TestSimulator:
         )
         satellite: Satellite = Satellite.configure(satellite_configuration)
 
-        assert len(simulator.access_satellite_map()) == 0
+        assert len(simulator.get_satellite_map()) == 0
 
         simulator.add_satellite(satellite)
 
-        assert satellite in simulator.access_satellite_map().values()
+        assert satellite in simulator.get_satellite_map().values()
 
     def test_undefined(self):
         simulator: Simulator = Simulator.undefined()
@@ -186,12 +208,12 @@ class TestSimulator:
         satellite_name: str,
     ):
         assert simulator.has_satellite_with_name(satellite_name)
-        assert len(simulator.access_satellite_map()) == 1
+        assert len(simulator.get_satellite_map()) == 1
 
         simulator.remove_satellite_with_name(satellite_name)
 
         assert not simulator.has_satellite_with_name(satellite_name)
-        assert len(simulator.access_satellite_map()) == 0
+        assert len(simulator.get_satellite_map()) == 0
 
     def test_remove_satellite_with_name_errors(
         self,
@@ -211,24 +233,24 @@ class TestSimulator:
         satellite_name: str,
     ):
         assert simulator.has_satellite_with_name(satellite_name)
-        assert len(simulator.access_satellite_map()) == 1
+        assert len(simulator.get_satellite_map()) == 1
 
         simulator.clear_satellites()
 
         assert not simulator.has_satellite_with_name(satellite_name)
-        assert len(simulator.access_satellite_map()) == 0
+        assert len(simulator.get_satellite_map()) == 0
 
     def test_end_to_end(self, simulator: Simulator):
-        camera: Component = simulator.access_satellite_with_name(
+        camera: Component = simulator.get_satellite_with_name(
             "LoftSat-1"
-        ).access_component_with_name("Camera")
-        camera_geometry: Geometry = camera.access_geometry_with_name("FOV")
-        earth = simulator.access_environment().access_celestial_object_with_name("Earth")
+        ).get_component_with_name("Camera")
+        camera_geometry: Geometry = camera.get_geometry_with_name("FOV")
+        earth = simulator.get_environment().access_celestial_object_with_name("Earth")
 
         assert camera_geometry.intersects(earth) is True
 
-        assert camera_geometry.access_composite() is not None
-        assert camera_geometry.access_frame() is not None
+        assert camera_geometry.get_composite() is not None
+        assert camera_geometry.get_frame() is not None
         assert camera_geometry.get_geometry_in(Frame.GCRF()) is not None
         assert camera_geometry.get_geometry_in(Frame.ITRF()) is not None
 

@@ -74,7 +74,7 @@ class TestSatellite:
     def test_configure(self, satellite: Satellite):
         assert satellite is not None
         assert satellite.get_name() == "LoftSat-1"
-        assert satellite.access_frame() is not None
+        assert satellite.get_frame() is not None
 
     @pytest.mark.parametrize(
         "id, name",
@@ -109,10 +109,10 @@ class TestSatellite:
         assert frameless_satellite.get_name() == "LoftSat-1"
         assert frameless_satellite.get_type() == Component.Type.Assembly
         assert frameless_satellite.get_tags() == ["a"]
-        assert frameless_satellite.access_profile() is not None
+        assert frameless_satellite.get_profile() is not None
 
         with pytest.raises(RuntimeError):
-            frameless_satellite.access_frame()
+            frameless_satellite.get_frame()
 
         with pytest.raises(RuntimeError):
             Component.configure(
@@ -120,5 +120,5 @@ class TestSatellite:
                 frameless_satellite,
             )
 
-    def test_access_profile(self, satellite: Satellite):
-        assert satellite.access_profile().is_defined()
+    def test_get_profile(self, satellite: Satellite):
+        assert satellite.get_profile().is_defined()
