@@ -23,7 +23,72 @@ def parent_component() -> Component:
     )
 
 
+@pytest.fixture
+def frameless_component() -> Component:
+    return Component(
+        id="camera-id",
+        name="Camera",
+        type=Component.Type.Sensor,
+        tags=["a"],
+        geometries=[],
+        components=[],
+        parent=None,
+        frame=None,
+        simulator=None,
+    )
+
+
 class TestComponent:
+    @pytest.mark.parametrize(
+        "id, name",
+        [
+            ("", "Camera"),
+            ("camera-id", ""),
+            ("", ""),
+        ],
+    )
+    def test_constructor_with_empty_id_or_name(self, id: str, name: str):
+        with pytest.raises(RuntimeError):
+            Component(
+                id=id,
+                name=name,
+                type=Component.Type.Sensor,
+                tags=[],
+                geometries=[],
+                components=[],
+                parent=None,
+                frame=Frame.GCRF(),
+                simulator=None,
+            )
+
+    def test_has_no_undefined(self):
+        assert not hasattr(Component, "undefined")
+        assert not hasattr(Component, "is_defined")
+
+    def test_without_frame(
+        self,
+        frameless_component: Component,
+        parent_component: Component,
+    ):
+        assert frameless_component.get_id() == "camera-id"
+        assert frameless_component.get_name() == "Camera"
+        assert frameless_component.get_type() == Component.Type.Sensor
+        assert frameless_component.get_tags() == ["a"]
+        assert frameless_component.get_geometries() == []
+
+        with pytest.raises(RuntimeError):
+            frameless_component.access_frame()
+
+        parent_component.add_component(frameless_component)
+
+        assert parent_component.has_component_with_name("Camera")
+
+        with pytest.raises(RuntimeError):
+            Component.configure(
+                ComponentConfiguration(id="lens-id", name="Lens"),
+                frameless_component,
+            )
+
     def test_constructor_with_type_none(self):
         component: Component = Component(
             id="component-id",

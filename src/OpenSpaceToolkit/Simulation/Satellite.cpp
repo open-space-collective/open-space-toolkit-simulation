@@ -65,18 +65,8 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Satellite& aSatelli
     return anOutputStream;
 }
 
-bool Satellite::isDefined() const
-{
-    return Entity::isDefined();
-}
-
 const Shared<const Profile> Satellite::accessProfile() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Satellite");
-    }
-
     return this->profileSPtr_;
 }
 
@@ -87,20 +77,6 @@ void Satellite::print(std::ostream& anOutputStream, bool displayDecorators) cons
     Entity::print(anOutputStream, false);
 
     displayDecorators ? ostk::core::utils::Print::Footer(anOutputStream) : void();
-}
-
-Satellite Satellite::Undefined()
-{
-    return {
-        String::Empty(),
-        String::Empty(),
-        Array<String>::Empty(),
-        Array<Shared<Geometry>>::Empty(),
-        Array<Shared<Component>>::Empty(),
-        nullptr,
-        nullptr,
-        nullptr
-    };
 }
 
 Shared<Satellite> Satellite::Configure(

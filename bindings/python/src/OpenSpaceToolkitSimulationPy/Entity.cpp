@@ -23,21 +23,6 @@ inline void OpenSpaceToolkitSimulationPy_Entity(pybind11::module& aModule)
         )
 
             .def(
-                "is_defined",
-                &Entity::isDefined,
-                R"doc(
-                    Check if the entity is defined.
-
-                    Returns:
-                        bool: True if the entity is defined, False otherwise.
-
-                    Example:
-                        >>> entity.is_defined()
-                        True
-                )doc"
-            )
-
-            .def(
                 "get_id",
                 &Entity::getId,
                 R"doc(
@@ -64,22 +49,6 @@ inline void OpenSpaceToolkitSimulationPy_Entity(pybind11::module& aModule)
                     Example:
                         >>> entity.get_name()
                         'My Entity'
-                )doc"
-            )
-
-            .def_static(
-                "undefined",
-                &Entity::Undefined,
-                R"doc(
-                    Create an undefined entity.
-
-                    Returns:
-                        Entity: An undefined entity.
-
-                    Example:
-                        >>> entity = Entity.undefined()
-                        >>> entity.is_defined()
-                        False
                 )doc"
             )
 

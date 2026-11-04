@@ -5,6 +5,8 @@
 #include <OpenSpaceToolkit/Simulation/Component.hpp>
 #include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
 
+#include <OpenSpaceToolkit/Core/Error.hpp>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 
 #include <Global.test.hpp>
@@ -22,7 +24,11 @@ using ostk::simulation::ComponentConfiguration;
 class OpenSpaceToolkit_Simulation_Component : public ::testing::Test
 {
    protected:
-    static Shared<Component> MakeComponent(const String& aName, const std::optional<Component::Type>& aType)
+    static Shared<Component> MakeComponent(
+        const String& aName,
+        const std::optional<Component::Type>& aType,
+        const Shared<const Frame>& aFrameSPtr = Frame::GCRF()
+    )
     {
         return std::make_shared<Component>(
             String::Format("{}-id", aName),
@@ -32,13 +38,76 @@ class OpenSpaceToolkit_Simulation_Component : public ::testing::Test
             Array<Shared<Geometry>>::Empty(),
             Array<Shared<Component>>::Empty(),
             nullptr,
-            Frame::GCRF(),
+            aFrameSPtr,
             nullptr
         );
     }
 
     const Shared<Component> parentSPtr_ = MakeComponent("Parent", Component::Type::Assembly);
 };
+
+TEST_F(OpenSpaceToolkit_Simulation_Component, Constructor)
+{
+    {
+        const Shared<Component> componentSPtr = MakeComponent("Camera", Component::Type::Sensor);
+
+        EXPECT_EQ(componentSPtr->getId(), "Camera-id");
+        EXPECT_EQ(componentSPtr->getName(), "Camera");
+    }
+
+    {
+        const auto makeComponent = [](const String& anId, const String& aName) -> Component
+        {
+            return {
+                anId,
+                aName,
+                Component::Type::Sensor,
+                Array<String>::Empty(),
+                Array<Shared<Geometry>>::Empty(),
+                Array<Shared<Component>>::Empty(),
+                nullptr,
+                Frame::GCRF(),
+                nullptr
+            };
+        };
+
+        EXPECT_THROW(makeComponent("", "Camera"), ostk::core::error::runtime::Undefined);
+        EXPECT_THROW(makeComponent("camera-id", ""), ostk::core::error::runtime::Undefined);
+        EXPECT_THROW(makeComponent("", ""), ostk::core::error::runtime::Undefined);
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Simulation_Component, WithoutFrame)
+{
+    const Shared<Component> componentSPtr = MakeComponent("Camera", Component::Type::Sensor, nullptr);
+
+    {
+        EXPECT_EQ(componentSPtr->getId(), "Camera-id");
+        EXPECT_EQ(componentSPtr->getName(), "Camera");
+        EXPECT_EQ(componentSPtr->getType(), Component::Type::Sensor);
+        EXPECT_TRUE(componentSPtr->getTags().isEmpty());
+        EXPECT_TRUE(componentSPtr->getGeometries().isEmpty());
+        EXPECT_NO_THROW(componentSPtr->setParent(parentSPtr_));
+    }
+
+    {
+        EXPECT_THROW(componentSPtr->accessFrame(), ostk::core::error::runtime::Undefined);
+    }
+
+    {
+        EXPECT_NO_THROW(parentSPtr_->addComponent(componentSPtr));
+        EXPECT_TRUE(parentSPtr_->hasComponentWithName("Camera"));
+    }
+
+    {
+        const ComponentConfiguration componentConfiguration = {"lens-id", "Lens"};
+
+        EXPECT_THROW(
+            Component::Configure(componentConfiguration, componentSPtr), ostk::core::error::runtime::Undefined
+        );
+        EXPECT_THROW(Component::Configure(componentConfiguration, nullptr), ostk::core::error::runtime::Undefined);
+    }
+}
 
 TEST_F(OpenSpaceToolkit_Simulation_Component, GetType)
 {

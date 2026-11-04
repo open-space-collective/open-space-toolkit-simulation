@@ -74,6 +74,8 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     };
 
     /// @brief Construct a component.
+    /// @details Throws ostk::core::error::runtime::Undefined if the identifier or the name is empty.
+    ///          The frame may be null, in which case accessFrame() throws.
     ///
     /// @code{.cpp}
     ///     Component component(
@@ -83,14 +85,14 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     ///     );
     /// @endcode
     ///
-    /// @param [in] anId An identifier.
-    /// @param [in] aName A name.
+    /// @param [in] anId An identifier (must not be empty).
+    /// @param [in] aName A name (must not be empty).
     /// @param [in] aType A component type (std::nullopt if the type is unspecified).
     /// @param [in] aTagArray An array of tags.
     /// @param [in] aGeometryArray An array of geometries.
     /// @param [in] aComponentArray An array of child components.
     /// @param [in] aParentComponentSPtr A shared pointer to the parent component holder.
-    /// @param [in] aFrameSPtr A shared pointer to the reference frame.
+    /// @param [in] aFrameSPtr A shared pointer to the reference frame (may be null).
     /// @param [in] aSimulatorSPtr A shared pointer to the simulator.
     Component(
         const String& anId,
@@ -136,16 +138,8 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     /// @return A reference to the output stream.
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Component& aComponent);
 
-    /// @brief Check if the component is defined.
-    ///
-    /// @code{.cpp}
-    ///     bool defined = component.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the component is defined.
-    bool isDefined() const;
-
     /// @brief Access the reference frame.
+    /// @details Throws ostk::core::error::runtime::Undefined if the component has no frame.
     ///
     /// @code{.cpp}
     ///     const Shared<const Frame>& frame = component.accessFrame();
@@ -227,16 +221,8 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     /// @param [in] aComponentSPtr A shared pointer to a component.
     void addComponent(const Shared<Component>& aComponentSPtr);
 
-    /// @brief Construct an undefined component.
-    ///
-    /// @code{.cpp}
-    ///     Component component = Component::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined component.
-    static Component Undefined();
-
     /// @brief Configure a component from a configuration.
+    /// @details Throws ostk::core::error::runtime::Undefined if the parent component is null or has no frame.
     ///
     /// @code{.cpp}
     ///     Shared<Component> component = Component::Configure(componentConfiguration, parentComponentSPtr);

@@ -69,16 +69,11 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Component& aCompone
     return anOutputStream;
 }
 
-bool Component::isDefined() const
-{
-    return Entity::isDefined() && frameSPtr_;
-}
-
 const Shared<const Frame>& Component::accessFrame() const
 {
-    if (!this->isDefined())
+    if (!this->frameSPtr_)
     {
-        throw ostk::core::error::runtime::Undefined("Component");
+        throw ostk::core::error::runtime::Undefined("Frame");
     }
 
     return this->frameSPtr_;
@@ -86,11 +81,6 @@ const Shared<const Frame>& Component::accessFrame() const
 
 const Geometry& Component::accessGeometryWithName(const String& aName) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Component");
-    }
-
     for (const auto& geometryStr : this->geometries_)
     {
         if (geometryStr->getName() == aName)
@@ -104,11 +94,6 @@ const Geometry& Component::accessGeometryWithName(const String& aName) const
 
 const Simulator& Component::accessSimulator() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Component");
-    }
-
     if (!simulatorSPtr_)
     {
         throw ostk::core::error::runtime::Undefined("Simulator");
@@ -119,41 +104,21 @@ const Simulator& Component::accessSimulator() const
 
 std::optional<Component::Type> Component::getType() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Component");
-    }
-
     return this->type_;
 }
 
 Array<String> Component::getTags() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Component");
-    }
-
     return this->tags_;
 }
 
 Array<Shared<Geometry>> Component::getGeometries() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Component");
-    }
-
     return this->geometries_;
 }
 
 void Component::setParent(const Shared<Component>& aComponentSPtr)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Component");
-    }
-
     this->parentWPtr_ = aComponentSPtr;
 }
 
@@ -174,26 +139,11 @@ void Component::addComponent(const Shared<Component>& aComponentSPtr)
     ComponentHolder::addComponent(aComponentSPtr);
 }
 
-Component Component::Undefined()
-{
-    return {
-        String::Empty(),
-        String::Empty(),
-        std::nullopt,
-        Array<String>::Empty(),
-        Array<Shared<Geometry>>::Empty(),
-        Array<Shared<Component>>::Empty(),
-        nullptr,
-        nullptr,
-        nullptr
-    };
-}
-
 Shared<Component> Component::Configure(
     const ComponentConfiguration& aComponentConfiguration, const Shared<Component>& aParentComponentSPtr
 )
 {
-    if ((!aParentComponentSPtr) || (!aParentComponentSPtr->isDefined()))
+    if (!aParentComponentSPtr)
     {
         throw ostk::core::error::runtime::Undefined("Parent component");
     }
