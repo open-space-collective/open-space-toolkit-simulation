@@ -22,19 +22,12 @@ Inheritance diagram for ostk\+::simulation\+::Entity\+:\begin{figure}[H]
 \begin{DoxyCompactList}\small\item\em Construct an entity with a name. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1_entity_ae4ee439011cfcb1811d31bdb8db871fa}{Entity}} (const String \&an\+Id, const String \&a\+Name)
 \begin{DoxyCompactList}\small\item\em Construct an entity with an identifier and a name. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classostk_1_1simulation_1_1_entity_ad3c1556400b02acdffde053348acda2f}{is\+Defined}} () const
-\begin{DoxyCompactList}\small\item\em Check if the entity is defined. \end{DoxyCompactList}\item 
-String \mbox{\hyperlink{classostk_1_1simulation_1_1_entity_a33286b8807aacec430d105646c021a79}{get\+Id}} () const
+const String \& \mbox{\hyperlink{classostk_1_1simulation_1_1_entity_a99d8160b3cf2854424d37ae7b7a67da2}{get\+Id}} () const
 \begin{DoxyCompactList}\small\item\em Get the identifier of the entity. \end{DoxyCompactList}\item 
-String \mbox{\hyperlink{classostk_1_1simulation_1_1_entity_a17050a1483e16e62ca10e3b1ecade1d5}{get\+Name}} () const
+const String \& \mbox{\hyperlink{classostk_1_1simulation_1_1_entity_a7a1823fd0155ce5cee7c726f519befec}{get\+Name}} () const
 \begin{DoxyCompactList}\small\item\em Get the name of the entity. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1simulation_1_1_entity_aa2238f2fe07b5ddc4594293acdfa0c23}{print}} (std\+::ostream \&an\+Output\+Stream, bool display\+Decorators=true) const
 \begin{DoxyCompactList}\small\item\em Print the entity to an output stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Static Public Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-static \mbox{\hyperlink{classostk_1_1simulation_1_1_entity}{Entity}} \mbox{\hyperlink{classostk_1_1simulation_1_1_entity_aa42c610f1b96197f9fbf45711fe6a479}{Undefined}} ()
-\begin{DoxyCompactList}\small\item\em Construct an undefined entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -45,8 +38,8 @@ An \mbox{\hyperlink{classostk_1_1simulation_1_1_entity}{Entity}} has an identifi
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_entity_a929819736161db5935b29b84da8a97aa}{Entity}} entity(\textcolor{stringliteral}{"my-\/entity"});}
-\DoxyCodeLine{String name = entity.getName();}
-\DoxyCodeLine{String \textcolor{keywordtype}{id} = entity.getId();}
+\DoxyCodeLine{\textcolor{keyword}{const} String\& name = entity.getName();}
+\DoxyCodeLine{\textcolor{keyword}{const} String\& \textcolor{keywordtype}{id} = entity.getId();}
 \end{DoxyCode}
  
 
@@ -61,7 +54,7 @@ An \mbox{\hyperlink{classostk_1_1simulation_1_1_entity}{Entity}} has an identifi
 
 Construct an entity with a name. 
 
-An identifier is automatically generated.
+An identifier is automatically generated. Throws ostk\+::core\+::error\+::runtime\+::\+Undefined if the name is empty.
 
 
 \begin{DoxyCode}{0}
@@ -71,7 +64,7 @@ An identifier is automatically generated.
 
 
 \begin{DoxyParams}{Parameters}
-{\em a\+Name} & A name for the entity. \\
+{\em a\+Name} & A name for the entity (must not be empty). \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_entity_ae4ee439011cfcb1811d31bdb8db871fa}\label{classostk_1_1simulation_1_1_entity_ae4ee439011cfcb1811d31bdb8db871fa}} 
@@ -84,6 +77,8 @@ An identifier is automatically generated.
 
 Construct an entity with an identifier and a name. 
 
+Throws ostk\+::core\+::error\+::runtime\+::\+Undefined if the identifier or the name is empty.
+
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_entity_a929819736161db5935b29b84da8a97aa}{Entity}} entity(\textcolor{stringliteral}{"entity-\/id"}, \textcolor{stringliteral}{"my-\/entity"});}
@@ -92,19 +87,19 @@ Construct an entity with an identifier and a name.
 
 
 \begin{DoxyParams}{Parameters}
-{\em an\+Id} & An identifier. \\
+{\em an\+Id} & An identifier (must not be empty). \\
 \hline
-{\em a\+Name} & A name. \\
+{\em a\+Name} & A name (must not be empty). \\
 \hline
 \end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1_entity_a33286b8807aacec430d105646c021a79}\label{classostk_1_1simulation_1_1_entity_a33286b8807aacec430d105646c021a79}} 
+\mbox{\Hypertarget{classostk_1_1simulation_1_1_entity_a99d8160b3cf2854424d37ae7b7a67da2}\label{classostk_1_1simulation_1_1_entity_a99d8160b3cf2854424d37ae7b7a67da2}} 
 \index{ostk::simulation::Entity@{ostk::simulation::Entity}!getId@{getId}}
 \index{getId@{getId}!ostk::simulation::Entity@{ostk::simulation::Entity}}
 \doxysubsubsection{\texorpdfstring{getId()}{getId()}}
-{\footnotesize\ttfamily String ostk\+::simulation\+::\+Entity\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily const String \& ostk\+::simulation\+::\+Entity\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -113,18 +108,18 @@ Get the identifier of the entity.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_entity_a929819736161db5935b29b84da8a97aa}{Entity}} entity(\textcolor{stringliteral}{"entity-\/id"}, \textcolor{stringliteral}{"my-\/entity"});}
-\DoxyCodeLine{String \textcolor{keywordtype}{id} = entity.getId(); \textcolor{comment}{// "entity-\/id"}}
+\DoxyCodeLine{\textcolor{keyword}{const} String\& \textcolor{keywordtype}{id} = entity.getId(); \textcolor{comment}{// "entity-\/id"}}
 \end{DoxyCode}
 
 
 \begin{DoxyReturn}{Returns}
-The identifier. 
+A const reference to the identifier. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1_entity_a17050a1483e16e62ca10e3b1ecade1d5}\label{classostk_1_1simulation_1_1_entity_a17050a1483e16e62ca10e3b1ecade1d5}} 
+\mbox{\Hypertarget{classostk_1_1simulation_1_1_entity_a7a1823fd0155ce5cee7c726f519befec}\label{classostk_1_1simulation_1_1_entity_a7a1823fd0155ce5cee7c726f519befec}} 
 \index{ostk::simulation::Entity@{ostk::simulation::Entity}!getName@{getName}}
 \index{getName@{getName}!ostk::simulation::Entity@{ostk::simulation::Entity}}
 \doxysubsubsection{\texorpdfstring{getName()}{getName()}}
-{\footnotesize\ttfamily String ostk\+::simulation\+::\+Entity\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily const String \& ostk\+::simulation\+::\+Entity\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -133,32 +128,12 @@ Get the name of the entity.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_entity_a929819736161db5935b29b84da8a97aa}{Entity}} entity(\textcolor{stringliteral}{"my-\/entity"});}
-\DoxyCodeLine{String name = entity.getName(); \textcolor{comment}{// "my-\/entity"}}
+\DoxyCodeLine{\textcolor{keyword}{const} String\& name = entity.getName(); \textcolor{comment}{// "my-\/entity"}}
 \end{DoxyCode}
 
 
 \begin{DoxyReturn}{Returns}
-The name. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1_entity_ad3c1556400b02acdffde053348acda2f}\label{classostk_1_1simulation_1_1_entity_ad3c1556400b02acdffde053348acda2f}} 
-\index{ostk::simulation::Entity@{ostk::simulation::Entity}!isDefined@{isDefined}}
-\index{isDefined@{isDefined}!ostk::simulation::Entity@{ostk::simulation::Entity}}
-\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
-{\footnotesize\ttfamily bool ostk\+::simulation\+::\+Entity\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Check if the entity is defined. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_entity_a929819736161db5935b29b84da8a97aa}{Entity}} entity(\textcolor{stringliteral}{"my-\/entity"});}
-\DoxyCodeLine{\textcolor{keywordtype}{bool} defined = entity.isDefined(); \textcolor{comment}{// true}}
-\end{DoxyCode}
-
-
-\begin{DoxyReturn}{Returns}
-True if the entity is defined. 
+A const reference to the name. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_entity_aa2238f2fe07b5ddc4594293acdfa0c23}\label{classostk_1_1simulation_1_1_entity_aa2238f2fe07b5ddc4594293acdfa0c23}} 
 \index{ostk::simulation::Entity@{ostk::simulation::Entity}!print@{print}}
@@ -184,26 +159,6 @@ Print the entity to an output stream.
 \mbox{\texttt{ in}}  & {\em display\+Decorators} & If true, display decorators. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1_entity_aa42c610f1b96197f9fbf45711fe6a479}\label{classostk_1_1simulation_1_1_entity_aa42c610f1b96197f9fbf45711fe6a479}} 
-\index{ostk::simulation::Entity@{ostk::simulation::Entity}!Undefined@{Undefined}}
-\index{Undefined@{Undefined}!ostk::simulation::Entity@{ostk::simulation::Entity}}
-\doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1simulation_1_1_entity}{Entity}} ostk\+::simulation\+::\+Entity\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Construct an undefined entity. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_entity_a929819736161db5935b29b84da8a97aa}{Entity}} entity = \mbox{\hyperlink{classostk_1_1simulation_1_1_entity_aa42c610f1b96197f9fbf45711fe6a479}{Entity::Undefined}}();}
-\DoxyCodeLine{\textcolor{keywordtype}{bool} defined = entity.isDefined(); \textcolor{comment}{// false}}
-\end{DoxyCode}
-
-
-\begin{DoxyReturn}{Returns}
-An undefined entity. 
-\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

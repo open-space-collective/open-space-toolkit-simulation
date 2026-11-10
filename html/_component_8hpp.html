@@ -88,7 +88,8 @@ $(document).ready(function(){initNavTree('_component_8hpp.html',''); initResizab
 <div class="title">Component.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="_geometry_8hpp_source.html">OpenSpaceToolkit/Simulation/Component/Geometry.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;optional&gt;</code><br />
+<code>#include &lt;<a class="el" href="_geometry_8hpp_source.html">OpenSpaceToolkit/Simulation/Component/Geometry.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_state_8hpp_source.html">OpenSpaceToolkit/Simulation/Component/State.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_entity_8hpp_source.html">OpenSpaceToolkit/Simulation/Entity.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_component_holder_8hpp_source.html">OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp</a>&gt;</code><br />
@@ -120,7 +121,7 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a0e5d3d0d9b45cdf8c94ed8df0d00c3e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_component_8hpp.html#a0e5d3d0d9b45cdf8c94ed8df0d00c3e3">DEFAULT_COMPONENT_TYPE</a>&#160;&#160;&#160;Component::Type::Undefined</td></tr>
+<tr class="memitem:a0e5d3d0d9b45cdf8c94ed8df0d00c3e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_component_8hpp.html#a0e5d3d0d9b45cdf8c94ed8df0d00c3e3">DEFAULT_COMPONENT_TYPE</a>&#160;&#160;&#160;std::nullopt</td></tr>
 <tr class="separator:a0e5d3d0d9b45cdf8c94ed8df0d00c3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cabb8538f234177d4f95e681045bf94"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_component_8hpp.html#a7cabb8538f234177d4f95e681045bf94">DEFAULT_TAGS</a>&#160;&#160;&#160;Array&lt;String&gt;::Empty()</td></tr>
 <tr class="separator:a7cabb8538f234177d4f95e681045bf94"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,7 +140,7 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DEFAULT_COMPONENT_TYPE&#160;&#160;&#160;Component::Type::Undefined</td>
+          <td class="memname">#define DEFAULT_COMPONENT_TYPE&#160;&#160;&#160;std::nullopt</td>
         </tr>
       </table>
 </div><div class="memdoc">

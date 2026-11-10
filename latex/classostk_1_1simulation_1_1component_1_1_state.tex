@@ -12,12 +12,9 @@ Represents the state of a component.
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{Status}} \{ \newline
-\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58aec0fc0100c4fc1ce4eea230c3dc10360}{Status\+::\+Undefined}}, 
-\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ab9f5c797ebbf55adccdd8539a65a0241}{Status\+::\+Disabled}}, 
+enum \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{Status}} \{ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ab9f5c797ebbf55adccdd8539a65a0241}{Status\+::\+Disabled}}, 
 \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}{Status\+::\+Idle}}, 
 \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ad8a942ef2b04672adfafef0ad817a407}{Status\+::\+Busy}}, 
-\newline
 \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58a902b0d55fddef6f8d651fe1035b7d4bd}{Status\+::\+Error}}
  \}
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} status enumeration. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -36,21 +33,14 @@ virtual \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}}
 \begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_ad4440388904bac640dc57ffbc5b77019}{operator==}} (const \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} \&a\+State) const
 \begin{DoxyCompactList}\small\item\em Equal to operator. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_abfb0349ee570125276b52aa2c3b1156d}{is\+Defined}} () const
-\begin{DoxyCompactList}\small\item\em Check if the state is defined. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58}{State\+::\+Status}} \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_a5ff60e1d912483effdb53b2b5c555cf9}{get\+Status}} () const
 \begin{DoxyCompactList}\small\item\em Get the status. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Static Public Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-static \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_a21a79240817592992c4791699b2d623f}{Undefined}} ()
-\begin{DoxyCompactList}\small\item\em Construct an undefined state. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Represents the state of a component. 
 
-A \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} holds a Status (Undefined, Disabled, Idle, Busy, Error) and a verbosity flag.
+A \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} holds a Status (Disabled, Idle, Busy, Error) and a verbosity flag.
 
 
 \begin{DoxyCode}{0}
@@ -71,10 +61,6 @@ A \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} holds
 \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} status enumeration. 
 
 \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{Undefined@{Undefined}!ostk::simulation::component::State@{ostk::simulation::component::State}}\index{ostk::simulation::component::State@{ostk::simulation::component::State}!Undefined@{Undefined}}}\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58aec0fc0100c4fc1ce4eea230c3dc10360}\label{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58aec0fc0100c4fc1ce4eea230c3dc10360}} 
-Undefined&\\
-\hline
-
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Disabled@{Disabled}!ostk::simulation::component::State@{ostk::simulation::component::State}}\index{ostk::simulation::component::State@{ostk::simulation::component::State}!Disabled@{Disabled}}}\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ab9f5c797ebbf55adccdd8539a65a0241}\label{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ab9f5c797ebbf55adccdd8539a65a0241}} 
 Disabled&\\
 \hline
@@ -193,26 +179,6 @@ Get the status.
 \begin{DoxyReturn}{Returns}
 The status. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_abfb0349ee570125276b52aa2c3b1156d}\label{classostk_1_1simulation_1_1component_1_1_state_abfb0349ee570125276b52aa2c3b1156d}} 
-\index{ostk::simulation::component::State@{ostk::simulation::component::State}!isDefined@{isDefined}}
-\index{isDefined@{isDefined}!ostk::simulation::component::State@{ostk::simulation::component::State}}
-\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
-{\footnotesize\ttfamily bool ostk\+::simulation\+::component\+::\+State\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Check if the state is defined. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} state(\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c}{State::Status::Idle}});}
-\DoxyCodeLine{\textcolor{keywordtype}{bool} defined = state.isDefined(); \textcolor{comment}{// true}}
-\end{DoxyCode}
-
-
-\begin{DoxyReturn}{Returns}
-True if the state is defined. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_ac8aaea99357f670afab3c087de08446f}\label{classostk_1_1simulation_1_1component_1_1_state_ac8aaea99357f670afab3c087de08446f}} 
 \index{ostk::simulation::component::State@{ostk::simulation::component::State}!operator=@{operator=}}
 \index{operator=@{operator=}!ostk::simulation::component::State@{ostk::simulation::component::State}}
@@ -263,26 +229,6 @@ Equal to operator.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if states are equal. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_state_a21a79240817592992c4791699b2d623f}\label{classostk_1_1simulation_1_1component_1_1_state_a21a79240817592992c4791699b2d623f}} 
-\index{ostk::simulation::component::State@{ostk::simulation::component::State}!Undefined@{Undefined}}
-\index{Undefined@{Undefined}!ostk::simulation::component::State@{ostk::simulation::component::State}}
-\doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state}{State}} ostk\+::simulation\+::component\+::\+State\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Construct an undefined state. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_aef1526b3513a2165970420e7ac8b6dae}{State}} state = \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_state_a21a79240817592992c4791699b2d623f}{State::Undefined}}();}
-\DoxyCodeLine{\textcolor{keywordtype}{bool} defined = state.isDefined(); \textcolor{comment}{// false}}
-\end{DoxyCode}
-
-
-\begin{DoxyReturn}{Returns}
-An undefined state. 
 \end{DoxyReturn}
 
 

@@ -16,13 +16,16 @@ ostk.simulation.Entity
    .. autosummary::
       :nosignatures:
    
-      ~Entity.get_id
-      ~Entity.get_name
-      ~Entity.is_defined
-      ~Entity.undefined
    
    
 
    
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Entity.get_id
+      ~Entity.get_name
    
    

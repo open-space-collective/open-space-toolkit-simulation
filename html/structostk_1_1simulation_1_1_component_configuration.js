@@ -6,5 +6,5 @@ var structostk_1_1simulation_1_1_component_configuration =
     [ "name", "structostk_1_1simulation_1_1_component_configuration.html#ab78915c05378490b92166223f335b412", null ],
     [ "orientation", "structostk_1_1simulation_1_1_component_configuration.html#a85c06b983a2aeddc726310ac64a280b6", null ],
     [ "tags", "structostk_1_1simulation_1_1_component_configuration.html#a95b38d1660657a8d2ba6baf0f885bf13", null ],
-    [ "type", "structostk_1_1simulation_1_1_component_configuration.html#abd0e836f95e58db5c8e954469101a2c8", null ]
+    [ "type", "structostk_1_1simulation_1_1_component_configuration.html#a1df53d094361592331e6affdee12b4c2", null ]
 ];

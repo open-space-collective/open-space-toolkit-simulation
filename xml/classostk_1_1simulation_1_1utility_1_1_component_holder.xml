@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="152" column="9" bodyfile="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" bodystart="152" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="154" column="9" bodyfile="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -179,7 +179,7 @@
 <parametername direction="in">aComponentPath</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A dot-separated component path (e.g., &quot;assembly.sensor&quot;). </para>
+<para>A component path, with segments separated by &apos;/&apos; or &apos;.&apos; (e.g., &quot;assembly/sensor&quot; or &quot;assembly.sensor&quot;). </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -189,18 +189,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="91" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="65" bodyend="81"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="92" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="65" bodyend="81"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1ab66566e91251de05a02198cec7ecc4b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1ab3f9b871a31a7caf509cc9a81f692901" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; Shared&lt; <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &gt; &gt;</type>
-        <definition>Array&lt; Shared&lt; Component &gt; &gt; ostk::simulation::utility::ComponentHolder::accessComponents</definition>
+        <definition>Array&lt; Shared&lt; Component &gt; &gt; ostk::simulation::utility::ComponentHolder::getComponents</definition>
         <argsstring>() const</argsstring>
-        <name>accessComponents</name>
+        <name>getComponents</name>
         <briefdescription>
-<para>Access all components. </para>
+<para>Get all components. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="normal">Array&lt;Shared&lt;Component&gt;&gt;<sp/>components<sp/>=<sp/>holder.accessComponents();</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">Array&lt;Shared&lt;Component&gt;&gt;<sp/>components<sp/>=<sp/>holder.getComponents();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>An array of shared pointers to the components. </para>
 </simplesect>
@@ -208,22 +208,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="100" column="11" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="93" bodyend="105"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="101" column="11" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="93" bodyend="105"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a05ee37d6949d90619788e62a1b1db47a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a71760ebc065f725646678e2749108d4c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &amp;</type>
-        <definition>const Component &amp; ostk::simulation::utility::ComponentHolder::accessComponentWithId</definition>
+        <definition>const Component &amp; ostk::simulation::utility::ComponentHolder::getComponentWithId</definition>
         <argsstring>(const String &amp;aComponentId) const</argsstring>
-        <name>accessComponentWithId</name>
+        <name>getComponentWithId</name>
         <param>
           <type>const String &amp;</type>
           <declname>aComponentId</declname>
         </param>
         <briefdescription>
-<para>Access a component by identifier. </para>
+<para>Get a component by identifier. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Component&amp;<sp/>component<sp/>=<sp/>holder.accessComponentWithId(</highlight><highlight class="stringliteral">&quot;component-id&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Component&amp;<sp/>component<sp/>=<sp/>holder.getComponentWithId(</highlight><highlight class="stringliteral">&quot;component-id&quot;</highlight><highlight class="normal">);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -234,28 +234,28 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A reference to the component. </para>
+<simplesect kind="return"><para>A const reference to the component. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="110" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="107" bodyend="123"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="111" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="107" bodyend="123"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a245084a9899a44bb0c3298d643c2b44d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a574e7a27eb31326b0fb4c0801dfb530d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &amp;</type>
-        <definition>const Component &amp; ostk::simulation::utility::ComponentHolder::accessComponentWithName</definition>
+        <definition>const Component &amp; ostk::simulation::utility::ComponentHolder::getComponentWithName</definition>
         <argsstring>(const String &amp;aComponentName) const</argsstring>
-        <name>accessComponentWithName</name>
+        <name>getComponentWithName</name>
         <param>
           <type>const String &amp;</type>
           <declname>aComponentName</declname>
         </param>
         <briefdescription>
-<para>Access a component by name. </para>
+<para>Get a component by name. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Component&amp;<sp/>sensor<sp/>=<sp/>holder.accessComponentWithName(</highlight><highlight class="stringliteral">&quot;sensor&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Component&amp;<sp/>sensor<sp/>=<sp/>holder.getComponentWithName(</highlight><highlight class="stringliteral">&quot;sensor&quot;</highlight><highlight class="normal">);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -266,28 +266,28 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A reference to the component. </para>
+<simplesect kind="return"><para>A const reference to the component. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="120" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="125" bodyend="140"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="121" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="125" bodyend="140"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a9f7c8444d12fcb0a8d4d1198c2181197" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a8172c0233a16a517ba6febb6d0446abd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; Shared&lt; const <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &gt; &gt;</type>
-        <definition>Array&lt; Shared&lt; const Component &gt; &gt; ostk::simulation::utility::ComponentHolder::accessComponentsWithTag</definition>
+        <definition>Array&lt; Shared&lt; const Component &gt; &gt; ostk::simulation::utility::ComponentHolder::getComponentsWithTag</definition>
         <argsstring>(const String &amp;aComponentTag) const</argsstring>
-        <name>accessComponentsWithTag</name>
+        <name>getComponentsWithTag</name>
         <param>
           <type>const String &amp;</type>
           <declname>aComponentTag</declname>
         </param>
         <briefdescription>
-<para>Access all components matching a tag. </para>
+<para>Get all components matching a tag. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="normal">Array&lt;Shared&lt;const<sp/>Component&gt;&gt;<sp/>sensors<sp/>=<sp/>holder.accessComponentsWithTag(</highlight><highlight class="stringliteral">&quot;sensor&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">Array&lt;Shared&lt;const<sp/>Component&gt;&gt;<sp/>sensors<sp/>=<sp/>holder.getComponentsWithTag(</highlight><highlight class="stringliteral">&quot;sensor&quot;</highlight><highlight class="normal">);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -304,39 +304,39 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="130" column="11" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="142" bodyend="165"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="131" column="11" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="142" bodyend="165"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a83aefcdc6fea117a180edff14954f7a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1af5275c7b337e252919202dd7b364b3c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &amp;</type>
-        <definition>const Component &amp; ostk::simulation::utility::ComponentHolder::accessComponentAt</definition>
+        <definition>const Component &amp; ostk::simulation::utility::ComponentHolder::getComponentAt</definition>
         <argsstring>(const String &amp;aComponentPath) const</argsstring>
-        <name>accessComponentAt</name>
+        <name>getComponentAt</name>
         <param>
           <type>const String &amp;</type>
           <declname>aComponentPath</declname>
         </param>
         <briefdescription>
-<para>Access a component at a hierarchical path. </para>
+<para>Get a component at a hierarchical path. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Component&amp;<sp/>sensor<sp/>=<sp/>holder.accessComponentAt(</highlight><highlight class="stringliteral">&quot;assembly.sensor&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Component&amp;<sp/>sensor<sp/>=<sp/>holder.getComponentAt(</highlight><highlight class="stringliteral">&quot;assembly.sensor&quot;</highlight><highlight class="normal">);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aComponentPath</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A dot-separated component path (e.g., &quot;assembly.sensor&quot;). </para>
+<para>A component path, with segments separated by &apos;/&apos; or &apos;.&apos; (e.g., &quot;assembly/sensor&quot; or &quot;assembly.sensor&quot;). </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A reference to the component. </para>
+<simplesect kind="return"><para>A const reference to the component. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="140" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="167" bodyend="184"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="142" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="167" bodyend="184"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1utility_1_1_component_holder_1a6012cd2e61416fe0cef0f9523e0121de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -366,7 +366,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="149" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="83" bodyend="91"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="151" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.cpp" bodystart="83" bodyend="91"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -376,7 +376,7 @@
 <para>Provides lookup by identifier, name, tag, and hierarchical path.</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a7229211c50e568af740b831f8cde2d0b" kindref="member">ComponentHolder</ref><sp/>holder(componentArray);</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exists<sp/>=<sp/>holder.hasComponentWithName(</highlight><highlight class="stringliteral">&quot;sensor&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Component&amp;<sp/>sensor<sp/>=<sp/>holder.accessComponentWithName(</highlight><highlight class="stringliteral">&quot;sensor&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Component&amp;<sp/>sensor<sp/>=<sp/>holder.getComponentWithName(</highlight><highlight class="stringliteral">&quot;sensor&quot;</highlight><highlight class="normal">);</highlight></codeline>
 </programlisting> </para>
     </detaileddescription>
     <inheritancegraph>
@@ -397,17 +397,17 @@
         <link refid="classostk_1_1simulation_1_1utility_1_1_component_holder"/>
       </node>
     </inheritancegraph>
-    <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" bodystart="39" bodyend="153"/>
+    <location file="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Utility/ComponentHolder.hpp" bodystart="39" bodyend="155"/>
     <listofallmembers>
-      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a83aefcdc6fea117a180edff14954f7a5" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>accessComponentAt</name></member>
-      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1ab66566e91251de05a02198cec7ecc4b7" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>accessComponents</name></member>
-      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a9f7c8444d12fcb0a8d4d1198c2181197" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>accessComponentsWithTag</name></member>
-      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a05ee37d6949d90619788e62a1b1db47a" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>accessComponentWithId</name></member>
-      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a245084a9899a44bb0c3298d643c2b44d" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>accessComponentWithName</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a6012cd2e61416fe0cef0f9523e0121de" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>addComponent</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a7229211c50e568af740b831f8cde2d0b" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>ComponentHolder</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1abbc39c68bfd9922229cf2c70291395a1" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>ComponentHolder</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a495bdfe9aca52b6e29ecdaced69c7991" prot="private" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>componentMap_</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1af5275c7b337e252919202dd7b364b3c0" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>getComponentAt</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1ab3f9b871a31a7caf509cc9a81f692901" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>getComponents</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a8172c0233a16a517ba6febb6d0446abd" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>getComponentsWithTag</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a71760ebc065f725646678e2749108d4c" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>getComponentWithId</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a574e7a27eb31326b0fb4c0801dfb530d" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>getComponentWithName</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a2992fe305dcb2243a0f3f0b3a2965773" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>hasComponentAt</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1aca60bf690ae2d94e094760ef276fcfc6" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>hasComponentWithId</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a6a570d1c15601cacb1ad7a9fab443317" prot="public" virt="non-virtual"><scope>ostk::simulation::utility::ComponentHolder</scope><name>hasComponentWithName</name></member>

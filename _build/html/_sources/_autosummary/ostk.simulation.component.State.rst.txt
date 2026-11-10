@@ -11,17 +11,14 @@ ostk.simulation.component.State
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~State.get_status
-      ~State.is_defined
-      ~State.undefined
-   
-   
-
-   
    
    

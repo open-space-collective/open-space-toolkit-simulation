@@ -28,7 +28,7 @@
 <codeline><highlight class="normal">```cpp</highlight></codeline>
 <codeline><highlight class="normal">#include<sp/>&lt;OpenSpaceToolkit/Simulation/Orbit.hpp&gt;</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Integer.hpp&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight></codeline>
 <codeline><highlight class="normal">#include<sp/>&lt;OpenSpaceToolkit/Core/Utility.hpp&gt;</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#include<sp/>&lt;map&gt;</highlight></codeline>

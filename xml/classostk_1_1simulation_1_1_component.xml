@@ -11,13 +11,6 @@
       <memberdef kind="enum" id="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" prot="public" static="no" strong="yes">
         <type></type>
         <name>Type</name>
-        <enumvalue id="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20aec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
-          <name>Undefined</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
         <enumvalue id="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20ad75c45e11c8aeb13494dba59a388a164" prot="public">
           <name>Assembly</name>
           <briefdescription>
@@ -60,13 +53,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="64" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="63" bodyend="73"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="66" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="65" bodyend="74"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classostk_1_1simulation_1_1_component_1ab118619f521c5ad4966041e752e940a2" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref></type>
-        <definition>Component::Type ostk::simulation::Component::type_</definition>
+      <memberdef kind="variable" id="classostk_1_1simulation_1_1_component_1a759ccc769a3b36a7135d79dccd10b43c" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref> &gt;</type>
+        <definition>std::optional&lt;Component::Type&gt; ostk::simulation::Component::type_</definition>
         <argsstring></argsstring>
         <name>type_</name>
         <briefdescription>
@@ -75,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="287" column="21" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="287" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="274" column="19" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="274" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1simulation_1_1_component_1abe97994eb0c61ce9761c71365a7e14b0" prot="private" static="no" mutable="no">
         <type>Array&lt; String &gt;</type>
@@ -88,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="288" column="11" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="288" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="275" column="11" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="275" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1simulation_1_1_component_1a72aaa5e86c4b79c64fc1315b894cc73c" prot="private" static="no" mutable="no">
         <type>Array&lt; Shared&lt; <ref refid="classostk_1_1simulation_1_1component_1_1_geometry" kindref="compound">Geometry</ref> &gt; &gt;</type>
@@ -101,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="289" column="11" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="289" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="276" column="11" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="276" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1simulation_1_1_component_1a6277dd40fcf831958fb1477953b58fdb" prot="private" static="no" mutable="no">
         <type>Weak&lt; const <ref refid="classostk_1_1simulation_1_1utility_1_1_component_holder" kindref="compound">ComponentHolder</ref> &gt;</type>
@@ -114,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="291" column="10" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="291" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="278" column="10" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="278" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1simulation_1_1_component_1a60d75a8bd6316e7a50c486c2c131b690" prot="private" static="no" mutable="no">
         <type>Shared&lt; const Frame &gt;</type>
@@ -127,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="292" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="292" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="279" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="279" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1simulation_1_1_component_1aa1dbd3336e9d6e5b7105ae8aaedf254a" prot="private" static="no" mutable="no">
         <type>Shared&lt; const <ref refid="classostk_1_1simulation_1_1_simulator" kindref="compound">Simulator</ref> &gt;</type>
@@ -140,14 +133,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="293" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="293" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="280" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="280" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1ab3711f34980c3fdb746ff83b9511a25c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a7c40ccfedf46579d7f96e448ea1575d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ostk::simulation::Component::Component</definition>
-        <argsstring>(const String &amp;anId, const String &amp;aName, const Component::Type &amp;aType, const Array&lt; String &gt; &amp;aTagArray, const Array&lt; Shared&lt; Geometry &gt;&gt; &amp;aGeometryArray, const Array&lt; Shared&lt; Component &gt;&gt; &amp;aComponentArray, const Shared&lt; ComponentHolder &gt; &amp;aParentComponentSPtr, const Shared&lt; const Frame &gt; &amp;aFrameSPtr, const Shared&lt; const Simulator &gt; &amp;aSimulatorSPtr)</argsstring>
+        <argsstring>(const String &amp;anId, const String &amp;aName, const std::optional&lt; Component::Type &gt; &amp;aType, const Array&lt; String &gt; &amp;aTagArray, const Array&lt; Shared&lt; Geometry &gt;&gt; &amp;aGeometryArray, const Array&lt; Shared&lt; Component &gt;&gt; &amp;aComponentArray, const Shared&lt; ComponentHolder &gt; &amp;aParentComponentSPtr, const Shared&lt; const Frame &gt; &amp;aFrameSPtr, const Shared&lt; const Simulator &gt; &amp;aSimulatorSPtr)</argsstring>
         <name>Component</name>
         <param>
           <type>const String &amp;</type>
@@ -158,7 +151,7 @@
           <declname>aName</declname>
         </param>
         <param>
-          <type>const <ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref> &amp;</type>
+          <type>const std::optional&lt; <ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref> &gt; &amp;</type>
           <declname>aType</declname>
         </param>
         <param>
@@ -189,7 +182,8 @@
 <para>Construct a component. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_component_1ab3711f34980c3fdb746ff83b9511a25c" kindref="member">Component</ref><sp/>component(</highlight></codeline>
+<para>Throws ostk::core::error::runtime::Undefined if the identifier or the name is empty. The frame may be null, in which case <ref refid="classostk_1_1simulation_1_1_component_1a6e6639ecb24abadd20790c4df2d82dd8" kindref="member">getFrame()</ref> throws.</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_component_1a7c40ccfedf46579d7f96e448ea1575d4" kindref="member">Component</ref><sp/>component(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;name&quot;</highlight><highlight class="normal">,<sp/><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20a06b185256c71c1aec263c6e22bf8ef6b" kindref="member">Component::Type::Sensor</ref>,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>tagArray,<sp/>geometryArray,<sp/>componentArray,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parentSPtr,<sp/>frameSPtr,<sp/>simulatorSPtr</highlight></codeline>
@@ -200,7 +194,7 @@
 <parametername direction="in">anId</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>An identifier. </para>
+<para>An identifier (must not be empty). </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -208,7 +202,7 @@
 <parametername direction="in">aName</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A name. </para>
+<para>A name (must not be empty). </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -216,7 +210,7 @@
 <parametername direction="in">aType</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A component type. </para>
+<para>A component type (std::nullopt if the type is unspecified). </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -256,7 +250,7 @@
 <parametername direction="in">aFrameSPtr</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A shared pointer to the reference frame. </para>
+<para>A shared pointer to the reference frame (may be null). </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -272,7 +266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="94" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="23" bodyend="43"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="97" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="23" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a5395700f491da619eb45b0148a5727d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -287,7 +281,7 @@
 <para>Copy constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_component_1ab3711f34980c3fdb746ff83b9511a25c" kindref="member">Component</ref><sp/>copy(component);</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_component_1a7c40ccfedf46579d7f96e448ea1575d4" kindref="member">Component</ref><sp/>copy(component);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -302,7 +296,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="113" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="45" bodyend="56"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="116" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="45" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a57f790fdbb03f777e59d73218d2899ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -316,7 +310,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="116" column="13" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="58" bodyend="58"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="119" column="13" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a36cdd3498146b23e3ff67b95cd1c59cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> *</type>
@@ -328,7 +322,7 @@
 <para>Clone the component. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_component_1ab3711f34980c3fdb746ff83b9511a25c" kindref="member">Component</ref>*<sp/>cloned<sp/>=<sp/>component.clone();</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_component_1a7c40ccfedf46579d7f96e448ea1575d4" kindref="member">Component</ref>*<sp/>cloned<sp/>=<sp/>component.clone();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>A pointer to a cloned component. </para>
 </simplesect>
@@ -336,60 +330,42 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="125" column="23" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="60" bodyend="63"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="128" column="23" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="60" bodyend="63"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a983ee8f3974fc2900f21d3bea12fb877" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool ostk::simulation::Component::isDefined</definition>
-        <argsstring>() const</argsstring>
-        <name>isDefined</name>
-        <briefdescription>
-<para>Check if the component is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>defined<sp/>=<sp/>component.isDefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if the component is defined. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="145" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="72" bodyend="75"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a3e7acecda5a9286bc4baf1d3b6bbd7d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a6e6639ecb24abadd20790c4df2d82dd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Shared&lt; const Frame &gt; &amp;</type>
-        <definition>const Shared&lt; const Frame &gt; &amp; ostk::simulation::Component::accessFrame</definition>
+        <definition>const Shared&lt; const Frame &gt; &amp; ostk::simulation::Component::getFrame</definition>
         <argsstring>() const</argsstring>
-        <name>accessFrame</name>
+        <name>getFrame</name>
         <briefdescription>
-<para>Access the reference frame. </para>
+<para>Get the reference frame. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/>frame<sp/>=<sp/>component.accessFrame();</highlight></codeline>
+<para>Throws ostk::core::error::runtime::Undefined if the component has no frame.</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/>frame<sp/>=<sp/>component.getFrame();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>A reference to the shared pointer to the frame. </para>
+<para><simplesect kind="return"><para>A const reference to the shared pointer to the frame. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="154" column="18" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="77" bodyend="85"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="149" column="18" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="72" bodyend="80"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1afe2d126a21b7a96d0b3655ebcac3a6be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1aac887031b22a6ce902441440e4c1643d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1simulation_1_1component_1_1_geometry" kindref="compound">Geometry</ref> &amp;</type>
-        <definition>const Geometry &amp; ostk::simulation::Component::accessGeometryWithName</definition>
+        <definition>const Geometry &amp; ostk::simulation::Component::getGeometryWithName</definition>
         <argsstring>(const String &amp;aName) const</argsstring>
-        <name>accessGeometryWithName</name>
+        <name>getGeometryWithName</name>
         <param>
           <type>const String &amp;</type>
           <declname>aName</declname>
         </param>
         <briefdescription>
-<para>Access a geometry by name. </para>
+<para>Get a geometry by name. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Geometry&amp;<sp/>fov<sp/>=<sp/>component.accessGeometryWithName(</highlight><highlight class="stringliteral">&quot;fov&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Geometry&amp;<sp/>fov<sp/>=<sp/>component.getGeometryWithName(</highlight><highlight class="stringliteral">&quot;fov&quot;</highlight><highlight class="normal">);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -400,89 +376,89 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A reference to the geometry. </para>
+<simplesect kind="return"><para>A const reference to the geometry. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="164" column="20" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="87" bodyend="103"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="159" column="20" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="82" bodyend="93"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a0e119aa1a610b08b935789a7ecb19605" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a138f1f6ce6454c562a08ab12ec6013e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1simulation_1_1_simulator" kindref="compound">Simulator</ref> &amp;</type>
-        <definition>const Simulator &amp; ostk::simulation::Component::accessSimulator</definition>
+        <definition>const Simulator &amp; ostk::simulation::Component::getSimulator</definition>
         <argsstring>() const</argsstring>
-        <name>accessSimulator</name>
+        <name>getSimulator</name>
         <briefdescription>
-<para>Access the simulator. </para>
+<para>Get the simulator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Simulator&amp;<sp/>simulator<sp/>=<sp/>component.accessSimulator();</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Simulator&amp;<sp/>simulator<sp/>=<sp/>component.getSimulator();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>A reference to the simulator. </para>
+<para><simplesect kind="return"><para>A const reference to the simulator. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="173" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="105" bodyend="118"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="168" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="95" bodyend="103"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a93375352059595b81e81569e445d4512" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref></type>
-        <definition>Component::Type ostk::simulation::Component::getType</definition>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a21a6025dadabf2c7f1e070870e4867be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::optional&lt; <ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref> &gt; &amp;</type>
+        <definition>const std::optional&lt; Component::Type &gt; &amp; ostk::simulation::Component::getType</definition>
         <argsstring>() const</argsstring>
         <name>getType</name>
         <briefdescription>
 <para>Get the component type. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref><sp/>type<sp/>=<sp/>component.getType();</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;Component::Type&gt;&amp;<sp/>type<sp/>=<sp/>component.getType();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>The component type. </para>
+<para><simplesect kind="return"><para>A const reference to the component type, or std::nullopt if the type is unspecified. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="182" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="120" bodyend="128"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="177" column="25" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="105" bodyend="108"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1ab792e508c303ec679ea8b8cbcc2c4c8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Array&lt; String &gt;</type>
-        <definition>Array&lt; String &gt; ostk::simulation::Component::getTags</definition>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1ab587407d526842117ac71fa2aaec2fbb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Array&lt; String &gt; &amp;</type>
+        <definition>const Array&lt; String &gt; &amp; ostk::simulation::Component::getTags</definition>
         <argsstring>() const</argsstring>
         <name>getTags</name>
         <briefdescription>
 <para>Get the tags. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="normal">Array&lt;String&gt;<sp/>tags<sp/>=<sp/>component.getTags();</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;String&gt;&amp;<sp/>tags<sp/>=<sp/>component.getTags();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>An array of tags. </para>
+<para><simplesect kind="return"><para>A const reference to the array of tags. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="191" column="11" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="130" bodyend="138"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="186" column="17" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="110" bodyend="113"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1aba0796b346cbd27323c2e5c1df8ffcf2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Array&lt; Shared&lt; <ref refid="classostk_1_1simulation_1_1component_1_1_geometry" kindref="compound">Geometry</ref> &gt; &gt;</type>
-        <definition>Array&lt; Shared&lt; Geometry &gt; &gt; ostk::simulation::Component::getGeometries</definition>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1adeac72ebc4f77a730ad494b5ced59061" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Array&lt; Shared&lt; <ref refid="classostk_1_1simulation_1_1component_1_1_geometry" kindref="compound">Geometry</ref> &gt; &gt; &amp;</type>
+        <definition>const Array&lt; Shared&lt; Geometry &gt; &gt; &amp; ostk::simulation::Component::getGeometries</definition>
         <argsstring>() const</argsstring>
         <name>getGeometries</name>
         <briefdescription>
 <para>Get the geometries. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="normal">Array&lt;Shared&lt;Geometry&gt;&gt;<sp/>geometries<sp/>=<sp/>component.getGeometries();</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&lt;Shared&lt;Geometry&gt;&gt;&amp;<sp/>geometries<sp/>=<sp/>component.getGeometries();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>An array of shared pointers to the geometries. </para>
+<para><simplesect kind="return"><para>A const reference to the array of shared pointers to the geometries. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="200" column="11" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="140" bodyend="148"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="195" column="17" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="115" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a266bf1a8b756f55ef24cc9fee3fd4fca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -512,7 +488,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="209" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="150" bodyend="158"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="204" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="120" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1ad3ef491ef73a9e01507c95541790bdf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -542,7 +518,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="218" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="160" bodyend="168"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="213" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="125" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1aeb00ae625a59168bde62bcbb3e1d6ed6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -572,7 +548,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="227" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="170" bodyend="175"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="222" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="135" bodyend="140"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -618,29 +594,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="136" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="65" bodyend="70"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="139" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="65" bodyend="70"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1ad8849104db5f1e96a2de547bc1c11867" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref></type>
-        <definition>Component ostk::simulation::Component::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Construct an undefined component. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_component_1ab3711f34980c3fdb746ff83b9511a25c" kindref="member">Component</ref><sp/>component<sp/>=<sp/><ref refid="classostk_1_1simulation_1_1_component_1ad8849104db5f1e96a2de547bc1c11867" kindref="member">Component::Undefined</ref>();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>An undefined component. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="236" column="22" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="177" bodyend="190"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a635e3685019800ec343ec8474954ff0e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Shared&lt; <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &gt;</type>
         <definition>Shared&lt; Component &gt; ostk::simulation::Component::Configure</definition>
@@ -658,6 +615,7 @@
 <para>Configure a component from a configuration. </para>
         </briefdescription>
         <detaileddescription>
+<para>Throws ostk::core::error::runtime::Undefined if the parent component is null or has no frame.</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="normal">Shared&lt;Component&gt;<sp/>component<sp/>=<sp/><ref refid="classostk_1_1simulation_1_1_component_1a635e3685019800ec343ec8474954ff0e" kindref="member">Component::Configure</ref>(componentConfiguration,<sp/>parentComponentSPtr);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
@@ -683,7 +641,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="247" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="192" bodyend="228"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="234" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="142" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a7f74a40eb3aae2f7e12af002ca9dbc89" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -715,7 +673,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="259" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="230" bodyend="242"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="246" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="180" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1_component_1a9b5f84be02c06a7b6576fcdb00640ede" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Shared&lt; const Frame &gt;</type>
@@ -771,7 +729,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="271" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="244" bodyend="277"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="258" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="193" bodyend="226"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -817,7 +775,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="284" column="18" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="279" bodyend="288"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="271" column="18" bodyfile="src/OpenSpaceToolkit/Simulation/Component.cpp" bodystart="228" bodyend="238"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -825,8 +783,8 @@
     </briefdescription>
     <detaileddescription>
 <para>A <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> extends <ref refid="classostk_1_1simulation_1_1_entity" kindref="compound">Entity</ref> with a type, tags, geometries, child components, and a reference frame. Components form a tree structure where each component can hold sub-components and geometries.</para>
-<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component_1ab3711f34980c3fdb746ff83b9511a25c" kindref="member">Component</ref>&amp;<sp/>sensor<sp/>=<sp/>satellite.accessComponentWithName(</highlight><highlight class="stringliteral">&quot;camera&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref><sp/>type<sp/>=<sp/>sensor.getType();</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1simulation_1_1_component_1a7c40ccfedf46579d7f96e448ea1575d4" kindref="member">Component</ref>&amp;<sp/>sensor<sp/>=<sp/>satellite.getComponentWithName(</highlight><highlight class="stringliteral">&quot;camera&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">std::optional&lt;Component::Type&gt;<sp/>type<sp/>=<sp/>sensor.getType();</highlight></codeline>
 <codeline><highlight class="normal">Array&lt;String&gt;<sp/>tags<sp/>=<sp/>sensor.getTags();</highlight></codeline>
 </programlisting> </para>
     </detaileddescription>
@@ -882,20 +840,12 @@
         <link refid="classostk_1_1simulation_1_1_entity"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="60" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="59" bodyend="294"/>
+    <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="62" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="61" bodyend="281"/>
     <listofallmembers>
-      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a83aefcdc6fea117a180edff14954f7a5" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>accessComponentAt</name></member>
-      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1ab66566e91251de05a02198cec7ecc4b7" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>accessComponents</name></member>
-      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a9f7c8444d12fcb0a8d4d1198c2181197" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>accessComponentsWithTag</name></member>
-      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a05ee37d6949d90619788e62a1b1db47a" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>accessComponentWithId</name></member>
-      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a245084a9899a44bb0c3298d643c2b44d" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>accessComponentWithName</name></member>
-      <member refid="classostk_1_1simulation_1_1_component_1a3e7acecda5a9286bc4baf1d3b6bbd7d5" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>accessFrame</name></member>
-      <member refid="classostk_1_1simulation_1_1_component_1afe2d126a21b7a96d0b3655ebcac3a6be" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>accessGeometryWithName</name></member>
-      <member refid="classostk_1_1simulation_1_1_component_1a0e119aa1a610b08b935789a7ecb19605" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>accessSimulator</name></member>
       <member refid="classostk_1_1simulation_1_1_component_1aeb00ae625a59168bde62bcbb3e1d6ed6" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>addComponent</name></member>
       <member refid="classostk_1_1simulation_1_1_component_1ad3ef491ef73a9e01507c95541790bdf2" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>addGeometry</name></member>
       <member refid="classostk_1_1simulation_1_1_component_1a36cdd3498146b23e3ff67b95cd1c59cc" prot="public" virt="virtual"><scope>ostk::simulation::Component</scope><name>clone</name></member>
-      <member refid="classostk_1_1simulation_1_1_component_1ab3711f34980c3fdb746ff83b9511a25c" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>Component</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a7c40ccfedf46579d7f96e448ea1575d4" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>Component</name></member>
       <member refid="classostk_1_1simulation_1_1_component_1a5395700f491da619eb45b0148a5727d5" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>Component</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a7229211c50e568af740b831f8cde2d0b" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>ComponentHolder</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1abbc39c68bfd9922229cf2c70291395a1" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>ComponentHolder</name></member>
@@ -905,15 +855,22 @@
       <member refid="classostk_1_1simulation_1_1_component_1a60d75a8bd6316e7a50c486c2c131b690" prot="private" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>frameSPtr_</name></member>
       <member refid="classostk_1_1simulation_1_1_component_1a9b5f84be02c06a7b6576fcdb00640ede" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>GenerateFrame</name></member>
       <member refid="classostk_1_1simulation_1_1_component_1a72aaa5e86c4b79c64fc1315b894cc73c" prot="private" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>geometries_</name></member>
-      <member refid="classostk_1_1simulation_1_1_component_1aba0796b346cbd27323c2e5c1df8ffcf2" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getGeometries</name></member>
-      <member refid="classostk_1_1simulation_1_1_entity_1a33286b8807aacec430d105646c021a79" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getId</name></member>
-      <member refid="classostk_1_1simulation_1_1_entity_1a17050a1483e16e62ca10e3b1ecade1d5" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getName</name></member>
-      <member refid="classostk_1_1simulation_1_1_component_1ab792e508c303ec679ea8b8cbcc2c4c8f" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getTags</name></member>
-      <member refid="classostk_1_1simulation_1_1_component_1a93375352059595b81e81569e445d4512" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getType</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1af5275c7b337e252919202dd7b364b3c0" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getComponentAt</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1ab3f9b871a31a7caf509cc9a81f692901" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getComponents</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a8172c0233a16a517ba6febb6d0446abd" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getComponentsWithTag</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a71760ebc065f725646678e2749108d4c" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getComponentWithId</name></member>
+      <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a574e7a27eb31326b0fb4c0801dfb530d" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getComponentWithName</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a6e6639ecb24abadd20790c4df2d82dd8" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getFrame</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1adeac72ebc4f77a730ad494b5ced59061" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getGeometries</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1aac887031b22a6ce902441440e4c1643d" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getGeometryWithName</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1a99d8160b3cf2854424d37ae7b7a67da2" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getId</name></member>
+      <member refid="classostk_1_1simulation_1_1_entity_1a7a1823fd0155ce5cee7c726f519befec" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getName</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a138f1f6ce6454c562a08ab12ec6013e0" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getSimulator</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1ab587407d526842117ac71fa2aaec2fbb" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getTags</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a21a6025dadabf2c7f1e070870e4867be" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>getType</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a2992fe305dcb2243a0f3f0b3a2965773" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>hasComponentAt</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1aca60bf690ae2d94e094760ef276fcfc6" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>hasComponentWithId</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a6a570d1c15601cacb1ad7a9fab443317" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>hasComponentWithName</name></member>
-      <member refid="classostk_1_1simulation_1_1_component_1a983ee8f3974fc2900f21d3bea12fb877" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>isDefined</name></member>
       <member refid="classostk_1_1simulation_1_1_component_1ae3c657f10ed74f15e3356a2ff54647f3" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>operator&lt;&lt;</name></member>
       <member refid="classostk_1_1simulation_1_1_component_1a6277dd40fcf831958fb1477953b58fdb" prot="private" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>parentWPtr_</name></member>
       <member refid="classostk_1_1simulation_1_1_component_1a9c102937dd6ca5fb9e3b726cc0fd5ed6" prot="protected" virt="virtual"><scope>ostk::simulation::Component</scope><name>print</name></member>
@@ -922,8 +879,7 @@
       <member refid="classostk_1_1simulation_1_1_component_1a7f74a40eb3aae2f7e12af002ca9dbc89" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>StringFromType</name></member>
       <member refid="classostk_1_1simulation_1_1_component_1abe97994eb0c61ce9761c71365a7e14b0" prot="private" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>tags_</name></member>
       <member refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>Type</name></member>
-      <member refid="classostk_1_1simulation_1_1_component_1ab118619f521c5ad4966041e752e940a2" prot="private" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>type_</name></member>
-      <member refid="classostk_1_1simulation_1_1_component_1ad8849104db5f1e96a2de547bc1c11867" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>Undefined</name></member>
+      <member refid="classostk_1_1simulation_1_1_component_1a759ccc769a3b36a7135d79dccd10b43c" prot="private" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>type_</name></member>
       <member refid="classostk_1_1simulation_1_1_component_1a57f790fdbb03f777e59d73218d2899ef" prot="public" virt="virtual"><scope>ostk::simulation::Component</scope><name>~Component</name></member>
       <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a2d189ed7b58dd7dbddd2e619cf197c86" prot="public" virt="non-virtual"><scope>ostk::simulation::Component</scope><name>~ComponentHolder</name></member>
     </listofallmembers>

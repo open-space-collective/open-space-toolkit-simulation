@@ -14,17 +14,15 @@ The top-\/level simulation manager.
 \item 
 \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a6c69bdb82f84e62d0e006755d501e05a}{Simulator}} (const Environment \&an\+Environment, const Array$<$ Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $>$$>$ \&a\+Satellite\+Array)
 \begin{DoxyCompactList}\small\item\em Construct a simulator. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a666148ccdc39474edbe83e7ffc65bac1}{is\+Defined}} () const
-\begin{DoxyCompactList}\small\item\em Check if the simulator is defined. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a055842428d08ac13305da1b3ad339568}{has\+Satellite\+With\+Name}} (const String \&a\+Satellite\+Name) const
 \begin{DoxyCompactList}\small\item\em Check if a satellite with the given name exists. \end{DoxyCompactList}\item 
-const Environment \& \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_aa1c20421b7a2ad00954fea7bdfbd4edd}{access\+Environment}} () const
-\begin{DoxyCompactList}\small\item\em Access the environment. \end{DoxyCompactList}\item 
-const Map$<$ String, Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $>$ $>$ \& \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_ace707d08b62eb3a233e268a9eb72ef31}{access\+Satellite\+Map}} () const
-\begin{DoxyCompactList}\small\item\em Access the satellite map. \end{DoxyCompactList}\item 
-const \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_ada54ce66cb47bb512f245f4ac1b33f95}{access\+Satellite\+With\+Name}} (const String \&a\+Satellite\+Name) const
-\begin{DoxyCompactList}\small\item\em Access a satellite by name. \end{DoxyCompactList}\item 
-Instant \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a64483af631b1f905850bb8b366f6fb0a}{get\+Instant}} () const
+const Environment \& \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_acbceaadfc596f505325f81f64f9e2769}{get\+Environment}} () const
+\begin{DoxyCompactList}\small\item\em Get the environment. \end{DoxyCompactList}\item 
+const Map$<$ String, Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $>$ $>$ \& \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_aa60eec185cb1c069407c40c8d3931554}{get\+Satellite\+Map}} () const
+\begin{DoxyCompactList}\small\item\em Get the satellite map. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a26ded17c5e0d64e459cb5c8803d2cf89}{get\+Satellite\+With\+Name}} (const String \&a\+Satellite\+Name) const
+\begin{DoxyCompactList}\small\item\em Get a satellite by name. \end{DoxyCompactList}\item 
+const Instant \& \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_ac8a7232799e95ad88d1a0dbb9f17b27d}{get\+Instant}} () const
 \begin{DoxyCompactList}\small\item\em Get the current simulation instant. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a820c217ea08c035aa3b171112998b334}{print}} (std\+::ostream \&an\+Output\+Stream, bool display\+Decorators=true) const
 \begin{DoxyCompactList}\small\item\em Print the simulator to an output stream. \end{DoxyCompactList}\item 
@@ -41,8 +39,6 @@ void \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_adfa9360de21a1abdaef
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a99876309ee0abbb7fb47b232bb28e6db}{Undefined}} ()
-\begin{DoxyCompactList}\small\item\em Construct an undefined simulator. \end{DoxyCompactList}\item 
 static Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_ad95b067abdc0a5ddf348897161af46f1}{Configure}} (const \mbox{\hyperlink{structostk_1_1simulation_1_1_simulator_configuration}{Simulator\+Configuration}} \&a\+Simulator\+Configuration)
 \begin{DoxyCompactList}\small\item\em Configure a simulator from a configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
@@ -62,7 +58,7 @@ The \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} holds an
 \DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a6c69bdb82f84e62d0e006755d501e05a}{Simulator}} simulator(environment, satelliteArray);}
 \DoxyCodeLine{simulator.setInstant(instant);}
 \DoxyCodeLine{simulator.stepForward(Duration::Minutes(5.0));}
-\DoxyCodeLine{\textcolor{keyword}{const} Satellite\& sat = simulator.accessSatelliteWithName(\textcolor{stringliteral}{"sat-\/1"});}
+\DoxyCodeLine{\textcolor{keyword}{const} Satellite\& sat = simulator.getSatelliteWithName(\textcolor{stringliteral}{"sat-\/1"});}
 \end{DoxyCode}
  
 
@@ -93,68 +89,6 @@ Construct a simulator.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_aa1c20421b7a2ad00954fea7bdfbd4edd}\label{classostk_1_1simulation_1_1_simulator_aa1c20421b7a2ad00954fea7bdfbd4edd}} 
-\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!accessEnvironment@{accessEnvironment}}
-\index{accessEnvironment@{accessEnvironment}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
-\doxysubsubsection{\texorpdfstring{accessEnvironment()}{accessEnvironment()}}
-{\footnotesize\ttfamily const Environment \& ostk\+::simulation\+::\+Simulator\+::access\+Environment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Access the environment. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{const} Environment\& environment = simulator.accessEnvironment();}
-\end{DoxyCode}
-
-
-\begin{DoxyReturn}{Returns}
-A reference to the environment. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_ace707d08b62eb3a233e268a9eb72ef31}\label{classostk_1_1simulation_1_1_simulator_ace707d08b62eb3a233e268a9eb72ef31}} 
-\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!accessSatelliteMap@{accessSatelliteMap}}
-\index{accessSatelliteMap@{accessSatelliteMap}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
-\doxysubsubsection{\texorpdfstring{accessSatelliteMap()}{accessSatelliteMap()}}
-{\footnotesize\ttfamily const Map$<$ String, Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $>$ $>$ \& ostk\+::simulation\+::\+Simulator\+::access\+Satellite\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Access the satellite map. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{const} Map<String, Shared<Satellite>>\& satellites = simulator.accessSatelliteMap();}
-\end{DoxyCode}
-
-
-\begin{DoxyReturn}{Returns}
-A reference to the map of satellite names to satellites. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_ada54ce66cb47bb512f245f4ac1b33f95}\label{classostk_1_1simulation_1_1_simulator_ada54ce66cb47bb512f245f4ac1b33f95}} 
-\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!accessSatelliteWithName@{accessSatelliteWithName}}
-\index{accessSatelliteWithName@{accessSatelliteWithName}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
-\doxysubsubsection{\texorpdfstring{accessSatelliteWithName()}{accessSatelliteWithName()}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} \& ostk\+::simulation\+::\+Simulator\+::access\+Satellite\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Satellite\+Name }\end{DoxyParamCaption}) const}
-
-
-
-Access a satellite by name. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{const} Satellite\& satellite = simulator.accessSatelliteWithName(\textcolor{stringliteral}{"sat-\/1"});}
-\end{DoxyCode}
-
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+Satellite\+Name} & A satellite name. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A reference to the satellite. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a03e47de54e6db4942b77d24c46dcc940}\label{classostk_1_1simulation_1_1_simulator_a03e47de54e6db4942b77d24c46dcc940}} 
 \index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!addSatellite@{addSatellite}}
 \index{addSatellite@{addSatellite}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
@@ -214,11 +148,30 @@ Configure a simulator from a configuration.
 \begin{DoxyReturn}{Returns}
 A shared pointer to the configured simulator. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a64483af631b1f905850bb8b366f6fb0a}\label{classostk_1_1simulation_1_1_simulator_a64483af631b1f905850bb8b366f6fb0a}} 
+\mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_acbceaadfc596f505325f81f64f9e2769}\label{classostk_1_1simulation_1_1_simulator_acbceaadfc596f505325f81f64f9e2769}} 
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!getEnvironment@{getEnvironment}}
+\index{getEnvironment@{getEnvironment}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{getEnvironment()}{getEnvironment()}}
+{\footnotesize\ttfamily const Environment \& ostk\+::simulation\+::\+Simulator\+::get\+Environment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the environment. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} Environment\& environment = simulator.getEnvironment();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+A const reference to the environment. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_ac8a7232799e95ad88d1a0dbb9f17b27d}\label{classostk_1_1simulation_1_1_simulator_ac8a7232799e95ad88d1a0dbb9f17b27d}} 
 \index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!getInstant@{getInstant}}
 \index{getInstant@{getInstant}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
 \doxysubsubsection{\texorpdfstring{getInstant()}{getInstant()}}
-{\footnotesize\ttfamily Instant ostk\+::simulation\+::\+Simulator\+::get\+Instant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily const Instant \& ostk\+::simulation\+::\+Simulator\+::get\+Instant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -226,12 +179,55 @@ Get the current simulation instant.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{Instant instant = simulator.getInstant();}
+\DoxyCodeLine{\textcolor{keyword}{const} Instant\& instant = simulator.getInstant();}
 \end{DoxyCode}
 
 
 \begin{DoxyReturn}{Returns}
-The current instant. 
+A const reference to the current instant. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_aa60eec185cb1c069407c40c8d3931554}\label{classostk_1_1simulation_1_1_simulator_aa60eec185cb1c069407c40c8d3931554}} 
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!getSatelliteMap@{getSatelliteMap}}
+\index{getSatelliteMap@{getSatelliteMap}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{getSatelliteMap()}{getSatelliteMap()}}
+{\footnotesize\ttfamily const Map$<$ String, Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} $>$ $>$ \& ostk\+::simulation\+::\+Simulator\+::get\+Satellite\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the satellite map. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} Map<String, Shared<Satellite>>\& satellites = simulator.getSatelliteMap();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+A const reference to the map of satellite names to satellites. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a26ded17c5e0d64e459cb5c8803d2cf89}\label{classostk_1_1simulation_1_1_simulator_a26ded17c5e0d64e459cb5c8803d2cf89}} 
+\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!getSatelliteWithName@{getSatelliteWithName}}
+\index{getSatelliteWithName@{getSatelliteWithName}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
+\doxysubsubsection{\texorpdfstring{getSatelliteWithName()}{getSatelliteWithName()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1simulation_1_1_satellite}{Satellite}} \& ostk\+::simulation\+::\+Simulator\+::get\+Satellite\+With\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{a\+Satellite\+Name }\end{DoxyParamCaption}) const}
+
+
+
+Get a satellite by name. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} Satellite\& satellite = simulator.getSatelliteWithName(\textcolor{stringliteral}{"sat-\/1"});}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a\+Satellite\+Name} & A satellite name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A const reference to the satellite. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a055842428d08ac13305da1b3ad339568}\label{classostk_1_1simulation_1_1_simulator_a055842428d08ac13305da1b3ad339568}} 
 \index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!hasSatelliteWithName@{hasSatelliteWithName}}
@@ -256,25 +252,6 @@ Check if a satellite with the given name exists.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if a satellite with the name exists. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a666148ccdc39474edbe83e7ffc65bac1}\label{classostk_1_1simulation_1_1_simulator_a666148ccdc39474edbe83e7ffc65bac1}} 
-\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!isDefined@{isDefined}}
-\index{isDefined@{isDefined}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
-\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
-{\footnotesize\ttfamily bool ostk\+::simulation\+::\+Simulator\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Check if the simulator is defined. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{bool} defined = simulator.isDefined();}
-\end{DoxyCode}
-
-
-\begin{DoxyReturn}{Returns}
-True if the simulator is defined. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a820c217ea08c035aa3b171112998b334}\label{classostk_1_1simulation_1_1_simulator_a820c217ea08c035aa3b171112998b334}} 
 \index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!print@{print}}
@@ -362,25 +339,6 @@ Advance the simulation by a duration.
 \mbox{\texttt{ in}}  & {\em a\+Duration} & A duration. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1_simulator_a99876309ee0abbb7fb47b232bb28e6db}\label{classostk_1_1simulation_1_1_simulator_a99876309ee0abbb7fb47b232bb28e6db}} 
-\index{ostk::simulation::Simulator@{ostk::simulation::Simulator}!Undefined@{Undefined}}
-\index{Undefined@{Undefined}!ostk::simulation::Simulator@{ostk::simulation::Simulator}}
-\doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator}{Simulator}} ostk\+::simulation\+::\+Simulator\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Construct an undefined simulator. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a6c69bdb82f84e62d0e006755d501e05a}{Simulator}} simulator = \mbox{\hyperlink{classostk_1_1simulation_1_1_simulator_a99876309ee0abbb7fb47b232bb28e6db}{Simulator::Undefined}}();}
-\end{DoxyCode}
-
-
-\begin{DoxyReturn}{Returns}
-An undefined simulator. 
-\end{DoxyReturn}
 
 
 \doxysubsection{Friends And Related Function Documentation}

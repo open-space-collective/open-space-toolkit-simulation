@@ -11,12 +11,6 @@ ostk.simulation.SatelliteConfiguration
 
    
    
-   .. rubric:: Methods
-
-   .. autosummary::
-      :nosignatures:
-   
-   
    
 
    

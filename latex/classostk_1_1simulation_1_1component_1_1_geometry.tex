@@ -18,11 +18,9 @@ bool \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_a1ec1b13
 \begin{DoxyCompactList}\small\item\em Equal to operator. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_adf01650ac1c43b91e91ae364f79000b2}{operator!=}} (const \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} \&a\+Geometry) const
 \begin{DoxyCompactList}\small\item\em Not equal to operator. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_a74a72f8e07513ba52a41a006c2e7687c}{is\+Defined}} () const
-\begin{DoxyCompactList}\small\item\em Check if the geometry is defined. \end{DoxyCompactList}\item 
-const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_aaf42fdfd3bccb180db7efe9db8eeaf4b}{access\+Component}} () const
-\begin{DoxyCompactList}\small\item\em Access the owning component. \end{DoxyCompactList}\item 
-String \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_a2f13ab1988d7d64407f63100fd547fd0}{get\+Name}} () const
+const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_af4cdc2d017dd0b8da8107afc9160ff47}{get\+Component}} () const
+\begin{DoxyCompactList}\small\item\em Get the owning component. \end{DoxyCompactList}\item 
+const String \& \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_aff3db308791278f75eecbf8eff56895c}{get\+Name}} () const
 \begin{DoxyCompactList}\small\item\em Get the name of the geometry. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_ae805e0cb40ad4f03e4208adae6ad4fc4}{print}} (std\+::ostream \&an\+Output\+Stream, bool display\+Decorators=true) const
 \begin{DoxyCompactList}\small\item\em Print the geometry to an output stream. \end{DoxyCompactList}\item 
@@ -34,10 +32,10 @@ bool \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_af39e237
 \begin{DoxyCompactList}\small\item\em Check if the geometry contains another geometry. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_ade44921582930e30c598dbeba365f528}{contains}} (const Celestial \&a\+Celestial\+Object) const
 \begin{DoxyCompactList}\small\item\em Check if the geometry contains a celestial object. \end{DoxyCompactList}\item 
-const Composite \& \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_a1a225b42f1350dfe4cca7937dddbf2b9}{access\+Composite}} () const
-\begin{DoxyCompactList}\small\item\em Access the composite 3D object. \end{DoxyCompactList}\item 
-Shared$<$ const Frame $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_afed7aa31b6b37090e90a7723af33f346}{access\+Frame}} () const
-\begin{DoxyCompactList}\small\item\em Access the reference frame. \end{DoxyCompactList}\item 
+const Composite \& \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_a95769514d857c6fd83d36b0ba8688e92}{get\+Composite}} () const
+\begin{DoxyCompactList}\small\item\em Get the composite 3D object. \end{DoxyCompactList}\item 
+const Shared$<$ const Frame $>$ \& \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_a343e238a95e2aad6e4e34c68ffae671a}{get\+Frame}} () const
+\begin{DoxyCompactList}\small\item\em Get the reference frame. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespaceostk_1_1simulation_1_1component_a1b21648b0426cff0de1fe8bd25248ea5}{Object\+Geometry}} \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_a39ea10b795b8732bafc20ee0fb9df962}{get\+Geometry\+In}} (const Shared$<$ const Frame $>$ \&a\+Frame\+S\+Ptr) const
 \begin{DoxyCompactList}\small\item\em Get the geometry expressed in a given frame. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespaceostk_1_1simulation_1_1component_a1b21648b0426cff0de1fe8bd25248ea5}{Object\+Geometry}} \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_a3fe1b4be3ee05faab0ff647697afcd6e}{intersection\+With}} (const \mbox{\hyperlink{namespaceostk_1_1simulation_1_1component_a1b21648b0426cff0de1fe8bd25248ea5}{Object\+Geometry}} \&a\+Geometry) const
@@ -47,8 +45,6 @@ Shared$<$ const Frame $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_aea7bd504788b09119889a7cc70c88703}{Undefined}} ()
-\begin{DoxyCompactList}\small\item\em Construct an undefined geometry. \end{DoxyCompactList}\item 
 static Shared$<$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} $>$ \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_acec7bbd02a66a0fba781b4ab259ab7a5}{Configure}} (const \mbox{\hyperlink{structostk_1_1simulation_1_1component_1_1_geometry_configuration}{Geometry\+Configuration}} \&a\+Geometry\+Configuration, const Shared$<$ const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} $>$ \&a\+Component\+S\+Ptr)
 \begin{DoxyCompactList}\small\item\em Configure a geometry from a configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
@@ -66,7 +62,6 @@ Represents a 3D geometric shape (Composite) attached to a \mbox{\hyperlink{class
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_a8a5e6c898e651ac1e113d6e916f0583e}{Geometry}} geometry(\textcolor{stringliteral}{"fov"}, composite, componentSPtr);}
-\DoxyCodeLine{\textcolor{keywordtype}{bool} defined = geometry.isDefined();}
 \DoxyCodeLine{\textcolor{keywordtype}{bool} doesIntersect = geometry.intersects(otherGeometry);}
 \end{DoxyCode}
  
@@ -98,65 +93,13 @@ Construct a geometry.
 \hline
 \end{DoxyParams}
 
+\begin{DoxyExceptions}{Exceptions}
+{\em ostk\+::core\+::error\+::runtime\+::\+Undefined} & If the name is empty, the component is null or the component has no frame. \\
+\hline
+\end{DoxyExceptions}
+
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_aaf42fdfd3bccb180db7efe9db8eeaf4b}\label{classostk_1_1simulation_1_1component_1_1_geometry_aaf42fdfd3bccb180db7efe9db8eeaf4b}} 
-\index{ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}!accessComponent@{accessComponent}}
-\index{accessComponent@{accessComponent}!ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}}
-\doxysubsubsection{\texorpdfstring{accessComponent()}{accessComponent()}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& ostk\+::simulation\+::component\+::\+Geometry\+::access\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Access the owning component. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{const} Component\& component = geometry.accessComponent();}
-\end{DoxyCode}
-
-
-\begin{DoxyReturn}{Returns}
-A reference to the owning component. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_a1a225b42f1350dfe4cca7937dddbf2b9}\label{classostk_1_1simulation_1_1component_1_1_geometry_a1a225b42f1350dfe4cca7937dddbf2b9}} 
-\index{ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}!accessComposite@{accessComposite}}
-\index{accessComposite@{accessComposite}!ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}}
-\doxysubsubsection{\texorpdfstring{accessComposite()}{accessComposite()}}
-{\footnotesize\ttfamily const Composite \& ostk\+::simulation\+::component\+::\+Geometry\+::access\+Composite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Access the composite 3D object. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{const} Composite\& composite = geometry.accessComposite();}
-\end{DoxyCode}
-
-
-\begin{DoxyReturn}{Returns}
-A reference to the composite. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_afed7aa31b6b37090e90a7723af33f346}\label{classostk_1_1simulation_1_1component_1_1_geometry_afed7aa31b6b37090e90a7723af33f346}} 
-\index{ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}!accessFrame@{accessFrame}}
-\index{accessFrame@{accessFrame}!ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}}
-\doxysubsubsection{\texorpdfstring{accessFrame()}{accessFrame()}}
-{\footnotesize\ttfamily Shared$<$ const Frame $>$ ostk\+::simulation\+::component\+::\+Geometry\+::access\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Access the reference frame. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{Shared<const Frame> frame = geometry.accessFrame();}
-\end{DoxyCode}
-
-
-\begin{DoxyReturn}{Returns}
-A shared pointer to the frame. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_acec7bbd02a66a0fba781b4ab259ab7a5}\label{classostk_1_1simulation_1_1component_1_1_geometry_acec7bbd02a66a0fba781b4ab259ab7a5}} 
 \index{ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}!Configure@{Configure}}
 \index{Configure@{Configure}!ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}}
@@ -231,6 +174,63 @@ Check if the geometry contains another geometry.
 \begin{DoxyReturn}{Returns}
 True if this geometry contains the other geometry. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_af4cdc2d017dd0b8da8107afc9160ff47}\label{classostk_1_1simulation_1_1component_1_1_geometry_af4cdc2d017dd0b8da8107afc9160ff47}} 
+\index{ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}!getComponent@{getComponent}}
+\index{getComponent@{getComponent}!ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}}
+\doxysubsubsection{\texorpdfstring{getComponent()}{getComponent()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classostk_1_1simulation_1_1_component}{Component}} \& ostk\+::simulation\+::component\+::\+Geometry\+::get\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the owning component. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} Component\& component = geometry.getComponent();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+A const reference to the owning component. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_a95769514d857c6fd83d36b0ba8688e92}\label{classostk_1_1simulation_1_1component_1_1_geometry_a95769514d857c6fd83d36b0ba8688e92}} 
+\index{ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}!getComposite@{getComposite}}
+\index{getComposite@{getComposite}!ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}}
+\doxysubsubsection{\texorpdfstring{getComposite()}{getComposite()}}
+{\footnotesize\ttfamily const Composite \& ostk\+::simulation\+::component\+::\+Geometry\+::get\+Composite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the composite 3D object. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} Composite\& composite = geometry.getComposite();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+A const reference to the composite. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_a343e238a95e2aad6e4e34c68ffae671a}\label{classostk_1_1simulation_1_1component_1_1_geometry_a343e238a95e2aad6e4e34c68ffae671a}} 
+\index{ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}!getFrame@{getFrame}}
+\index{getFrame@{getFrame}!ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}}
+\doxysubsubsection{\texorpdfstring{getFrame()}{getFrame()}}
+{\footnotesize\ttfamily const Shared$<$ const Frame $>$ \& ostk\+::simulation\+::component\+::\+Geometry\+::get\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the reference frame. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} Shared<const Frame>\& frame = geometry.getFrame();}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+A const reference to the shared pointer to the frame. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_a39ea10b795b8732bafc20ee0fb9df962}\label{classostk_1_1simulation_1_1component_1_1_geometry_a39ea10b795b8732bafc20ee0fb9df962}} 
 \index{ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}!getGeometryIn@{getGeometryIn}}
 \index{getGeometryIn@{getGeometryIn}!ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}}
@@ -255,11 +255,11 @@ Get the geometry expressed in a given frame.
 \begin{DoxyReturn}{Returns}
 The geometry in the target frame. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_a2f13ab1988d7d64407f63100fd547fd0}\label{classostk_1_1simulation_1_1component_1_1_geometry_a2f13ab1988d7d64407f63100fd547fd0}} 
+\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_aff3db308791278f75eecbf8eff56895c}\label{classostk_1_1simulation_1_1component_1_1_geometry_aff3db308791278f75eecbf8eff56895c}} 
 \index{ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}!getName@{getName}}
 \index{getName@{getName}!ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}}
 \doxysubsubsection{\texorpdfstring{getName()}{getName()}}
-{\footnotesize\ttfamily String ostk\+::simulation\+::component\+::\+Geometry\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily const String \& ostk\+::simulation\+::component\+::\+Geometry\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -267,12 +267,12 @@ Get the name of the geometry.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{String name = geometry.getName();}
+\DoxyCodeLine{\textcolor{keyword}{const} String\& name = geometry.getName();}
 \end{DoxyCode}
 
 
 \begin{DoxyReturn}{Returns}
-The name. 
+A const reference to the name. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_ab36a969d150208ea070d214eff3d52d7}\label{classostk_1_1simulation_1_1component_1_1_geometry_ab36a969d150208ea070d214eff3d52d7}} 
 \index{ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}!intersectionWith@{intersectionWith}}
@@ -370,25 +370,6 @@ Check if the geometry intersects another geometry.
 \begin{DoxyReturn}{Returns}
 True if the geometries intersect. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_a74a72f8e07513ba52a41a006c2e7687c}\label{classostk_1_1simulation_1_1component_1_1_geometry_a74a72f8e07513ba52a41a006c2e7687c}} 
-\index{ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}!isDefined@{isDefined}}
-\index{isDefined@{isDefined}!ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}}
-\doxysubsubsection{\texorpdfstring{isDefined()}{isDefined()}}
-{\footnotesize\ttfamily bool ostk\+::simulation\+::component\+::\+Geometry\+::is\+Defined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Check if the geometry is defined. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{bool} defined = geometry.isDefined();}
-\end{DoxyCode}
-
-
-\begin{DoxyReturn}{Returns}
-True if the geometry is defined. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_adf01650ac1c43b91e91ae364f79000b2}\label{classostk_1_1simulation_1_1component_1_1_geometry_adf01650ac1c43b91e91ae364f79000b2}} 
 \index{ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}!operator"!=@{operator"!=}}
 \index{operator"!=@{operator"!=}!ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}}
@@ -460,25 +441,6 @@ Print the geometry to an output stream.
 \mbox{\texttt{ in}}  & {\em display\+Decorators} & If true, display decorators. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classostk_1_1simulation_1_1component_1_1_geometry_aea7bd504788b09119889a7cc70c88703}\label{classostk_1_1simulation_1_1component_1_1_geometry_aea7bd504788b09119889a7cc70c88703}} 
-\index{ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}!Undefined@{Undefined}}
-\index{Undefined@{Undefined}!ostk::simulation::component::Geometry@{ostk::simulation::component::Geometry}}
-\doxysubsubsection{\texorpdfstring{Undefined()}{Undefined()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry}{Geometry}} ostk\+::simulation\+::component\+::\+Geometry\+::\+Undefined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Construct an undefined geometry. 
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_a8a5e6c898e651ac1e113d6e916f0583e}{Geometry}} geometry = \mbox{\hyperlink{classostk_1_1simulation_1_1component_1_1_geometry_aea7bd504788b09119889a7cc70c88703}{Geometry::Undefined}}();}
-\end{DoxyCode}
-
-
-\begin{DoxyReturn}{Returns}
-An undefined geometry. 
-\end{DoxyReturn}
 
 
 \doxysubsection{Friends And Related Function Documentation}

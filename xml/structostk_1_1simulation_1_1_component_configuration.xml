@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="299" column="18" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="299" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="286" column="18" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="286" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1ab78915c05378490b92166223f335b412" prot="public" static="no" mutable="no">
         <type>const String</type>
@@ -30,22 +30,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="300" column="18" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="300" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="287" column="18" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="287" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1abd0e836f95e58db5c8e954469101a2c8" prot="public" static="no" mutable="no">
-        <type>const <ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref></type>
-        <definition>const Component::Type ostk::simulation::ComponentConfiguration::type</definition>
+      <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1a1df53d094361592331e6affdee12b4c2" prot="public" static="no" mutable="no">
+        <type>const std::optional&lt; <ref refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kindref="member">Component::Type</ref> &gt;</type>
+        <definition>const std::optional&lt;Component::Type&gt; ostk::simulation::ComponentConfiguration::type</definition>
         <argsstring></argsstring>
         <name>type</name>
         <initializer>= <ref refid="_component_8hpp_1a0e5d3d0d9b45cdf8c94ed8df0d00c3e3" kindref="member">DEFAULT_COMPONENT_TYPE</ref></initializer>
         <briefdescription>
-<para>The component type. </para>
+<para>The component type (if any). </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="301" column="27" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="301" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="288" column="25" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="288" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1a95b38d1660657a8d2ba6baf0f885bf13" prot="public" static="no" mutable="no">
         <type>const Array&lt; String &gt;</type>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="302" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="302" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="289" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="289" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1a85c06b983a2aeddc726310ac64a280b6" prot="public" static="no" mutable="no">
         <type>const Quaternion</type>
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="303" column="22" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="303" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="290" column="22" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="290" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1a0b82a80f2def5a34efbb72697c6bc24e" prot="public" static="no" mutable="no">
         <type>const Array&lt; <ref refid="structostk_1_1simulation_1_1component_1_1_geometry_configuration" kindref="compound">GeometryConfiguration</ref> &gt;</type>
@@ -90,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="304" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="304" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="291" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="291" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1simulation_1_1_component_configuration_1aa6be134c476783e16aab75dc4b9e7b3d" prot="public" static="no" mutable="no">
         <type>const Array&lt; <ref refid="structostk_1_1simulation_1_1_component_configuration" kindref="compound">ComponentConfiguration</ref> &gt;</type>
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="305" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="305" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="292" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="292" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -150,7 +150,7 @@
         <label>Quaternion</label>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="298" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="297" bodyend="306"/>
+    <location file="include/OpenSpaceToolkit/Simulation/Component.hpp" line="285" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component.hpp" bodystart="284" bodyend="293"/>
     <listofallmembers>
       <member refid="structostk_1_1simulation_1_1_component_configuration_1aa6be134c476783e16aab75dc4b9e7b3d" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>components</name></member>
       <member refid="structostk_1_1simulation_1_1_component_configuration_1a0b82a80f2def5a34efbb72697c6bc24e" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>geometries</name></member>
@@ -158,7 +158,7 @@
       <member refid="structostk_1_1simulation_1_1_component_configuration_1ab78915c05378490b92166223f335b412" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>name</name></member>
       <member refid="structostk_1_1simulation_1_1_component_configuration_1a85c06b983a2aeddc726310ac64a280b6" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>orientation</name></member>
       <member refid="structostk_1_1simulation_1_1_component_configuration_1a95b38d1660657a8d2ba6baf0f885bf13" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>tags</name></member>
-      <member refid="structostk_1_1simulation_1_1_component_configuration_1abd0e836f95e58db5c8e954469101a2c8" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>type</name></member>
+      <member refid="structostk_1_1simulation_1_1_component_configuration_1a1df53d094361592331e6affdee12b4c2" prot="public" virt="non-virtual"><scope>ostk::simulation::ComponentConfiguration</scope><name>type</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

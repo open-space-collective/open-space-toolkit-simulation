@@ -48,12 +48,14 @@ Split a hierarchical component path into its first segment and the remainder.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{Pair<String, String> result = \mbox{\hyperlink{namespaceostk_1_1simulation_1_1utility_a2084483160c51091dc6577f796001b55}{splitComponentPath}}(\textcolor{stringliteral}{"assembly.sensor"});}
 \DoxyCodeLine{\textcolor{comment}{// result.first == "assembly", result.second == "sensor"}}
+\DoxyCodeLine{result = \mbox{\hyperlink{namespaceostk_1_1simulation_1_1utility_a2084483160c51091dc6577f796001b55}{splitComponentPath}}(\textcolor{stringliteral}{"assembly/sensor/detector"});}
+\DoxyCodeLine{\textcolor{comment}{// result.first == "assembly", result.second == "sensor/detector"}}
 \end{DoxyCode}
 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em a\+Component\+Path} & A dot-\/separated component path (e.\+g., \char`\"{}assembly.\+sensor\char`\"{}). \\
+\mbox{\texttt{ in}}  & {\em a\+Component\+Path} & A component path, with segments separated by \textquotesingle{}/\textquotesingle{} or \textquotesingle{}.\textquotesingle{} (e.\+g., \char`\"{}assembly/sensor\char`\"{} or \char`\"{}assembly.\+sensor\char`\"{}). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

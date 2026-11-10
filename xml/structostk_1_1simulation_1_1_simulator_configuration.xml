@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="207" column="23" bodyfile="include/OpenSpaceToolkit/Simulation/Simulator.hpp" bodystart="207" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="189" column="23" bodyfile="include/OpenSpaceToolkit/Simulation/Simulator.hpp" bodystart="189" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1simulation_1_1_simulator_configuration_1aa42414403bb4d50e000ed4a78bac78b5" prot="public" static="no" mutable="no">
         <type>const Array&lt; <ref refid="structostk_1_1simulation_1_1_satellite_configuration" kindref="compound">SatelliteConfiguration</ref> &gt;</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="208" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Simulator.hpp" bodystart="208" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="190" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Simulator.hpp" bodystart="190" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -57,7 +57,7 @@
         <label>Array&lt; ostk::simulation::SatelliteConfiguration &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="206" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Simulator.hpp" bodystart="205" bodyend="209"/>
+    <location file="include/OpenSpaceToolkit/Simulation/Simulator.hpp" line="188" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Simulator.hpp" bodystart="187" bodyend="191"/>
     <listofallmembers>
       <member refid="structostk_1_1simulation_1_1_simulator_configuration_1a002747f47ff422d4be5745eeb476e8ea" prot="public" virt="non-virtual"><scope>ostk::simulation::SimulatorConfiguration</scope><name>environment</name></member>
       <member refid="structostk_1_1simulation_1_1_simulator_configuration_1aa42414403bb4d50e000ed4a78bac78b5" prot="public" virt="non-virtual"><scope>ostk::simulation::SimulatorConfiguration</scope><name>satellites</name></member>

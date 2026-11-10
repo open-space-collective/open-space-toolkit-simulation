@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="238" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" bodystart="238" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="221" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" bodystart="221" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1simulation_1_1component_1_1_geometry_1a1e3877cf7bae4c29f1544e53f64a6b22" prot="private" static="no" mutable="no">
         <type><ref refid="namespaceostk_1_1simulation_1_1component_1a1b21648b0426cff0de1fe8bd25248ea5" kindref="member">ObjectGeometry</ref></type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="239" column="20" bodyfile="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" bodystart="239" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="222" column="20" bodyfile="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" bodystart="222" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1simulation_1_1component_1_1_geometry_1ac9e3593cf6e96982e159373915e87d4c" prot="private" static="no" mutable="no">
         <type>Shared&lt; const <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &gt;</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="240" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" bodystart="240" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="223" column="12" bodyfile="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" bodystart="223" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -93,11 +93,20 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ostk::core::error::runtime::Undefined</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the name is empty, the component is null or the component has no frame. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="57" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="17" bodyend="26"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="58" column="5" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="44" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1a1ec1b13d99e4c8df7f601f9f1ccb5458" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -129,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="67" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="28" bodyend="37"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="68" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="55" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1adf01650ac1c43b91e91ae364f79000b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -161,64 +170,45 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="77" column="10"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="78" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="61" bodyend="64"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1a74a72f8e07513ba52a41a006c2e7687c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool ostk::simulation::component::Geometry::isDefined</definition>
-        <argsstring>() const</argsstring>
-        <name>isDefined</name>
-        <briefdescription>
-<para>Check if the geometry is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>defined<sp/>=<sp/>geometry.isDefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if the geometry is defined. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="97" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="46" bodyend="49"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1aaf42fdfd3bccb180db7efe9db8eeaf4b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1af4cdc2d017dd0b8da8107afc9160ff47" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref> &amp;</type>
-        <definition>const Component &amp; ostk::simulation::component::Geometry::accessComponent</definition>
+        <definition>const Component &amp; ostk::simulation::component::Geometry::getComponent</definition>
         <argsstring>() const</argsstring>
-        <name>accessComponent</name>
+        <name>getComponent</name>
         <briefdescription>
-<para>Access the owning component. </para>
+<para>Get the owning component. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Component&amp;<sp/>component<sp/>=<sp/>geometry.accessComponent();</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Component&amp;<sp/>component<sp/>=<sp/>geometry.getComponent();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>A reference to the owning component. </para>
+<para><simplesect kind="return"><para>A const reference to the owning component. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="106" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="51" bodyend="59"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="98" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="73" bodyend="76"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1a2f13ab1988d7d64407f63100fd547fd0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>String</type>
-        <definition>String ostk::simulation::component::Geometry::getName</definition>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1aff3db308791278f75eecbf8eff56895c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const String &amp;</type>
+        <definition>const String &amp; ostk::simulation::component::Geometry::getName</definition>
         <argsstring>() const</argsstring>
         <name>getName</name>
         <briefdescription>
 <para>Get the name of the geometry. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="normal">String<sp/>name<sp/>=<sp/>geometry.getName();</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>name<sp/>=<sp/>geometry.getName();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>The name. </para>
+<para><simplesect kind="return"><para>A const reference to the name. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="115" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="61" bodyend="69"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="107" column="18" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="78" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1ae805e0cb40ad4f03e4208adae6ad4fc4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -261,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="125" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="71" bodyend="78"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="117" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="83" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1aeec7b3694e1ca2552b65c56de9acc315" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -293,7 +283,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="135" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="80" bodyend="93"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="127" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="92" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1a954a8a7af85cde7d9407b98ac9dd23c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -325,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="145" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="95" bodyend="98"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="137" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="102" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1af39e2376a527720e37e46dc57f3eb6a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -357,7 +347,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="155" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="100" bodyend="113"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="147" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="107" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1ade44921582930e30c598dbeba365f528" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -389,45 +379,45 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="165" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="115" bodyend="118"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="157" column="10" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="117" bodyend="120"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1a1a225b42f1350dfe4cca7937dddbf2b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1a95769514d857c6fd83d36b0ba8688e92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Composite &amp;</type>
-        <definition>const Composite &amp; ostk::simulation::component::Geometry::accessComposite</definition>
+        <definition>const Composite &amp; ostk::simulation::component::Geometry::getComposite</definition>
         <argsstring>() const</argsstring>
-        <name>accessComposite</name>
+        <name>getComposite</name>
         <briefdescription>
-<para>Access the composite 3D object. </para>
+<para>Get the composite 3D object. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Composite&amp;<sp/>composite<sp/>=<sp/>geometry.accessComposite();</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Composite&amp;<sp/>composite<sp/>=<sp/>geometry.getComposite();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>A reference to the composite. </para>
+<para><simplesect kind="return"><para>A const reference to the composite. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="174" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="120" bodyend="123"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="166" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="122" bodyend="125"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1afed7aa31b6b37090e90a7723af33f346" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Shared&lt; const Frame &gt;</type>
-        <definition>Shared&lt; const Frame &gt; ostk::simulation::component::Geometry::accessFrame</definition>
+      <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1a343e238a95e2aad6e4e34c68ffae671a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Shared&lt; const Frame &gt; &amp;</type>
+        <definition>const Shared&lt; const Frame &gt; &amp; ostk::simulation::component::Geometry::getFrame</definition>
         <argsstring>() const</argsstring>
-        <name>accessFrame</name>
+        <name>getFrame</name>
         <briefdescription>
-<para>Access the reference frame. </para>
+<para>Get the reference frame. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="normal">Shared&lt;const<sp/>Frame&gt;<sp/>frame<sp/>=<sp/>geometry.accessFrame();</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/>frame<sp/>=<sp/>geometry.getFrame();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>A shared pointer to the frame. </para>
+<para><simplesect kind="return"><para>A const reference to the shared pointer to the frame. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="183" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="125" bodyend="128"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="175" column="18" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="127" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1a39ea10b795b8732bafc20ee0fb9df962" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceostk_1_1simulation_1_1component_1a1b21648b0426cff0de1fe8bd25248ea5" kindref="member">ObjectGeometry</ref></type>
@@ -459,7 +449,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="193" column="20" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="130" bodyend="138"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="185" column="20" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="132" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1a3fe1b4be3ee05faab0ff647697afcd6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceostk_1_1simulation_1_1component_1a1b21648b0426cff0de1fe8bd25248ea5" kindref="member">ObjectGeometry</ref></type>
@@ -491,7 +481,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="203" column="20" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="140" bodyend="153"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="195" column="20" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="137" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1ab36a969d150208ea070d214eff3d52d7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceostk_1_1simulation_1_1component_1a1b21648b0426cff0de1fe8bd25248ea5" kindref="member">ObjectGeometry</ref></type>
@@ -523,7 +513,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="213" column="20" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="155" bodyend="158"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="205" column="20" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="147" bodyend="150"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -569,29 +559,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="88" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="39" bodyend="44"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="89" column="12" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="66" bodyend="71"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1aea7bd504788b09119889a7cc70c88703" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1simulation_1_1component_1_1_geometry" kindref="compound">Geometry</ref></type>
-        <definition>Geometry ostk::simulation::component::Geometry::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Construct an undefined geometry. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_geometry_1a8a5e6c898e651ac1e113d6e916f0583e" kindref="member">Geometry</ref><sp/>geometry<sp/>=<sp/><ref refid="classostk_1_1simulation_1_1component_1_1_geometry_1aea7bd504788b09119889a7cc70c88703" kindref="member">Geometry::Undefined</ref>();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>An undefined geometry. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="222" column="21" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="160" bodyend="163"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1simulation_1_1component_1_1_geometry_1acec7bbd02a66a0fba781b4ab259ab7a5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Shared&lt; <ref refid="classostk_1_1simulation_1_1component_1_1_geometry" kindref="compound">Geometry</ref> &gt;</type>
         <definition>Shared&lt; Geometry &gt; ostk::simulation::component::Geometry::Configure</definition>
@@ -634,7 +605,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="233" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="165" bodyend="175"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="216" column="19" bodyfile="src/OpenSpaceToolkit/Simulation/Component/Geometry.cpp" bodystart="152" bodyend="162"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -643,34 +614,31 @@
     <detaileddescription>
 <para>Represents a 3D geometric shape (Composite) attached to a <ref refid="classostk_1_1simulation_1_1_component" kindref="compound">Component</ref>, enabling spatial queries such as intersection and containment checks against other geometries and celestial objects.</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="classostk_1_1simulation_1_1component_1_1_geometry_1a8a5e6c898e651ac1e113d6e916f0583e" kindref="member">Geometry</ref><sp/>geometry(</highlight><highlight class="stringliteral">&quot;fov&quot;</highlight><highlight class="normal">,<sp/>composite,<sp/>componentSPtr);</highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>defined<sp/>=<sp/>geometry.isDefined();</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>doesIntersect<sp/>=<sp/>geometry.intersects(otherGeometry);</highlight></codeline>
 </programlisting> </para>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="46" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" bodystart="45" bodyend="241"/>
+    <location file="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" line="45" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Component/Geometry.hpp" bodystart="44" bodyend="224"/>
     <listofallmembers>
-      <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1aaf42fdfd3bccb180db7efe9db8eeaf4b" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>accessComponent</name></member>
-      <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a1a225b42f1350dfe4cca7937dddbf2b9" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>accessComposite</name></member>
-      <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1afed7aa31b6b37090e90a7723af33f346" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>accessFrame</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1ac9e3593cf6e96982e159373915e87d4c" prot="private" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>componentPtr_</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1acec7bbd02a66a0fba781b4ab259ab7a5" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>Configure</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1af39e2376a527720e37e46dc57f3eb6a5" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>contains</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1ade44921582930e30c598dbeba365f528" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>contains</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a8a5e6c898e651ac1e113d6e916f0583e" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>Geometry</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a1e3877cf7bae4c29f1544e53f64a6b22" prot="private" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>geometry_</name></member>
+      <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1af4cdc2d017dd0b8da8107afc9160ff47" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>getComponent</name></member>
+      <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a95769514d857c6fd83d36b0ba8688e92" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>getComposite</name></member>
+      <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a343e238a95e2aad6e4e34c68ffae671a" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>getFrame</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a39ea10b795b8732bafc20ee0fb9df962" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>getGeometryIn</name></member>
-      <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a2f13ab1988d7d64407f63100fd547fd0" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>getName</name></member>
+      <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1aff3db308791278f75eecbf8eff56895c" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>getName</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a3fe1b4be3ee05faab0ff647697afcd6e" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>intersectionWith</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1ab36a969d150208ea070d214eff3d52d7" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>intersectionWith</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1aeec7b3694e1ca2552b65c56de9acc315" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>intersects</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a954a8a7af85cde7d9407b98ac9dd23c5" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>intersects</name></member>
-      <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a74a72f8e07513ba52a41a006c2e7687c" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>isDefined</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1ae11f0d30ee2819076cd5905f2d711b06" prot="private" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>name_</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1adf01650ac1c43b91e91ae364f79000b2" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>operator!=</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1aebfe5b9b5d8cd3dd8a2cfd140a1df583" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>operator&lt;&lt;</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a1ec1b13d99e4c8df7f601f9f1ccb5458" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>operator==</name></member>
       <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1ae805e0cb40ad4f03e4208adae6ad4fc4" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>print</name></member>
-      <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1aea7bd504788b09119889a7cc70c88703" prot="public" virt="non-virtual"><scope>ostk::simulation::component::Geometry</scope><name>Undefined</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

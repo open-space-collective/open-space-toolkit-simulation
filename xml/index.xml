@@ -2,34 +2,31 @@
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.17">
   <compound refid="classostk_1_1simulation_1_1_component" kind="class"><name>ostk::simulation::Component</name>
     <member refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20" kind="enum"><name>Type</name></member>
-    <member refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20aec0fc0100c4fc1ce4eea230c3dc10360" kind="enumvalue"><name>Undefined</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20ad75c45e11c8aeb13494dba59a388a164" kind="enumvalue"><name>Assembly</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20a9bbf373797bf7cf7ba62c80023682e25" kind="enumvalue"><name>Controller</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20a06b185256c71c1aec263c6e22bf8ef6b" kind="enumvalue"><name>Sensor</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20aa2ec2ef7ebb614cf7dd5d78b9bbf59b3" kind="enumvalue"><name>Actuator</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a1d2ded63a8ab0bd81e27f25921be1e20a6311ae17c1ee52b36e68aaf4ad066387" kind="enumvalue"><name>Other</name></member>
-    <member refid="classostk_1_1simulation_1_1_component_1ab118619f521c5ad4966041e752e940a2" kind="variable"><name>type_</name></member>
+    <member refid="classostk_1_1simulation_1_1_component_1a759ccc769a3b36a7135d79dccd10b43c" kind="variable"><name>type_</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1abe97994eb0c61ce9761c71365a7e14b0" kind="variable"><name>tags_</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a72aaa5e86c4b79c64fc1315b894cc73c" kind="variable"><name>geometries_</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a6277dd40fcf831958fb1477953b58fdb" kind="variable"><name>parentWPtr_</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a60d75a8bd6316e7a50c486c2c131b690" kind="variable"><name>frameSPtr_</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1aa1dbd3336e9d6e5b7105ae8aaedf254a" kind="variable"><name>simulatorSPtr_</name></member>
-    <member refid="classostk_1_1simulation_1_1_component_1ab3711f34980c3fdb746ff83b9511a25c" kind="function"><name>Component</name></member>
+    <member refid="classostk_1_1simulation_1_1_component_1a7c40ccfedf46579d7f96e448ea1575d4" kind="function"><name>Component</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a5395700f491da619eb45b0148a5727d5" kind="function"><name>Component</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a57f790fdbb03f777e59d73218d2899ef" kind="function"><name>~Component</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a36cdd3498146b23e3ff67b95cd1c59cc" kind="function"><name>clone</name></member>
-    <member refid="classostk_1_1simulation_1_1_component_1a983ee8f3974fc2900f21d3bea12fb877" kind="function"><name>isDefined</name></member>
-    <member refid="classostk_1_1simulation_1_1_component_1a3e7acecda5a9286bc4baf1d3b6bbd7d5" kind="function"><name>accessFrame</name></member>
-    <member refid="classostk_1_1simulation_1_1_component_1afe2d126a21b7a96d0b3655ebcac3a6be" kind="function"><name>accessGeometryWithName</name></member>
-    <member refid="classostk_1_1simulation_1_1_component_1a0e119aa1a610b08b935789a7ecb19605" kind="function"><name>accessSimulator</name></member>
-    <member refid="classostk_1_1simulation_1_1_component_1a93375352059595b81e81569e445d4512" kind="function"><name>getType</name></member>
-    <member refid="classostk_1_1simulation_1_1_component_1ab792e508c303ec679ea8b8cbcc2c4c8f" kind="function"><name>getTags</name></member>
-    <member refid="classostk_1_1simulation_1_1_component_1aba0796b346cbd27323c2e5c1df8ffcf2" kind="function"><name>getGeometries</name></member>
+    <member refid="classostk_1_1simulation_1_1_component_1a6e6639ecb24abadd20790c4df2d82dd8" kind="function"><name>getFrame</name></member>
+    <member refid="classostk_1_1simulation_1_1_component_1aac887031b22a6ce902441440e4c1643d" kind="function"><name>getGeometryWithName</name></member>
+    <member refid="classostk_1_1simulation_1_1_component_1a138f1f6ce6454c562a08ab12ec6013e0" kind="function"><name>getSimulator</name></member>
+    <member refid="classostk_1_1simulation_1_1_component_1a21a6025dadabf2c7f1e070870e4867be" kind="function"><name>getType</name></member>
+    <member refid="classostk_1_1simulation_1_1_component_1ab587407d526842117ac71fa2aaec2fbb" kind="function"><name>getTags</name></member>
+    <member refid="classostk_1_1simulation_1_1_component_1adeac72ebc4f77a730ad494b5ced59061" kind="function"><name>getGeometries</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a266bf1a8b756f55ef24cc9fee3fd4fca" kind="function"><name>setParent</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1ad3ef491ef73a9e01507c95541790bdf2" kind="function"><name>addGeometry</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1aeb00ae625a59168bde62bcbb3e1d6ed6" kind="function"><name>addComponent</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1ae3c657f10ed74f15e3356a2ff54647f3" kind="friend"><name>operator&lt;&lt;</name></member>
-    <member refid="classostk_1_1simulation_1_1_component_1ad8849104db5f1e96a2de547bc1c11867" kind="function"><name>Undefined</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a635e3685019800ec343ec8474954ff0e" kind="function"><name>Configure</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a7f74a40eb3aae2f7e12af002ca9dbc89" kind="function"><name>StringFromType</name></member>
     <member refid="classostk_1_1simulation_1_1_component_1a9b5f84be02c06a7b6576fcdb00640ede" kind="function"><name>GenerateFrame</name></member>
@@ -38,7 +35,7 @@
   <compound refid="structostk_1_1simulation_1_1_component_configuration" kind="struct"><name>ostk::simulation::ComponentConfiguration</name>
     <member refid="structostk_1_1simulation_1_1_component_configuration_1a7ef5e182de95028f8f50a45d2f36790a" kind="variable"><name>id</name></member>
     <member refid="structostk_1_1simulation_1_1_component_configuration_1ab78915c05378490b92166223f335b412" kind="variable"><name>name</name></member>
-    <member refid="structostk_1_1simulation_1_1_component_configuration_1abd0e836f95e58db5c8e954469101a2c8" kind="variable"><name>type</name></member>
+    <member refid="structostk_1_1simulation_1_1_component_configuration_1a1df53d094361592331e6affdee12b4c2" kind="variable"><name>type</name></member>
     <member refid="structostk_1_1simulation_1_1_component_configuration_1a95b38d1660657a8d2ba6baf0f885bf13" kind="variable"><name>tags</name></member>
     <member refid="structostk_1_1simulation_1_1_component_configuration_1a85c06b983a2aeddc726310ac64a280b6" kind="variable"><name>orientation</name></member>
     <member refid="structostk_1_1simulation_1_1_component_configuration_1a0b82a80f2def5a34efbb72697c6bc24e" kind="variable"><name>geometries</name></member>
@@ -52,11 +49,11 @@
     <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1aca60bf690ae2d94e094760ef276fcfc6" kind="function"><name>hasComponentWithId</name></member>
     <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a6a570d1c15601cacb1ad7a9fab443317" kind="function"><name>hasComponentWithName</name></member>
     <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a2992fe305dcb2243a0f3f0b3a2965773" kind="function"><name>hasComponentAt</name></member>
-    <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1ab66566e91251de05a02198cec7ecc4b7" kind="function"><name>accessComponents</name></member>
-    <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a05ee37d6949d90619788e62a1b1db47a" kind="function"><name>accessComponentWithId</name></member>
-    <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a245084a9899a44bb0c3298d643c2b44d" kind="function"><name>accessComponentWithName</name></member>
-    <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a9f7c8444d12fcb0a8d4d1198c2181197" kind="function"><name>accessComponentsWithTag</name></member>
-    <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a83aefcdc6fea117a180edff14954f7a5" kind="function"><name>accessComponentAt</name></member>
+    <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1ab3f9b871a31a7caf509cc9a81f692901" kind="function"><name>getComponents</name></member>
+    <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a71760ebc065f725646678e2749108d4c" kind="function"><name>getComponentWithId</name></member>
+    <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a574e7a27eb31326b0fb4c0801dfb530d" kind="function"><name>getComponentWithName</name></member>
+    <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a8172c0233a16a517ba6febb6d0446abd" kind="function"><name>getComponentsWithTag</name></member>
+    <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1af5275c7b337e252919202dd7b364b3c0" kind="function"><name>getComponentAt</name></member>
     <member refid="classostk_1_1simulation_1_1utility_1_1_component_holder_1a6012cd2e61416fe0cef0f9523e0121de" kind="function"><name>addComponent</name></member>
   </compound>
   <compound refid="classostk_1_1simulation_1_1_entity" kind="class"><name>ostk::simulation::Entity</name>
@@ -64,11 +61,9 @@
     <member refid="classostk_1_1simulation_1_1_entity_1a50230f16790bae32ca380fc671231693" kind="variable"><name>name_</name></member>
     <member refid="classostk_1_1simulation_1_1_entity_1a929819736161db5935b29b84da8a97aa" kind="function"><name>Entity</name></member>
     <member refid="classostk_1_1simulation_1_1_entity_1ae4ee439011cfcb1811d31bdb8db871fa" kind="function"><name>Entity</name></member>
-    <member refid="classostk_1_1simulation_1_1_entity_1ad3c1556400b02acdffde053348acda2f" kind="function"><name>isDefined</name></member>
-    <member refid="classostk_1_1simulation_1_1_entity_1a33286b8807aacec430d105646c021a79" kind="function"><name>getId</name></member>
-    <member refid="classostk_1_1simulation_1_1_entity_1a17050a1483e16e62ca10e3b1ecade1d5" kind="function"><name>getName</name></member>
+    <member refid="classostk_1_1simulation_1_1_entity_1a99d8160b3cf2854424d37ae7b7a67da2" kind="function"><name>getId</name></member>
+    <member refid="classostk_1_1simulation_1_1_entity_1a7a1823fd0155ce5cee7c726f519befec" kind="function"><name>getName</name></member>
     <member refid="classostk_1_1simulation_1_1_entity_1aa2238f2fe07b5ddc4594293acdfa0c23" kind="function"><name>print</name></member>
-    <member refid="classostk_1_1simulation_1_1_entity_1aa42c610f1b96197f9fbf45711fe6a479" kind="function"><name>Undefined</name></member>
   </compound>
   <compound refid="classostk_1_1simulation_1_1component_1_1_geometry" kind="class"><name>ostk::simulation::component::Geometry</name>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1ae11f0d30ee2819076cd5905f2d711b06" kind="variable"><name>name_</name></member>
@@ -77,21 +72,19 @@
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a8a5e6c898e651ac1e113d6e916f0583e" kind="function"><name>Geometry</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a1ec1b13d99e4c8df7f601f9f1ccb5458" kind="function"><name>operator==</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1adf01650ac1c43b91e91ae364f79000b2" kind="function"><name>operator!=</name></member>
-    <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a74a72f8e07513ba52a41a006c2e7687c" kind="function"><name>isDefined</name></member>
-    <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1aaf42fdfd3bccb180db7efe9db8eeaf4b" kind="function"><name>accessComponent</name></member>
-    <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a2f13ab1988d7d64407f63100fd547fd0" kind="function"><name>getName</name></member>
+    <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1af4cdc2d017dd0b8da8107afc9160ff47" kind="function"><name>getComponent</name></member>
+    <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1aff3db308791278f75eecbf8eff56895c" kind="function"><name>getName</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1ae805e0cb40ad4f03e4208adae6ad4fc4" kind="function"><name>print</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1aeec7b3694e1ca2552b65c56de9acc315" kind="function"><name>intersects</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a954a8a7af85cde7d9407b98ac9dd23c5" kind="function"><name>intersects</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1af39e2376a527720e37e46dc57f3eb6a5" kind="function"><name>contains</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1ade44921582930e30c598dbeba365f528" kind="function"><name>contains</name></member>
-    <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a1a225b42f1350dfe4cca7937dddbf2b9" kind="function"><name>accessComposite</name></member>
-    <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1afed7aa31b6b37090e90a7723af33f346" kind="function"><name>accessFrame</name></member>
+    <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a95769514d857c6fd83d36b0ba8688e92" kind="function"><name>getComposite</name></member>
+    <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a343e238a95e2aad6e4e34c68ffae671a" kind="function"><name>getFrame</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a39ea10b795b8732bafc20ee0fb9df962" kind="function"><name>getGeometryIn</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1a3fe1b4be3ee05faab0ff647697afcd6e" kind="function"><name>intersectionWith</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1ab36a969d150208ea070d214eff3d52d7" kind="function"><name>intersectionWith</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1aebfe5b9b5d8cd3dd8a2cfd140a1df583" kind="friend"><name>operator&lt;&lt;</name></member>
-    <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1aea7bd504788b09119889a7cc70c88703" kind="function"><name>Undefined</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_geometry_1acec7bbd02a66a0fba781b4ab259ab7a5" kind="function"><name>Configure</name></member>
   </compound>
   <compound refid="structostk_1_1simulation_1_1component_1_1_geometry_configuration" kind="struct"><name>ostk::simulation::component::GeometryConfiguration</name>
@@ -104,11 +97,9 @@
     <member refid="classostk_1_1simulation_1_1_satellite_1adb01c7d30bfc51144067e5a92709c638" kind="function"><name>Satellite</name></member>
     <member refid="classostk_1_1simulation_1_1_satellite_1af6f1e69609eca81bda731d176a0f3786" kind="function"><name>~Satellite</name></member>
     <member refid="classostk_1_1simulation_1_1_satellite_1a9828fe3ec02b8f4d8b2faf8412826f00" kind="function"><name>clone</name></member>
-    <member refid="classostk_1_1simulation_1_1_satellite_1a124ee57d73d12788466ba203b126fc57" kind="function"><name>isDefined</name></member>
-    <member refid="classostk_1_1simulation_1_1_satellite_1a165c0d2da9a36a1eaeaaba55a5752cfc" kind="function"><name>accessProfile</name></member>
+    <member refid="classostk_1_1simulation_1_1_satellite_1a946e1f215ddb7abfb5a55e1290c3b9b3" kind="function"><name>getProfile</name></member>
     <member refid="classostk_1_1simulation_1_1_satellite_1ac7f5b5462deb081eb93115f0fb362acd" kind="function"><name>print</name></member>
     <member refid="classostk_1_1simulation_1_1_satellite_1a4c904b132bff149960ba9d910ebbc3dc" kind="friend"><name>operator&lt;&lt;</name></member>
-    <member refid="classostk_1_1simulation_1_1_satellite_1a27b1931fa0cdd157ea5920060caf05fd" kind="function"><name>Undefined</name></member>
     <member refid="classostk_1_1simulation_1_1_satellite_1a8984ad4a21ba686cbae3bbfbb7d5ebb3" kind="function"><name>Configure</name></member>
     <member refid="classostk_1_1simulation_1_1_satellite_1a39a4b79c04d242d85cb647abd23e9e61" kind="function"><name>GenerateFrame</name></member>
   </compound>
@@ -124,12 +115,11 @@
     <member refid="classostk_1_1simulation_1_1_simulator_1a2eb84c6dd0d1a50faf512507668f980f" kind="variable"><name>environment_</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1aa7ba32e24b568c5d0078aa6eeaef814d" kind="variable"><name>satelliteMap_</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1a6c69bdb82f84e62d0e006755d501e05a" kind="function"><name>Simulator</name></member>
-    <member refid="classostk_1_1simulation_1_1_simulator_1a666148ccdc39474edbe83e7ffc65bac1" kind="function"><name>isDefined</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1a055842428d08ac13305da1b3ad339568" kind="function"><name>hasSatelliteWithName</name></member>
-    <member refid="classostk_1_1simulation_1_1_simulator_1aa1c20421b7a2ad00954fea7bdfbd4edd" kind="function"><name>accessEnvironment</name></member>
-    <member refid="classostk_1_1simulation_1_1_simulator_1ace707d08b62eb3a233e268a9eb72ef31" kind="function"><name>accessSatelliteMap</name></member>
-    <member refid="classostk_1_1simulation_1_1_simulator_1ada54ce66cb47bb512f245f4ac1b33f95" kind="function"><name>accessSatelliteWithName</name></member>
-    <member refid="classostk_1_1simulation_1_1_simulator_1a64483af631b1f905850bb8b366f6fb0a" kind="function"><name>getInstant</name></member>
+    <member refid="classostk_1_1simulation_1_1_simulator_1acbceaadfc596f505325f81f64f9e2769" kind="function"><name>getEnvironment</name></member>
+    <member refid="classostk_1_1simulation_1_1_simulator_1aa60eec185cb1c069407c40c8d3931554" kind="function"><name>getSatelliteMap</name></member>
+    <member refid="classostk_1_1simulation_1_1_simulator_1a26ded17c5e0d64e459cb5c8803d2cf89" kind="function"><name>getSatelliteWithName</name></member>
+    <member refid="classostk_1_1simulation_1_1_simulator_1ac8a7232799e95ad88d1a0dbb9f17b27d" kind="function"><name>getInstant</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1a820c217ea08c035aa3b171112998b334" kind="function"><name>print</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1ab5fb0cb4864bbbbb35b3ab65d76d0a84" kind="function"><name>setInstant</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1acb6015e28195acde22acc04ff2e8b8a8" kind="function"><name>stepForward</name></member>
@@ -137,7 +127,6 @@
     <member refid="classostk_1_1simulation_1_1_simulator_1af04b9110b4067b784f16855925950ccc" kind="function"><name>removeSatelliteWithName</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1adfa9360de21a1abdaeff636b4fa3d477" kind="function"><name>clearSatellites</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1a69c38d700ebaa96e61bccca4bdbe717d" kind="friend"><name>operator&lt;&lt;</name></member>
-    <member refid="classostk_1_1simulation_1_1_simulator_1a99876309ee0abbb7fb47b232bb28e6db" kind="function"><name>Undefined</name></member>
     <member refid="classostk_1_1simulation_1_1_simulator_1ad95b067abdc0a5ddf348897161af46f1" kind="function"><name>Configure</name></member>
   </compound>
   <compound refid="structostk_1_1simulation_1_1_simulator_configuration" kind="struct"><name>ostk::simulation::SimulatorConfiguration</name>
@@ -146,7 +135,6 @@
   </compound>
   <compound refid="classostk_1_1simulation_1_1component_1_1_state" kind="class"><name>ostk::simulation::component::State</name>
     <member refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58" kind="enum"><name>Status</name></member>
-    <member refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58aec0fc0100c4fc1ce4eea230c3dc10360" kind="enumvalue"><name>Undefined</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58ab9f5c797ebbf55adccdd8539a65a0241" kind="enumvalue"><name>Disabled</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58ae599161956d626eda4cb0a5ffb85271c" kind="enumvalue"><name>Idle</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_state_1adb8b51feaa29b0ebd5fc7977fada7e58ad8a942ef2b04672adfafef0ad817a407" kind="enumvalue"><name>Busy</name></member>
@@ -159,9 +147,7 @@
     <member refid="classostk_1_1simulation_1_1component_1_1_state_1a32e9b1349918070f114cb38e61828897" kind="function"><name>clone</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_state_1ac8aaea99357f670afab3c087de08446f" kind="function"><name>operator=</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_state_1ad4440388904bac640dc57ffbc5b77019" kind="function"><name>operator==</name></member>
-    <member refid="classostk_1_1simulation_1_1component_1_1_state_1abfb0349ee570125276b52aa2c3b1156d" kind="function"><name>isDefined</name></member>
     <member refid="classostk_1_1simulation_1_1component_1_1_state_1a5ff60e1d912483effdb53b2b5c555cf9" kind="function"><name>getStatus</name></member>
-    <member refid="classostk_1_1simulation_1_1component_1_1_state_1a21a79240817592992c4791699b2d623f" kind="function"><name>Undefined</name></member>
   </compound>
   <compound refid="namespaceostk" kind="namespace"><name>ostk</name>
   </compound>
@@ -174,6 +160,8 @@
   <compound refid="namespaceostk_1_1simulation_1_1component" kind="namespace"><name>ostk::simulation::component</name>
     <member refid="namespaceostk_1_1simulation_1_1component_1a1b21648b0426cff0de1fe8bd25248ea5" kind="typedef"><name>ObjectGeometry</name></member>
     <member refid="namespaceostk_1_1simulation_1_1component_1a42b6057a6dd3cbb9a748c1d583ec31aa" kind="function"><name>operator&lt;&lt;</name></member>
+  </compound>
+  <compound refid="namespaceostk_1_1simulation_1_1component_1_1_0d8" kind="namespace"><name>ostk::simulation::component::@8</name>
   </compound>
   <compound refid="namespaceostk_1_1simulation_1_1utility" kind="namespace"><name>ostk::simulation::utility</name>
     <member refid="namespaceostk_1_1simulation_1_1utility_1a2084483160c51091dc6577f796001b55" kind="function"><name>splitComponentPath</name></member>

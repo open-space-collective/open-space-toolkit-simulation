@@ -11,25 +11,22 @@ ostk.simulation.component.Geometry
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
-      ~Geometry.access_component
-      ~Geometry.access_composite
-      ~Geometry.access_frame
       ~Geometry.configure
       ~Geometry.contains
+      ~Geometry.get_component
+      ~Geometry.get_composite
+      ~Geometry.get_frame
       ~Geometry.get_geometry_in
       ~Geometry.get_name
       ~Geometry.intersection_with
       ~Geometry.intersects
-      ~Geometry.is_defined
-      ~Geometry.undefined
-   
-   
-
-   
    
    

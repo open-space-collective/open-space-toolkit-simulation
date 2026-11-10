@@ -11,12 +11,6 @@ ostk.simulation.component.GeometryConfiguration
 
    
    
-   .. rubric:: Methods
-
-   .. autosummary::
-      :nosignatures:
-   
-   
    
 
    

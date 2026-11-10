@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="181" column="18" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="181" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="165" column="18" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="165" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1simulation_1_1_satellite_configuration_1a5591546d238904643014391632e95073" prot="public" static="no" mutable="no">
         <type>const String</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="182" column="18" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="182" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="166" column="18" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1simulation_1_1_satellite_configuration_1ab2afb3f9823e69021f909495fb74ca3f" prot="public" static="no" mutable="no">
         <type>const Profile</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="183" column="19" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="183" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="167" column="19" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="167" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1simulation_1_1_satellite_configuration_1a44d10b5d983f71491e0751a0c1ac5f80" prot="public" static="no" mutable="no">
         <type>const Array&lt; <ref refid="structostk_1_1simulation_1_1_component_configuration" kindref="compound">ComponentConfiguration</ref> &gt;</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="184" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="184" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="168" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1simulation_1_1_satellite_configuration_1a6db145a39cbb82053013b7ee92dcc326" prot="public" static="no" mutable="no">
         <type>const Array&lt; String &gt;</type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="185" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="185" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="169" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1simulation_1_1_satellite_configuration_1aea05ae6081923cf5c9502bd176b756b9" prot="public" static="no" mutable="no">
         <type>const Array&lt; <ref refid="structostk_1_1simulation_1_1component_1_1_geometry_configuration" kindref="compound">GeometryConfiguration</ref> &gt;</type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="186" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="186" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="170" column="17" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="170" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -134,7 +134,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="180" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="179" bodyend="187"/>
+    <location file="include/OpenSpaceToolkit/Simulation/Satellite.hpp" line="164" column="1" bodyfile="include/OpenSpaceToolkit/Simulation/Satellite.hpp" bodystart="163" bodyend="171"/>
     <listofallmembers>
       <member refid="structostk_1_1simulation_1_1_satellite_configuration_1a44d10b5d983f71491e0751a0c1ac5f80" prot="public" virt="non-virtual"><scope>ostk::simulation::SatelliteConfiguration</scope><name>components</name></member>
       <member refid="structostk_1_1simulation_1_1_satellite_configuration_1aea05ae6081923cf5c9502bd176b756b9" prot="public" virt="non-virtual"><scope>ostk::simulation::SatelliteConfiguration</scope><name>geometries</name></member>
