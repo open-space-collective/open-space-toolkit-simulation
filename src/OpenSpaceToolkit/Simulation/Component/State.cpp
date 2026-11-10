@@ -2,7 +2,6 @@
 
 #include <OpenSpaceToolkit/Simulation/Component/State.hpp>
 
-#include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 namespace ostk
@@ -44,32 +43,12 @@ State& State::operator=(const State& aState)
 
 bool State::operator==(const State& aState) const
 {
-    if ((!this->isDefined()) || (!aState.isDefined()))
-    {
-        return false;
-    }
-
     return (status_ == aState.status_) && (verbose_ == aState.verbose_);
-}
-
-bool State::isDefined() const
-{
-    return status_ != State::Status::Undefined;
 }
 
 State::Status State::getStatus() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("State");
-    }
-
     return status_;
-}
-
-State State::Undefined()
-{
-    return {State::Status::Undefined};
 }
 
 }  // namespace component

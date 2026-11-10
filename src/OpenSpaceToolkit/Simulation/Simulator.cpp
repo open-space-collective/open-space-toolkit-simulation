@@ -141,7 +141,7 @@ void Simulator::stepForward(const Duration& aDuration)
 
 void Simulator::addSatellite(const Shared<Satellite>& aSatelliteSPtr)
 {
-    if ((!aSatelliteSPtr) || (!aSatelliteSPtr->isDefined()))
+    if (!aSatelliteSPtr)
     {
         throw ostk::core::error::runtime::Undefined("Satellite");
     }

@@ -82,7 +82,7 @@ bool ComponentHolder::hasComponentAt(const String& aComponentPath) const
 
 void ComponentHolder::addComponent(const Shared<Component>& aComponentSPtr)
 {
-    if ((!aComponentSPtr) || (!aComponentSPtr->isDefined()))
+    if (!aComponentSPtr)
     {
         throw ostk::core::error::runtime::Undefined("Component");
     }

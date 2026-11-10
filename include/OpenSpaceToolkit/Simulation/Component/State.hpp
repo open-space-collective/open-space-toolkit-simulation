@@ -14,7 +14,7 @@ namespace component
 #define DEFAULT_VERBOSE false
 
 /// @brief Represents the state of a component.
-/// @details A State holds a Status (Undefined, Disabled, Idle, Busy, Error) and a verbosity flag.
+/// @details A State holds a Status (Disabled, Idle, Busy, Error) and a verbosity flag.
 ///
 /// @code{.cpp}
 ///     State state(State::Status::Idle, false);
@@ -27,7 +27,6 @@ class State
     enum class Status
     {
 
-        Undefined,
         Disabled,
         Idle,
         Busy,
@@ -91,16 +90,6 @@ class State
     /// @return True if states are equal.
     bool operator==(const State& aState) const;
 
-    /// @brief Check if the state is defined.
-    ///
-    /// @code{.cpp}
-    ///     State state(State::Status::Idle);
-    ///     bool defined = state.isDefined(); // true
-    /// @endcode
-    ///
-    /// @return True if the state is defined.
-    bool isDefined() const;
-
     /// @brief Get the status.
     ///
     /// @code{.cpp}
@@ -110,16 +99,6 @@ class State
     ///
     /// @return The status.
     State::Status getStatus() const;
-
-    /// @brief Construct an undefined state.
-    ///
-    /// @code{.cpp}
-    ///     State state = State::Undefined();
-    ///     bool defined = state.isDefined(); // false
-    /// @endcode
-    ///
-    /// @return An undefined state.
-    static State Undefined();
 
    private:
     State::Status status_;

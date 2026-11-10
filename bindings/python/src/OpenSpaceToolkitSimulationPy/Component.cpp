@@ -44,7 +44,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                 init<
                     const String&,
                     const String&,
-                    const Component::Type&,
+                    const std::optional<Component::Type>&,
                     const Array<String>&,
                     const Array<Shared<Geometry>>&,
                     const Array<Shared<Component>>&,
@@ -64,18 +64,21 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                     Create a Component instance.
 
                     Args:
-                        id (str): The unique component identifier.
-                        name (str): The component name.
-                        type (Component.Type): The component type (Assembly, Sensor, etc.).
+                        id (str): The unique component identifier. Must not be empty.
+                        name (str): The component name. Must not be empty.
+                        type (Component.Type | None): The component type (Assembly, Sensor, etc.). None if the type is unspecified.
                         tags (list[str]): Array of classification tags.
                         geometries (list[Geometry]): Array of geometry objects.
                         components (list[Component]): Array of child components.
                         parent (ComponentHolder): The parent component holder.
-                        frame (Frame): The component reference frame.
+                        frame (Frame): The component reference frame. None if the component has no frame.
                         simulator (Simulator): Reference to the parent simulator.
 
                     Returns:
                         Component: The component instance.
+
+                    Raises:
+                        RuntimeError: If the id or the name is empty.
 
                     Example:
                         >>> component = Component(
@@ -96,21 +99,6 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
             .def("__repr__", &(shiftToString<Component>))
 
             .def(
-                "is_defined",
-                &Component::isDefined,
-                R"doc(
-                    Check if the component is defined.
-
-                    Returns:
-                        bool: True if the component is defined, False otherwise.
-
-                    Example:
-                        >>> component.is_defined()
-                        True
-                )doc"
-            )
-
-            .def(
                 "access_frame",
                 &Component::accessFrame,
                 R"doc(
@@ -118,6 +106,9 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
 
                     Returns:
                         Frame: The component frame.
+
+                    Raises:
+                        RuntimeError: If the component has no frame.
 
                     Example:
                         >>> frame = component.access_frame()
@@ -165,7 +156,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                     Get the component type.
 
                     Returns:
-                        Component.Type: The component type.
+                        Component.Type | None: The component type, or None if the type is unspecified.
 
                     Example:
                         >>> comp_type = component.get_type()
@@ -252,22 +243,6 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
             )
 
             .def_static(
-                "undefined",
-                &Component::Undefined,
-                R"doc(
-                    Create an undefined component.
-
-                    Returns:
-                        Component: An undefined component.
-
-                    Example:
-                        >>> component = Component.undefined()
-                        >>> component.is_defined()
-                        False
-                )doc"
-            )
-
-            .def_static(
                 "configure",
                 &Component::Configure,
                 arg("configuration"),
@@ -322,14 +297,6 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                 Defines the classification of components within the simulation.
             )doc"
         )
-
-            .value(
-                "Undefined",
-                Component::Type::Undefined,
-                R"doc(
-                    Undefined type.
-                )doc"
-            )
 
             .value(
                 "Assembly",
@@ -387,14 +354,14 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
             init<
                 const String&,
                 const String&,
-                const Component::Type&,
+                const std::optional<Component::Type>&,
                 const Array<String>&,
                 const Quaternion&,
                 const Array<GeometryConfiguration>&,
                 const Array<ComponentConfiguration>&>(),
             arg("id"),
             arg("name"),
-            arg("type") = DEFAULT_COMPONENT_TYPE,
+            arg("type") = none(),
             arg("tags") = DEFAULT_TAGS,
             arg("orientation") = DEFAULT_ORIENTATION,
             arg("geometries") = DEFAULT_GEOMETRIES,
@@ -405,7 +372,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                 Args:
                     id (str): The unique component identifier.
                     name (str): The component name.
-                    type (Component.Type): The component type (optional).
+                    type (Component.Type | None): The component type (default: None, which leaves the type unspecified).
                     tags (list[str]): Array of classification tags (optional).
                     orientation (Quaternion): Orientation relative to parent (optional).
                     geometries (list[GeometryConfiguration]): Array of geometry configurations (optional).

@@ -55,17 +55,20 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
                 Create a Satellite instance.
 
                 Args:
-                    id (str): The unique satellite identifier.
-                    name (str): The satellite name.
+                    id (str): The unique satellite identifier. Must not be empty.
+                    name (str): The satellite name. Must not be empty.
                     tags (list[str]): Array of classification tags.
                     geometries (list[Geometry]): Array of geometry objects.
                     components (list[Component]): Array of child components.
-                    frame (Frame): The satellite reference frame.
+                    frame (Frame): The satellite reference frame. None if the satellite has no frame.
                     profile (Profile): The astrodynamics profile (trajectory).
                     simulator (Simulator): Reference to the parent simulator.
 
                 Returns:
                     Satellite: The satellite instance.
+
+                Raises:
+                    RuntimeError: If the id or the name is empty.
 
                 Example:
                     >>> satellite = Satellite(
@@ -82,21 +85,6 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
         )
 
         .def(
-            "is_defined",
-            &Satellite::isDefined,
-            R"doc(
-                Check if the satellite is defined.
-
-                Returns:
-                    bool: True if the satellite is defined, False otherwise.
-
-                Example:
-                    >>> satellite.is_defined()
-                    True
-            )doc"
-        )
-
-        .def(
             "access_profile",
             &Satellite::accessProfile,
             R"doc(
@@ -108,22 +96,6 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
                 Example:
                     >>> profile = satellite.access_profile()
                     >>> state = profile.get_state_at(instant)
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Satellite::Undefined,
-            R"doc(
-                Create an undefined satellite.
-
-                Returns:
-                    Satellite: An undefined satellite.
-
-                Example:
-                    >>> satellite = Satellite.undefined()
-                    >>> satellite.is_defined()
-                    False
             )doc"
         )
 
