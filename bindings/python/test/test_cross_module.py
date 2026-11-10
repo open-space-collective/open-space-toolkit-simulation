@@ -154,7 +154,6 @@ class TestCrossModule:
         )
 
         assert isinstance(satellite.get_profile(), Profile)
-        assert satellite.get_profile().is_defined()
         assert isinstance(satellite.get_profile().get_state_at(instant), State)
         assert satellite.get_profile().get_state_at(instant) == profile.get_state_at(
             instant

@@ -106,13 +106,6 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, StreamOperator)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Simulation_Simulator, IsDefined)
-{
-    {
-        EXPECT_TRUE(simulatorSPtr_->isDefined());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Simulation_Simulator, HasSatelliteWithName)
 {
     {
@@ -130,10 +123,6 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, GetEnvironment)
 
 TEST_F(OpenSpaceToolkit_Simulation_Simulator, GetSatelliteMap)
 {
-    {
-        EXPECT_THROW(Simulator::Undefined().getSatelliteMap(), ostk::core::error::runtime::Undefined);
-    }
-
     {
         EXPECT_EQ(simulatorSPtr_->getSatelliteMap().size(), 1);
         EXPECT_EQ(&simulatorSPtr_->getSatelliteMap(), &simulatorSPtr_->getSatelliteMap());
@@ -229,7 +218,7 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, Test_1)
         const auto camera = simulatorSPtr->getSatelliteWithName("LoftSat-1").getComponentWithName("Camera");
 
         const auto cameraGeometry = camera.getGeometryWithName("FOV");
-        const auto earthGeometry = environment.getCelestialObjectWithName("Earth")->getGeometry();
+        const auto earthGeometry = environment.getCelestialObjectWithName("Earth")->getGeometry().value();
 
         EXPECT_EQ(cameraGeometry.getFrame(), camera.getFrame());
         EXPECT_EQ(&cameraGeometry.getFrame(), &cameraGeometry.getFrame());
@@ -242,21 +231,8 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, Test_1)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Simulation_Simulator, Undefined)
-{
-    {
-        EXPECT_FALSE(Simulator::Undefined().isDefined());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Simulation_Simulator, RemoveSatelliteWithName)
 {
-    {
-        EXPECT_THROW(
-            Simulator::Undefined().removeSatelliteWithName("TestSatellite"), ostk::core::error::runtime::Undefined
-        );
-    }
-
     {
         EXPECT_THROW(simulatorSPtr_->removeSatelliteWithName("NonExistentSatellite"), ostk::core::error::RuntimeError);
     }
@@ -274,10 +250,6 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, RemoveSatelliteWithName)
 
 TEST_F(OpenSpaceToolkit_Simulation_Simulator, ClearSatellites)
 {
-    {
-        EXPECT_THROW(Simulator::Undefined().clearSatellites(), ostk::core::error::runtime::Undefined);
-    }
-
     {
         EXPECT_TRUE(simulatorSPtr_->hasSatelliteWithName(satelliteName_));
         EXPECT_EQ(simulatorSPtr_->getSatelliteMap().size(), 1);

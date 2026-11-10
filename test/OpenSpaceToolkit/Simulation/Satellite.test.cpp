@@ -14,7 +14,6 @@
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
 #include <OpenSpaceToolkit/Astrodynamics/Flight/Profile.hpp>
-#include <OpenSpaceToolkit/Astrodynamics/Flight/Profile/Model/Transform.hpp>
 
 #include <Global.test.hpp>
 
@@ -30,7 +29,6 @@ using ostk::physics::time::Time;
 using ostk::physics::unit::Length;
 
 using ostk::astrodynamics::flight::Profile;
-using ostk::astrodynamics::flight::profile::model::Transform;
 using ostk::astrodynamics::trajectory::Orbit;
 
 using ostk::simulation::Component;
@@ -50,7 +48,7 @@ class OpenSpaceToolkit_Simulation_Satellite : public ::testing::Test
             Instant::J2000(), Length::Kilometers(500.0), Time::Noon(), environment.getCelestialObjectWithName("Earth")
         );
 
-        profile_ = Profile::ConstantLocalOrbitalFramePointing(orbit, Orbit::FrameType::VVLH);
+        profile_.emplace(Profile::ConstantLocalOrbitalFramePointing(orbit, Orbit::FrameType::VVLH));
 
         this->satellite_.emplace(
             "87da0b5f-9f65-4c5c-a660-bd254742960b",
@@ -59,12 +57,12 @@ class OpenSpaceToolkit_Simulation_Satellite : public ::testing::Test
             Array<Shared<Geometry>>::Empty(),
             Array<Shared<Component>>::Empty(),
             nullptr,
-            std::make_shared<Profile>(profile_),
+            std::make_shared<Profile>(*profile_),
             nullptr
         );
     }
 
-    Profile profile_ = Profile(Transform::Undefined());
+    std::optional<Profile> profile_;
     std::optional<Satellite> satellite_;
 };
 
@@ -79,7 +77,7 @@ TEST_F(OpenSpaceToolkit_Simulation_Satellite, Constructor)
                 Array<Shared<Geometry>>::Empty(),
                 Array<Shared<Component>>::Empty(),
                 nullptr,
-                std::make_shared<Profile>(profile_),
+                std::make_shared<Profile>(*profile_),
                 nullptr
             ),
             ostk::core::error::runtime::Undefined
@@ -95,7 +93,7 @@ TEST_F(OpenSpaceToolkit_Simulation_Satellite, Constructor)
                 Array<Shared<Geometry>>::Empty(),
                 Array<Shared<Component>>::Empty(),
                 nullptr,
-                std::make_shared<Profile>(profile_),
+                std::make_shared<Profile>(*profile_),
                 nullptr
             ),
             ostk::core::error::runtime::Undefined
@@ -148,7 +146,7 @@ TEST_F(OpenSpaceToolkit_Simulation_Satellite, Configure)
     const SatelliteConfiguration satelliteConfiguration = {
         "87da0b5f-9f65-4c5c-a660-bd254742960b",
         "LoftSat-1",
-        profile_,
+        *profile_,
         Array<ComponentConfiguration>::Empty(),
         {"a", "b"},
         Array<GeometryConfiguration>::Empty(),
@@ -163,7 +161,7 @@ TEST_F(OpenSpaceToolkit_Simulation_Satellite, Configure)
 TEST_F(OpenSpaceToolkit_Simulation_Satellite, GetProfile)
 {
     {
-        EXPECT_NO_THROW(satellite_->getProfile()->isDefined());
+        EXPECT_NO_THROW(satellite_->getProfile());
         EXPECT_EQ(&satellite_->getProfile(), &satellite_->getProfile());
     }
 }

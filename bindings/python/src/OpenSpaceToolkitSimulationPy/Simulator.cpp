@@ -51,21 +51,6 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(nanobind::module_& aModule)
         )
 
         .def(
-            "is_defined",
-            &Simulator::isDefined,
-            R"doc(
-                Check if the simulator is defined.
-
-                Returns:
-                    bool: True if the simulator is defined, False otherwise.
-
-                Example:
-                    >>> simulator.is_defined()
-                    True
-            )doc"
-        )
-
-        .def(
             "has_satellite_with_name",
             &Simulator::hasSatelliteWithName,
             arg("name"),
@@ -219,22 +204,6 @@ inline void OpenSpaceToolkitSimulationPy_Simulator(nanobind::module_& aModule)
                     >>> simulator.clear_satellites()
                     >>> len(simulator.get_satellite_map())
                     0
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Simulator::Undefined,
-            R"doc(
-                Create an undefined simulator.
-
-                Returns:
-                    Simulator: An undefined simulator.
-
-                Example:
-                    >>> simulator = Simulator.undefined()
-                    >>> simulator.is_defined()
-                    False
             )doc"
         )
 

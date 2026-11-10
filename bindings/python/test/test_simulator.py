@@ -122,8 +122,9 @@ def instant() -> Instant:
 
 
 class TestSimulator:
-    def test_is_defined(self, simulator: Simulator):
-        assert simulator.is_defined()
+    def test_has_no_undefined(self):
+        assert not hasattr(Simulator, "undefined")
+        assert not hasattr(Simulator, "is_defined")
 
     def test_get_environment(self, simulator: Simulator):
         assert simulator.get_environment() is not None
@@ -191,16 +192,12 @@ class TestSimulator:
 
         assert satellite in simulator.get_satellite_map().values()
 
-    def test_undefined(self):
-        simulator: Simulator = Simulator.undefined()
-
-        assert not simulator.is_defined()
-
     def test_configure(self, environment: Environment):
         configuration: SimulatorConfiguration = SimulatorConfiguration(environment, [])
         simulator: Simulator = Simulator.configure(configuration)
 
-        assert simulator.is_defined()
+        assert isinstance(simulator, Simulator)
+        assert simulator.get_environment() is not None
 
     def test_remove_satellite_with_name(
         self,

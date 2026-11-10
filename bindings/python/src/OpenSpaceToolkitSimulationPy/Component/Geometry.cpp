@@ -37,17 +37,20 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(nanobind::module_& a
             init<const String&, const Composite&, const Shared<const Component>&>(),
             arg("name"),
             arg("composite"),
-            arg("component").none(),
+            arg("component"),
             R"doc(
                 Create a Geometry instance.
 
                 Args:
                     name (str): The geometry name.
                     composite (Composite): The 3D composite geometry object.
-                    component (Component | None): The parent component.
+                    component (Component): The parent component. It must have a frame.
 
                 Returns:
                     Geometry: The geometry instance.
+
+                Raises:
+                    RuntimeError: If the name is empty or the component has no frame.
 
                 Example:
                     >>> geometry = Geometry(
@@ -60,21 +63,6 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(nanobind::module_& a
 
         .def("__str__", &(shiftToString<Geometry>))
         .def("__repr__", &(shiftToString<Geometry>))
-
-        .def(
-            "is_defined",
-            &Geometry::isDefined,
-            R"doc(
-                Check if the geometry is defined.
-
-                Returns:
-                    bool: True if the geometry is defined, False otherwise.
-
-                Example:
-                    >>> geometry.is_defined()
-                    True
-            )doc"
-        )
 
         .def(
             "get_component",
@@ -269,22 +257,6 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(nanobind::module_& a
 
                 Example:
                     >>> intersection = geometry.intersection_with(earth)
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Geometry::Undefined,
-            R"doc(
-                Create an undefined geometry.
-
-                Returns:
-                    Geometry: An undefined geometry.
-
-                Example:
-                    >>> geometry = Geometry.undefined()
-                    >>> geometry.is_defined()
-                    False
             )doc"
         )
 

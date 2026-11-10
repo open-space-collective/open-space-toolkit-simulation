@@ -121,4 +121,4 @@ class TestSatellite:
             )
 
     def test_get_profile(self, satellite: Satellite):
-        assert satellite.get_profile().is_defined()
+        assert isinstance(satellite.get_profile(), Profile)

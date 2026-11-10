@@ -39,7 +39,6 @@ struct GeometryConfiguration;
 ///
 /// @code{.cpp}
 ///     Geometry geometry("fov", composite, componentSPtr);
-///     bool defined = geometry.isDefined();
 ///     bool doesIntersect = geometry.intersects(otherGeometry);
 /// @endcode
 class Geometry
@@ -54,6 +53,8 @@ class Geometry
     /// @param [in] aName A name.
     /// @param [in] aComposite A composite 3D object.
     /// @param [in] aComponentSPtr A shared pointer to the owning component.
+    /// @throw ostk::core::error::runtime::Undefined If the name is empty, the component is null or the component has
+    ///        no frame.
     Geometry(const String& aName, const Composite& aComposite, const Shared<const Component>& aComponentSPtr);
 
     /// @brief Equal to operator.
@@ -86,15 +87,6 @@ class Geometry
     /// @param [in] aGeometry A geometry.
     /// @return A reference to the output stream.
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Geometry& aGeometry);
-
-    /// @brief Check if the geometry is defined.
-    ///
-    /// @code{.cpp}
-    ///     bool defined = geometry.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the geometry is defined.
-    bool isDefined() const;
 
     /// @brief Get the owning component.
     ///
@@ -211,15 +203,6 @@ class Geometry
     /// @param [in] aCelestialObject A celestial object.
     /// @return The intersection geometry.
     ObjectGeometry intersectionWith(const Celestial& aCelestialObject) const;
-
-    /// @brief Construct an undefined geometry.
-    ///
-    /// @code{.cpp}
-    ///     Geometry geometry = Geometry::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined geometry.
-    static Geometry Undefined();
 
     /// @brief Configure a geometry from a configuration.
     ///
