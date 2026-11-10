@@ -68,15 +68,6 @@ class Simulator
     /// @return A reference to the output stream.
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Simulator& aSimulator);
 
-    /// @brief Check if the simulator is defined.
-    ///
-    /// @code{.cpp}
-    ///     bool defined = simulator.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the simulator is defined.
-    bool isDefined() const;
-
     /// @brief Check if a satellite with the given name exists.
     ///
     /// @code{.cpp}
@@ -118,11 +109,11 @@ class Simulator
     /// @brief Get the current simulation instant.
     ///
     /// @code{.cpp}
-    ///     Instant instant = simulator.getInstant();
+    ///     const Instant& instant = simulator.getInstant();
     /// @endcode
     ///
-    /// @return The current instant.
-    Instant getInstant() const;
+    /// @return A const reference to the current instant.
+    const Instant& getInstant() const;
 
     /// @brief Print the simulator to an output stream.
     ///
@@ -176,15 +167,6 @@ class Simulator
     ///     simulator.clearSatellites();
     /// @endcode
     void clearSatellites();
-
-    /// @brief Construct an undefined simulator.
-    ///
-    /// @code{.cpp}
-    ///     Simulator simulator = Simulator::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined simulator.
-    static Simulator Undefined();
 
     /// @brief Configure a simulator from a configuration.
     ///

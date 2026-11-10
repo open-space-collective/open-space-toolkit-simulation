@@ -124,7 +124,7 @@ void Component::setParent(const Shared<Component>& aComponentSPtr)
 
 void Component::addGeometry(const Shared<Geometry>& aGeometrySPtr)
 {
-    if ((!aGeometrySPtr) || (!aGeometrySPtr->isDefined()))
+    if (!aGeometrySPtr)
     {
         throw ostk::core::error::runtime::Undefined("Geometry");
     }

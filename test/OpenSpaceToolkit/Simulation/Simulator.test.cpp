@@ -60,14 +60,14 @@ class OpenSpaceToolkit_Simulation_Simulator : public ::testing::Test
         Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC),  // Epoch
         Length::Kilometers(500.0),                                     // Altitude
         Time(14, 0, 0),                                                // LTAN
-        environment_.accessCelestialObjectWithName("Earth")            // Celestial object
+        environment_.getCelestialObjectWithName("Earth")               // Celestial object
     );
 
     const Shared<Simulator> simulatorSPtr_ = Simulator::Configure(
         {environment_,
          {{"1",
            satelliteName_,
-           Profile::LocalOrbitalFramePointing(orbit_, Orbit::FrameType::VVLH),
+           Profile::ConstantLocalOrbitalFramePointing(orbit_, Orbit::FrameType::VVLH),
            {{"2",
              "Camera",
              Component::Type::Sensor,
@@ -106,13 +106,6 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, StreamOperator)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Simulation_Simulator, IsDefined)
-{
-    {
-        EXPECT_TRUE(simulatorSPtr_->isDefined());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Simulation_Simulator, HasSatelliteWithName)
 {
     {
@@ -130,10 +123,6 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, GetEnvironment)
 
 TEST_F(OpenSpaceToolkit_Simulation_Simulator, GetSatelliteMap)
 {
-    {
-        EXPECT_THROW(Simulator::Undefined().getSatelliteMap(), ostk::core::error::runtime::Undefined);
-    }
-
     {
         EXPECT_EQ(simulatorSPtr_->getSatelliteMap().size(), 1);
         EXPECT_EQ(&simulatorSPtr_->getSatelliteMap(), &simulatorSPtr_->getSatelliteMap());
@@ -158,6 +147,7 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, GetInstant)
         simulatorSPtr_->setInstant(instant);
 
         EXPECT_EQ(instant, simulatorSPtr_->getInstant());
+        EXPECT_EQ(&simulatorSPtr_->getInstant(), &simulatorSPtr_->getInstant());
     }
 }
 
@@ -196,14 +186,14 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, Test_1)
             Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::UTC),  // Epoch
             Length::Kilometers(500.0),                                     // Altitude
             Time(14, 0, 0),                                                // LTAN
-            environment.accessCelestialObjectWithName("Earth")             // Celestial object
+            environment.getCelestialObjectWithName("Earth")                // Celestial object
         );
 
         Shared<Simulator> simulatorSPtr = Simulator::Configure(
             {environment,
              {{"1",
                "LoftSat-1",
-               Profile::LocalOrbitalFramePointing(orbit, Orbit::FrameType::VVLH),
+               Profile::ConstantLocalOrbitalFramePointing(orbit, Orbit::FrameType::VVLH),
                {{"2",
                  "Camera",
                  Component::Type::Sensor,
@@ -228,33 +218,21 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, Test_1)
         const auto camera = simulatorSPtr->getSatelliteWithName("LoftSat-1").getComponentWithName("Camera");
 
         const auto cameraGeometry = camera.getGeometryWithName("FOV");
-        const auto earthGeometry = environment.accessCelestialObjectWithName("Earth")->accessGeometry();
+        const auto earthGeometry = environment.getCelestialObjectWithName("Earth")->getGeometry().value();
+
+        EXPECT_EQ(cameraGeometry.getFrame(), camera.getFrame());
+        EXPECT_EQ(&cameraGeometry.getFrame(), &cameraGeometry.getFrame());
 
         EXPECT_TRUE(cameraGeometry.intersects(earthGeometry));
 
-        EXPECT_EQ(2, cameraGeometry.intersectionWith(earthGeometry).accessComposite().getObjectCount());
-        EXPECT_TRUE(cameraGeometry.intersectionWith(earthGeometry).accessComposite().accessObjectAt(0).is<LineString>()
-        );
-        EXPECT_TRUE(cameraGeometry.intersectionWith(earthGeometry).accessComposite().accessObjectAt(1).is<LineString>()
-        );
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Simulation_Simulator, Undefined)
-{
-    {
-        EXPECT_FALSE(Simulator::Undefined().isDefined());
+        EXPECT_EQ(2, cameraGeometry.intersectionWith(earthGeometry).getComposite().getObjectCount());
+        EXPECT_TRUE(cameraGeometry.intersectionWith(earthGeometry).getComposite().getObjectAt(0).is<LineString>());
+        EXPECT_TRUE(cameraGeometry.intersectionWith(earthGeometry).getComposite().getObjectAt(1).is<LineString>());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Simulation_Simulator, RemoveSatelliteWithName)
 {
-    {
-        EXPECT_THROW(
-            Simulator::Undefined().removeSatelliteWithName("TestSatellite"), ostk::core::error::runtime::Undefined
-        );
-    }
-
     {
         EXPECT_THROW(simulatorSPtr_->removeSatelliteWithName("NonExistentSatellite"), ostk::core::error::RuntimeError);
     }
@@ -272,10 +250,6 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, RemoveSatelliteWithName)
 
 TEST_F(OpenSpaceToolkit_Simulation_Simulator, ClearSatellites)
 {
-    {
-        EXPECT_THROW(Simulator::Undefined().clearSatellites(), ostk::core::error::runtime::Undefined);
-    }
-
     {
         EXPECT_TRUE(simulatorSPtr_->hasSatelliteWithName(satelliteName_));
         EXPECT_EQ(simulatorSPtr_->getSatelliteMap().size(), 1);

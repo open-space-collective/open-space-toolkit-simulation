@@ -45,7 +45,7 @@ def orbit(environment: Environment) -> Orbit:
         epoch=Instant.date_time(datetime(2020, 1, 1, 0, 0, 0), Scale.UTC),
         altitude=Length.kilometers(500.0),
         local_time_at_descending_node=Time(14, 0, 0),
-        celestial_object=environment.access_celestial_object_with_name("Earth"),
+        celestial_object=environment.get_celestial_object_with_name("Earth"),
     )
 
 
@@ -63,7 +63,7 @@ def satellite_configuration(
         id="9ea22c07-6977-48a7-8f68-dff758971d57",
         name=satellite_name,
         tags=["a", "b"],
-        profile=Profile.local_orbital_frame_pointing(
+        profile=Profile.constant_local_orbital_frame_pointing(
             orbit=orbit,
             orbital_frame_type=Orbit.FrameType.VVLH,
         ),
@@ -122,8 +122,9 @@ def instant() -> Instant:
 
 
 class TestSimulator:
-    def test_is_defined(self, simulator: Simulator):
-        assert simulator.is_defined()
+    def test_has_no_undefined(self):
+        assert not hasattr(Simulator, "undefined")
+        assert not hasattr(Simulator, "is_defined")
 
     def test_get_environment(self, simulator: Simulator):
         assert simulator.get_environment() is not None
@@ -191,16 +192,12 @@ class TestSimulator:
 
         assert satellite in simulator.get_satellite_map().values()
 
-    def test_undefined(self):
-        simulator: Simulator = Simulator.undefined()
-
-        assert not simulator.is_defined()
-
     def test_configure(self, environment: Environment):
         configuration: SimulatorConfiguration = SimulatorConfiguration(environment, [])
         simulator: Simulator = Simulator.configure(configuration)
 
-        assert simulator.is_defined()
+        assert isinstance(simulator, Simulator)
+        assert simulator.get_environment() is not None
 
     def test_remove_satellite_with_name(
         self,
@@ -245,7 +242,7 @@ class TestSimulator:
             "LoftSat-1"
         ).get_component_with_name("Camera")
         camera_geometry: Geometry = camera.get_geometry_with_name("FOV")
-        earth = simulator.get_environment().access_celestial_object_with_name("Earth")
+        earth = simulator.get_environment().get_celestial_object_with_name("Earth")
 
         assert camera_geometry.intersects(earth) is True
 
@@ -255,20 +252,20 @@ class TestSimulator:
         assert camera_geometry.get_geometry_in(Frame.ITRF()) is not None
 
         assert (
-            camera_geometry.intersection_with(earth).access_composite().get_object_count()
+            camera_geometry.intersection_with(earth).get_composite().get_object_count()
             == 2
         )
         assert (
             camera_geometry.intersection_with(earth)
-            .access_composite()
-            .access_object_at(0)
+            .get_composite()
+            .get_object_at(0)
             .is_line_string()
             is True
         )
         assert (
             camera_geometry.intersection_with(earth)
-            .access_composite()
-            .access_object_at(1)
+            .get_composite()
+            .get_object_at(1)
             .is_line_string()
             is True
         )

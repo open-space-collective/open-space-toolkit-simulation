@@ -19,19 +19,19 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: POSIX :: Linux",
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 
 dependencies = [
-    "open-space-toolkit-core~=5.0",
-    "open-space-toolkit-io~=4.0",
-    "open-space-toolkit-mathematics~=4.3",
-    "open-space-toolkit-physics~=14.0",
-    "open-space-toolkit-astrodynamics~=17.0",
+    "open-space-toolkit-core~=6.0",
+    "open-space-toolkit-io~=5.0",
+    "open-space-toolkit-mathematics~=5.0",
+    "open-space-toolkit-physics~=15.0",
+    "open-space-toolkit-astrodynamics~=18.0",
 ] 
 
 [project.optional-dependencies]
 prebuild = [
-    "pybind11-stubgen"
+    "nanobind==3.1.0"
 ]
 test = [
     "pytest"
@@ -50,5 +50,5 @@ ext-modules = [
 include = ["ostk.simulation", "ostk.simulation.*"]
 
 [tool.setuptools.package-data]
-"ostk.simulation" = ["${SHARED_LIBRARY_TARGET}.${PROJECT_VERSION_MAJOR}", "${LIBRARY_TARGET}.*${EXTENSION}*.so"]
+"ostk.simulation" = ["${SHARED_LIBRARY_TARGET}.${PROJECT_VERSION_MAJOR}", "${LIBRARY_TARGET}.*${EXTENSION}*.so", "*.pyi", "py.typed"]
 "*" = ["*/data/*"]
