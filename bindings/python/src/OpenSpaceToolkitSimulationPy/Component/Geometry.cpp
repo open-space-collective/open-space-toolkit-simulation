@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
 
-inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aModule)
+inline void OpenSpaceToolkitSimulationPy_Component_Geometry(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::container::Array;
     using ostk::core::type::Shared;
@@ -21,7 +21,7 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
     using ostk::simulation::component::Geometry;
     using ostk::simulation::component::GeometryConfiguration;
 
-    class_<Geometry, Shared<Geometry>>(
+    class_<Geometry>(
         aModule,
         "Geometry",
         R"doc(
@@ -44,10 +44,13 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
                 Args:
                     name (str): The geometry name.
                     composite (Composite): The 3D composite geometry object.
-                    component (Component): The parent component.
+                    component (Component): The parent component. It must have a frame.
 
                 Returns:
                     Geometry: The geometry instance.
+
+                Raises:
+                    RuntimeError: If the name is empty or the component has no frame.
 
                 Example:
                     >>> geometry = Geometry(
@@ -62,31 +65,16 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
         .def("__repr__", &(shiftToString<Geometry>))
 
         .def(
-            "is_defined",
-            &Geometry::isDefined,
+            "get_component",
+            &Geometry::getComponent,
             R"doc(
-                Check if the geometry is defined.
-
-                Returns:
-                    bool: True if the geometry is defined, False otherwise.
-
-                Example:
-                    >>> geometry.is_defined()
-                    True
-            )doc"
-        )
-
-        .def(
-            "access_component",
-            &Geometry::accessComponent,
-            R"doc(
-                Access the parent component.
+                Get the parent component.
 
                 Returns:
                     Component: The parent component.
 
                 Example:
-                    >>> component = geometry.access_component()
+                    >>> component = geometry.get_component()
             )doc"
         )
 
@@ -183,15 +171,15 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
         )
 
         .def(
-            "access_composite",
-            &Geometry::accessComposite,
+            "get_composite",
+            &Geometry::getComposite,
             // `reference_internal` (rather than `reference`) ties the lifetime of the
             // returned composite to that of its parent geometry. With a bare `reference`,
-            // `component.access_geometry_with_name("fov").access_composite()` hands back a
+            // `component.get_geometry_with_name("fov").get_composite()` hands back a
             // reference into a geometry that Python is free to collect straight away.
-            return_value_policy::reference_internal,
+            rv_policy::reference_internal,
             R"doc(
-                Access the underlying composite geometry.
+                Get the underlying composite geometry.
 
                 The returned composite is a view into this geometry: it keeps its parent
                 alive, and is invalidated if the parent geometry is mutated.
@@ -200,21 +188,21 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
                     Composite: The 3D composite geometry object.
 
                 Example:
-                    >>> composite = geometry.access_composite()
+                    >>> composite = geometry.get_composite()
             )doc"
         )
 
         .def(
-            "access_frame",
-            &Geometry::accessFrame,
+            "get_frame",
+            &Geometry::getFrame,
             R"doc(
-                Access the geometry's reference frame.
+                Get the geometry's reference frame.
 
                 Returns:
                     Frame: The geometry frame.
 
                 Example:
-                    >>> frame = geometry.access_frame()
+                    >>> frame = geometry.get_frame()
             )doc"
         )
 
@@ -269,22 +257,6 @@ inline void OpenSpaceToolkitSimulationPy_Component_Geometry(pybind11::module& aM
 
                 Example:
                     >>> intersection = geometry.intersection_with(earth)
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Geometry::Undefined,
-            R"doc(
-                Create an undefined geometry.
-
-                Returns:
-                    Geometry: An undefined geometry.
-
-                Example:
-                    >>> geometry = Geometry.undefined()
-                    >>> geometry.is_defined()
-                    False
             )doc"
         )
 

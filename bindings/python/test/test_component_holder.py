@@ -34,7 +34,7 @@ def simulator(satellite_name: str) -> Simulator:
         epoch=Instant.date_time(datetime(2020, 1, 1, 0, 0, 0), Scale.UTC),
         altitude=Length.kilometers(500.0),
         local_time_at_descending_node=Time(14, 0, 0),
-        celestial_object=environment.access_celestial_object_with_name("Earth"),
+        celestial_object=environment.get_celestial_object_with_name("Earth"),
     )
 
     # LoftSat-1
@@ -44,7 +44,7 @@ def simulator(satellite_name: str) -> Simulator:
     satellite_configuration = SatelliteConfiguration(
         id="9ea22c07-6977-48a7-8f68-dff758971d57",
         name=satellite_name,
-        profile=Profile.local_orbital_frame_pointing(
+        profile=Profile.constant_local_orbital_frame_pointing(
             orbit=orbit,
             orbital_frame_type=Orbit.FrameType.VVLH,
         ),
@@ -81,7 +81,7 @@ def simulator(satellite_name: str) -> Simulator:
 
 @pytest.fixture
 def satellite(simulator: Simulator, satellite_name: str) -> Satellite:
-    return simulator.access_satellite_with_name(satellite_name)
+    return simulator.get_satellite_with_name(satellite_name)
 
 
 class TestComponentHolder:
@@ -104,29 +104,21 @@ class TestComponentHolder:
         assert satellite.has_component_at("Camera/Lens.Detector")
         assert satellite.has_component_at("Camera.Lens/Detector")
 
-    def test_access_component_at_with_slash_delimiter(self, satellite: Satellite):
-        assert satellite.access_component_at("Camera").get_name() == "Camera"
-        assert satellite.access_component_at("Camera/Lens").get_name() == "Lens"
-        assert (
-            satellite.access_component_at("Camera/Lens/Detector").get_name() == "Detector"
-        )
+    def test_get_component_at_with_slash_delimiter(self, satellite: Satellite):
+        assert satellite.get_component_at("Camera").get_name() == "Camera"
+        assert satellite.get_component_at("Camera/Lens").get_name() == "Lens"
+        assert satellite.get_component_at("Camera/Lens/Detector").get_name() == "Detector"
 
         with pytest.raises(RuntimeError):
-            satellite.access_component_at("Camera/Detector")
+            satellite.get_component_at("Camera/Detector")
 
-    def test_access_component_at_with_dot_delimiter(self, satellite: Satellite):
-        assert satellite.access_component_at("Camera.Lens").get_name() == "Lens"
-        assert (
-            satellite.access_component_at("Camera.Lens.Detector").get_name() == "Detector"
-        )
+    def test_get_component_at_with_dot_delimiter(self, satellite: Satellite):
+        assert satellite.get_component_at("Camera.Lens").get_name() == "Lens"
+        assert satellite.get_component_at("Camera.Lens.Detector").get_name() == "Detector"
 
         with pytest.raises(RuntimeError):
-            satellite.access_component_at("Camera.Detector")
+            satellite.get_component_at("Camera.Detector")
 
-    def test_access_component_at_with_mixed_delimiters(self, satellite: Satellite):
-        assert (
-            satellite.access_component_at("Camera/Lens.Detector").get_name() == "Detector"
-        )
-        assert (
-            satellite.access_component_at("Camera.Lens/Detector").get_name() == "Detector"
-        )
+    def test_get_component_at_with_mixed_delimiters(self, satellite: Satellite):
+        assert satellite.get_component_at("Camera/Lens.Detector").get_name() == "Detector"
+        assert satellite.get_component_at("Camera.Lens/Detector").get_name() == "Detector"

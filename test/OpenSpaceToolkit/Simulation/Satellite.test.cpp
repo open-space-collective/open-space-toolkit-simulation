@@ -5,6 +5,8 @@
 #include <OpenSpaceToolkit/Simulation/Component/State.hpp>
 #include <OpenSpaceToolkit/Simulation/Satellite.hpp>
 
+#include <OpenSpaceToolkit/Core/Error.hpp>
+
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -43,67 +45,99 @@ class OpenSpaceToolkit_Simulation_Satellite : public ::testing::Test
     {
         const Environment environment = Environment::Default();
         const Orbit orbit = Orbit::SunSynchronous(
-            Instant::J2000(),
-            Length::Kilometers(500.0),
-            Time::Noon(),
-            environment.accessCelestialObjectWithName("Earth")
+            Instant::J2000(), Length::Kilometers(500.0), Time::Noon(), environment.getCelestialObjectWithName("Earth")
         );
 
-        profile_ = Profile::LocalOrbitalFramePointing(orbit, Orbit::FrameType::VVLH);
+        profile_.emplace(Profile::ConstantLocalOrbitalFramePointing(orbit, Orbit::FrameType::VVLH));
 
-        this->satellite_ = Satellite(
+        this->satellite_.emplace(
             "87da0b5f-9f65-4c5c-a660-bd254742960b",
             "LoftSat-1",
-            {"a", "b"},
+            Array<String>({"a", "b"}),
             Array<Shared<Geometry>>::Empty(),
             Array<Shared<Component>>::Empty(),
             nullptr,
-            std::make_shared<Profile>(profile_),
+            std::make_shared<Profile>(*profile_),
             nullptr
         );
     }
 
-    Profile profile_ = Profile::Undefined();
-    Satellite satellite_ = Satellite::Undefined();
+    std::optional<Profile> profile_;
+    std::optional<Satellite> satellite_;
 };
 
-TEST_F(OpenSpaceToolkit_Simulation_Satellite, IsDefined)
+TEST_F(OpenSpaceToolkit_Simulation_Satellite, Constructor)
 {
     {
-        EXPECT_TRUE(satellite_.isDefined());
+        EXPECT_THROW(
+            Satellite(
+                "",
+                "LoftSat-1",
+                {"a", "b"},
+                Array<Shared<Geometry>>::Empty(),
+                Array<Shared<Component>>::Empty(),
+                nullptr,
+                std::make_shared<Profile>(*profile_),
+                nullptr
+            ),
+            ostk::core::error::runtime::Undefined
+        );
     }
 
     {
-        EXPECT_FALSE(Satellite::Undefined().isDefined());
+        EXPECT_THROW(
+            Satellite(
+                "87da0b5f-9f65-4c5c-a660-bd254742960b",
+                "",
+                {"a", "b"},
+                Array<Shared<Geometry>>::Empty(),
+                Array<Shared<Component>>::Empty(),
+                nullptr,
+                std::make_shared<Profile>(*profile_),
+                nullptr
+            ),
+            ostk::core::error::runtime::Undefined
+        );
     }
 }
 
 TEST_F(OpenSpaceToolkit_Simulation_Satellite, getId)
 {
     {
-        EXPECT_EQ(satellite_.getId(), "87da0b5f-9f65-4c5c-a660-bd254742960b");
-    }
-
-    {
-        EXPECT_ANY_THROW(Satellite::Undefined().getId());
+        EXPECT_EQ(satellite_->getId(), "87da0b5f-9f65-4c5c-a660-bd254742960b");
+        EXPECT_EQ(&satellite_->getId(), &satellite_->getId());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Simulation_Satellite, getName)
 {
     {
-        EXPECT_EQ(satellite_.getName(), "LoftSat-1");
-    }
-
-    {
-        EXPECT_ANY_THROW(Satellite::Undefined().getName());
+        EXPECT_EQ(satellite_->getName(), "LoftSat-1");
+        EXPECT_EQ(&satellite_->getName(), &satellite_->getName());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Simulation_Satellite, Undefined)
+TEST_F(OpenSpaceToolkit_Simulation_Satellite, WithoutFrame)
 {
+    // The fixture satellite is built without a frame.
+
     {
-        EXPECT_FALSE(Satellite::Undefined().isDefined());
+        EXPECT_EQ(satellite_->getType(), Component::Type::Assembly);
+        EXPECT_EQ(satellite_->getTags(), Array<String>({"a", "b"}));
+        EXPECT_TRUE(satellite_->getGeometries().isEmpty());
+        EXPECT_NE(satellite_->getProfile(), nullptr);
+    }
+
+    {
+        EXPECT_THROW(satellite_->getFrame(), ostk::core::error::runtime::Undefined);
+    }
+
+    {
+        const Shared<Satellite> satelliteSPtr = std::make_shared<Satellite>(satellite_.value());
+
+        EXPECT_THROW(
+            Component::Configure({"camera-id", "Camera"}, satelliteSPtr), ostk::core::error::runtime::Undefined
+        );
     }
 }
 
@@ -112,7 +146,7 @@ TEST_F(OpenSpaceToolkit_Simulation_Satellite, Configure)
     const SatelliteConfiguration satelliteConfiguration = {
         "87da0b5f-9f65-4c5c-a660-bd254742960b",
         "LoftSat-1",
-        profile_,
+        *profile_,
         Array<ComponentConfiguration>::Empty(),
         {"a", "b"},
         Array<GeometryConfiguration>::Empty(),
@@ -120,17 +154,15 @@ TEST_F(OpenSpaceToolkit_Simulation_Satellite, Configure)
 
     const Shared<Satellite> satellite = Satellite::Configure(satelliteConfiguration, nullptr);
 
-    EXPECT_TRUE(satellite->isDefined());
+    EXPECT_EQ(satellite->getName(), "LoftSat-1");
+    EXPECT_NE(satellite->getFrame(), nullptr);
 }
 
-TEST_F(OpenSpaceToolkit_Simulation_Satellite, AccessProfile)
+TEST_F(OpenSpaceToolkit_Simulation_Satellite, GetProfile)
 {
     {
-        EXPECT_NO_THROW(satellite_.accessProfile()->isDefined());
-    }
-
-    {
-        EXPECT_ANY_THROW(Satellite::Undefined().accessProfile());
+        EXPECT_NO_THROW(satellite_->getProfile());
+        EXPECT_EQ(&satellite_->getProfile(), &satellite_->getProfile());
     }
 }
 

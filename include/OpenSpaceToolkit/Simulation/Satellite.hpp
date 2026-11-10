@@ -44,13 +44,15 @@ struct SatelliteConfiguration;
 ///          and a dedicated reference frame derived from that profile.
 ///
 /// @code{.cpp}
-///     const Satellite& satellite = simulator.accessSatelliteWithName("sat-1");
-///     const Shared<const Profile> profile = satellite.accessProfile();
+///     const Satellite& satellite = simulator.getSatelliteWithName("sat-1");
+///     const Shared<const Profile>& profile = satellite.getProfile();
 /// @endcode
 class Satellite : public Component
 {
    public:
     /// @brief Construct a satellite.
+    /// @details Throws ostk::core::error::runtime::Undefined if the identifier or the name is empty.
+    ///          The frame may be null, in which case getFrame() throws.
     ///
     /// @code{.cpp}
     ///     Satellite satellite(
@@ -59,12 +61,12 @@ class Satellite : public Component
     ///     );
     /// @endcode
     ///
-    /// @param [in] anId An identifier.
-    /// @param [in] aName A name.
+    /// @param [in] anId An identifier (must not be empty).
+    /// @param [in] aName A name (must not be empty).
     /// @param [in] aTagArray An array of tags.
     /// @param [in] aGeometryArray An array of geometries.
     /// @param [in] aComponentArray An array of child components.
-    /// @param [in] aFrameSPtr A shared pointer to the reference frame.
+    /// @param [in] aFrameSPtr A shared pointer to the reference frame (may be null).
     /// @param [in] aProfileSPtr A shared pointer to the flight profile.
     /// @param [in] aSimulatorSPtr A shared pointer to the simulator.
     Satellite(
@@ -110,23 +112,14 @@ class Satellite : public Component
     /// @return A reference to the output stream.
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Satellite& aSatellite);
 
-    /// @brief Check if the satellite is defined.
+    /// @brief Get the flight profile.
     ///
     /// @code{.cpp}
-    ///     bool defined = satellite.isDefined();
+    ///     const Shared<const Profile>& profile = satellite.getProfile();
     /// @endcode
     ///
-    /// @return True if the satellite is defined.
-    bool isDefined() const;
-
-    /// @brief Access the flight profile.
-    ///
-    /// @code{.cpp}
-    ///     const Shared<const Profile> profile = satellite.accessProfile();
-    /// @endcode
-    ///
-    /// @return A shared pointer to the flight profile.
-    const Shared<const Profile> accessProfile() const;
+    /// @return A const reference to the shared pointer to the flight profile.
+    const Shared<const Profile>& getProfile() const;
 
     /// @brief Print the satellite to an output stream.
     ///
@@ -137,15 +130,6 @@ class Satellite : public Component
     /// @param [in] anOutputStream An output stream.
     /// @param [in] displayDecorators If true, display decorators.
     void print(std::ostream& anOutputStream, bool displayDecorators = true) const;
-
-    /// @brief Construct an undefined satellite.
-    ///
-    /// @code{.cpp}
-    ///     Satellite satellite = Satellite::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined satellite.
-    static Satellite Undefined();
 
     /// @brief Configure a satellite from a configuration.
     ///

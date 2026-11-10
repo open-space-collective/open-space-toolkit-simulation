@@ -4,10 +4,12 @@
 
 #include <OpenSpaceToolkitSimulationPy/Component/Geometry.cpp>
 #include <OpenSpaceToolkitSimulationPy/Component/State.cpp>
+#include <OpenSpaceToolkitSimulationPy/Entity.cpp>
+#include <OpenSpaceToolkitSimulationPy/Utility/ComponentHolder.cpp>
 
-inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
+inline void OpenSpaceToolkitSimulationPy_Component(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::container::Array;
     using ostk::core::type::Shared;
@@ -22,12 +24,13 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
     using ostk::simulation::component::GeometryConfiguration;
     using ostk::simulation::component::State;
     using ostk::simulation::ComponentConfiguration;
-    using ostk::simulation::Entity;
     using ostk::simulation::Simulator;
-    using ostk::simulation::utility::ComponentHolder;
 
     {
-        class_<Component, Entity, ComponentHolder, Shared<Component>> component_class(
+        // nanobind binds a single base class, and only one that sits at offset zero in the derived class. Neither
+        // Entity nor ComponentHolder does in Component, so Component has no Python base class, and the Entity and
+        // ComponentHolder methods are bound on it below.
+        class_<Component> component_class(
             aModule,
             "Component",
             R"doc(
@@ -41,41 +44,60 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
 
         component_class
             .def(
-                init<
-                    const String&,
-                    const String&,
-                    const Component::Type&,
-                    const Array<String>&,
-                    const Array<Shared<Geometry>>&,
-                    const Array<Shared<Component>>&,
-                    const Shared<ComponentHolder>&,
-                    const Shared<const Frame>&,
-                    const Shared<const Simulator>&>(),
+                // The parent is taken as a Component, the only ComponentHolder that Python can create, and
+                // converted to a ComponentHolder in C++ (see above).
+                "__init__",
+                [](Component* self,
+                   const String& anId,
+                   const String& aName,
+                   const std::optional<Component::Type>& aType,
+                   const Array<String>& aTagArray,
+                   const Array<Shared<Geometry>>& aGeometryArray,
+                   const Array<Shared<Component>>& aComponentArray,
+                   const Shared<Component>& aParentComponentSPtr,
+                   const Shared<const Frame>& aFrameSPtr,
+                   const Shared<const Simulator>& aSimulatorSPtr)
+                {
+                    new (self) Component(
+                        anId,
+                        aName,
+                        aType,
+                        aTagArray,
+                        aGeometryArray,
+                        aComponentArray,
+                        aParentComponentSPtr,
+                        aFrameSPtr,
+                        aSimulatorSPtr
+                    );
+                },
                 arg("id"),
                 arg("name"),
                 arg("type"),
                 arg("tags"),
                 arg("geometries"),
                 arg("components"),
-                arg("parent"),
-                arg("frame"),
-                arg("simulator"),
+                arg("parent").none(),
+                arg("frame").none(),
+                arg("simulator").none(),
                 R"doc(
                     Create a Component instance.
 
                     Args:
-                        id (str): The unique component identifier.
-                        name (str): The component name.
-                        type (Component.Type): The component type (Assembly, Sensor, etc.).
+                        id (str): The unique component identifier. Must not be empty.
+                        name (str): The component name. Must not be empty.
+                        type (Component.Type | None): The component type (Assembly, Sensor, etc.). None if the type is unspecified.
                         tags (list[str]): Array of classification tags.
                         geometries (list[Geometry]): Array of geometry objects.
                         components (list[Component]): Array of child components.
-                        parent (ComponentHolder): The parent component holder.
-                        frame (Frame): The component reference frame.
-                        simulator (Simulator): Reference to the parent simulator.
+                        parent (Component | None): The parent component.
+                        frame (Frame | None): The component reference frame. None if the component has no frame.
+                        simulator (Simulator | None): Reference to the parent simulator.
 
                     Returns:
                         Component: The component instance.
+
+                    Raises:
+                        RuntimeError: If the id or the name is empty.
 
                     Example:
                         >>> component = Component(
@@ -96,41 +118,29 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
             .def("__repr__", &(shiftToString<Component>))
 
             .def(
-                "is_defined",
-                &Component::isDefined,
+                "get_frame",
+                &Component::getFrame,
                 R"doc(
-                    Check if the component is defined.
-
-                    Returns:
-                        bool: True if the component is defined, False otherwise.
-
-                    Example:
-                        >>> component.is_defined()
-                        True
-                )doc"
-            )
-
-            .def(
-                "access_frame",
-                &Component::accessFrame,
-                R"doc(
-                    Access the component's reference frame.
+                    Get the component's reference frame.
 
                     Returns:
                         Frame: The component frame.
 
+                    Raises:
+                        RuntimeError: If the component has no frame.
+
                     Example:
-                        >>> frame = component.access_frame()
+                        >>> frame = component.get_frame()
                         >>> position = frame.get_origin_in(gcrf)
                 )doc"
             )
 
             .def(
-                "access_geometry_with_name",
-                &Component::accessGeometryWithName,
+                "get_geometry_with_name",
+                &Component::getGeometryWithName,
                 arg("name"),
                 R"doc(
-                    Access a geometry object by name.
+                    Get a geometry object by name.
 
                     Args:
                         name (str): The geometry name.
@@ -139,21 +149,21 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                         Geometry: The geometry with the specified name.
 
                     Example:
-                        >>> geometry = component.access_geometry_with_name("solar-panel")
+                        >>> geometry = component.get_geometry_with_name("solar-panel")
                 )doc"
             )
 
             .def(
-                "access_simulator",
-                &Component::accessSimulator,
+                "get_simulator",
+                &Component::getSimulator,
                 R"doc(
-                    Access the parent simulator.
+                    Get the parent simulator.
 
                     Returns:
                         Simulator: The parent simulator.
 
                     Example:
-                        >>> simulator = component.access_simulator()
+                        >>> simulator = component.get_simulator()
                         >>> instant = simulator.get_instant()
                 )doc"
             )
@@ -165,7 +175,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                     Get the component type.
 
                     Returns:
-                        Component.Type: The component type.
+                        Component.Type | None: The component type, or None if the type is unspecified.
 
                     Example:
                         >>> comp_type = component.get_type()
@@ -209,7 +219,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
             .def(
                 "set_parent",
                 &Component::setParent,
-                arg("component"),
+                arg("component").none(),
                 R"doc(
                     Set the parent component.
 
@@ -238,7 +248,12 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
 
             .def(
                 "add_component",
-                &Component::addComponent,
+                // Component::addComponent calls shared_from_this(), so self is taken as a shared pointer: nanobind
+                // gives a Python-created instance a shared owner only when it is converted to one.
+                [](const Shared<Component>& self, const Shared<Component>& aComponentSPtr)
+                {
+                    self->addComponent(aComponentSPtr);
+                },
                 arg("component"),
                 R"doc(
                     Add a child component.
@@ -249,23 +264,12 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                     Example:
                         >>> component.add_component(subsensor)
                 )doc"
-            )
+            );
 
-            .def_static(
-                "undefined",
-                &Component::Undefined,
-                R"doc(
-                    Create an undefined component.
+        OpenSpaceToolkitSimulationPy_Entity_Methods(component_class);
+        OpenSpaceToolkitSimulationPy_Utility_ComponentHolder_Methods(component_class);
 
-                    Returns:
-                        Component: An undefined component.
-
-                    Example:
-                        >>> component = Component.undefined()
-                        >>> component.is_defined()
-                        False
-                )doc"
-            )
+        component_class
 
             .def_static(
                 "configure",
@@ -324,14 +328,6 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
         )
 
             .value(
-                "Undefined",
-                Component::Type::Undefined,
-                R"doc(
-                    Undefined type.
-                )doc"
-            )
-
-            .value(
                 "Assembly",
                 Component::Type::Assembly,
                 R"doc(
@@ -387,14 +383,14 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
             init<
                 const String&,
                 const String&,
-                const Component::Type&,
+                const std::optional<Component::Type>&,
                 const Array<String>&,
                 const Quaternion&,
                 const Array<GeometryConfiguration>&,
                 const Array<ComponentConfiguration>&>(),
             arg("id"),
             arg("name"),
-            arg("type") = DEFAULT_COMPONENT_TYPE,
+            arg("type") = none(),
             arg("tags") = DEFAULT_TAGS,
             arg("orientation") = DEFAULT_ORIENTATION,
             arg("geometries") = DEFAULT_GEOMETRIES,
@@ -405,7 +401,7 @@ inline void OpenSpaceToolkitSimulationPy_Component(pybind11::module& aModule)
                 Args:
                     id (str): The unique component identifier.
                     name (str): The component name.
-                    type (Component.Type): The component type (optional).
+                    type (Component.Type | None): The component type (default: None, which leaves the type unspecified).
                     tags (list[str]): Array of classification tags (optional).
                     orientation (Quaternion): Orientation relative to parent (optional).
                     geometries (list[GeometryConfiguration]): Array of geometry configurations (optional).

@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Simulation/Component/State.hpp>
 
-inline void OpenSpaceToolkitSimulationPy_Component_State(pybind11::module& aModule)
+inline void OpenSpaceToolkitSimulationPy_Component_State(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::simulation::component::State;
 
@@ -14,8 +14,7 @@ inline void OpenSpaceToolkitSimulationPy_Component_State(pybind11::module& aModu
         R"doc(
             Component state representing operational status.
 
-            State tracks the operational condition of a component, from undefined to various
-            operational states like disabled, idle, busy, or error.
+            State tracks the operational condition of a component: disabled, idle, busy, or error.
         )doc"
     );
 
@@ -41,21 +40,6 @@ inline void OpenSpaceToolkitSimulationPy_Component_State(pybind11::module& aModu
         // .def("__repr__", &(shiftToString<State>))
 
         .def(
-            "is_defined",
-            &State::isDefined,
-            R"doc(
-                Check if the state is defined.
-
-                Returns:
-                    bool: True if the state is defined, False otherwise.
-
-                Example:
-                    >>> state.is_defined()
-                    True
-            )doc"
-        )
-
-        .def(
             "get_status",
             &State::getStatus,
             R"doc(
@@ -71,22 +55,6 @@ inline void OpenSpaceToolkitSimulationPy_Component_State(pybind11::module& aModu
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &State::Undefined,
-            R"doc(
-                Create an undefined state.
-
-                Returns:
-                    State: An undefined state.
-
-                Example:
-                    >>> state = State.undefined()
-                    >>> state.is_defined()
-                    False
-            )doc"
-        )
-
         ;
 
     enum_<State::Status>(
@@ -98,14 +66,6 @@ inline void OpenSpaceToolkitSimulationPy_Component_State(pybind11::module& aModu
             Defines the possible operational states a component can be in.
         )doc"
     )
-
-        .value(
-            "Undefined",
-            State::Status::Undefined,
-            R"doc(
-                Undefined status.
-            )doc"
-        )
 
         .value(
             "Disabled",

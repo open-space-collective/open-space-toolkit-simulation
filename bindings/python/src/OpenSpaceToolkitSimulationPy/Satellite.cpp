@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Simulation/Satellite.hpp>
 
-inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
+inline void OpenSpaceToolkitSimulationPy_Satellite(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::container::Array;
     using ostk::core::type::Shared;
@@ -22,7 +22,7 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
     using ostk::simulation::SatelliteConfiguration;
     using ostk::simulation::Simulator;
 
-    class_<Satellite, Component, Shared<Satellite>>(
+    class_<Satellite, Component>(
         aModule,
         "Satellite",
         R"doc(
@@ -48,24 +48,27 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
             arg("tags"),
             arg("geometries"),
             arg("components"),
-            arg("frame"),
-            arg("profile"),
-            arg("simulator"),
+            arg("frame").none(),
+            arg("profile").none(),
+            arg("simulator").none(),
             R"doc(
                 Create a Satellite instance.
 
                 Args:
-                    id (str): The unique satellite identifier.
-                    name (str): The satellite name.
+                    id (str): The unique satellite identifier. Must not be empty.
+                    name (str): The satellite name. Must not be empty.
                     tags (list[str]): Array of classification tags.
                     geometries (list[Geometry]): Array of geometry objects.
                     components (list[Component]): Array of child components.
-                    frame (Frame): The satellite reference frame.
-                    profile (Profile): The astrodynamics profile (trajectory).
-                    simulator (Simulator): Reference to the parent simulator.
+                    frame (Frame | None): The satellite reference frame. None if the satellite has no frame.
+                    profile (Profile | None): The astrodynamics profile (trajectory).
+                    simulator (Simulator | None): Reference to the parent simulator.
 
                 Returns:
                     Satellite: The satellite instance.
+
+                Raises:
+                    RuntimeError: If the id or the name is empty.
 
                 Example:
                     >>> satellite = Satellite(
@@ -82,48 +85,17 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
         )
 
         .def(
-            "is_defined",
-            &Satellite::isDefined,
+            "get_profile",
+            &Satellite::getProfile,
             R"doc(
-                Check if the satellite is defined.
-
-                Returns:
-                    bool: True if the satellite is defined, False otherwise.
-
-                Example:
-                    >>> satellite.is_defined()
-                    True
-            )doc"
-        )
-
-        .def(
-            "access_profile",
-            &Satellite::accessProfile,
-            R"doc(
-                Access the satellite's astrodynamics profile.
+                Get the satellite's astrodynamics profile.
 
                 Returns:
                     Profile: The satellite trajectory profile.
 
                 Example:
-                    >>> profile = satellite.access_profile()
+                    >>> profile = satellite.get_profile()
                     >>> state = profile.get_state_at(instant)
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Satellite::Undefined,
-            R"doc(
-                Create an undefined satellite.
-
-                Returns:
-                    Satellite: An undefined satellite.
-
-                Example:
-                    >>> satellite = Satellite.undefined()
-                    >>> satellite.is_defined()
-                    False
             )doc"
         )
 
@@ -131,13 +103,13 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
             "configure",
             &Satellite::Configure,
             arg("configuration"),
-            arg("simulator") = nullptr,
+            arg("simulator").none() = none(),
             R"doc(
                 Create a satellite from configuration.
 
                 Args:
                     configuration (SatelliteConfiguration): The satellite configuration.
-                    simulator (Simulator): Optional reference to the parent simulator.
+                    simulator (Simulator | None): Optional reference to the parent simulator.
 
                 Returns:
                     Satellite: The configured satellite.

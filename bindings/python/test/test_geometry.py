@@ -15,6 +15,7 @@ from ostk.mathematics.geometry.d3.object import Pyramid
 from ostk.mathematics.geometry.d3.transformation.rotation import Quaternion
 
 from ostk.physics import Environment
+from ostk.physics.coordinate import Frame
 from ostk.physics.time import Instant
 from ostk.physics.time import Scale
 from ostk.physics.time import Time
@@ -43,7 +44,7 @@ def orbit(environment: Environment) -> Orbit:
         epoch=Instant.date_time(datetime(2020, 1, 1, 0, 0, 0), Scale.UTC),
         altitude=Length.kilometers(500.0),
         local_time_at_descending_node=Time(14, 0, 0),
-        celestial_object=environment.access_celestial_object_with_name("Earth"),
+        celestial_object=environment.get_celestial_object_with_name("Earth"),
     )
 
 
@@ -80,7 +81,7 @@ def simulator(
                 SatelliteConfiguration(
                     id="9ea22c07-6977-48a7-8f68-dff758971d57",
                     name="LoftSat-1",
-                    profile=Profile.local_orbital_frame_pointing(
+                    profile=Profile.constant_local_orbital_frame_pointing(
                         orbit=orbit,
                         orbital_frame_type=Orbit.FrameType.VVLH,
                     ),
@@ -105,19 +106,51 @@ def simulator(
 
 @pytest.fixture
 def camera(simulator: Simulator) -> Component:
-    return simulator.access_satellite_with_name("LoftSat-1").access_component_with_name(
+    return simulator.get_satellite_with_name("LoftSat-1").get_component_with_name(
         "Camera"
     )
 
 
 class TestGeometry:
-    def test_access_composite(self, camera: Component):
-        geometry: Geometry = camera.access_geometry_with_name("FOV")
+    def test_has_no_undefined(self):
+        assert not hasattr(Geometry, "undefined")
+        assert not hasattr(Geometry, "is_defined")
 
-        assert geometry.access_composite().get_object_count() == 1
+    def test_constructor(self, camera: Component, field_of_view: Composite):
+        geometry: Geometry = Geometry("Other", field_of_view, camera)
 
-    def test_access_composite_outlives_temporary_parent(self, camera: Component):
-        composite = camera.access_geometry_with_name("FOV").access_composite()
+        assert geometry.get_name() == "Other"
+        assert geometry.get_component().get_id() == camera.get_id()
+
+    def test_constructor_errors(self, camera: Component, field_of_view: Composite):
+        with pytest.raises(RuntimeError):
+            Geometry("", field_of_view, camera)
+
+        with pytest.raises(TypeError):
+            Geometry("FOV", field_of_view, None)
+
+        frameless_component: Component = Component(
+            id="frameless-id",
+            name="Frameless",
+            type=Component.Type.Sensor,
+            tags=[],
+            geometries=[],
+            components=[],
+            parent=None,
+            frame=None,
+            simulator=None,
+        )
+
+        with pytest.raises(RuntimeError):
+            Geometry("FOV", field_of_view, frameless_component)
+
+    def test_get_composite(self, camera: Component):
+        geometry: Geometry = camera.get_geometry_with_name("FOV")
+
+        assert geometry.get_composite().get_object_count() == 1
+
+    def test_get_composite_outlives_temporary_parent(self, camera: Component):
+        composite = camera.get_geometry_with_name("FOV").get_composite()
 
         gc.collect()
 
@@ -126,4 +159,4 @@ class TestGeometry:
         del ballast
 
         assert composite.get_object_count() == 1
-        assert composite.access_object_at(0).is_pyramid()
+        assert composite.get_object_at(0).is_pyramid()

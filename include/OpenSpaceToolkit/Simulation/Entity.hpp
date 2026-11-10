@@ -18,61 +18,53 @@ using ostk::core::type::String;
 ///
 /// @code{.cpp}
 ///     Entity entity("my-entity");
-///     String name = entity.getName();
-///     String id = entity.getId();
+///     const String& name = entity.getName();
+///     const String& id = entity.getId();
 /// @endcode
 class Entity
 {
    public:
     /// @brief Construct an entity with a name.
     /// @details An identifier is automatically generated.
+    ///          Throws ostk::core::error::runtime::Undefined if the name is empty.
     ///
     /// @code{.cpp}
     ///     Entity entity("my-entity");
     /// @endcode
     ///
-    /// @param aName A name for the entity.
+    /// @param aName A name for the entity (must not be empty).
     Entity(const String& aName);
 
     /// @brief Construct an entity with an identifier and a name.
+    /// @details Throws ostk::core::error::runtime::Undefined if the identifier or the name is empty.
     ///
     /// @code{.cpp}
     ///     Entity entity("entity-id", "my-entity");
     /// @endcode
     ///
-    /// @param anId An identifier.
-    /// @param aName A name.
+    /// @param anId An identifier (must not be empty).
+    /// @param aName A name (must not be empty).
     Entity(const String& anId, const String& aName);
-
-    /// @brief Check if the entity is defined.
-    ///
-    /// @code{.cpp}
-    ///     Entity entity("my-entity");
-    ///     bool defined = entity.isDefined(); // true
-    /// @endcode
-    ///
-    /// @return True if the entity is defined.
-    bool isDefined() const;
 
     /// @brief Get the identifier of the entity.
     ///
     /// @code{.cpp}
     ///     Entity entity("entity-id", "my-entity");
-    ///     String id = entity.getId(); // "entity-id"
+    ///     const String& id = entity.getId(); // "entity-id"
     /// @endcode
     ///
-    /// @return The identifier.
-    String getId() const;
+    /// @return A const reference to the identifier.
+    const String& getId() const;
 
     /// @brief Get the name of the entity.
     ///
     /// @code{.cpp}
     ///     Entity entity("my-entity");
-    ///     String name = entity.getName(); // "my-entity"
+    ///     const String& name = entity.getName(); // "my-entity"
     /// @endcode
     ///
-    /// @return The name.
-    String getName() const;
+    /// @return A const reference to the name.
+    const String& getName() const;
 
     /// @brief Print the entity to an output stream.
     ///
@@ -84,16 +76,6 @@ class Entity
     /// @param [in] anOutputStream An output stream.
     /// @param [in] displayDecorators If true, display decorators.
     void print(std::ostream& anOutputStream, bool displayDecorators = true) const;
-
-    /// @brief Construct an undefined entity.
-    ///
-    /// @code{.cpp}
-    ///     Entity entity = Entity::Undefined();
-    ///     bool defined = entity.isDefined(); // false
-    /// @endcode
-    ///
-    /// @return An undefined entity.
-    static Entity Undefined();
 
    private:
     String id_;

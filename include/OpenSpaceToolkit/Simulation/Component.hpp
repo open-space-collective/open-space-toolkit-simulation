@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Simulation_Component__
 #define __OpenSpaceToolkit_Simulation_Component__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Simulation/Component/Geometry.hpp>
 #include <OpenSpaceToolkit/Simulation/Component/State.hpp>
 #include <OpenSpaceToolkit/Simulation/Entity.hpp>
@@ -37,7 +39,7 @@ using ostk::simulation::component::GeometryConfiguration;
 using ostk::simulation::component::State;
 using ostk::simulation::utility::ComponentHolder;
 
-#define DEFAULT_COMPONENT_TYPE Component::Type::Undefined
+#define DEFAULT_COMPONENT_TYPE std::nullopt
 #define DEFAULT_TAGS Array<String>::Empty()
 #define DEFAULT_ORIENTATION Quaternion::Unit()
 #define DEFAULT_GEOMETRIES Array<GeometryConfiguration>::Empty()
@@ -52,8 +54,8 @@ struct ComponentConfiguration;
 ///          can hold sub-components and geometries.
 ///
 /// @code{.cpp}
-///     const Component& sensor = satellite.accessComponentWithName("camera");
-///     Component::Type type = sensor.getType();
+///     const Component& sensor = satellite.getComponentWithName("camera");
+///     std::optional<Component::Type> type = sensor.getType();
 ///     Array<String> tags = sensor.getTags();
 /// @endcode
 class Component : public Entity, public ComponentHolder, public std::enable_shared_from_this<Component>
@@ -63,7 +65,6 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     enum class Type
     {
 
-        Undefined,
         Assembly,
         Controller,
         Sensor,
@@ -73,6 +74,8 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     };
 
     /// @brief Construct a component.
+    /// @details Throws ostk::core::error::runtime::Undefined if the identifier or the name is empty.
+    ///          The frame may be null, in which case getFrame() throws.
     ///
     /// @code{.cpp}
     ///     Component component(
@@ -82,19 +85,19 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     ///     );
     /// @endcode
     ///
-    /// @param [in] anId An identifier.
-    /// @param [in] aName A name.
-    /// @param [in] aType A component type.
+    /// @param [in] anId An identifier (must not be empty).
+    /// @param [in] aName A name (must not be empty).
+    /// @param [in] aType A component type (std::nullopt if the type is unspecified).
     /// @param [in] aTagArray An array of tags.
     /// @param [in] aGeometryArray An array of geometries.
     /// @param [in] aComponentArray An array of child components.
     /// @param [in] aParentComponentSPtr A shared pointer to the parent component holder.
-    /// @param [in] aFrameSPtr A shared pointer to the reference frame.
+    /// @param [in] aFrameSPtr A shared pointer to the reference frame (may be null).
     /// @param [in] aSimulatorSPtr A shared pointer to the simulator.
     Component(
         const String& anId,
         const String& aName,
-        const Component::Type& aType,
+        const std::optional<Component::Type>& aType,
         const Array<String>& aTagArray,
         const Array<Shared<Geometry>>& aGeometryArray,
         const Array<Shared<Component>>& aComponentArray,
@@ -135,69 +138,61 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     /// @return A reference to the output stream.
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Component& aComponent);
 
-    /// @brief Check if the component is defined.
+    /// @brief Get the reference frame.
+    /// @details Throws ostk::core::error::runtime::Undefined if the component has no frame.
     ///
     /// @code{.cpp}
-    ///     bool defined = component.isDefined();
+    ///     const Shared<const Frame>& frame = component.getFrame();
     /// @endcode
     ///
-    /// @return True if the component is defined.
-    bool isDefined() const;
+    /// @return A const reference to the shared pointer to the frame.
+    const Shared<const Frame>& getFrame() const;
 
-    /// @brief Access the reference frame.
+    /// @brief Get a geometry by name.
     ///
     /// @code{.cpp}
-    ///     const Shared<const Frame>& frame = component.accessFrame();
-    /// @endcode
-    ///
-    /// @return A reference to the shared pointer to the frame.
-    const Shared<const Frame>& accessFrame() const;
-
-    /// @brief Access a geometry by name.
-    ///
-    /// @code{.cpp}
-    ///     const Geometry& fov = component.accessGeometryWithName("fov");
+    ///     const Geometry& fov = component.getGeometryWithName("fov");
     /// @endcode
     ///
     /// @param [in] aName A geometry name.
-    /// @return A reference to the geometry.
-    const Geometry& accessGeometryWithName(const String& aName) const;
+    /// @return A const reference to the geometry.
+    const Geometry& getGeometryWithName(const String& aName) const;
 
-    /// @brief Access the simulator.
+    /// @brief Get the simulator.
     ///
     /// @code{.cpp}
-    ///     const Simulator& simulator = component.accessSimulator();
+    ///     const Simulator& simulator = component.getSimulator();
     /// @endcode
     ///
-    /// @return A reference to the simulator.
-    const Simulator& accessSimulator() const;
+    /// @return A const reference to the simulator.
+    const Simulator& getSimulator() const;
 
     /// @brief Get the component type.
     ///
     /// @code{.cpp}
-    ///     Component::Type type = component.getType();
+    ///     const std::optional<Component::Type>& type = component.getType();
     /// @endcode
     ///
-    /// @return The component type.
-    Component::Type getType() const;
+    /// @return A const reference to the component type, or std::nullopt if the type is unspecified.
+    const std::optional<Component::Type>& getType() const;
 
     /// @brief Get the tags.
     ///
     /// @code{.cpp}
-    ///     Array<String> tags = component.getTags();
+    ///     const Array<String>& tags = component.getTags();
     /// @endcode
     ///
-    /// @return An array of tags.
-    Array<String> getTags() const;
+    /// @return A const reference to the array of tags.
+    const Array<String>& getTags() const;
 
     /// @brief Get the geometries.
     ///
     /// @code{.cpp}
-    ///     Array<Shared<Geometry>> geometries = component.getGeometries();
+    ///     const Array<Shared<Geometry>>& geometries = component.getGeometries();
     /// @endcode
     ///
-    /// @return An array of shared pointers to the geometries.
-    Array<Shared<Geometry>> getGeometries() const;
+    /// @return A const reference to the array of shared pointers to the geometries.
+    const Array<Shared<Geometry>>& getGeometries() const;
 
     /// @brief Set the parent component.
     ///
@@ -226,16 +221,8 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     /// @param [in] aComponentSPtr A shared pointer to a component.
     void addComponent(const Shared<Component>& aComponentSPtr);
 
-    /// @brief Construct an undefined component.
-    ///
-    /// @code{.cpp}
-    ///     Component component = Component::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined component.
-    static Component Undefined();
-
     /// @brief Configure a component from a configuration.
+    /// @details Throws ostk::core::error::runtime::Undefined if the parent component is null or has no frame.
     ///
     /// @code{.cpp}
     ///     Shared<Component> component = Component::Configure(componentConfiguration, parentComponentSPtr);
@@ -284,7 +271,7 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     virtual void print(std::ostream& anOutputStream, bool displayDecorators = true) const;
 
    private:
-    Component::Type type_;
+    std::optional<Component::Type> type_;
     Array<String> tags_;
     Array<Shared<Geometry>> geometries_;  // Array of Geometries defined in Component Frame
 
@@ -298,7 +285,7 @@ struct ComponentConfiguration
 {
     const String id;                                                      ///< The identifier.
     const String name;                                                    ///< The name.
-    const Component::Type type = DEFAULT_COMPONENT_TYPE;                  ///< The component type.
+    const std::optional<Component::Type> type = DEFAULT_COMPONENT_TYPE;   ///< The component type (if any).
     const Array<String> tags = DEFAULT_TAGS;                              ///< The tags.
     const Quaternion orientation = DEFAULT_ORIENTATION;                   ///< The orientation quaternion.
     const Array<GeometryConfiguration> geometries = DEFAULT_GEOMETRIES;   ///< The geometry configurations.

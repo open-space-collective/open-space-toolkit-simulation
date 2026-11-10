@@ -38,11 +38,6 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Simulator& aSimulat
     return anOutputStream;
 }
 
-bool Simulator::isDefined() const
-{
-    return this->environment_.isDefined();
-}
-
 bool Simulator::hasSatelliteWithName(const String& aSatelliteName) const
 {
     if (aSatelliteName.isEmpty())
@@ -50,44 +45,24 @@ bool Simulator::hasSatelliteWithName(const String& aSatelliteName) const
         throw ostk::core::error::runtime::Undefined("Satellite name");
     }
 
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Simulator");
-    }
-
     return this->satelliteMap_.find(aSatelliteName) != this->satelliteMap_.end();
 }
 
-const Environment& Simulator::accessEnvironment() const
+const Environment& Simulator::getEnvironment() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Simulator");
-    }
-
     return this->environment_;
 }
 
-const Map<String, Shared<Satellite>>& Simulator::accessSatelliteMap() const
+const Map<String, Shared<Satellite>>& Simulator::getSatelliteMap() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Simulator");
-    }
-
     return this->satelliteMap_;
 }
 
-const Satellite& Simulator::accessSatelliteWithName(const String& aSatelliteName) const
+const Satellite& Simulator::getSatelliteWithName(const String& aSatelliteName) const
 {
     if (aSatelliteName.isEmpty())
     {
         throw ostk::core::error::runtime::Undefined("Satellite name");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Simulator");
     }
 
     const auto satelliteIt = this->satelliteMap_.find(aSatelliteName);
@@ -100,13 +75,8 @@ const Satellite& Simulator::accessSatelliteWithName(const String& aSatelliteName
     return *(satelliteIt->second);
 }
 
-Instant Simulator::getInstant() const
+const Instant& Simulator::getInstant() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Simulator");
-    }
-
     return this->environment_.getInstant();
 }
 
@@ -121,34 +91,19 @@ void Simulator::print(std::ostream& anOutputStream, bool displayDecorators) cons
 
 void Simulator::setInstant(const Instant& anInstant)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Simulator");
-    }
-
     this->environment_.setInstant(anInstant);
 }
 
 void Simulator::stepForward(const Duration& aDuration)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Simulator");
-    }
-
     this->setInstant(this->environment_.getInstant() + aDuration);
 }
 
 void Simulator::addSatellite(const Shared<Satellite>& aSatelliteSPtr)
 {
-    if ((!aSatelliteSPtr) || (!aSatelliteSPtr->isDefined()))
+    if (!aSatelliteSPtr)
     {
         throw ostk::core::error::runtime::Undefined("Satellite");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Simulator");
     }
 
     this->satelliteMap_.insert({aSatelliteSPtr->getName(), aSatelliteSPtr});
@@ -156,11 +111,6 @@ void Simulator::addSatellite(const Shared<Satellite>& aSatelliteSPtr)
 
 void Simulator::removeSatelliteWithName(const String& aSatelliteName)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Simulator");
-    }
-
     if (!this->hasSatelliteWithName(aSatelliteName))
     {
         throw ostk::core::error::RuntimeError("No Satellite found with name [{}].", aSatelliteName);
@@ -171,17 +121,7 @@ void Simulator::removeSatelliteWithName(const String& aSatelliteName)
 
 void Simulator::clearSatellites()
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Simulator");
-    }
-
     this->satelliteMap_.clear();
-}
-
-Simulator Simulator::Undefined()
-{
-    return {Environment::Undefined(), {}};
 }
 
 Shared<Simulator> Simulator::Configure(const SimulatorConfiguration& aSimulatorConfiguration)
