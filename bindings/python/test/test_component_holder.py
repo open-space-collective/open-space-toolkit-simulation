@@ -81,7 +81,7 @@ def simulator(satellite_name: str) -> Simulator:
 
 @pytest.fixture
 def satellite(simulator: Simulator, satellite_name: str) -> Satellite:
-    return simulator.access_satellite_with_name(satellite_name)
+    return simulator.get_satellite_with_name(satellite_name)
 
 
 class TestComponentHolder:
@@ -104,29 +104,21 @@ class TestComponentHolder:
         assert satellite.has_component_at("Camera/Lens.Detector")
         assert satellite.has_component_at("Camera.Lens/Detector")
 
-    def test_access_component_at_with_slash_delimiter(self, satellite: Satellite):
-        assert satellite.access_component_at("Camera").get_name() == "Camera"
-        assert satellite.access_component_at("Camera/Lens").get_name() == "Lens"
-        assert (
-            satellite.access_component_at("Camera/Lens/Detector").get_name() == "Detector"
-        )
+    def test_get_component_at_with_slash_delimiter(self, satellite: Satellite):
+        assert satellite.get_component_at("Camera").get_name() == "Camera"
+        assert satellite.get_component_at("Camera/Lens").get_name() == "Lens"
+        assert satellite.get_component_at("Camera/Lens/Detector").get_name() == "Detector"
 
         with pytest.raises(RuntimeError):
-            satellite.access_component_at("Camera/Detector")
+            satellite.get_component_at("Camera/Detector")
 
-    def test_access_component_at_with_dot_delimiter(self, satellite: Satellite):
-        assert satellite.access_component_at("Camera.Lens").get_name() == "Lens"
-        assert (
-            satellite.access_component_at("Camera.Lens.Detector").get_name() == "Detector"
-        )
+    def test_get_component_at_with_dot_delimiter(self, satellite: Satellite):
+        assert satellite.get_component_at("Camera.Lens").get_name() == "Lens"
+        assert satellite.get_component_at("Camera.Lens.Detector").get_name() == "Detector"
 
         with pytest.raises(RuntimeError):
-            satellite.access_component_at("Camera.Detector")
+            satellite.get_component_at("Camera.Detector")
 
-    def test_access_component_at_with_mixed_delimiters(self, satellite: Satellite):
-        assert (
-            satellite.access_component_at("Camera/Lens.Detector").get_name() == "Detector"
-        )
-        assert (
-            satellite.access_component_at("Camera.Lens/Detector").get_name() == "Detector"
-        )
+    def test_get_component_at_with_mixed_delimiters(self, satellite: Satellite):
+        assert satellite.get_component_at("Camera/Lens.Detector").get_name() == "Detector"
+        assert satellite.get_component_at("Camera.Lens/Detector").get_name() == "Detector"

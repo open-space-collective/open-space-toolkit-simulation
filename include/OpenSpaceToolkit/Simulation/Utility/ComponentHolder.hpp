@@ -34,7 +34,7 @@ using ostk::core::type::Unique;
 /// @code{.cpp}
 ///     ComponentHolder holder(componentArray);
 ///     bool exists = holder.hasComponentWithName("sensor");
-///     const Component& sensor = holder.accessComponentWithName("sensor");
+///     const Component& sensor = holder.getComponentWithName("sensor");
 /// @endcode
 class ComponentHolder
 {
@@ -91,55 +91,55 @@ class ComponentHolder
     /// @return True if a component exists at the path.
     bool hasComponentAt(const String& aComponentPath) const;
 
-    /// @brief Access all components.
+    /// @brief Get all components.
     ///
     /// @code{.cpp}
-    ///     Array<Shared<Component>> components = holder.accessComponents();
+    ///     Array<Shared<Component>> components = holder.getComponents();
     /// @endcode
     ///
     /// @return An array of shared pointers to the components.
-    Array<Shared<Component>> accessComponents() const;
+    Array<Shared<Component>> getComponents() const;
 
-    /// @brief Access a component by identifier.
+    /// @brief Get a component by identifier.
     ///
     /// @code{.cpp}
-    ///     const Component& component = holder.accessComponentWithId("component-id");
+    ///     const Component& component = holder.getComponentWithId("component-id");
     /// @endcode
     ///
     /// @param [in] aComponentId A component identifier.
-    /// @return A reference to the component.
-    const Component& accessComponentWithId(const String& aComponentId) const;
+    /// @return A const reference to the component.
+    const Component& getComponentWithId(const String& aComponentId) const;
 
-    /// @brief Access a component by name.
+    /// @brief Get a component by name.
     ///
     /// @code{.cpp}
-    ///     const Component& sensor = holder.accessComponentWithName("sensor");
+    ///     const Component& sensor = holder.getComponentWithName("sensor");
     /// @endcode
     ///
     /// @param [in] aComponentName A component name.
-    /// @return A reference to the component.
-    const Component& accessComponentWithName(const String& aComponentName) const;
+    /// @return A const reference to the component.
+    const Component& getComponentWithName(const String& aComponentName) const;
 
-    /// @brief Access all components matching a tag.
+    /// @brief Get all components matching a tag.
     ///
     /// @code{.cpp}
-    ///     Array<Shared<const Component>> sensors = holder.accessComponentsWithTag("sensor");
+    ///     Array<Shared<const Component>> sensors = holder.getComponentsWithTag("sensor");
     /// @endcode
     ///
     /// @param [in] aComponentTag A tag.
     /// @return An array of shared pointers to the matching components.
-    Array<Shared<const Component>> accessComponentsWithTag(const String& aComponentTag) const;
+    Array<Shared<const Component>> getComponentsWithTag(const String& aComponentTag) const;
 
-    /// @brief Access a component at a hierarchical path.
+    /// @brief Get a component at a hierarchical path.
     ///
     /// @code{.cpp}
-    ///     const Component& sensor = holder.accessComponentAt("assembly.sensor");
+    ///     const Component& sensor = holder.getComponentAt("assembly.sensor");
     /// @endcode
     ///
     /// @param [in] aComponentPath A component path, with segments separated by '/' or '.'
     ///                            (e.g., "assembly/sensor" or "assembly.sensor").
-    /// @return A reference to the component.
-    const Component& accessComponentAt(const String& aComponentPath) const;
+    /// @return A const reference to the component.
+    const Component& getComponentAt(const String& aComponentPath) const;
 
     /// @brief Add a component.
     ///

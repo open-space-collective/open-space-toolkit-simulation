@@ -65,7 +65,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Satellite& aSatelli
     return anOutputStream;
 }
 
-const Shared<const Profile> Satellite::accessProfile() const
+const Shared<const Profile>& Satellite::getProfile() const
 {
     return this->profileSPtr_;
 }

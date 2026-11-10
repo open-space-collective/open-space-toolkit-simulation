@@ -120,28 +120,33 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, HasSatelliteWithName)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Simulation_Simulator, AccessEnvironment)
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, GetEnvironment)
 {
     {
-        EXPECT_NO_THROW(simulatorSPtr_->accessEnvironment());
+        EXPECT_NO_THROW(simulatorSPtr_->getEnvironment());
+        EXPECT_EQ(&simulatorSPtr_->getEnvironment(), &simulatorSPtr_->getEnvironment());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Simulation_Simulator, AccessSatelliteMap)
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, GetSatelliteMap)
 {
     {
-        EXPECT_THROW(Simulator::Undefined().accessSatelliteMap(), ostk::core::error::runtime::Undefined);
+        EXPECT_THROW(Simulator::Undefined().getSatelliteMap(), ostk::core::error::runtime::Undefined);
     }
 
     {
-        EXPECT_EQ(simulatorSPtr_->accessSatelliteMap().size(), 1);
+        EXPECT_EQ(simulatorSPtr_->getSatelliteMap().size(), 1);
+        EXPECT_EQ(&simulatorSPtr_->getSatelliteMap(), &simulatorSPtr_->getSatelliteMap());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Simulation_Simulator, AccessSatelliteWithName)
+TEST_F(OpenSpaceToolkit_Simulation_Simulator, GetSatelliteWithName)
 {
     {
-        EXPECT_EQ(satelliteName_, simulatorSPtr_->accessSatelliteWithName(satelliteName_).getName());
+        EXPECT_EQ(satelliteName_, simulatorSPtr_->getSatelliteWithName(satelliteName_).getName());
+        EXPECT_EQ(
+            &simulatorSPtr_->getSatelliteWithName(satelliteName_), &simulatorSPtr_->getSatelliteWithName(satelliteName_)
+        );
     }
 }
 
@@ -220,9 +225,9 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, Test_1)
 
         simulatorSPtr->setInstant(instant);
 
-        const auto camera = simulatorSPtr->accessSatelliteWithName("LoftSat-1").accessComponentWithName("Camera");
+        const auto camera = simulatorSPtr->getSatelliteWithName("LoftSat-1").getComponentWithName("Camera");
 
-        const auto cameraGeometry = camera.accessGeometryWithName("FOV");
+        const auto cameraGeometry = camera.getGeometryWithName("FOV");
         const auto earthGeometry = environment.accessCelestialObjectWithName("Earth")->accessGeometry();
 
         EXPECT_TRUE(cameraGeometry.intersects(earthGeometry));
@@ -256,12 +261,12 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, RemoveSatelliteWithName)
 
     {
         EXPECT_TRUE(simulatorSPtr_->hasSatelliteWithName(satelliteName_));
-        EXPECT_EQ(simulatorSPtr_->accessSatelliteMap().size(), 1);
+        EXPECT_EQ(simulatorSPtr_->getSatelliteMap().size(), 1);
 
         simulatorSPtr_->removeSatelliteWithName(satelliteName_);
 
         EXPECT_FALSE(simulatorSPtr_->hasSatelliteWithName(satelliteName_));
-        EXPECT_EQ(simulatorSPtr_->accessSatelliteMap().size(), 0);
+        EXPECT_EQ(simulatorSPtr_->getSatelliteMap().size(), 0);
     }
 }
 
@@ -273,12 +278,12 @@ TEST_F(OpenSpaceToolkit_Simulation_Simulator, ClearSatellites)
 
     {
         EXPECT_TRUE(simulatorSPtr_->hasSatelliteWithName(satelliteName_));
-        EXPECT_EQ(simulatorSPtr_->accessSatelliteMap().size(), 1);
+        EXPECT_EQ(simulatorSPtr_->getSatelliteMap().size(), 1);
 
         simulatorSPtr_->clearSatellites();
 
         EXPECT_FALSE(simulatorSPtr_->hasSatelliteWithName(satelliteName_));
-        EXPECT_EQ(simulatorSPtr_->accessSatelliteMap().size(), 0);
+        EXPECT_EQ(simulatorSPtr_->getSatelliteMap().size(), 0);
     }
 }
 

@@ -85,16 +85,16 @@ inline void OpenSpaceToolkitSimulationPy_Satellite(pybind11::module& aModule)
         )
 
         .def(
-            "access_profile",
-            &Satellite::accessProfile,
+            "get_profile",
+            &Satellite::getProfile,
             R"doc(
-                Access the satellite's astrodynamics profile.
+                Get the satellite's astrodynamics profile.
 
                 Returns:
                     Profile: The satellite trajectory profile.
 
                 Example:
-                    >>> profile = satellite.access_profile()
+                    >>> profile = satellite.get_profile()
                     >>> state = profile.get_state_at(instant)
             )doc"
         )

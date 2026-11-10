@@ -58,7 +58,7 @@ bool Simulator::hasSatelliteWithName(const String& aSatelliteName) const
     return this->satelliteMap_.find(aSatelliteName) != this->satelliteMap_.end();
 }
 
-const Environment& Simulator::accessEnvironment() const
+const Environment& Simulator::getEnvironment() const
 {
     if (!this->isDefined())
     {
@@ -68,7 +68,7 @@ const Environment& Simulator::accessEnvironment() const
     return this->environment_;
 }
 
-const Map<String, Shared<Satellite>>& Simulator::accessSatelliteMap() const
+const Map<String, Shared<Satellite>>& Simulator::getSatelliteMap() const
 {
     if (!this->isDefined())
     {
@@ -78,7 +78,7 @@ const Map<String, Shared<Satellite>>& Simulator::accessSatelliteMap() const
     return this->satelliteMap_;
 }
 
-const Satellite& Simulator::accessSatelliteWithName(const String& aSatelliteName) const
+const Satellite& Simulator::getSatelliteWithName(const String& aSatelliteName) const
 {
     if (aSatelliteName.isEmpty())
     {

@@ -91,7 +91,7 @@ TEST_F(OpenSpaceToolkit_Simulation_Component, WithoutFrame)
     }
 
     {
-        EXPECT_THROW(componentSPtr->accessFrame(), ostk::core::error::runtime::Undefined);
+        EXPECT_THROW(componentSPtr->getFrame(), ostk::core::error::runtime::Undefined);
     }
 
     {
@@ -117,6 +117,46 @@ TEST_F(OpenSpaceToolkit_Simulation_Component, GetType)
 
     {
         EXPECT_EQ(MakeComponent("Unspecified", std::nullopt)->getType(), std::nullopt);
+    }
+
+    {
+        EXPECT_EQ(&parentSPtr_->getType(), &parentSPtr_->getType());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Simulation_Component, GetFrame)
+{
+    {
+        EXPECT_EQ(parentSPtr_->getFrame(), Frame::GCRF());
+        EXPECT_EQ(&parentSPtr_->getFrame(), &parentSPtr_->getFrame());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Simulation_Component, GetTags)
+{
+    {
+        const Shared<Component> componentSPtr = std::make_shared<Component>(
+            "tagged-id",
+            "Tagged",
+            Component::Type::Sensor,
+            Array<String>({"a", "b"}),
+            Array<Shared<Geometry>>::Empty(),
+            Array<Shared<Component>>::Empty(),
+            nullptr,
+            Frame::GCRF(),
+            nullptr
+        );
+
+        EXPECT_EQ(componentSPtr->getTags(), Array<String>({"a", "b"}));
+        EXPECT_EQ(&componentSPtr->getTags(), &componentSPtr->getTags());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Simulation_Component, GetGeometries)
+{
+    {
+        EXPECT_TRUE(parentSPtr_->getGeometries().isEmpty());
+        EXPECT_EQ(&parentSPtr_->getGeometries(), &parentSPtr_->getGeometries());
     }
 }
 

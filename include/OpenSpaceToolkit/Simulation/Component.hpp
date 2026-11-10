@@ -54,7 +54,7 @@ struct ComponentConfiguration;
 ///          can hold sub-components and geometries.
 ///
 /// @code{.cpp}
-///     const Component& sensor = satellite.accessComponentWithName("camera");
+///     const Component& sensor = satellite.getComponentWithName("camera");
 ///     std::optional<Component::Type> type = sensor.getType();
 ///     Array<String> tags = sensor.getTags();
 /// @endcode
@@ -75,7 +75,7 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
 
     /// @brief Construct a component.
     /// @details Throws ostk::core::error::runtime::Undefined if the identifier or the name is empty.
-    ///          The frame may be null, in which case accessFrame() throws.
+    ///          The frame may be null, in which case getFrame() throws.
     ///
     /// @code{.cpp}
     ///     Component component(
@@ -138,61 +138,61 @@ class Component : public Entity, public ComponentHolder, public std::enable_shar
     /// @return A reference to the output stream.
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Component& aComponent);
 
-    /// @brief Access the reference frame.
+    /// @brief Get the reference frame.
     /// @details Throws ostk::core::error::runtime::Undefined if the component has no frame.
     ///
     /// @code{.cpp}
-    ///     const Shared<const Frame>& frame = component.accessFrame();
+    ///     const Shared<const Frame>& frame = component.getFrame();
     /// @endcode
     ///
-    /// @return A reference to the shared pointer to the frame.
-    const Shared<const Frame>& accessFrame() const;
+    /// @return A const reference to the shared pointer to the frame.
+    const Shared<const Frame>& getFrame() const;
 
-    /// @brief Access a geometry by name.
+    /// @brief Get a geometry by name.
     ///
     /// @code{.cpp}
-    ///     const Geometry& fov = component.accessGeometryWithName("fov");
+    ///     const Geometry& fov = component.getGeometryWithName("fov");
     /// @endcode
     ///
     /// @param [in] aName A geometry name.
-    /// @return A reference to the geometry.
-    const Geometry& accessGeometryWithName(const String& aName) const;
+    /// @return A const reference to the geometry.
+    const Geometry& getGeometryWithName(const String& aName) const;
 
-    /// @brief Access the simulator.
+    /// @brief Get the simulator.
     ///
     /// @code{.cpp}
-    ///     const Simulator& simulator = component.accessSimulator();
+    ///     const Simulator& simulator = component.getSimulator();
     /// @endcode
     ///
-    /// @return A reference to the simulator.
-    const Simulator& accessSimulator() const;
+    /// @return A const reference to the simulator.
+    const Simulator& getSimulator() const;
 
     /// @brief Get the component type.
     ///
     /// @code{.cpp}
-    ///     std::optional<Component::Type> type = component.getType();
+    ///     const std::optional<Component::Type>& type = component.getType();
     /// @endcode
     ///
-    /// @return The component type, or std::nullopt if the type is unspecified.
-    std::optional<Component::Type> getType() const;
+    /// @return A const reference to the component type, or std::nullopt if the type is unspecified.
+    const std::optional<Component::Type>& getType() const;
 
     /// @brief Get the tags.
     ///
     /// @code{.cpp}
-    ///     Array<String> tags = component.getTags();
+    ///     const Array<String>& tags = component.getTags();
     /// @endcode
     ///
-    /// @return An array of tags.
-    Array<String> getTags() const;
+    /// @return A const reference to the array of tags.
+    const Array<String>& getTags() const;
 
     /// @brief Get the geometries.
     ///
     /// @code{.cpp}
-    ///     Array<Shared<Geometry>> geometries = component.getGeometries();
+    ///     const Array<Shared<Geometry>>& geometries = component.getGeometries();
     /// @endcode
     ///
-    /// @return An array of shared pointers to the geometries.
-    Array<Shared<Geometry>> getGeometries() const;
+    /// @return A const reference to the array of shared pointers to the geometries.
+    const Array<Shared<Geometry>>& getGeometries() const;
 
     /// @brief Set the parent component.
     ///

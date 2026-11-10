@@ -44,15 +44,15 @@ struct SatelliteConfiguration;
 ///          and a dedicated reference frame derived from that profile.
 ///
 /// @code{.cpp}
-///     const Satellite& satellite = simulator.accessSatelliteWithName("sat-1");
-///     const Shared<const Profile> profile = satellite.accessProfile();
+///     const Satellite& satellite = simulator.getSatelliteWithName("sat-1");
+///     const Shared<const Profile>& profile = satellite.getProfile();
 /// @endcode
 class Satellite : public Component
 {
    public:
     /// @brief Construct a satellite.
     /// @details Throws ostk::core::error::runtime::Undefined if the identifier or the name is empty.
-    ///          The frame may be null, in which case accessFrame() throws.
+    ///          The frame may be null, in which case getFrame() throws.
     ///
     /// @code{.cpp}
     ///     Satellite satellite(
@@ -112,14 +112,14 @@ class Satellite : public Component
     /// @return A reference to the output stream.
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Satellite& aSatellite);
 
-    /// @brief Access the flight profile.
+    /// @brief Get the flight profile.
     ///
     /// @code{.cpp}
-    ///     const Shared<const Profile> profile = satellite.accessProfile();
+    ///     const Shared<const Profile>& profile = satellite.getProfile();
     /// @endcode
     ///
-    /// @return A shared pointer to the flight profile.
-    const Shared<const Profile> accessProfile() const;
+    /// @return A const reference to the shared pointer to the flight profile.
+    const Shared<const Profile>& getProfile() const;
 
     /// @brief Print the satellite to an output stream.
     ///

@@ -38,12 +38,12 @@ Entity::Entity(const String& anId, const String& aName)
     }
 }
 
-String Entity::getId() const
+const String& Entity::getId() const
 {
     return id_;
 }
 
-String Entity::getName() const
+const String& Entity::getName() const
 {
     return name_;
 }

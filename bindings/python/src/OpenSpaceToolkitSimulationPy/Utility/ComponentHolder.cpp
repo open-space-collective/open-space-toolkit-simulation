@@ -79,26 +79,26 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
         )
 
         .def(
-            "access_components",
-            &ComponentHolder::accessComponents,
+            "get_components",
+            &ComponentHolder::getComponents,
             R"doc(
-                Access all child components.
+                Get all child components.
 
                 Returns:
                     list: Array of all child components.
 
                 Example:
-                    >>> components = holder.access_components()
+                    >>> components = holder.get_components()
                     >>> len(components)
                     3
             )doc"
         )
 
         .def(
-            "access_component_with_id",
-            &ComponentHolder::accessComponentWithId,
+            "get_component_with_id",
+            &ComponentHolder::getComponentWithId,
             R"doc(
-                Access a component by its ID.
+                Get a component by its ID.
 
                 Args:
                     id (str): The component ID.
@@ -107,15 +107,15 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
                     Component: The component with the specified ID.
 
                 Example:
-                    >>> component = holder.access_component_with_id("sensor-1")
+                    >>> component = holder.get_component_with_id("sensor-1")
             )doc"
         )
 
         .def(
-            "access_component_with_name",
-            &ComponentHolder::accessComponentWithName,
+            "get_component_with_name",
+            &ComponentHolder::getComponentWithName,
             R"doc(
-                Access a component by its name.
+                Get a component by its name.
 
                 Args:
                     name (str): The component name.
@@ -124,15 +124,15 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
                     Component: The component with the specified name.
 
                 Example:
-                    >>> component = holder.access_component_with_name("Main Sensor")
+                    >>> component = holder.get_component_with_name("Main Sensor")
             )doc"
         )
 
         .def(
-            "access_components_with_tag",
-            &ComponentHolder::accessComponentsWithTag,
+            "get_components_with_tag",
+            &ComponentHolder::getComponentsWithTag,
             R"doc(
-                Access all components with a specific tag.
+                Get all components with a specific tag.
 
                 Args:
                     tag (str): The tag to filter by.
@@ -141,17 +141,17 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
                     list: Array of components with the specified tag.
 
                 Example:
-                    >>> sensors = holder.access_components_with_tag("sensor")
+                    >>> sensors = holder.get_components_with_tag("sensor")
                     >>> len(sensors)
                     2
             )doc"
         )
 
         .def(
-            "access_component_at",
-            &ComponentHolder::accessComponentAt,
+            "get_component_at",
+            &ComponentHolder::getComponentAt,
             R"doc(
-                Access a component at a given path.
+                Get a component at a given path.
 
                 Args:
                     path (str): The component path, with segments separated by "/" or "."
@@ -161,8 +161,8 @@ inline void OpenSpaceToolkitSimulationPy_Utility_ComponentHolder(pybind11::modul
                     Component: The component at the specified path.
 
                 Example:
-                    >>> component = holder.access_component_at("payload/sensor-1")
-                    >>> component = holder.access_component_at("payload.sensor-1")
+                    >>> component = holder.get_component_at("payload/sensor-1")
+                    >>> component = holder.get_component_at("payload.sensor-1")
             )doc"
         )
 

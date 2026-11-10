@@ -42,7 +42,7 @@ struct SimulatorConfiguration;
 ///     Simulator simulator(environment, satelliteArray);
 ///     simulator.setInstant(instant);
 ///     simulator.stepForward(Duration::Minutes(5.0));
-///     const Satellite& sat = simulator.accessSatelliteWithName("sat-1");
+///     const Satellite& sat = simulator.getSatelliteWithName("sat-1");
 /// @endcode
 class Simulator
 {
@@ -87,33 +87,33 @@ class Simulator
     /// @return True if a satellite with the name exists.
     bool hasSatelliteWithName(const String& aSatelliteName) const;
 
-    /// @brief Access the environment.
+    /// @brief Get the environment.
     ///
     /// @code{.cpp}
-    ///     const Environment& environment = simulator.accessEnvironment();
+    ///     const Environment& environment = simulator.getEnvironment();
     /// @endcode
     ///
-    /// @return A reference to the environment.
-    const Environment& accessEnvironment() const;
+    /// @return A const reference to the environment.
+    const Environment& getEnvironment() const;
 
-    /// @brief Access the satellite map.
+    /// @brief Get the satellite map.
     ///
     /// @code{.cpp}
-    ///     const Map<String, Shared<Satellite>>& satellites = simulator.accessSatelliteMap();
+    ///     const Map<String, Shared<Satellite>>& satellites = simulator.getSatelliteMap();
     /// @endcode
     ///
-    /// @return A reference to the map of satellite names to satellites.
-    const Map<String, Shared<Satellite>>& accessSatelliteMap() const;
+    /// @return A const reference to the map of satellite names to satellites.
+    const Map<String, Shared<Satellite>>& getSatelliteMap() const;
 
-    /// @brief Access a satellite by name.
+    /// @brief Get a satellite by name.
     ///
     /// @code{.cpp}
-    ///     const Satellite& satellite = simulator.accessSatelliteWithName("sat-1");
+    ///     const Satellite& satellite = simulator.getSatelliteWithName("sat-1");
     /// @endcode
     ///
     /// @param [in] aSatelliteName A satellite name.
-    /// @return A reference to the satellite.
-    const Satellite& accessSatelliteWithName(const String& aSatelliteName) const;
+    /// @return A const reference to the satellite.
+    const Satellite& getSatelliteWithName(const String& aSatelliteName) const;
 
     /// @brief Get the current simulation instant.
     ///

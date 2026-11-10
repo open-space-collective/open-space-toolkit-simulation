@@ -21,7 +21,7 @@ Geometry::Geometry(const String& aName, const Composite& aComposite, const Share
 {
     if (componentPtr_ != nullptr)
     {
-        geometry_ = ObjectGeometry(aComposite, componentPtr_->accessFrame());
+        geometry_ = ObjectGeometry(aComposite, componentPtr_->getFrame());
     }
 }
 
@@ -48,7 +48,7 @@ bool Geometry::isDefined() const
     return (!this->name_.isEmpty()) && this->geometry_.isDefined() && (this->componentPtr_ != nullptr);
 }
 
-const Component& Geometry::accessComponent() const
+const Component& Geometry::getComponent() const
 {
     if (!this->isDefined())
     {
@@ -58,7 +58,7 @@ const Component& Geometry::accessComponent() const
     return *(this->componentPtr_);
 }
 
-String Geometry::getName() const
+const String& Geometry::getName() const
 {
     if (!this->isDefined())
     {
@@ -74,7 +74,7 @@ void Geometry::print(std::ostream& anOutputStream, bool displayDecorators) const
 
     ostk::core::utils::Print::Line(anOutputStream) << "Name:" << this->getName();
     ostk::core::utils::Print::Line(anOutputStream) << "Geometry:" << geometry_;
-    ostk::core::utils::Print::Line(anOutputStream) << "Component:" << this->accessComponent();
+    ostk::core::utils::Print::Line(anOutputStream) << "Component:" << this->getComponent();
 }
 
 bool Geometry::intersects(const ObjectGeometry& aGeometry) const
@@ -86,7 +86,7 @@ bool Geometry::intersects(const ObjectGeometry& aGeometry) const
         throw ostk::core::error::runtime::Undefined("Geometry");
     }
 
-    const Instant instant = this->accessComponent().accessSimulator().getInstant();
+    const Instant instant = this->getComponent().getSimulator().getInstant();
 
     // TBM: Why GCRF?
     return this->getGeometryIn(Frame::GCRF()).intersects(aGeometry.in(Frame::GCRF(), instant));
@@ -106,7 +106,7 @@ bool Geometry::contains(const ObjectGeometry& aGeometry) const
         throw ostk::core::error::runtime::Undefined("Geometry");
     }
 
-    const Instant instant = this->accessComponent().accessSimulator().getInstant();
+    const Instant instant = this->getComponent().getSimulator().getInstant();
 
     // TBM: Why GCRF?
     return this->getGeometryIn(Frame::GCRF()).contains(aGeometry.in(Frame::GCRF(), instant));
@@ -117,12 +117,12 @@ bool Geometry::contains(const Celestial& aCelestialObject) const
     return this->contains(aCelestialObject.accessGeometry());
 }
 
-const Composite& Geometry::accessComposite() const
+const Composite& Geometry::getComposite() const
 {
     return this->geometry_.accessComposite();
 }
 
-Shared<const Frame> Geometry::accessFrame() const
+Shared<const Frame> Geometry::getFrame() const
 {
     return this->geometry_.accessFrame();
 }
@@ -134,7 +134,7 @@ ObjectGeometry Geometry::getGeometryIn(const Shared<const Frame>& aFrameSPtr) co
         throw ostk::core::error::runtime::Undefined("Geometry");
     }
 
-    return this->geometry_.in(aFrameSPtr, this->accessComponent().accessSimulator().getInstant());
+    return this->geometry_.in(aFrameSPtr, this->getComponent().getSimulator().getInstant());
 }
 
 ObjectGeometry Geometry::intersectionWith(const ObjectGeometry& aGeometry) const
@@ -146,7 +146,7 @@ ObjectGeometry Geometry::intersectionWith(const ObjectGeometry& aGeometry) const
         throw ostk::core::error::runtime::Undefined("Geometry");
     }
 
-    const Instant instant = this->accessComponent().accessSimulator().getInstant();
+    const Instant instant = this->getComponent().getSimulator().getInstant();
 
     // TBM: Why GCRF?
     return this->getGeometryIn(Frame::GCRF()).intersectionWith(aGeometry.in(Frame::GCRF(), instant));
